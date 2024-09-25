@@ -21,11 +21,6 @@ img {
   display: inline-block;
   vertical-align: middle;
 }
-@media (prefers-color-scheme: dark) {
-  img {
-    filter: brightness(0.8);
-  }
-}
 del,
 s {
   text-decoration: line-through;
