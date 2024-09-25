@@ -1,191 +1,32 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="9.1 返回指针值的函数 函数的返回值可为变量地址、数组名或指针变量。  在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。 例： 12float *fun(float x[],float y);char *strcat1(char *strDest,const char *strSource)  例：编一函数，将这字符串中ASCII码最大的字符的地址返回，主程序中输出">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第九讲 函数（续）">
-<meta property="og:url" content="http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="9.1 返回指针值的函数 函数的返回值可为变量地址、数组名或指针变量。  在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。 例： 12float *fun(float x[],float y);char *strcat1(char *strDest,const char *strSource)  例：编一函数，将这字符串中ASCII码最大的字符的地址返回，主程序中输出">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/image-20231102103809883.png">
-<meta property="og:image" content="http://example.com/img/image-20231102104244452.png">
-<meta property="article:published_time" content="2024-02-05T10:38:30.000Z">
-<meta property="article:modified_time" content="2024-09-25T10:45:48.446Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="c&#x2F;c++">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/image-20231102103809883.png">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>第九讲 函数（续）</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content=""/><meta name="keyword"/><title>第九讲 函数（续）
+-
+Hexo
+-
 
-    
-<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
-
-    
-<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
-
-    
+</title><link rel="icon" href="/img/favicon.ico"/>
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- rss -->
-    
-    
-    <!-- jquery -->
-    
-<script src="/lib/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/helpers.css">
 
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-    <div class="banner">
-<div id="blogtitel" class="blogtitel">Hexo</div>
-<ul id="wrapper" class="wrapper">
-  <div class="sun">
-    <div class="star"></div>
-  </div>
-  <div class="mercury">
-    <div class="planet">
-      <div class="shadow"></div>
-    </div>
-  </div>
-  <div class="venus">
-    <div class="planet">
-      <div class="shadow"></div>
-    </div>
-  </div>
-  <div class="earth">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="mars">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="jupiter">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-</ul>
-</div>
-
-    <div class="background">
-      
-        <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
-        
-        
-        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%87%BD%E6%95%B0/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
-        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&text=第九讲 函数（续）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&is_video=false&description=第九讲 函数（续）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=第九讲 函数（续）&body=Check out this article: http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&name=第九讲 函数（续）&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">9.1 返回指针值的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">9.2 作用域与存储类别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E7%94%9F%E5%AD%98%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">作用域与生存期的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">自动局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">静态局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">2.4.1.</span> <span class="toc-text">扩展全局变量的作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0-%EF%BC%88%E8%80%83%E8%AF%95%E5%8F%AA%E8%80%83%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8D%E8%80%83%E7%BC%96%E7%A8%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">9.3 递归函数 （考试只考概念，不考编程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">递归的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">递归函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.3.</span> <span class="toc-text">递归与迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%BD%BF%E7%94%A8"><span class="toc-number">3.4.</span> <span class="toc-text">递归使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="toc-number">3.4.1.</span> <span class="toc-text">例：二分法查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text">例：进制转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">4.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">4.2.</span> <span class="toc-text">2</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
-      
-      <div class="content index width mx-auto px2 my4">
-          
-          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        第九讲 函数（续）
-    </h1>
+<script src="/js/clipboard/clipboard.min.js"></script>
 
 
+<script src="/js/bootstrap.js"></script>
 
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Hexo</span>
-      </span>
-      
-    <div class="postdate">
-        <time datetime="2024-02-05T10:38:30.000Z" itemprop="datePublished">2024-02-05</time>
-    </div>
+<script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading-wrapper" data-loading="data-loading"><div class="loading"><span></span><span></span><span></span></div></div><div class="page" data-filter="data-filter"><div class="head" data-show="data-show"><header class="head-header"><div class="head-author"><a class="head-author-link" href="/">Hexo</a></div><div class="head-right"><button class="bar-wrap" id="bar-wrap-toggle" title="menu button"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button><div class="head-item"><a class="search-button head-item-link"><span>Search</span>
+<i class="icon icon-search"></i></a></div><div class="head-item"><a class="head-item-link" href="/about">关于</a></div></div></header>
+<div class="menubar-head" id="menubar"><ul class="menubar-ul"><li class="menubar-item"><i class="icon icon-chevron-right"></i>
+<a class="menubar-link" href="/categories/Posts/">Posts1</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
+<a class="menubar-link" href="/categories/Posts2/">Posts2</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><i class="icon icon-archive"></i>
+<a class="menubar-link" href="/archives">Archives</a></li><li class="menubar-item"><i class="icon icon-tags"></i>
+<a class="menubar-link" href="/tags">Tags</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><a class="menubar-link" href="/about"><span>关于</span></a></li></ul><div class="menu-search-box search-button"><div>Search</div>
+<i class="icon icon-search"></i></div></div></div><div class="main" data-page="post"><article class="post" id="post"><header class="post-head"><h1 class="post-title"><a class="title" href="/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/">第九讲 函数（续）</a></h1></header><div class="post-meta"><div class="post-date"><time class="post-time" itemprop="datePublished" title="2024-02-05 18:38:30" datetime="2024-02-05T10:38:30.000Z">2024-02-05</time></div>|
+<div class="post-tag"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/" rel="tag">c&#x2F;c++</a></li></ul></div>
+<div class="post-visit"><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span>hits</span></div></div><div class="post-info"><div class="post-word-count">This article contains 2,657 words.</div>
+<div class="post-cc">Copyright: 署名-非商业性使用-相同方式共享
 
-
-      
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/c-c/" rel="tag">c/c++</a>
-    </div>
-
-
-    </div>
-  </header>
-  
-
-  <div class="content" itemprop="articleBody">
-    <h2 id="9-1-返回指针值的函数"><a href="#9-1-返回指针值的函数" class="headerlink" title="9.1 返回指针值的函数"></a>9.1 返回指针值的函数</h2><ul>
+|
+<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/2.5/cn/">CC BY-NC-SA 2.5 CN</a></div></div><div class="article-entry" itemprop="articleBody"><h2 id="9-1-返回指针值的函数"><a href="#9-1-返回指针值的函数" class="headerlink" title="9.1 返回指针值的函数"></a>9.1 返回指针值的函数</h2><ul>
 <li><p>函数的返回值可为变量地址、数组名或指针变量。</p>
 </li>
 <li><p>在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。</p>
@@ -361,96 +202,41 @@
 
 <p>类似的课上例：</p>
 <p><strong>【例5.9】search函数的功能是在一字符串中查找某一指定的字符,若找到，则返回字符串中这个字符的地址，否则返回NULL，主函数调用search函数，并输出查找到的那个字符后的子串。</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">char</span> *<span class="title">search</span><span class="params">(<span class="type">char</span> s[],<span class="type">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">while</span>(                        )</span><br><span class="line">       <span class="keyword">if</span>(s[i]!=ch) </span><br><span class="line">            i++;</span><br><span class="line">       <span class="keyword">else</span>              </span><br><span class="line">                                   ;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="type">char</span> s[<span class="number">100</span>],ch,*p;</span><br><span class="line">     <span class="built_in">gets</span>(s);</span><br><span class="line">     cin&gt;&gt;ch;</span><br><span class="line">                                  ;</span><br><span class="line">     <span class="keyword">if</span>(p!=<span class="literal">NULL</span>) </span><br><span class="line">          cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">     <span class="keyword">else</span>  </span><br><span class="line">          cout&lt;&lt;<span class="string">&quot;not found\n&quot;</span>;</span><br><span class="line">     <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  </div>
-</article>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">char</span> *<span class="title">search</span><span class="params">(<span class="type">char</span> s[],<span class="type">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">while</span>(                        )</span><br><span class="line">       <span class="keyword">if</span>(s[i]!=ch) </span><br><span class="line">            i++;</span><br><span class="line">       <span class="keyword">else</span>              </span><br><span class="line">                                   ;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="type">char</span> s[<span class="number">100</span>],ch,*p;</span><br><span class="line">     <span class="built_in">gets</span>(s);</span><br><span class="line">     cin&gt;&gt;ch;</span><br><span class="line">                                  ;</span><br><span class="line">     <span class="keyword">if</span>(p!=<span class="literal">NULL</span>) </span><br><span class="line">          cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">     <span class="keyword">else</span>  </span><br><span class="line">          cout&lt;&lt;<span class="string">&quot;not found\n&quot;</span>;</span><br><span class="line">     <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></article><aside class="post-widget"><h4>In this article</h4><nav class="post-toc-wrap" id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-1-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">9.1 返回指针值的函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB"><span class="post-toc-number">2.</span> <span class="post-toc-text">9.2 作用域与存储类别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E7%94%9F%E5%AD%98%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">作用域与生存期的概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">自动局部变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%99%E6%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">静态局部变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">全局变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%A9%E5%B1%95%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">扩展全局变量的作用域</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-3-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0-%EF%BC%88%E8%80%83%E8%AF%95%E5%8F%AA%E8%80%83%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8D%E8%80%83%E7%BC%96%E7%A8%8B%EF%BC%89"><span class="post-toc-number">3.</span> <span class="post-toc-text">9.3 递归函数 （考试只考概念，不考编程）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">递归的概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">递归函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">递归与迭代</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%92%E5%BD%92%E4%BD%BF%E7%94%A8"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">递归使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BE%8B%EF%BC%9A%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">例：二分法查找</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BE%8B%EF%BC%9A%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">例：进制转换</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="post-toc-number">4.</span> <span class="post-toc-text">作业</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2</span></a></li></ol></li></ol></nav></aside></div><footer class="footer-nav"><div class="footer"><div class="back-top" id="back-top" title="Back to top"><i class="icon icon-chevron-bar-up"></i></div><div class="footer-content"><div class="icp"><img src="/img/icp.png" alt="icp Record"/><a class="icp-text" target="_blank" href="https://beian.miit.gov.cn/">京ICP备xxxxxxxx号</a></div><div><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">?</span>
+PV
+</span><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv">?</span>
+UV</span></div>
+
+Copyright &copy;
+2020<span class="time-divide">-</span>2024
+John Doe.
+
+Power by
+<a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>
+and
+<a href="https://github.com/Cerallin/hexo-theme-yuzu" target="_blank" rel="external nofollow" title="v3.2.5">Theme Yuzu</a>.</div></div></footer>
+<script>window.config = {
+  url_root: '/',
+  meta_path: 'meta.json',
+};
+</script>
+<script src="/js/theme/back-to-top.js"></script>
 
 
-
-      </div>
-      
-       <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
-        
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">9.1 返回指针值的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">9.2 作用域与存储类别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E7%94%9F%E5%AD%98%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">作用域与生存期的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">自动局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">静态局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">2.4.1.</span> <span class="toc-text">扩展全局变量的作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0-%EF%BC%88%E8%80%83%E8%AF%95%E5%8F%AA%E8%80%83%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8D%E8%80%83%E7%BC%96%E7%A8%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">9.3 递归函数 （考试只考概念，不考编程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">递归的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">递归函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.3.</span> <span class="toc-text">递归与迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%BD%BF%E7%94%A8"><span class="toc-number">3.4.</span> <span class="toc-text">递归使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="toc-number">3.4.1.</span> <span class="toc-text">例：二分法查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text">例：进制转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">4.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">4.2.</span> <span class="toc-text">2</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&text=第九讲 函数（续）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&is_video=false&description=第九讲 函数（续）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=第九讲 函数（续）&body=Check out this article: http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&name=第九讲 函数（续）&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-      <ul>
-        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
-        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
-        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
-        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-      
-      <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2024 John Doe
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/home/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
-        
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-      
-<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/theme/clipboard.js"></script>
 
 
-<script src="/js/main.js"></script>
-
-<!-- Google Analytics -->
-
-<!-- Disqus Comments -->
+<script src="/js/theme/loading.js"></script>
 
 
-    </div>
-</body>
-</html>
+<script src="/js/theme/navbar.js"></script>
+
+<script src="/js/theme/search.js"></script>
+
+<script src="/js/theme/toc.js"></script>
+<script>window.onload = function () {
+  for (const moduleName in Theme) {
+    const module = Theme[moduleName];
+    module.register();
+  }
+};</script></div><div class="search-modal" id="search-modal"><div class="card"><div class="card-head"><div class="search-box"><input class="search-input" id="search-input" placeholder="search"/><div class="search-button" id="search-button"><div class="icon icon-search"></div></div></div><div class="close-button"><div class="icon icon-x"></div></div></div><div class="card-body"><div class="search-count">search.total<span id="search-count-num">0</span>search result(s) in total.</div><div class="search-result" id="search-result"></div></div></div></div></body></html>
