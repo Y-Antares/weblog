@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Random walks in 2D and 3D are fundamentally different (Markov chains approach)Marcov chains3 elements:  State space Transition probabilities Initial distribution  1 property:  Markov property 无记忆性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Random walks in 2D and 3D are fundamentally different (Markov chains approach)">
+<meta property="og:url" content="http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Random walks in 2D and 3D are fundamentally different (Markov chains approach)Marcov chains3 elements:  State space Transition probabilities Initial distribution  1 property:  Markov property 无记忆性">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-26T14:20:52.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:45:48.733Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Random walks in 2D and 3D are fundamentally different (Markov chains approach)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Hexo</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/03/31/%E9%82%A3%E6%97%B6%E6%88%91%E5%AF%B9%E6%AD%A4%E5%97%A4%E4%B9%8B%E4%BB%A5%E9%BC%BB%E3%80%82/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2024/03/23/%E8%AF%BE%E5%A0%82%E6%B4%BE%EF%BC%9A%E4%B8%8D%E5%85%81%E8%AE%B8%E4%B8%8B%E8%BD%BD/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&text=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&is_video=false&description=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Random walks in 2D and 3D are fundamentally different (Markov chains approach)&body=Check out this article: http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&name=Random walks in 2D and 3D are fundamentally different (Markov chains approach)&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Random-walks-in-2D-and-3D-are-fundamentally-different-Markov-chains-approach"><span class="toc-number">1.</span> <span class="toc-text">Random walks in 2D and 3D are fundamentally different (Markov chains approach)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Marcov-chains"><span class="toc-number">2.</span> <span class="toc-text">Marcov chains</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#State-space"><span class="toc-number">2.1.</span> <span class="toc-text">State space</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transition-probabilities"><span class="toc-number">2.2.</span> <span class="toc-text">Transition probabilities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Initial-distribution"><span class="toc-number">2.3.</span> <span class="toc-text">Initial distribution</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recurrence-and-transience"><span class="toc-number">3.</span> <span class="toc-text">Recurrence and transience</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#P-return"><span class="toc-number">3.1.</span> <span class="toc-text">P(return)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Back-to-random-walk"><span class="toc-number">4.</span> <span class="toc-text">Back to random walk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-D-case"><span class="toc-number">4.1.</span> <span class="toc-text">2-D case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-D-case"><span class="toc-number">4.2.</span> <span class="toc-text">3-D case</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Random walks in 2D and 3D are fundamentally different (Markov chains approach)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hexo</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-03-26T14:20:52.000Z" itemprop="datePublished">2024-03-26</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Random-walks-in-2D-and-3D-are-fundamentally-different-Markov-chains-approach"><a href="#Random-walks-in-2D-and-3D-are-fundamentally-different-Markov-chains-approach" class="headerlink" title="Random walks in 2D and 3D are fundamentally different (Markov chains approach)"></a><strong>Random walks in 2D and 3D are fundamentally different (Markov chains approach)</strong></h1><h1 id="Marcov-chains"><a href="#Marcov-chains" class="headerlink" title="Marcov chains"></a>Marcov chains</h1><p>3 elements:</p>
+<ul>
+<li>State space</li>
+<li>Transition probabilities</li>
+<li>Initial distribution</li>
+</ul>
+<p>1 property:</p>
+<ul>
+<li>Markov property<ul>
+<li>无记忆性</li>
+</ul>
+</li>
+</ul>
+<h2 id="State-space"><a href="#State-space" class="headerlink" title="State space"></a>State space</h2><p>where you can go</p>
+<p>random walk: Lattice points</p>
+<h2 id="Transition-probabilities"><a href="#Transition-probabilities" class="headerlink" title="Transition probabilities"></a>Transition probabilities</h2><p>not static</p>
+<p>赋予每个附近的state一个probability</p>
+<p>e.g. 2-D random walk，晶格里面4个方向，每一个概率都是1&#x2F;4。</p>
+<p>e.g. 3-D random walk, each state has 6 neighbors, so the probabilities are all 1&#x2F;6.</p>
+<h2 id="Initial-distribution"><a href="#Initial-distribution" class="headerlink" title="Initial distribution"></a>Initial distribution</h2><p>assign a probability to each state, indicating how likely you are to start at that state.</p>
+<p>e.g random walk: 1 at the origin, and 0 everywhere else.</p>
+<h1 id="Recurrence-and-transience"><a href="#Recurrence-and-transience" class="headerlink" title="Recurrence and transience"></a>Recurrence and transience</h1><ul>
+<li>Initial state <strong>recurrent</strong>:<ul>
+<li>guaranteed to return</li>
+<li>P(return)&#x3D;1</li>
+</ul>
+</li>
+<li><strong>transient</strong> state<ul>
+<li>P(return)&lt;1</li>
+</ul>
+</li>
+</ul>
+<p>In 2-D the origin is a recurrent state, so it will go back.</p>
+<p>In 3-D the origin is a transient state.</p>
+<h2 id="P-return"><a href="#P-return" class="headerlink" title="P(return)"></a>P(return)</h2><p>assumption: run random walk to infinity, even you have returned.</p>
+<p><strong>V&#x3D;#returns to the origin, E(V): expectation</strong></p>
+<ul>
+<li><strong>RECURRENCE</strong></li>
+</ul>
+<p>∵Marcov property，forget that we’ve returned</p>
+<p>∴P(V&#x3D;∞)&#x3D;1, E(V)&#x3D;∞</p>
+<ul>
+<li><strong>TRANSIENCE</strong></li>
+</ul>
+<p>E(V)</p>
+<p>=P(V&#x3D;1)+2_P(V&#x3D;2)+3_P(V&#x3D;3)+4*P(V&#x3D;4)+…</p>
+<p>=P(V&#x3D;1)</p>
+<p>+P(V&#x3D;2)+P(V&#x3D;2)</p>
+<p>+P(V&#x3D;3)+P(V&#x3D;3)+(V&#x3D;3)</p>
+<p>+P(V&#x3D;4)+P(V&#x3D;4)+P(V&#x3D;4)+P(V&#x3D;4)</p>
+<p>+…</p>
+<p>add it by column:</p>
+<p><strong>=P(V≥1)+P(V≥2)+P(V≥3)+P(V≥4)+…</strong></p>
+<p><strong>P(V≥1):</strong> return probability, denote it as <strong>r</strong>. That is, P(return)&#x3D;r.</p>
+<p><strong>P(V≥2):</strong> return twice,and since you forget you returned before, <strong>P(V≥2)&#x3D; $r^2$ .</strong></p>
+<p>In general, <strong>P(V≥k)&#x3D; $r^k$ .</strong></p>
+<p>So E(V)&#x3D;$r+r^2+r^3+…+r^k+…$</p>
+<p>geometric series!</p>
+<p>E(V)&#x3D;$\frac{r}{1-r}$ (finite) if r&lt;1(transient)</p>
+<ul>
+<li><p><strong>SO</strong></p>
+<ul>
+<li>recurrent⇒ E(V)&#x3D;∞</li>
+<li>transient⇒ E(V)&lt;∞</li>
+</ul>
+<p>充分必要条件；transient定性。</p>
+</li>
+</ul>
+<p>another way:</p>
+<p><strong>think of V&#x3D;#returns as a tally.</strong></p>
+<p>Have you returned at Step 1? YES+1 NO+0</p>
+<p>Have you returned at Step 2? YES+1 NO+0</p>
+<p>Have you returned at Step 3? YES+1 NO+0</p>
+<p>Have you returned at Step 4? YES+1 NO+0 …</p>
+<p>$ p_{00}^{(1)}&#x3D;1×P(yes)+0×P(no)&#x3D;P(yes) $</p>
+<ul>
+<li>00: origin→origin</li>
+<li>1: revisit at step 1</li>
+</ul>
+<p><strong>E(V)&#x3D;$p_{00}^{(1)}+p_{00}^{(2)}+…$</strong></p>
+<p>recurrent定量。</p>
+<ul>
+<li><strong>SO</strong><ul>
+<li>recurrent⇒ E(V)&#x3D;∞ ($ &#x3D;p_{00}^{(1)} $+$ p_{00}^{(2)}+… $)<ul>
+<li>diverge</li>
+</ul>
+</li>
+<li>transient⇒ E(V)&lt;∞<ul>
+<li>converge</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Back-to-random-walk"><a href="#Back-to-random-walk" class="headerlink" title="Back to random walk"></a>Back to random walk</h1><h2 id="2-D-case"><a href="#2-D-case" class="headerlink" title="2-D case"></a>2-D case</h2><p>上下左右步数应当相等，所以只有可能在偶数步回到原点</p>
+<p>$$ p_{00}^{(n)}&#x3D;0, \space\space if \space n \space odd. $$</p>
+<ul>
+<li>how can we calculate $p_{00}^{(2n)}$?</li>
+</ul>
+<p>e.g. $p_{00}^{(18)}&#x3D;(\frac{1}{4})^{18}$(each path)*(#return paths)</p>
+<p>假设左右各i步，则上下各n-i步。</p>
+<p>原排列出$(2n)!$个，但是是无序排列，所以要除inter-permutations：$i!i!(n-i)!(n-i)!$，那么：</p>
+<p>$$ No.\space of\space return\space paths&#x3D;\sum_{i&#x3D;0}^n\frac{(2n)!}{i!i!(n-i)!(n-i)!} $$</p>
+<p><strong>finally:</strong></p>
+<p>$$ p_{00}^{(2n)}&#x3D;(\frac{1}{4})^{2n}\sum_{i&#x3D;0}^n\frac{(2n)!}{i!i!(n-i)!(n-i)!} $$</p>
+<p>$ p_{00}^{(2n)}~\frac{1}{n} $ , diverge</p>
+<h2 id="3-D-case"><a href="#3-D-case" class="headerlink" title="3-D case"></a>3-D case</h2><p>difference:</p>
+<ul>
+<li>1&#x2F;4→1&#x2F;6</li>
+<li>i, n-i → i, j, n-i-j</li>
+</ul>
+<p>SO:</p>
+<p>$$ p_{00}^{(2n)}&#x3D;(\frac{1}{6})^{2n}\sum_{i,j&#x3D;0}^n\frac{(2n)!}{i!i!j!j!(n-i-j)!(n-i-j)!} $$</p>
+<p>$ p_{00}^{(2n)} $~$ \frac{1}{n^{3&#x2F;2}} $ , converge</p>
+<p>数学计算在这里不予列出。</p>
+<p>通俗解释：三维的“outer space”大一些，更容易找不着回来的路。</p>
+<p>注意到这里又有一个”cutoff between 2D and 3D”，可以在furtherreading里面了解。</p>
+<p><strong>Further reading:</strong> Larry Brown’s paper:</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa0NXR0xYbVlDVVByOFFDRWpTVmtvc3lVbDZCd3xBQ3Jtc0ttaUR0YlRHLTd5NThyOGlCM1RKcEFOc1haMzBINDh6ZGd6a1FIU0FvRmtnanNvUjY3aWhhREZxck9iV0VZeEtwTjl6cjlQeGlHM25qaEtCUHA4UE0xWDQxOVNKcXF5eGxfYnV2X2Z5RENsUmlxWnRycw&q=http://stat.wharton.upenn.edu/~lbrown/Papers/1971b%2520Admissible%2520estimators,%2520recurrent%2520diffusions,%2520and%2520insoluble%2520boundary%2520value%2520problems.pdf&v=iH2kATv49rc">http://stat.wharton.upenn.edu/~lbrown…</a></p>
+<p>Using electric circuits to prove recurrence &#x2F; trasience:</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbWJoZzNrMURSdWd1bko0Wm9mSUdRa3dGcUNNd3xBQ3Jtc0ttNzlEUC02UjhxLTVQYW9vejB0bWwzWGtEWFJUTVlzR1RkMElXVWVlQmRxaFJSTWhsSHNaZ0JBNTFpYlJWX05DM3d5SFE2WUY1Z20wNWhTR3kzUDRENnNXNlBhOFhKQ0h0dW9QRktEUDVqaHo4UFpLSQ&q=https://math.dartmouth.edu/~pw/math100w13/mare.pdf&v=iH2kATv49rc">https://math.dartmouth.edu/~pw&#x2F;math10…</a></p>
+<p>More complicated, but more general proof:</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbDhMX3cwOHI3QlNicWRFX1Q1S3NCVFVCM01nUXxBQ3Jtc0ttMTJxT0otOW8zd3lvSlczSE5GdTVSV1NILWRjbHRKTUdrbkd4djRoU3lBdnRDWG5XeXlQUnVKNzVTU1R1S3dOdnRnZnhCbnpTVlY1NVVseGE4MHE1QTFQdjZjRVBqNk41N2hBa1B6M1Zwa3lLOGxYSQ&q=https://sites.math.washington.edu/~morrow/336_19/papers19/Legrand.pdf&v=iH2kATv49rc">https://sites.math.washington.edu/~mo…</a></p>
+<p>Actual probability for 3D random walk to come back:</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbFNrNHdLZDZJdkN2U09xb3NHdk1tWmRLODJQQXxBQ3Jtc0trdm5mWnY1dnRnenAwMUU4RUwyc0Nqb2FvcXFhZnBBQ05wSUswMWRZa2MtbnlqZFIxM1ZuM1ZvZ3dacDU2bm15c243UkxCdkJ4ektURVVETzVGdnFpaHpOQ3VCYlNtUjNLYl9qNk9EUWlCT2M3QUkwMA&q=https://mathworld.wolfram.com/PolyasRandomWalkConstants.html&v=iH2kATv49rc">https://mathworld.wolfram.com/PolyasR...</a></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Random-walks-in-2D-and-3D-are-fundamentally-different-Markov-chains-approach"><span class="toc-number">1.</span> <span class="toc-text">Random walks in 2D and 3D are fundamentally different (Markov chains approach)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Marcov-chains"><span class="toc-number">2.</span> <span class="toc-text">Marcov chains</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#State-space"><span class="toc-number">2.1.</span> <span class="toc-text">State space</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transition-probabilities"><span class="toc-number">2.2.</span> <span class="toc-text">Transition probabilities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Initial-distribution"><span class="toc-number">2.3.</span> <span class="toc-text">Initial distribution</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recurrence-and-transience"><span class="toc-number">3.</span> <span class="toc-text">Recurrence and transience</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#P-return"><span class="toc-number">3.1.</span> <span class="toc-text">P(return)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Back-to-random-walk"><span class="toc-number">4.</span> <span class="toc-text">Back to random walk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-D-case"><span class="toc-number">4.1.</span> <span class="toc-text">2-D case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-D-case"><span class="toc-number">4.2.</span> <span class="toc-text">3-D case</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&text=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&is_video=false&description=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Random walks in 2D and 3D are fundamentally different (Markov chains approach)&body=Check out this article: http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&title=Random walks in 2D and 3D are fundamentally different (Markov chains approach)"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/03/26/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/&name=Random walks in 2D and 3D are fundamentally different (Markov chains approach)&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2024 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
