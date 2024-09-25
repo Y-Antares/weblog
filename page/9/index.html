@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-第二讲-数据类型、运算符和表达式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/05/%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-02-05T08:51:18.000Z" itemprop="datePublished">2024-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/notebook/">notebook</a>►<a class="article-category-link" href="/categories/notebook/C-C/">C/C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/05/%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/">第二讲 数据类型、运算符和表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-数据类型"><a href="#2-1-数据类型" class="headerlink" title="2.1 数据类型"></a>2.1 数据类型</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>先定义再使用；先赋值再计算</p>
+<p><code>int a, b, c ;</code></p>
+<p>初始化：定义同时赋值</p>
+<ul>
+<li><code>数据类型 变量名=表达式;</code><ul>
+<li><code>int k=3, m=3, n(3);</code></li>
+<li>不能连写(int k&#x3D;m&#x3D;n&#x3D;3)，需逐个进行初始化。</li>
+</ul>
+</li>
+<li><code>数据类型 变量名(表达式);</code> （C++)</li>
+</ul>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p><strong>种类：</strong></p>
+<ul>
+<li>值常量<ul>
+<li>5、3.14</li>
+<li>‘a’ 字符常量</li>
+<li>“abcd” 字符串常量</li>
+</ul>
+</li>
+<li>符号常量<ul>
+<li>定义方式：</li>
+<li><code>const 数据类型 标识符 = 常量;</code><ul>
+<li><code>const double PI = 3.14;</code></li>
+</ul>
+</li>
+<li><code>#define 标识符 常量值</code><ul>
+<li><code>#define N 100</code></li>
+<li>注意用<code>define</code>时名与值之间用空隔分开；末尾不带分号。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="值常量再分："><a href="#值常量再分：" class="headerlink" title="值常量再分："></a><strong>值常量再分：</strong></h4><ul>
+<li><p>整型常量</p>
+<ul>
+<li>十进制</li>
+<li>以<code>1~9</code>开始，由<code>0~9</code>组成</li>
+<li>八进制</li>
+<li>以数字0开始，由<code>0~7</code>组成</li>
+<li>十六进制</li>
+<li>以0x或0X开始，由<code>0~9</code>及<code>A~F</code>组成</li>
+</ul>
+</li>
+<li><p>实型常量</p>
+<ul>
+<li>十进制小数形式</li>
+<li>指数形式</li>
+<li>由尾数、指数符号（e或E）、指数构成<ul>
+<li>如<code>1.25e-5</code></li>
+</ul>
+</li>
+<li>要求：<ul>
+<li>e前<strong>尾数不能省</strong>，e后<strong>指数必须为整数</strong></li>
+<li>指数不能加圆括号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="符号常量再分："><a href="#符号常量再分：" class="headerlink" title="符号常量再分："></a><strong>符号常量再分：</strong></h4><ul>
+<li>普通字符常量<ul>
+<li><strong>单引号</strong>引起来的<strong>单个</strong>字符，可在屏幕上直接显示</li>
+</ul>
+</li>
+<li>转义字符常量<ul>
+<li>以<code>\</code>开头用单引号括起的<strong>字符序列</strong>，如<code>&#39;\n&#39;</code>（换行符）,<code>&#39;\t&#39;</code>（横向制表符）,<code>&#39;\0&#39;</code>（字符串结束）</li>
+</ul>
+</li>
+<li>字符串常量<ul>
+<li>用<strong>双引号</strong>括起的<strong>字符序列</strong>，系统在该常量尾自动加字符串结束符<code>&#39;\0&#39;</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>说明：</p>
+<ul>
+<li>字符型数据在系统内存以ASCII码存储<ul>
+<li>‘A’-65, ‘a’-97, ‘0’-48</li>
+</ul>
+</li>
+<li>大小写互换<ul>
+<li><code>char ch = ch+&#39;A&#39;-&#39;a&#39;</code>（小变大）</li>
+</ul>
+</li>
+<li>一定范围内的整型与字符型数据可相互转换<ul>
+<li>char ch &#x3D; ‘a’ - 32</li>
+<li>char x; x&#x3D;rand()%26+65;</li>
+</ul>
+</li>
+<li>‘\0’与’0’不同，前者是字符串结束符，ASCII码0；后者是数字字符，ASCII码48.</li>
+<li>字符常量‘a’与字符串常量”a”不同，前者占1个字节，后者占2个字节，末尾隐含’\0’</li>
+<li>“abcd”长度4，占字节5（\0）</li>
+</ul>
+</blockquote>
+<p>similarly:</p>
+<p>若输入字符串“ABC”，下面程序段的输出为（C）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> c；</span><br><span class="line"><span class="keyword">while</span>（cin&gt;&gt;c,c!=’\n’）</span><br><span class="line">cout&lt;&lt;c<span class="number">+2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>A.222 B.CDE C.676869 D.333</p>
+<h3 id="标识符-考点"><a href="#标识符-考点" class="headerlink" title="标识符 考点"></a>标识符 考点</h3><p><strong>标识符：</strong></p>
+<p>由<strong>字母、数字和下划线</strong>三种字符组成,且必须<strong>以字母或下划线开头</strong>。</p>
+<p><strong>关键字不能作为用户定义的标识符。</strong></p>
+<p><strong>用户定义标识符：</strong></p>
+<p>合法： <code>char2</code> <code>_abc</code> <code>a3</code> <code>P1</code></p>
+<p>不合法： <code>int</code> <code>p[i]</code> <code>break</code> <code>3a</code> <code>a+b</code> <code>class</code> <code>public</code></p>
+<p><strong>常量：</strong></p>
+<p>合法： <code>&#39;\n&#39;</code> <code>&#39;\102 &#39;</code> <code>&#39;\t &#39;</code> <code>&#39;\72&#39;</code></p>
+<p>不合法： <code>‘ABC’</code> （不是单引号引起来的单个字符） <code>1.2e0.5</code>（指数必须为整数） <code>M</code> <code>&#39;[]&#39;</code></p>
+<h2 id="2-2-运算符和表达式的基本概念"><a href="#2-2-运算符和表达式的基本概念" class="headerlink" title="2.2 运算符和表达式的基本概念"></a>2.2 运算符和表达式的基本概念</h2><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>优先级（15）</li>
+<li>结合性（优先级相同时的运算符连续运算顺序）<ul>
+<li>自左向右</li>
+<li>自右向左</li>
+</ul>
+</li>
+<li>目数（运算符所需操作数，通常目数少优先级高）<ul>
+<li>单目</li>
+<li>双目（+-*&#x2F;）</li>
+<li>三目</li>
+</ul>
+</li>
+</ul>
+<h4 id="常用运算符种类"><a href="#常用运算符种类" class="headerlink" title="常用运算符种类"></a>常用运算符种类</h4><p>相同目数的各运算符优先顺序：</p>
+<p><strong>算术&gt;关系&gt;逻辑&gt;条件（三目）&gt;赋值（双目）&gt;逗号</strong></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>常量、变量、函数调用、运算符构成</p>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><ul>
+<li>与数学表达式的区别<ul>
+<li><code>(a-b*c)/(x-y*z)</code>乘号不能省</li>
+<li>只能加圆括号</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-算术运算符"><a href="#2-3-算术运算符" class="headerlink" title="2.3 算术运算符"></a>2.3 算术运算符</h2><h3 id="算术运算种类："><a href="#算术运算种类：" class="headerlink" title="算术运算种类："></a>算术运算种类：</h3><p><code>+ - * /（整除） %（求余） ++ --（自增、自减）</code></p>
+<h3 id="优先级："><a href="#优先级：" class="headerlink" title="优先级："></a>优先级：</h3><ul>
+<li><code>++``--``+``-</code>（取正、负）</li>
+<li><code>*``/``%</code></li>
+<li><code>+``-</code></li>
+</ul>
+<h5 id="整数相除："><a href="#整数相除：" class="headerlink" title="整数相除："></a>整数相除：</h5><ul>
+<li>两个操作数都是整数时，商也为整数，小数部分舍去。</li>
+<li>如果要求精确结果，<strong>需将其中一个变为实数</strong>，如：<code>a*1.0/b</code></li>
+</ul>
+<h5 id="求余运算（-）："><a href="#求余运算（-）：" class="headerlink" title="求余运算（%）："></a>求余运算（%）：</h5><ul>
+<li><p>两操作数必须皆为<strong>整型</strong></p>
+</li>
+<li><p>结果的符号与被除数一致</p>
+<ul>
+<li>a%b &#x3D; a - a&#x2F;b*b</li>
+</ul>
+<p>应用：</p>
+<p>判断</p>
+</li>
+</ul>
+<h5 id="自增、自减运算符（-、–）："><a href="#自增、自减运算符（-、–）：" class="headerlink" title="自增、自减运算符（++、–）："></a>自增、自减运算符（++、–）：</h5><ul>
+<li><p>只能作用于（整型）<strong>变量</strong>；</p>
+</li>
+<li><p>前置或后置运算 (a++;–a)</p>
+<ul>
+<li>前置、后置区别：</li>
+<li>对自增、自减变量本身值无区别；</li>
+<li>对<strong>参与的表达式</strong>贡献不同<ul>
+<li><strong>前置</strong>运算以<strong>变化后</strong>的值参与运算</li>
+<li><strong>后置</strong>运算以<strong>原值</strong>参与运算</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>典例：</strong></p>
+<p>假设有： a&#x3D;0,b&#x3D;6,c&#x3D;7，则表达式 a++&amp;&amp;b++&amp;&amp;c++运算完成后，整个表达式的值为 false（ 0）， a 的值为 1， b 和 c 保持原值不变。</p>
+<p>这是因为“ a++” 作为后置自增运算， 以原值 0 参与“ &amp;&amp;”运算，使得整个表达式的值为 0，<strong>后续的“ b++” 和“ c++”没有被执行。</strong></p>
+<p><code>--a&amp;&amp;++b;</code>和<code>++a--b;</code>也是同理。</p>
+<h2 id="2-4-关系运算符和逻辑运算符"><a href="#2-4-关系运算符和逻辑运算符" class="headerlink" title="2.4 关系运算符和逻辑运算符"></a>2.4 关系运算符和逻辑运算符</h2><h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>“判断关系”</p>
+<h4 id="种类："><a href="#种类：" class="headerlink" title="种类："></a>种类：</h4><p>=&#x3D;（等于）、!&#x3D;（不等于）</p>
+<p>&lt;（小于）、&lt;&#x3D;（小于等于）、&gt;（大于）、&gt;&#x3D;（大于等于）</p>
+<ul>
+<li>运算结果为“真”（1）和“假”（0）</li>
+</ul>
+<p>关系运算符的优先级低于算术运算符，共有 6 种，分别为：</p>
+<p>优先级为 6 的：&gt;（大于） &gt;&#x3D;（大于等于） &lt;（小于） &lt;&#x3D;（小于等于）</p>
+<p>优先级为 7 的：&#x3D;&#x3D;（等于） !&#x3D;（不等于）</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li>逻辑非（！）</li>
+<li>逻辑与（&amp;&amp;）（取交集）</li>
+<li>逻辑或（）（取并集）</li>
+</ul>
+<blockquote>
+<p>说明：</p>
+<ul>
+<li>运算数可为任意类型，如关系表达式；</li>
+<li>所有非0数均做“真”处理（当作1）</li>
+</ul>
+</blockquote>
+<p>如：<code>x&gt;=0 &amp;&amp; x&lt;=100</code></p>
+<ul>
+<li>只要可唯一确定值，逻辑运算即不再进行<ul>
+<li><code>--a&amp;&amp;b++&amp;&amp;c--</code>只会做–a，已经为0，可唯一确定运算值为0</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-5-赋值运算符、条件运算符、逗号运算符"><a href="#2-5-赋值运算符、条件运算符、逗号运算符" class="headerlink" title="2.5 赋值运算符、条件运算符、逗号运算符"></a>2.5 赋值运算符、条件运算符、逗号运算符</h2><h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><h4 id="种类：-1"><a href="#种类：-1" class="headerlink" title="种类："></a>种类：</h4><ul>
+<li><p>简单赋值运算符（&#x3D;）：</p>
+<ul>
+<li>将右边表达式的值送入左边变量</li>
+</ul>
+</li>
+<li><p>复合赋值运算符：</p>
+<ul>
+<li>将左边变量与右边表达式的值的和（差、积、商、余数）送入左边变量</li>
+<li>+&#x3D;、-&#x3D;、*&#x3D;、&#x2F;&#x3D;、%&#x3D;、……</li>
+</ul>
+</li>
+</ul>
+<h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4><ul>
+<li>左端只能为变量或数组元素，不能为表达式或常量。<ul>
+<li>反例：<code>a=b+2=c+5</code></li>
+</ul>
+</li>
+<li>两端类型不同时系统自动将右端类型转换为左端类型。<ul>
+<li>例：<code>int a=3.78</code>，则a&#x3D;3</li>
+<li>结合性自右向左</li>
+<li><code>a=(b=(c=1)))</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="条件运算符（？-：）"><a href="#条件运算符（？-：）" class="headerlink" title="条件运算符（？ ：）"></a>条件运算符（？ ：）</h3><h4 id="形式："><a href="#形式：" class="headerlink" title="形式："></a>形式：</h4><p><code>e1? e2: e3</code></p>
+<blockquote>
+<p>e1, e2, e3代表三个表达式</p>
+</blockquote>
+<h4 id="执行过程："><a href="#执行过程：" class="headerlink" title="执行过程："></a>执行过程：</h4><p>e1的值若非0，结果取e2；</p>
+<p>e1的值若为0，结果取e3。</p>
+<p>例1：</p>
+<p><code>max = (x&gt;y) ? x:y</code></p>
+<p>例2：n人分班，每班k人</p>
+<p><code>numclass = (n%k==0)? n/k: n/k+1</code></p>
+<h3 id="逗号运算符（-）"><a href="#逗号运算符（-）" class="headerlink" title="逗号运算符（,）"></a>逗号运算符（,）</h3><h4 id="形式：-1"><a href="#形式：-1" class="headerlink" title="形式："></a>形式：</h4><p><code>e1, e2, e3</code></p>
+<blockquote>
+<p>e1, e2, e3代表三个表达式</p>
+</blockquote>
+<h4 id="执行过程：-1"><a href="#执行过程：-1" class="headerlink" title="执行过程："></a>执行过程：</h4><p>从左向右依次计算每个表达式的值；<strong>整个表达式的值为最右边表达式的值。</strong></p>
+<p>例：</p>
+<p><code>c=(a=10, b=20, a+b)</code>，则c&#x3D;30</p>
+<h4 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h4><p>for语句中，用于连接多个表达式</p>
+<p><code>for(i=0, j=n; i&lt;j; i++, j--)</code></p>
+<h2 id="2-6-类型转换运算"><a href="#2-6-类型转换运算" class="headerlink" title="2.6 类型转换运算"></a>2.6 类型转换运算</h2><h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><ul>
+<li>允许值从一种类型转换为另一种类型</li>
+<li>赋值运算右端类型转换为左端类型</li>
+<li>其他运算从低到高转换成同一种类型后再运算<ul>
+<li>char（字符型）, short（短整型）–&gt;int（整型）–&gt;unsigned（无符号整型）–&gt;long（长整型）–&gt;float（单精度实型）–&gt;double（双精度实型）</li>
+<li>其中char–&gt;int, float–&gt;double是必然的</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> c1, <span class="type">int</span> k;</span><br><span class="line">c1=<span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">k=c1<span class="number">+2</span>; <span class="comment">//这里c1已经char变int了,=65</span></span><br><span class="line">c1=c1<span class="number">+2</span>;</span><br><span class="line">cout&lt;&lt;c1&lt;&lt;ends&lt;&lt;k;</span><br><span class="line"><span class="comment">//c=67, k=67</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><h4 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h4><p><code>（类型标识符） 表达式</code>或<code>类型标识符 （表达式）</code></p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>得到一个新类型的数据，但原变量类型不变。</p>
+<p>例1：</p>
+<p><code>in i; float d=3.5; i=(int)d</code></p>
+<p>则i&#x3D;4, d&#x3D;3.5</p>
+<p>例2：将三位小数x四舍五入到百分位</p>
+<p><code>x = (int)(x*100+0.5)/100.0</code></p>
+<blockquote>
+<p>100.0：得到小数部分</p>
+</blockquote>
+<ul>
+<li>强制类型转换符是单目运算符，<strong>优先级高于所有双目运算符：</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> a=<span class="number">3.5</span>, b=<span class="number">2</span>;</span><br><span class="line">c=(<span class="type">int</span>)a*b</span><br><span class="line">    <span class="comment">//c=6.0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-7-指针"><a href="#2-7-指针" class="headerlink" title="2.7 指针"></a>2.7 指针</h2><h2 id="2-8-typedef语句"><a href="#2-8-typedef语句" class="headerlink" title="2.8 typedef语句"></a>2.8 typedef语句</h2><h2 id="2-9-应用"><a href="#2-9-应用" class="headerlink" title="2.9 应用"></a>2.9 应用</h2><ul>
+<li><code>setw()</code>用于斜输出，需要<code>#include &lt;iomanip&gt;</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setfill</span>(<span class="string">&quot;*&quot;</span>)  <span class="comment">//设置填充字符</span></span><br><span class="line"><span class="built_in">setw</span>(<span class="number">6</span>)  <span class="comment">//只对后面第一个对象起效</span></span><br></pre></td></tr></table></figure>
+
+<p>eg.输出三位整数的正负号、百位数、十位数、个位数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> c1,c2,c3;</span><br><span class="line">    <span class="type">char</span> c4;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    c4=x&gt;=<span class="number">0</span>?<span class="string">&#x27;+&#x27;</span>:<span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    x=<span class="built_in">abs</span>(x);</span><br><span class="line">    c1=x/<span class="number">100</span>;</span><br><span class="line">    c3=x%<span class="number">10</span>;</span><br><span class="line">    c2=x/<span class="number">10</span>;     <span class="comment">//x==0停止</span></span><br><span class="line">    cout&lt;&lt;“数符 百位数 十位数 个位数”&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">setw</span>(<span class="number">2</span>)&lt;&lt;c4&lt;&lt;<span class="built_in">setw</span>(<span class="number">8</span>)&lt;&lt;c1&lt;&lt;<span class="built_in">setw</span>(<span class="number">8</span>)&lt;&lt;c2&lt;&lt;<span class="built_in">setw</span>(<span class="number">8</span>)&lt;&lt;c3&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/05/%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cm1hr2hq5006vdwue4d5a7bd1" data-title="第二讲 数据类型、运算符和表达式" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/" rel="tag">c&#x2F;c++</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-第一讲-c-c程序设计入门" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/05/%E7%AC%AC%E4%B8%80%E8%AE%B2-c-c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8/" class="article-date">
+  <time class="dt-published" datetime="2024-02-05T08:50:12.000Z" itemprop="datePublished">2024-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/notebook/">notebook</a>►<a class="article-category-link" href="/categories/notebook/C-C/">C/C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/05/%E7%AC%AC%E4%B8%80%E8%AE%B2-c-c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8/">第一讲 C/C++程序设计入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-C-C-简介"><a href="#1-1-C-C-简介" class="headerlink" title="1.1 C&#x2F;C++简介"></a>1.1 C&#x2F;C++简介</h2><ul>
+<li>C：结构化语言，如何从输入得到输出；</li>
+<li>C++：面向对象的，构造与问题对应的对象模型</li>
+<li>都属高级语言</li>
+</ul>
+<h2 id="1-2-程序框架及基本语法要素"><a href="#1-2-程序框架及基本语法要素" class="headerlink" title="1.2 程序框架及基本语法要素"></a>1.2 程序框架及基本语法要素</h2><p>语法错误、逻辑错误、运行错误</p>
+<p>main()唯一</p>
+<h2 id="1-3-VS-C-开发环境简介"><a href="#1-3-VS-C-开发环境简介" class="headerlink" title="1.3 VS C++开发环境简介"></a>1.3 VS C++开发环境简介</h2><ul>
+<li>.sln：解决方案文件，双击可打开整个项目</li>
+<li>.cpp：源文件，只能打开本身，想修改也得开sln</li>
+<li>.exe：可执行文件，但win32控制台应用程序需在控制台执行，双击exe没用</li>
+</ul>
+<h2 id="1-4-标准输入输出"><a href="#1-4-标准输入输出" class="headerlink" title="1.4 标准输入输出"></a>1.4 标准输入输出</h2><p>标准输入输出：键盘输入，显示器输出</p>
+<ul>
+<li>C: scanf, printf</li>
+<li>C++: cin, cout</li>
+</ul>
+<h4 id="数据输出"><a href="#数据输出" class="headerlink" title="数据输出"></a>数据输出</h4><h5 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h5><p><code>cout&lt;&lt;表达式1&lt;&lt;表达式2&lt;&lt;表达式3&lt;&lt;......&lt;&lt;表达式n;</code></p>
+<blockquote>
+<p>cout, cin的定义信息存放在C++的输入输出流库中，故使用cout, cin必须使用如下文件包含预处理命令和名字空间说明语句：</p>
+<p><code>#include &lt;iostream&gt;</code></p>
+<p><code>using namespace std;</code></p>
+</blockquote>
+<ul>
+<li><code>cout&lt;&lt;a&lt;&lt;&#39;\n&#39;&lt;&lt;b&lt;&lt;endl;</code></li>
+<li><code>\t</code>：分输出区</li>
+</ul>
+<h4 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h4><ul>
+<li>变量可为任意类型，变量间必须以“&gt;&gt;”分隔，而不能用逗号；</li>
+<li>输入数据时，各数据间用空格、回车、制表符分隔</li>
+<li>“&gt;&gt;”后必须为变量，不能加endI</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/05/%E7%AC%AC%E4%B8%80%E8%AE%B2-c-c%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8/" data-id="cm1hr2hq20069dwue99hw2ipu" data-title="第一讲 C/C++程序设计入门" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/" rel="tag">c&#x2F;c++</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-matlab的interp3函数转为python代码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/05/matlab%E7%9A%84interp3%E5%87%BD%E6%95%B0%E8%BD%AC%E4%B8%BApython%E4%BB%A3%E7%A0%81/" class="article-date">
+  <time class="dt-published" datetime="2024-02-05T08:47:40.000Z" itemprop="datePublished">2024-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/notebook/">notebook</a>►<a class="article-category-link" href="/categories/notebook/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/05/matlab%E7%9A%84interp3%E5%87%BD%E6%95%B0%E8%BD%AC%E4%B8%BApython%E4%BB%A3%E7%A0%81/">MATLAB的interp3函数转为python代码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>google过现成的解决方案，建议用<code>scipy.interpolate.interpn</code>和<code>scipy.interpolate.griddata</code>的都有，但是检出的结果和matlab不一样。所以只好去找matlab的源码转写。</p>
+<ul>
+<li>matlab查看源码方式：命令行 open&#x2F;type <code>函数名</code></li>
+</ul>
+<p>查得interp3源码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></td><td class="code"><pre><span class="line">function Vq = interp3(varargin)</span><br><span class="line">%INTERP3 3-D interpolation (table lookup).</span><br><span class="line">%</span><br><span class="line">%   Vq = INTERP3(X,Y,Z,V,Xq,Yq,Zq) interpolates to find Vq, the values</span><br><span class="line">%   of the underlying 3-D function V at the query points in arrays Xq,Yq</span><br><span class="line">%   and Zq. Xq,Yq,Zq must be arrays of the same size or vectors.</span><br><span class="line">%   Vector arguments that are not the same size, and have mixed</span><br><span class="line">%   orientations (i.e. with both row and column vectors) are passed</span><br><span class="line">%   through MESHGRID to create the arrays. Arrays X,Y and Z specify the</span><br><span class="line">%   points at which the data V is given.</span><br><span class="line">%</span><br><span class="line">%   Vq = INTERP3(V,Xq,Yq,Zq) assumes X=1:N, Y=1:M, Z=1:P </span><br><span class="line">%   where [M,N,P]=SIZE(V).</span><br><span class="line">%</span><br><span class="line">%   Vq = INTERP3(V,K) returns the interpolated values on a refined grid</span><br><span class="line">%   formed by repeatedly halving the intervals K times in each dimension.</span><br><span class="line">%   This results in 2^K-1 interpolated points between sample values.</span><br><span class="line">%</span><br><span class="line">%   Vq = INTERP3(V) is the same as INTERP3(V,1).</span><br><span class="line">%</span><br><span class="line">%   Vq = INTERP3(...,METHOD) specifies alternate methods.  The default</span><br><span class="line">%   is linear interpolation.  Available methods are:</span><br><span class="line">%</span><br><span class="line">%     &#x27;nearest&#x27; - nearest neighbor interpolation</span><br><span class="line">%     &#x27;linear&#x27;  - linear interpolation</span><br><span class="line">%     &#x27;spline&#x27;  - spline interpolation</span><br><span class="line">%     &#x27;cubic&#x27;   - cubic convolution interpolation for uniformly-spaced</span><br><span class="line">%                 data. This method does not extrapolate and falls back to</span><br><span class="line">%                 &#x27;spline&#x27; interpolation for irregularly-spaced data.</span><br><span class="line">%     &#x27;makima&#x27;  - modified Akima cubic interpolation</span><br><span class="line">%</span><br><span class="line">%   Vq = INTERP3(...,METHOD,EXTRAPVAL) specifies a method and a value for</span><br><span class="line">%   Vq outside of the domain created by X,Y and Z.  Thus, Vq will equal</span><br><span class="line">%   EXTRAPVAL for any value of Xq,Yq or Zq that is not spanned by X,Y and Z</span><br><span class="line">%   respectively.  A method must be specified for EXTRAPVAL to be used, the</span><br><span class="line">%   default method is &#x27;linear&#x27;.</span><br><span class="line">%</span><br><span class="line">%   All the interpolation methods require that X,Y and Z be monotonic and</span><br><span class="line">%   plaid (as if they were created using MESHGRID). X,Y, and Z can be</span><br><span class="line">%   non-uniformly spaced.</span><br><span class="line">%</span><br><span class="line">%   For example, to generate a course approximation of FLOW and</span><br><span class="line">%   interpolate over a finer mesh:</span><br><span class="line">%       [X,Y,Z,V] = flow(10);</span><br><span class="line">%       [Xq,Yq,Zq] = meshgrid(.1:.25:10,-3:.25:3,-3:.25:3);</span><br><span class="line">%       Vq = interp3(X,Y,Z,V,Xq,Yq,Zq); % Vq is 25-by-40-by-25</span><br><span class="line">%       slice(Xq,Yq,Zq,Vq,[6 9.5],2,[-2 .2]), shading flat</span><br><span class="line">%</span><br><span class="line">%   See also INTERP1, INTERP2, INTERPN, MESHGRID,</span><br><span class="line">%            griddedInterpolant, scatteredInterpolant.</span><br><span class="line"></span><br><span class="line">%   Copyright 1984-2020 The MathWorks, Inc.</span><br><span class="line"></span><br><span class="line">narginchk(1,9); % allowing for an ExtrapVal</span><br><span class="line"></span><br><span class="line">if nargin == 9 &amp;&amp; (isnumeric(varargin&#123;end&#125;)==false  isscalar(varargin&#123;end&#125;) ==false)</span><br><span class="line">    error(message(&#x27;MATLAB:interp3:InvalidExtrapval&#x27;))</span><br><span class="line">elseif nargin == 6 &amp;&amp; (ischar(varargin&#123;end-1&#125;)  (isstring(varargin&#123;end-1&#125;) &amp;&amp; isscalar(varargin&#123;end-1&#125;))) &amp;&amp; ...</span><br><span class="line">        (isnumeric(varargin&#123;end&#125;)==false  isscalar(varargin&#123;end&#125;) ==false)</span><br><span class="line">    error(message(&#x27;MATLAB:interp3:InvalidExtrapval&#x27;))</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">% Parse the method and extrap val</span><br><span class="line">[narg, method, ExtrapVal] = methodandextrapval(varargin&#123;:&#125;);</span><br><span class="line">stripNaNsForCubics = strcmpi(method,&#x27;spline&#x27;)  strcmpi(method,&#x27;makima&#x27;);</span><br><span class="line">if stripNaNsForCubics </span><br><span class="line">    extrap = method;</span><br><span class="line">else</span><br><span class="line">    extrap = &#x27;none&#x27;;</span><br><span class="line">end</span><br><span class="line">% Construct the interpolant, narg should be 2,4 or 7 at this point.</span><br><span class="line"></span><br><span class="line">if narg ~= 1 &amp;&amp; narg ~= 2 &amp;&amp; narg ~= 4 &amp;&amp; narg ~= 7</span><br><span class="line">    error(message(&#x27;MATLAB:interp3:nargin&#x27;));</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">p = [2 1 3];</span><br><span class="line">if narg == 1  narg == 2</span><br><span class="line">    %  interp3(V,NTIMES)</span><br><span class="line">    V = varargin&#123;1&#125;;</span><br><span class="line">    [nrows,ncols,npages] = size(V);</span><br><span class="line">    if narg == 1</span><br><span class="line">        ntimes = 1;</span><br><span class="line">    else</span><br><span class="line">        ntimes = floor(varargin&#123;2&#125;(1));</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    if ~isscalar(ntimes)  ~isreal(ntimes)</span><br><span class="line">        error(message(&#x27;MATLAB:interp3:NtimesInvalid&#x27;));</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    Xq = 1:1/(2^ntimes):ncols;</span><br><span class="line">    Yq = (1:1/(2^ntimes):nrows)&#x27;;</span><br><span class="line">    Zq = (1:1/(2^ntimes):npages);</span><br><span class="line">    [X, Y, Z] = meshgridvectors(V);</span><br><span class="line">    V = permute(V,p);</span><br><span class="line">    if stripNaNsForCubics</span><br><span class="line">        [X,Y,Z, V] = stripnanwrapper(X,Y,Z,V);</span><br><span class="line">    end</span><br><span class="line">    [V, origvtype] = convertv(V,method, Xq, Yq,Zq);</span><br><span class="line">    F = griddedInterpolant(&#123;X,Y,Z&#125;,V,method,extrap);</span><br><span class="line">elseif narg == 4</span><br><span class="line">    %  interp3(V,Xq,Yq,Zq)</span><br><span class="line">    V =  varargin&#123;1&#125;;</span><br><span class="line">    Xq = varargin&#123;2&#125;;</span><br><span class="line">    Yq = varargin&#123;3&#125;;</span><br><span class="line">    Zq = varargin&#123;4&#125;;</span><br><span class="line">    [X, Y, Z] = meshgridvectors(V);</span><br><span class="line">    V = permute(V,p);</span><br><span class="line">    if stripNaNsForCubics</span><br><span class="line">        [X,Y,Z, V] = stripnanwrapper(X,Y,Z,V);</span><br><span class="line">    end</span><br><span class="line">    [V, origvtype] = convertv(V,method, Xq, Yq,Zq);</span><br><span class="line">    F = griddedInterpolant(&#123;X,Y,Z&#125;,V,method,extrap);</span><br><span class="line">elseif narg == 7</span><br><span class="line">    %  interp3(X,Y,Z,V,Xq,Yq,Zq)</span><br><span class="line">    X = varargin&#123;1&#125;;</span><br><span class="line">    Y = varargin&#123;2&#125;;</span><br><span class="line">    Z = varargin&#123;3&#125;;</span><br><span class="line">    V = varargin&#123;4&#125;;</span><br><span class="line"></span><br><span class="line">    Xq = varargin&#123;5&#125;;</span><br><span class="line">    Yq = varargin&#123;6&#125;;</span><br><span class="line">    Zq = varargin&#123;7&#125;;</span><br><span class="line">    if isvector(X) &amp;&amp; isvector(Y) &amp;&amp; isvector(Z)</span><br><span class="line">        V = permute(V,p);</span><br><span class="line">        [X, Y, Z, V] = checkmonotonic(X,Y,Z,V);</span><br><span class="line">        [V, origvtype] = convertv(V,method, Xq, Yq,Zq);</span><br><span class="line">        if stripNaNsForCubics</span><br><span class="line">            [X,Y,Z,V] = stripnanwrapper(X,Y,Z,V);</span><br><span class="line">        end</span><br><span class="line">        F = griddedInterpolant(&#123;X, Y, Z&#125;, V, method,extrap);</span><br><span class="line">    else</span><br><span class="line">        X = permute(X,p);</span><br><span class="line">        Y = permute(Y,p);</span><br><span class="line">        Z = permute(Z,p);</span><br><span class="line">        V = permute(V,p);</span><br><span class="line">        [X, Y, Z, V] = checkmonotonic(X,Y,Z,V);</span><br><span class="line">        [V, origvtype] = convertv(V,method, Xq, Yq,Zq);</span><br><span class="line">        if stripNaNsForCubics</span><br><span class="line">            [X,Y,Z,V] = stripnanwrapper(X,Y,Z,V);</span><br><span class="line">        end</span><br><span class="line">        try</span><br><span class="line">            F = griddedInterpolant(X, Y, Z, V, method,extrap);</span><br><span class="line">        catch gime</span><br><span class="line">            if any(strcmp(gime.identifier,&#123;&#x27;MATLAB:griddedInterpolant:NotNdGridErrId&#x27;, ...</span><br><span class="line">                &#x27;MATLAB:griddedInterpolant:NdgridNotMeshgrid3DErrId&#x27;&#125;))</span><br><span class="line">                error(message(&#x27;MATLAB:interp3:InvalidMeshgrid&#x27;));</span><br><span class="line">            else</span><br><span class="line">                rethrow(gime);</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">if strcmpi(method,&#x27;cubic&#x27;) &amp;&amp; strcmpi(F.Method,&#x27;spline&#x27;)</span><br><span class="line">    % Uniformity condition not met</span><br><span class="line">    gv = F.GridVectors;</span><br><span class="line">    FV = F.Values;</span><br><span class="line">    [X, Y, Z, V] = stripnanwrapper(gv&#123;:&#125;,FV);</span><br><span class="line">    F = griddedInterpolant(&#123;X,Y,Z&#125;,V,&#x27;spline&#x27;);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">% Now interpolate</span><br><span class="line">scopedWarnOff = warning(&#x27;off&#x27;, &#x27;MATLAB:griddedInterpolant:MeshgridEval3DWarnId&#x27;);</span><br><span class="line">restoreWarnOff = onCleanup(@()warning(scopedWarnOff));</span><br><span class="line"></span><br><span class="line">transposedquery = false;</span><br><span class="line">iscompact = compactgridformat(Xq, Yq, Zq);</span><br><span class="line">if iscompact  (strcmpi(F.Method,&#x27;spline&#x27;) &amp;&amp; isscalar(Xq) &amp;&amp; isscalar(Yq) &amp;&amp; isscalar(Zq))</span><br><span class="line">    Vq = F(&#123;Xq,Yq,Zq&#125;);</span><br><span class="line">elseif isvector(Xq)==false &amp;&amp; isvector(Yq)==false &amp;&amp; isvector(Zq)==false &amp;&amp; ...</span><br><span class="line">        ndims(Xq) == 3 &amp;&amp; ndims(Yq) == 3 &amp;&amp; ndims(Zq) == 3</span><br><span class="line">    Xq = permute(Xq,p);</span><br><span class="line">    Yq = permute(Yq,p);</span><br><span class="line">    Zq = permute(Zq,p);</span><br><span class="line">    Vq = F(Xq,Yq,Zq);  % NDGRID format gives better performance.</span><br><span class="line">    transposedquery = true;</span><br><span class="line">else</span><br><span class="line">    Vq = F(Xq,Yq,Zq);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">if ~isempty(ExtrapVal)</span><br><span class="line">    % If ExtrapVal is provided, impose the extrapolation value to the queries</span><br><span class="line">    % that lie outside the domain.</span><br><span class="line">    Vq = imposeextrapval(&#123;Xq, Yq, Zq&#125;, F.GridVectors, Vq, ExtrapVal,iscompact);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">if iscompact   transposedquery</span><br><span class="line">    % Compact grid evaluation produces a NDGRID</span><br><span class="line">    % Convert to MESHGRID</span><br><span class="line">    Vq = permute(Vq,p);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">if ~strcmp(origvtype,&#x27;double&#x27;) &amp;&amp; ~strcmp(origvtype,&#x27;single&#x27;)</span><br><span class="line">    Vq = cast(Vq,origvtype);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">    function [X, Y, Z, V] = stripnanwrapper(X,Y,Z,V)</span><br><span class="line">        numvbefore = numel(V);</span><br><span class="line">        [X, Y, Z, V] = stripnansforspline(X,Y,Z,V);</span><br><span class="line">        if numvbefore &gt; numel(V)</span><br><span class="line">            warning(message(&#x27;MATLAB:interp3:NaNstrip&#x27;));</span><br><span class="line">        end</span><br><span class="line">        if ismatrix(V)  isempty(V)</span><br><span class="line">            error(message(&#x27;MATLAB:interp3:NotEnoughPointsNanStrip&#x27;));</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    function [V, origvtype] = convertv(V,method, Xq, Yq,Zq)</span><br><span class="line">        origvtype = class(V);</span><br><span class="line">        if ~isfloat(V) &amp;&amp; (strcmpi(method,&#x27;nearest&#x27;)  (isscalar(Xq) &amp;&amp; isscalar(Yq) &amp;&amp; isscalar(Zq)))</span><br><span class="line">            V = double(V);</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/05/matlab%E7%9A%84interp3%E5%87%BD%E6%95%B0%E8%BD%AC%E4%B8%BApython%E4%BB%A3%E7%A0%81/" data-id="cm1hr2hpm002ydwuefqj3a5ab" data-title="MATLAB的interp3函数转为python代码" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-109" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/05/109/" class="article-date">
+  <time class="dt-published" datetime="2024-02-05T04:31:24.000Z" itemprop="datePublished">2024-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/05/109/">Untitled Post - 2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/05/109/" data-id="cm1hr2hox000hdwuean512w5h" data-title="Untitled Post - 2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-108" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/05/108/" class="article-date">
+  <time class="dt-published" datetime="2024-02-05T04:31:23.000Z" itemprop="datePublished">2024-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/05/108/">Untitled Post - 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>随兴杂文。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/05/108/" data-id="cm1hr2hox000gdwue3a8d5zjr" data-title="Untitled Post - 1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-建站目标及进度" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/04/%E5%BB%BA%E7%AB%99%E7%9B%AE%E6%A0%87%E5%8F%8A%E8%BF%9B%E5%BA%A6/" class="article-date">
+  <time class="dt-published" datetime="2024-02-04T14:55:53.000Z" itemprop="datePublished">2024-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/notebook/">notebook</a>►<a class="article-category-link" href="/categories/notebook/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/04/%E5%BB%BA%E7%AB%99%E7%9B%AE%E6%A0%87%E5%8F%8A%E8%BF%9B%E5%BA%A6/">建站目标及进度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>背景图片及整体美化；ok</li>
+<li>链接大放送；</li>
+<li>音乐播放器功能；ok</li>
+<li>目录导航优化；ok</li>
+<li>缪缪图案的猫标。</li>
+<li>优化加载速度（*）；</li>
+<li>https协议。</li>
+</ol>
+<ul>
+<li>审核标准：</li>
+</ul>
+<p>刚写就的文章非必要不可立即发表，需要经过2~3天的审核和更正期。 博客文章以短而精的风格为主。冗余部分会放到附录以优化阅读体验。</p>
+<hr>
+<p>圣经（hhh）： <a target="_blank" rel="noopener" href="https://www.liveout.cn/25/">https://www.liveout.cn/25/</a></p>
+<p>准备参考的项目：</p>
+<ul>
+<li>AI摘要： <a target="_blank" rel="noopener" href="https://blog.2broear.com/notes/24-04-2023_wordpress-chatgpt-summary">https://blog.2broear.com/notes/24-04-2023_wordpress-chatgpt-summary</a></li>
+<li>天气API，字体 <a target="_blank" rel="noopener" href="https://www.corrain.top/add-weather/">https://www.corrain.top/add-weather/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/04/%E5%BB%BA%E7%AB%99%E7%9B%AE%E6%A0%87%E5%8F%8A%E8%BF%9B%E5%BA%A6/" data-id="cm1hr2hpv004sdwuebj7u4x2g" data-title="建站目标及进度" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-谈往录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/04/%E8%B0%88%E5%BE%80%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2024-02-04T14:47:48.000Z" itemprop="datePublished">2024-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/04/%E8%B0%88%E5%BE%80%E5%BD%95/">谈往录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>2023.11.24</p>
+<p>禅钟声声催我往，痴伫却反顾；故谣无音也催思，追想亦无痕。故人竟作故影来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/04/%E8%B0%88%E5%BE%80%E5%BD%95/" data-id="cm1hr2hq9007sdwue8j1w9gqg" data-title="谈往录" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-wordpress建站始末" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/04/wordpress%E5%BB%BA%E7%AB%99%E5%A7%8B%E6%9C%AB/" class="article-date">
+  <time class="dt-published" datetime="2024-02-04T14:31:43.000Z" itemprop="datePublished">2024-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/notebook/">notebook</a>►<a class="article-category-link" href="/categories/notebook/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/04/wordpress%E5%BB%BA%E7%AB%99%E5%A7%8B%E6%9C%AB/">wordpress建站始末</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>简要介绍：<a target="_blank" rel="noopener" href="https://www.wpdaxue.com/wordpress-hosting.html">https://www.wpdaxue.com/wordpress-hosting.html</a></p>
+<p>简而言之，搭建WordPress站点，要求一个能够运行PHP语言的主机空间和一个MySQL数据库。</p>
+<p>由于博主本人持“能用就行”的非专业态度，所以本文仅详细记述博主搭建博客的过程，不给出建议。</p>
+<p>具体步骤：</p>
+<ol>
+<li>购买域名和服务器；</li>
+<li>安装宝塔面板；</li>
+<li>安装wordpress；</li>
+<li>优化。</li>
+</ol>
+<h1 id="域名和服务器"><a href="#域名和服务器" class="headerlink" title="域名和服务器"></a>域名和服务器</h1><p>博主在阿里云解决了这两个问题。</p>
+<p>随便选了个域名，服务器购买的是轻量应用服务器，系统镜像centos7.9。</p>
+<ul>
+<li>注意：国内域名需要备案。</li>
+</ul>
+<h1 id="宝塔面板安装"><a href="#宝塔面板安装" class="headerlink" title="宝塔面板安装"></a>宝塔面板安装</h1><p>参考了： <a target="_blank" rel="noopener" href="https://loyseo.com/tutorial/bt-panel-tutorials/">https://loyseo.com/tutorial/bt-panel-tutorials/</a></p>
+<p>比较完整的参考教程： <a target="_blank" rel="noopener" href="https://www.wpdaxue.com/install-baota-panel-and-lnmp.html">https://www.wpdaxue.com/install-baota-panel-and-lnmp.html</a> （安装宝塔面板和配置服务器LNMP环境，属《宝塔面板下运维WordPress网站（共8篇）》系列之首，可连续跟随此教程操作）</p>
+<h2 id="可能遇到的问题："><a href="#可能遇到的问题：" class="headerlink" title="可能遇到的问题："></a>可能遇到的问题：</h2><p><strong>域名无法访问？</strong></p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/dws/support/how-do-i-troubleshoot-the-failures-to-access-a-website-by-using-its-domain-name">https://help.aliyun.com/zh/dws/support/how-do-i-troubleshoot-the-failures-to-access-a-website-by-using-its-domain-name</a></p>
+<p><strong>域名状态查询</strong></p>
+<p><a target="_blank" rel="noopener" href="https://whois.aliyun.com/?spm=a2c4g.11186623.0.0.40d678c7qyAS9R">https://whois.aliyun.com/?spm=a2c4g.11186623.0.0.40d678c7qyAS9R</a></p>
+<p><strong>解析生效检测方法</strong></p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/39834.html">https://help.aliyun.com/document_detail&#x2F;39834.html</a></p>
+<h1 id="wordpress安装"><a href="#wordpress安装" class="headerlink" title="wordpress安装"></a>wordpress安装</h1><p>不用管教程里面说的“宝塔面板添加网站并安装WordPress”，直接在宝塔面板的软件商店一键配置wordpress即可。</p>
+<p>之后弹出的数据库名、用户、密码可直接用于登入域名、初始化wordpress。</p>
+<p>至于SSL证书，我这里Let’s Encrypt不行了，暂时没去找替代。</p>
+<h1 id="wordpress优化"><a href="#wordpress优化" class="headerlink" title="wordpress优化"></a>wordpress优化</h1><ul>
+<li><p>首先选个主题。Argon, Sakura都是常见好用的选择。</p>
+</li>
+<li><p>然后个性化设置外观。</p>
+</li>
+</ul>
+<p>我参考了这位： <a target="_blank" rel="noopener" href="https://crowya.com/681">https://crowya.com/681</a></p>
+<p>电子宠物问题： <a target="_blank" rel="noopener" href="https://crowya.com/1092">https://crowya.com/1092</a></p>
+<p>git: <a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">https://github.com/stevenjoezhang/live2d-widget</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/04/wordpress%E5%BB%BA%E7%AB%99%E5%A7%8B%E6%9C%AB/" data-id="cm1hr2hpq003ndwue473pehk7" data-title="wordpress建站始末" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-argon" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/04/argon/" class="article-date">
+  <time class="dt-published" datetime="2024-02-04T13:09:29.000Z" itemprop="datePublished">2024-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/04/argon/">argon</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>&#x2F;*白天卡片背景透明*&#x2F; .card { background-color: rgba(255, 255, 255, 0.8) !important; &#x2F;*backdrop-filter:blur(6px);*&#x2F;&#x2F;*毛玻璃效果主要属性*&#x2F; -webkit-backdrop-filter: blur(6px); } &#x2F;*夜间透明*&#x2F; html.darkmode .bg-white, html.darkmode .card, html.darkmode #footer { background: rgba(66, 66, 66, 0.9) !important; } html.darkmode #fabtn_blog_settings_popup { background: rgba(66, 66, 66, 0.95) !important; } &#x2F;*小工具栏背景完全透明*&#x2F; &#x2F;*小工具栏是card的子元素，如果用同一个透明度会叠加变色，故改为完全透明*&#x2F; .card .widget, .darkmode .card .widget, #post_content&gt;div&gt;div&gt;div.argon-timeline-card.card.bg-gradient-secondary.archive-timeline-title, #custom_html-2 { background-color: #ffffff00 !important; backdrop-filter: none; -webkit-backdrop-filter: none; } .emotion-keyboard, #fabtn_blog_settings_popup { background-color: rgba(255, 255, 255, 0.95) !important; } &#x2F;*分类卡片透明*&#x2F; .bg-gradient-secondary { background: rgba(255, 255, 255, 0.1) !important; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); } &#x2F;*分类卡片文本居中*&#x2F; #content&gt;div.page-information-card-container&gt;div&gt;div { text-align: center; } &#x2F;*提示条背景透明*&#x2F; .admonition,.collapse-block{ background-color: transparent !important; backdrop-filter: contrast(130%); } &#x2F;*左侧菜单栏突出颜色修改*&#x2F; .leftbar-menu-item&gt;a:hover, .leftbar-menu-item.current&gt;a { background-color: #f9f9f980; } &#x2F;*站点概览分隔线颜色修改*&#x2F; .site-state-item { border-left: 1px solid #aaa; } .site-friend-links-title { border-top: 1px dotted #aaa; } #leftbar_tab_tools ul li { padding-top: 3px; padding-bottom: 3px; border-bottom: none; } html.darkmode #leftbar_tab_tools ul li { border-bottom: none; } &#x2F;*左侧栏边距修改*&#x2F; .tab-content { padding: 10px 0px 0px 0px !important; } .site-author-links { padding: 0px 0px 0px 10px; } &#x2F;*目录位置偏移修改*&#x2F; #leftbar_catalog { margin-left: 0px; } &#x2F;*目录条目边距修改*&#x2F; #leftbar_catalog .index-link { padding: 4px 4px 4px 4px; } &#x2F;*左侧栏小工具栏字体缩小*&#x2F; #leftbar_tab_tools { font-size: 14px; } &#x2F;*正文图片边距修改*&#x2F; article figure { margin-top:0; margin-bottom: 1rem; } .wp-block-columns { margin-bottom:0; } &#x2F;*正文表格样式修改*&#x2F; article table&gt;tbody&gt;tr&gt;td, article table&gt;tbody&gt;tr&gt;th, article table&gt;tfoot&gt;tr&gt;td, article table&gt;tfoot&gt;tr&gt;th, article table&gt;thead&gt;tr&gt;td, article table&gt;thead&gt;tr&gt;th { padding: 8px 10px; border: 1px solid; } &#x2F;*表格居中样式*&#x2F; .wp-block-table.aligncenter { margin: 10px auto; } &#x2F;*特色图片文章标题*&#x2F; .post-header.post-header-with-thumbnail .post-header-text-container .post-title { font-weight: bold; color: #ffffff !important; text-shadow: 0px 0px 5px #000000 !important; } &#x2F;*首页说说左上角图标修改*&#x2F; .shuoshuo-preview-container:before { background-size: 50%; background-position: 50% 45%; background-image: url(<a target="_blank" rel="noopener" href="http://yantares.cn/wp-content/uploads/2024/02/%E4%B9%96%E7%BC%AA-scaled.jpg">http://yantares.cn/wp-content/uploads/2024/02/乖缪-scaled.jpg</a>); } .shuoshuo-preview-container:hover:before { background-position: 50% 50%; background-size: 60%; } &#x2F;*回顶图标放大*&#x2F; #fabtn_back_to_top, #fabtn_go_to_comment, #fabtn_toggle_blog_settings_popup, #fabtn_toggle_sides, #fabtn_open_sidebar, #fabtn_toggle_darkmode { font-size: 1.2rem; } &#x2F;*隐藏左移按钮*&#x2F; #fabtn_toggle_sides{display:none;} &#x2F;*顶栏菜单放大*&#x2F; .navbar-nav .nav-link { font-size: 1rem; } .navbar-nav .nav-item { margin-right: 0; } .mr-lg-5, .mx-lg-5 { margin-right: 1rem !important; } .navbar-toggler-icon { width: 1.5rem; height: 1.5rem; } .navbar-expand-lg .navbar-nav .nav-link { padding-right: 0.9rem; padding-left: 1rem; } &#x2F;*字体，暂时禁用*&#x2F; &#x2F;*@font-face { font-family: myFont; src:url(<a target="_blank" rel="noopener" href="https://img.crowya.com/font/FZFWZZAY.woff2">https://img.crowya.com/font/FZFWZZAY.woff2</a>) format(‘woff2’); font-display: swap; } body, .nav-link-inner–text { font-family: myFont; } .navbar-brand { font-size: 1.25rem; font-weight: 100; margin-right: 2rem; padding-bottom: .1rem; }*&#x2F; &#x2F;*左侧栏头像自动缩放*&#x2F; #leftbar_overview_author_image:hover{ transform: scale(1.2); filter: brightness(150%); } &#x2F;*隐藏左侧栏搜索框*&#x2F; .leftbar-menu {display: none;} .leftbar-search-button {display: none;} #leftbar_part2_inner:before {display: none;} @media screen and (min-width: 900px){ .leftbar-banner { border-radius: var(–card-radius); } } &#x2F;*折叠说说颜色修改*&#x2F; .shuoshuo-content.shuoshuo-folded:after { border-radius: 10px; background: linear-gradient(180deg, transparent 0%, var(–mycolor) 100%); } :root {–mycolor: #e6ddd3;} html.darkmode {–mycolor: #424242;} &#x2F;*滚动条修改*&#x2F; ::-webkit-scrollbar {width: 8px;} ::-webkit-scrollbar-track{ background-color:#272010; } ::-webkit-scrollbar-thumb{ background-color:#6f6558; border:none; } html.darkmode ::-webkit-scrollbar-track{ background-color:#282828; } &#x2F;* 鼠标指针样式 *&#x2F; body {cursor: url(<a target="_blank" rel="noopener" href="http://yantares.cn/wp-content/uploads/2024/02/%E4%B9%96%E7%BC%AA-scaled.jpg">http://yantares.cn/wp-content/uploads/2024/02/乖缪-scaled.jpg</a>), default; }</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/04/argon/" data-id="cm1hr2hpg001sdwue7vbufa8g" data-title="argon" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-群山之声响彻寰宇" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/04/%E7%BE%A4%E5%B1%B1%E4%B9%8B%E5%A3%B0%E5%93%8D%E5%BD%BB%E5%AF%B0%E5%AE%87/" class="article-date">
+  <time class="dt-published" datetime="2024-02-04T13:02:57.000Z" itemprop="datePublished">2024-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/04/%E7%BE%A4%E5%B1%B1%E4%B9%8B%E5%A3%B0%E5%93%8D%E5%BD%BB%E5%AF%B0%E5%AE%87/">群山之声响彻寰宇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Notion日记中印象最深刻的一篇，写作过程相当浪漫，搬过来作为镇站之作（笑）</p>
+</blockquote>
+<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><blockquote>
+<p>作于2024.2.4</p>
+</blockquote>
+<p>许多时候，灵感奇妙地迸发出来，毫不顾及它的创造者无谓的挽留。正如我于另一篇Zine当中表述的，“我是个挖星星的人……不断把这些思想从地底挖出，为它的光辉痴迷刹那，它便飞往星空……此后我鲜少有喘息窥天之机，星星也在未来的我眼中模糊暗淡……是否能挖到星星也取决于偶然。” 故而《群山之声响彻寰宇》于我价值非凡。柔和、迷茫、持续一晚的畅想，是一场难得的思维盛宴（即便它的内容偏向于缺少逻辑的空想，且包含令当事人尴尬的抒情）。 此版本经过了微小的修改。</p>
+<p><strong>warning：</strong></p>
+<p>个人性质极强。意识流。不建议带着脑子阅读。</p>
+<h2 id="群山之声响彻寰宇"><a href="#群山之声响彻寰宇" class="headerlink" title="群山之声响彻寰宇"></a>群山之声响彻寰宇</h2><blockquote>
+<p>作于2023.7.13</p>
+</blockquote>
+<p>标致的外表，雷同的填充，简单的核心。</p>
+<p>我为什么思考这些问题：人的欲望或目标？初中的尤智：在追求快乐；如今的我：生物趋利避害。</p>
+<p>真想与那时的尤智谈话。倘若你将他极端化，他会成神，你会膜拜，你会模糊化，你会宁静。</p>
+<p>人，基础是相识者的摹本集合的胶质化？经由不同的处理得到的独特溶液。与摹本共鸣？寻找母本？</p>
+<p>我想让狭隘的自己遍布整个大地。我让他活跃，让他模糊，让他失去尖锐的锋芒甚至偏离问题的本质，让他形而上，再让他扩散，只为了他能够走得更远……可是这样我难以复盘，我经历的是一场光怪陆离却无人知晓甚至被自身忘记的永恒旅途，我不会让他停止，正因如此，我难以回头。或许我走了重复的路，或许我偏离了初心，但我并不认为这是完全坏的，因为我只是想走更远的路，无论他在那里，无论我怎样去。</p>
+<p>思想的隔阂如此可悲。我希望能有一种媒介，能以箭头之类方式记录我这样的洗浴哲学家的思绪，让它不致淹没在雾气中消散。打字不能表明几何，写字的速度不能超越神经元，直接读取的内容太晦涩而复杂。脑科学是否能够帮助我做到这一点？我丧失最好的方式得知了，但是我可以继续，我的状态自降世起不断下滑，但我还能珍惜这一段难得的思考，我还能够抓住风的一丝一缕。</p>
+<p>不可以放过你自己。回忆，记忆，永恒。</p>
+<p>我不愿意融入进去，或许是因我知道我是静默的水，有进无出，难以复原。我的颜色太容易沾染，我的转向太容易倾斜，我认为这是好事，我不必拘泥于一处；我认为这是悲哀，因为我做不成顽石。我不追求认可，我希冀独立，我渴望被未来的自己否定，因为我知道，那会证明我仍是缓缓流动的，我不会停滞，我在生命的脉动中永恒。</p>
+<p>哈哈，看那，我的心如此地容易被触动，正如此时他正因一首激昂悲怆的音乐疯狂跳动。看啊，我的文字也曾经是碎片，你能在我读过的任何书籍中找到其原型。</p>
+<p>写下这些字句的时候，我或谦卑，或悲悯，或傲然。我从镜中窥见了自己的百面，我是我自己的英雄。看那！听那！世界之声响彻寰宇！</p>
+<p>现在我便要否定一个往前的自己！“……也好过这条通天的歧途”，不，它于我而言并非歧途，正因我的涉足，它成为正道！没有我，它一文不值，它可以随意地在他人的眼中被磨灭，被蔑视；但是，正因我的存在，我的踏足！它已然不能这样默默无闻，它不再是所谓“歧途”！想想啊，她写书，她想让他人懂得，她用“歧途”。我写日记，写给自己看，我无需用“歧途”！</p>
+<p>寻求意义？只是在这样的过程中，你不再迷茫……尽管颠沛，尽管哀戚与狂喜此消彼长，你只是站在那里……你着你的存在，你的过去，你的回忆，你的一切。感受！“我”的声音响彻“我”的全部，“我”前所未有的统一，我就此处于无上的欢乐之中。</p>
+<p>你惧怕溪流的枯竭吗？……你认为这是你的一部分的死亡，你想要祭奠？雄伟的山岳倒塌，它的后人未必感激。</p>
+<p>勿停息，勿外流，勿声张。你的声音应且仅应牢固你自己……</p>
+<p>伟大的人逝去了，让我们记住它。</p>
+<p>不要忘记我……</p>
+<p>映证了开头：万物只是小小的一颗费列罗，它的核心更加小，更加浓缩，仅仅是拨开它冗余的外壳或许就要耗费巨额的精力和时间……你的一生或许被埋葬在无尽的剥壳中，你见不到光明。然而，真理孑然，当它显现，万物失色，它不需要证明，它矗立，它的光芒不会刺痛你的眼睛，你的手覆上它的心，温暖充遍了你的全身。</p>
+<p>如何找到我：不要忘记我，不要放过你，不要放空任何太久，但也不要吝于给自己打开特例。</p>
+<p>你不满足，你的羽翼扇动不愿俯冲……</p>
+<p>你有时候自视甚高，有时候姿态过低。</p>
+<p>看我说的话，我已经临近大地了。在这种时候，我才会意识到，方才我原来飞得那么高，几乎触及星辰……？</p>
+<p><strong>附：向psych发的癫：</strong></p>
+<p>她不会犹疑，她不会停顿，她原本模糊，她因为我这段话清晰些许，她，不，“它”，“祂”？青春或少年取她的形象做了外表？</p>
+<p>阻隔层，我要飞离地面时，必看见她？她的神情坚定然而静滞，哈哈，好一堵来自过去的墙！她未实施帮助，也未阻拦，她注视我，我注视她，一瞬如永恒，决生死。</p>
+<p><strong>2023.7.24 评</strong></p>
+<p>陈述中出现最多的字：“我”。此文的省思是向内的。</p>
+<p>理由：最充足、丰富、真实的论据来自自己，许多的问题需要求诸己身。“人穷则返本。”</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><blockquote>
+<p>作于2024.2.4</p>
+</blockquote>
+<p>某本书曾指明：世上一半的人是澡堂哲学家，另一半则是澡堂音乐家。我颇为赞同。这篇随笔即是澡堂哲学家未能在离开浴室的同时离开哲学殿堂的产物。</p>
+<p>个人性质极强。意识流。不建议带着脑子阅读。</p>
+<p>注： [1] “通天歧途”之语：《太岁》。 [2] “阻隔层”概念：克丽斯腾。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/04/%E7%BE%A4%E5%B1%B1%E4%B9%8B%E5%A3%B0%E5%93%8D%E5%BD%BB%E5%AF%B0%E5%AE%87/" data-id="cm1hr2hq8007idwueg8awbr15" data-title="群山之声响彻寰宇" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9C%E7%BB%AA/" rel="tag">远绪</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/">notebook</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E6%9D%90%E7%A7%91%E5%9F%BA%E7%9B%B8%E5%85%B3/">材科基相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E7%89%A9%E7%90%86%E5%8C%96%E5%AD%A6/">物理化学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E7%94%B5%E5%B7%A5%E5%AD%A6/">电工学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notebook/%E9%80%89%E4%BF%AE%E8%AF%BE/">选修课</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/%E5%8F%8D%E8%89%B2%E6%97%B6%E4%BB%A3/">反色时代</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%82%A6%E4%B9%90/">悦乐</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B3%BB%E5%88%97/">系列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/">读罢有感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3B1B/" rel="tag">3B1B</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/6/" rel="tag">6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NN/" rel="tag">NN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adobe/" rel="tag">adobe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/" rel="tag">c&#x2F;c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/" rel="tag">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zotero/" rel="tag">zotero</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E6%B5%B7/" rel="tag">上海</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90/" rel="tag">乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E6%96%87/" rel="tag">人文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E6%B0%91/" rel="tag">人民</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%B2%E5%AD%A6/" rel="tag">哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86/" rel="tag">固体物理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%9F%E6%9C%A8%E5%B7%A5%E7%A8%8B%E6%9D%90%E6%96%99/" rel="tag">土木工程材料</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%B0%E7%90%86/" rel="tag">地理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%B0%E8%B4%A8%E5%AD%A6/" rel="tag">地质学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E8%B0%AD/" rel="tag">奇谭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%AF%9D/" rel="tag">对话</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%BB%E6%83%B3/" rel="tag">幻想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%88%E7%8E%87/" rel="tag">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E5%8C%96/" rel="tag">文化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E5%AD%A6/" rel="tag">文学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E6%B8%B8/" rel="tag">旅游</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E6%B8%B8%E5%9C%B0%E8%B4%A8%E5%AD%A6/" rel="tag">旅游地质学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%99%AE%E5%B8%8C%E9%87%91/" rel="tag">普希金</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%99%B6%E4%BD%93/" rel="tag">晶体</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B0%91%E6%97%8F/" rel="tag">民族</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B7%E5%87%9D%E5%9C%9F/" rel="tag">混凝土</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BE%A1%E5%A0%82%E5%93%B2%E5%AD%A6/" rel="tag">澡堂哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%81%B5%E9%AD%82/" rel="tag">灵魂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E7%90%86%E5%8C%96%E5%AD%A6/" rel="tag">物理化学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%89%E7%9F%B3/" rel="tag">玉石</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%8B%E5%BE%B7%E5%B3%B0/" rel="tag">王德峰</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8F%A0%E5%AE%9D%E8%B4%AD%E4%B9%B0/" rel="tag">珠宝购买</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8F%A0%E5%AE%9D%E9%89%B4%E8%B5%8F/" rel="tag">珠宝鉴赏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%B7%A5%E5%AD%A6/" rel="tag">电工学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%AF%BE/" rel="tag">网课</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E6%B4%BE/" rel="tag">课堂派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%84%E6%96%99/" rel="tag">资料</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9C%E7%BB%AA/" rel="tag">远绪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%A4%B1%E4%B8%9C%E4%BA%AC/" rel="tag">迷失东京</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%81%93/" rel="tag">道</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90/" rel="tag">音乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A3%9E%E4%B9%A6%E5%A6%99%E8%AE%B0/" rel="tag">飞书妙记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/3B1B/" style="font-size: 10px;">3B1B</a> <a href="/tags/6/" style="font-size: 10px;">6</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/RSS/" style="font-size: 10px;">RSS</a> <a href="/tags/adobe/" style="font-size: 12.5px;">adobe</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/microsoft/" style="font-size: 10px;">microsoft</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/wordpress/" style="font-size: 12.5px;">wordpress</a> <a href="/tags/zotero/" style="font-size: 10px;">zotero</a> <a href="/tags/%E4%B8%8A%E6%B5%B7/" style="font-size: 10px;">上海</a> <a href="/tags/%E4%B9%90/" style="font-size: 10px;">乐</a> <a href="/tags/%E4%B9%A6/" style="font-size: 15px;">书</a> <a href="/tags/%E4%BA%BA%E6%96%87/" style="font-size: 10px;">人文</a> <a href="/tags/%E4%BA%BA%E6%B0%91/" style="font-size: 10px;">人民</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 12.5px;">博客搭建</a> <a href="/tags/%E5%93%B2%E5%AD%A6/" style="font-size: 10px;">哲学</a> <a href="/tags/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86/" style="font-size: 10px;">固体物理</a> <a href="/tags/%E5%9C%9F%E6%9C%A8%E5%B7%A5%E7%A8%8B%E6%9D%90%E6%96%99/" style="font-size: 10px;">土木工程材料</a> <a href="/tags/%E5%9C%B0%E7%90%86/" style="font-size: 10px;">地理</a> <a href="/tags/%E5%9C%B0%E8%B4%A8%E5%AD%A6/" style="font-size: 10px;">地质学</a> <a href="/tags/%E5%A5%87%E8%B0%AD/" style="font-size: 10px;">奇谭</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%AF%B9%E8%AF%9D/" style="font-size: 10px;">对话</a> <a href="/tags/%E5%B9%BB%E6%83%B3/" style="font-size: 10px;">幻想</a> <a href="/tags/%E6%95%88%E7%8E%87/" style="font-size: 10px;">效率</a> <a href="/tags/%E6%96%87%E5%8C%96/" style="font-size: 10px;">文化</a> <a href="/tags/%E6%96%87%E5%AD%A6/" style="font-size: 10px;">文学</a> <a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 10px;">旅游</a> <a href="/tags/%E6%97%85%E6%B8%B8%E5%9C%B0%E8%B4%A8%E5%AD%A6/" style="font-size: 10px;">旅游地质学</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 15px;">日记</a> <a href="/tags/%E6%99%AE%E5%B8%8C%E9%87%91/" style="font-size: 10px;">普希金</a> <a href="/tags/%E6%99%B6%E4%BD%93/" style="font-size: 10px;">晶体</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">机器学习</a> <a href="/tags/%E6%B0%91%E6%97%8F/" style="font-size: 10px;">民族</a> <a href="/tags/%E6%B7%B7%E5%87%9D%E5%9C%9F/" style="font-size: 10px;">混凝土</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/tags/%E6%BE%A1%E5%A0%82%E5%93%B2%E5%AD%A6/" style="font-size: 10px;">澡堂哲学</a> <a href="/tags/%E7%81%B5%E9%AD%82/" style="font-size: 10px;">灵魂</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%8C%96%E5%AD%A6/" style="font-size: 10px;">物理化学</a> <a href="/tags/%E7%8E%89%E7%9F%B3/" style="font-size: 10px;">玉石</a> <a href="/tags/%E7%8E%8B%E5%BE%B7%E5%B3%B0/" style="font-size: 10px;">王德峰</a> <a href="/tags/%E7%8F%A0%E5%AE%9D%E8%B4%AD%E4%B9%B0/" style="font-size: 10px;">珠宝购买</a> <a href="/tags/%E7%8F%A0%E5%AE%9D%E9%89%B4%E8%B5%8F/" style="font-size: 17.5px;">珠宝鉴赏</a> <a href="/tags/%E7%94%B5%E5%B7%A5%E5%AD%A6/" style="font-size: 10px;">电工学</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">经验</a> <a href="/tags/%E7%BD%91%E8%AF%BE/" style="font-size: 10px;">网课</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%AF%97%E6%AD%8C/" style="font-size: 10px;">诗歌</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%AF%BE%E5%A0%82%E6%B4%BE/" style="font-size: 10px;">课堂派</a> <a href="/tags/%E8%B5%84%E6%96%99/" style="font-size: 10px;">资料</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 15px;">软件</a> <a href="/tags/%E8%BF%9C%E7%BB%AA/" style="font-size: 15px;">远绪</a> <a href="/tags/%E8%BF%B7%E5%A4%B1%E4%B8%9C%E4%BA%AC/" style="font-size: 10px;">迷失东京</a> <a href="/tags/%E9%81%93/" style="font-size: 10px;">道</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 12.5px;">音乐</a> <a href="/tags/%E9%A3%9E%E4%B9%A6%E5%A6%99%E8%AE%B0/" style="font-size: 10px;">飞书妙记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/29/701/">Untitled Post - 17</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/29/%E6%89%A7%E7%AC%94%E5%A6%82%E6%89%A7%E9%95%9C%EF%BC%8C%E8%A7%82%E6%98%9F%E4%BA%A6%E8%A7%82%E5%BF%83/">执笔如执镜，观星亦观心</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/21/%E9%97%AE%E9%81%93/">问道</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/10/%E9%95%BF%E6%AD%8C%E8%A1%8C/">长歌行</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
