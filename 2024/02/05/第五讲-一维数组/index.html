@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="5.1 数组的定义问题：给定N个学生成绩，求高于平均分者 123456789101112131415161718192021&#x2F;&#x2F;简单变量逐一处理(N&#x3D;5)int k&#x3D;0;float ave,sum&#x3D;0,s1,s2,s3,s4,s5;cin&gt;&gt;s1&gt;&gt;s2&gt;&gt;s3&gt;&gt;s4&gt;&gt;s5;sum&#x3D;s1+s2+s3+s4+s5;ave&#x3D;sum&#x2F;N;i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第五讲 一维数组">
+<meta property="og:url" content="https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="5.1 数组的定义问题：给定N个学生成绩，求高于平均分者 123456789101112131415161718192021&#x2F;&#x2F;简单变量逐一处理(N&#x3D;5)int k&#x3D;0;float ave,sum&#x3D;0,s1,s2,s3,s4,s5;cin&gt;&gt;s1&gt;&gt;s2&gt;&gt;s3&gt;&gt;s4&gt;&gt;s5;sum&#x3D;s1+s2+s3+s4+s5;ave&#x3D;sum&#x2F;N;i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-05T08:56:38.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:45:48.412Z">
+<meta property="article:author" content="Antares">
+<meta property="article:tag" content="c&#x2F;c++">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第五讲 一维数组</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lone Trail</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/categories/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%9B%9B%E8%AE%B2-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&text=第五讲 一维数组"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&is_video=false&description=第五讲 一维数组"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第五讲 一维数组&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&name=第五讲 一维数组&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">5.1 数组的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">数组的概念、特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text">数组的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.</span> <span class="toc-text">数组的存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.4.</span> <span class="toc-text">元素的访问</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">5.2 一维数组的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">数组初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E9%80%89%E6%8B%A9%E6%B3%95%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">5.3 常用算法-选择法排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">5.4 冒泡法排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">5.5 常用算法-插入与删除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5"><span class="toc-number">5.0.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-number">5.0.2.</span> <span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="toc-number">6.</span> <span class="toc-text">5.6 常用算法-二分法查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">例题</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第五讲 一维数组
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lone Trail</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-02-05T08:56:38.000Z" itemprop="datePublished">2024-02-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c-c/" rel="tag">c/c++</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="5-1-数组的定义"><a href="#5-1-数组的定义" class="headerlink" title="5.1 数组的定义"></a>5.1 数组的定义</h2><p>问题：给定N个学生成绩，求高于平均分者</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单变量逐一处理(N=5)</span></span><br><span class="line"><span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> ave,sum=<span class="number">0</span>,s1,s2,s3,s4,s5;</span><br><span class="line">cin&gt;&gt;s1&gt;&gt;s2&gt;&gt;s3&gt;&gt;s4&gt;&gt;s5;</span><br><span class="line">sum=s1+s2+s3+s4+s5;</span><br><span class="line">ave=sum/N;</span><br><span class="line"><span class="keyword">if</span>(s1&gt;ave)</span><br><span class="line">    k++</span><br><span class="line">.....<span class="comment">//效率太低</span></span><br><span class="line"><span class="comment">//引入新数据类型批量处理（N=5)</span></span><br><span class="line"><span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> s[N], ave, sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">&#123;</span><br><span class="line">    sum+=s[i];</span><br><span class="line">&#125;</span><br><span class="line">ave=sum/N;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    <span class="keyword">if</span>(s[i]&gt;ave)</span><br><span class="line">        k++;</span><br><span class="line"><span class="comment">//数组：对一组数据的重复操作进行批量处理</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组的概念、特点"><a href="#数组的概念、特点" class="headerlink" title="数组的概念、特点"></a>数组的概念、特点</h3><ul>
+<li>是同类型同性质的一组元素顺序存放构成的数据集合；</li>
+<li>所有数据共用同一名字，通过下标区分；</li>
+<li>循环控制下标来批量处理数据。</li>
+</ul>
+<h3 id="数组的定义"><a href="#数组的定义" class="headerlink" title="数组的定义"></a>数组的定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据类型 数组名[整型常量表达式]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数组名代表数组在内存中的首地址，由系统自动分配；</li>
+<li><strong>整型常量表达式</strong>代表数组<strong>长度</strong>，此处<strong>不可用变量</strong>说明长度；</li>
+<li><strong>下标范围0~长度-1</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正确例：</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 5</span></span><br><span class="line"><span class="type">float</span> s[N];</span><br><span class="line"><span class="comment">//或者：</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> n=<span class="number">5</span>;</span><br><span class="line"><span class="type">float</span> s[n];</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误例：</span></span><br><span class="line"><span class="type">int</span> n=<span class="number">5</span>, s[n];<span class="comment">//长度不允许用变量</span></span><br><span class="line"><span class="type">double</span> d[];<span class="comment">//长度不允许为空</span></span><br><span class="line"><span class="type">float</span> b[<span class="number">3.4</span>]<span class="comment">//长度不允许非整形</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组的存储"><a href="#数组的存储" class="headerlink" title="数组的存储"></a>数组的存储</h3><h3 id="元素的访问"><a href="#元素的访问" class="headerlink" title="元素的访问"></a>元素的访问</h3><p><code>数组名[下标]</code></p>
+<ul>
+<li>数组元素相当于同类型的普通变量，可参与该类型变量允许的一切操作</li>
+<li>对于数值型数组，只能操作数组元素，不能操作数组名</li>
+</ul>
+<h2 id="5-2-一维数组的初始化"><a href="#5-2-一维数组的初始化" class="headerlink" title="5.2 一维数组的初始化"></a>5.2 一维数组的初始化</h2><p>问题：将十进制整数n转换成r(2~16)进制</p>
+<p>例：</p>
+<p>转换方法：</p>
+<ol>
+<li>n%r得到最低位存放进a[0];</li>
+<li>n&#x3D;n&#x2F;r，再进行n%r，得到倒数第二位a[1];</li>
+<li>以此类推，直到n&#x3D;0.</li>
+</ol>
+<p>输出方法：</p>
+<ul>
+<li>从数组最末元素向前输出。</li>
+<li>制作对照表，将10-15转换为A~F。16进制所需数字的字母放在长度16的字符数组中</li>
+</ul>
+<h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><ul>
+<li>定义的同时允许对数组的部分或全部元素赋初值；</li>
+<li>初值应被组织在<code>&#123;&#125;</code>内<ul>
+<li>字符数组表示的字符串例外</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全部元素赋初值:</span></span><br><span class="line"><span class="type">int</span> a[<span class="number">5</span>]=&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>&#125;</span><br><span class="line"><span class="comment">//可省略数组长度</span></span><br><span class="line"><span class="type">int</span> a[]=&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>&#125;</span><br><span class="line"><span class="comment">//相当于：</span></span><br><span class="line">a[<span class="number">0</span>]=<span class="number">0</span>; a[<span class="number">1</span>]=<span class="number">2</span>; a[<span class="number">2</span>]=<span class="number">4</span>; a[<span class="number">3</span>]=<span class="number">6</span>; a[<span class="number">4</span>]=<span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//部分元素赋初值</span></span><br><span class="line"><span class="comment">//未赋值元素默认为0</span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10</span>]=&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>&#125;</span><br><span class="line"><span class="comment">//a[5]~a[9]皆为0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//常见错误：</span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10</span>];</span><br><span class="line">a=&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>&#125;<span class="comment">//数组名不能被赋值</span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10</span>];</span><br><span class="line">a[<span class="number">10</span>]=&#123;...&#125;<span class="comment">//a[10]不是合法元素，也不能被赋集合值</span></span><br><span class="line"><span class="type">int</span> c[<span class="number">3</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;<span class="comment">//初值个数超过数组长度</span></span><br></pre></td></tr></table></figure>
+
+<p>数制转换：（10进制–&gt;r进制）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>,r,n,a[<span class="number">10</span>];</span><br><span class="line">    <span class="type">char</span> b[<span class="number">16</span>]=&#123;<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,...,<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;E&#x27;</span>,<span class="string">&#x27;F&#x27;</span>&#125;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;r;</span><br><span class="line">    <span class="keyword">do</span> </span><br><span class="line">    &#123;</span><br><span class="line">        a[i]=n%r;</span><br><span class="line">        n=n/r;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;<span class="keyword">while</span>(n!=<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(--i;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">    &#123;</span><br><span class="line">        n=a[i];</span><br><span class="line">        cout&lt;&lt;b[n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-常用算法-选择法排序"><a href="#5-3-常用算法-选择法排序" class="headerlink" title="5.3 常用算法-选择法排序"></a>5.3 常用算法-选择法排序</h2><p>例：N个成绩从大到小排序</p>
+<p>选择法排序：</p>
+<ol>
+<li>N个数中选出MAX与第一个数交换位置；</li>
+<li>N-1数中选出MAX与第二个数交换位置；</li>
+<li>以此类推，重复N-1遍。</li>
+</ol>
+<ul>
+<li>rand()函数<ul>
+<li>随机数范围：0~32767</li>
+<li>原型在头文件stdlib.h</li>
+<li>范围随机数：<code>rand()%(a+1)+b</code> (b~b+a)</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>求最高分</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> N 10</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[N],i ,max;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i]=<span class="built_in">rand</span>()%<span class="number">101</span>;</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    max=a[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;N;i++)</span><br><span class="line">        <span class="keyword">if</span> (a[i]&gt;max)</span><br><span class="line">            max=a[i];</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;max=&quot;</span>&lt;&lt;max&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>求最高分位置</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">imax=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;N;j++)</span><br><span class="line">    <span class="keyword">if</span> (a[j]&gt;a[imax])</span><br><span class="line">        imax=j;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>最高分放在首位</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> t=a[<span class="number">0</span>];</span><br><span class="line">a[<span class="number">0</span>]=a[imax];</span><br><span class="line">a[imax]=t;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>次高分，次次高分……循环。（N-1遍）</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">imax=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">2</span>;j&lt;N;j++)</span><br><span class="line">    <span class="keyword">if</span> (a[j]&gt;a[imax])</span><br><span class="line">        imax=j;</span><br><span class="line"><span class="type">int</span> t=a[<span class="number">1</span>];</span><br><span class="line">a[<span class="number">1</span>]=a[imax];</span><br><span class="line">a[imax]=t;</span><br><span class="line"><span class="comment">//循环重复:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">    imax=i;  <span class="comment">//注意i需变</span></span><br><span class="line">    <span class="keyword">for</span>(j=i<span class="number">+1</span>;j&lt;N;j++)</span><br><span class="line">        <span class="keyword">if</span> (a[j]&gt;a[imax])</span><br><span class="line">            imax=j;</span><br><span class="line">    <span class="keyword">if</span> (i!=imax)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t=a[i]; </span><br><span class="line">        a[i]=a[imax];</span><br><span class="line">        a[imax]=t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-4-冒泡法排序"><a href="#5-4-冒泡法排序" class="headerlink" title="5.4 冒泡法排序"></a>5.4 冒泡法排序</h2><p>例：对含N个元素的数组用冒泡法由小到大排序。</p>
+<p>思想：</p>
+<ol>
+<li>自a[0]始，两两相邻元素进行N-1次比较，若前&gt;后则交换这对元素。一次遍历后最大的元素存在a[N-1]中；</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">if</span> (a[i]&gt;a[i<span class="number">+1</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        t=a[i];</span><br><span class="line">        a[i<span class="number">+1</span>]=a[i];</span><br><span class="line">        a[i]=t;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对a[0]~a[N-2]的N-1个数进行此操作，次大数存入a[N-2]；</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;N;j++)</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>-j;i++)</span><br><span class="line">        <span class="keyword">if</span> (a[i]&gt;a[i<span class="number">+1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            t=a[i];</span><br><span class="line">            a[i<span class="number">+1</span>]=a[i];</span><br><span class="line">            a[i]=t;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>以此类推N-1次。</li>
+</ol>
+<p>完整程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> N 10</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[N],i ,j,t;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>,i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i]=<span class="built_in">rand</span>()%<span class="number">101</span>;</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;N<span class="number">-1</span>-i;j++)</span><br><span class="line">        <span class="keyword">if</span> (a[j]&gt;a[j<span class="number">+1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            t=a[j];</span><br><span class="line">            a[j]=a[j<span class="number">+1</span>];</span><br><span class="line">            a[j<span class="number">+1</span>]=t;</span><br><span class="line">        &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;\n after sort: \n&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>; </span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-5-常用算法-插入与删除"><a href="#5-5-常用算法-插入与删除" class="headerlink" title="5.5 常用算法-插入与删除"></a>5.5 常用算法-插入与删除</h2><h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>例：在递增数组a内插入数x，使插入后数组仍保持有序。</p>
+<ol>
+<li>查找x应插入的位置k；</li>
+<li>下标k的元素到最后的元素依次<strong>后移</strong>；</li>
+<li>x插入位置k。</li>
+</ol>
+<ul>
+<li>移动：从最后元素移起</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=k;i--)</span><br><span class="line">    a[i<span class="number">+1</span>]=[i];</span><br></pre></td></tr></table></figure>
+
+<p>完整程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> N 10</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[N],i,k,x,n;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;递增输入数组中现有元素个数：&quot;</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;输入待插入数据：&quot;</span>;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    <span class="comment">//输入完成，开始处理：</span></span><br><span class="line">    <span class="comment">//找位置：</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">if</span> (x&lt;a[i])</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    k=i;</span><br><span class="line">    <span class="comment">//移动，挪出位置</span></span><br><span class="line">    <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=k;i--)</span><br><span class="line">        a[i<span class="number">+1</span>]=[i];</span><br><span class="line">    <span class="comment">//插入新数据</span></span><br><span class="line">    a[k]=x;</span><br><span class="line">    <span class="comment">//输出新数组</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">+1</span>;i++)</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>例：查找数据x是否是数组a中元素，若是，删除第一次出现的该元素；否则提示“没找到”。</p>
+<p>思想：</p>
+<ol>
+<li>查找待删除元素的位置k；</li>
+<li>若找到，下标k+1的元素到最后的元素依次<strong>后移</strong>；</li>
+<li>x插入位置k。</li>
+</ol>
+<ul>
+<li>移动：前移（覆盖）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=k;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    a[i]=a[i<span class="number">+1</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line"><span class="keyword">if</span>(x==a[i])</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">k=i;</span><br><span class="line"><span class="keyword">if</span>(i==n)<span class="comment">//注意这里是n</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;未找到\n&quot;</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//前移删除后的数据</span></span><br><span class="line">    <span class="keyword">for</span>(i=k;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">        a[i]=a[i<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-6-常用算法-二分法查找"><a href="#5-6-常用算法-二分法查找" class="headerlink" title="5.6 常用算法-二分法查找"></a>5.6 常用算法-二分法查找</h2><p>数据量大，顺序查找效率低</p>
+<p>例：在长度为N按递增顺序排列的数组a中用二分法查找数key，找到、输出其位置；否则输出“没找到”。</p>
+<p>思想：</p>
+<ol>
+<li><p>low和high是查找区间的起终点下标，则初始状态：low&#x3D;0, high&#x3D;N-1;</p>
+</li>
+<li><p>求待查区间中间元素的下标mid&#x3D;(low+high)&#x2F;2，然后比较a[mid]和x决定后续查找范围；</p>
+</li>
+<li><p>当x&#x3D;&#x3D;a[mid]，查找完毕</p>
+<p>当x&gt;a[mid]，修改low&#x3D;mid+1</p>
+<p>当x&lt;a[mid]，修改high&#x3D;mid-1</p>
+</li>
+<li><p>重复2、3；若low&gt;high则null</p>
+</li>
+</ol>
+<p>注：</p>
+<ul>
+<li>二分法只适用于<strong>有序数组</strong>；</li>
+<li>终止循环查找的两种情况：<ul>
+<li>x&#x3D;&#x3D;a[mid]</li>
+<li>low&gt;high</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">low=<span class="number">0</span>;</span><br><span class="line">high=N<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">&#123;</span><br><span class="line">    mid=(low+high)/<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> (x==a[mid])</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(x&gt;a[mid])</span><br><span class="line">            low=mid<span class="number">+1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            high=mid<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(low&gt;high)</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;没找到&quot;</span>&lt;&lt;endl;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    cout&lt;&lt;mid&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ol>
+<li>N个学生，围成一圈，1-5报数，报到5的同学出圈。问最后剩下的一名同学起初序号为几？</li>
+</ol>
+<p><code>a[i][j]</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[N],k=<span class="number">0</span>,i;  <span class="comment">//i:序号；k:报数次数</span></span><br><span class="line"><span class="type">int</span> s=<span class="number">0</span>;  <span class="comment">//报的数</span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    a[i]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(k!=N<span class="number">-1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s=s+a[i];</span><br><span class="line">        <span class="keyword">if</span>(s==<span class="number">5</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            s=<span class="number">0</span>;</span><br><span class="line">            k++;</span><br><span class="line">            a[i]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;i&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/categories/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">5.1 数组的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">数组的概念、特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text">数组的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.</span> <span class="toc-text">数组的存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.4.</span> <span class="toc-text">元素的访问</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">5.2 一维数组的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">数组初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E9%80%89%E6%8B%A9%E6%B3%95%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">5.3 常用算法-选择法排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">5.4 冒泡法排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">5.5 常用算法-插入与删除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5"><span class="toc-number">5.0.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-number">5.0.2.</span> <span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="toc-number">6.</span> <span class="toc-text">5.6 常用算法-二分法查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">例题</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&text=第五讲 一维数组"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&is_video=false&description=第五讲 一维数组"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第五讲 一维数组&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&title=第五讲 一维数组"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/&name=第五讲 一维数组&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    footer.copyright &copy;
+    
+    
+    2024
+    Antares
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tag</a></li><!--
+    --><!--
+      --><li><a href="/categories/">category</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">search</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

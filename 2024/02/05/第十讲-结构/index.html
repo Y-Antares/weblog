@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="第十讲 结构10.1 结构体类型例：输入5个学生的信息，如何将这些信息按平均分倒序排序并输出？学生信息：学号、姓名、语文、数学、外语三门课成绩。  如何描述5个学生的信息？   独立变量：30个； 通常的数组：定义多个数组，分别存放5人的姓名、学号、成绩 使用结构类型数组！  123456struct Student&#123;    char name[20];    char no[7];">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十讲 结构">
+<meta property="og:url" content="https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="第十讲 结构10.1 结构体类型例：输入5个学生的信息，如何将这些信息按平均分倒序排序并输出？学生信息：学号、姓名、语文、数学、外语三门课成绩。  如何描述5个学生的信息？   独立变量：30个； 通常的数组：定义多个数组，分别存放5人的姓名、学号、成绩 使用结构类型数组！  123456struct Student&#123;    char name[20];    char no[7];">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yantares.cn/img/image-20231109105019428.png">
+<meta property="article:published_time" content="2024-02-05T10:42:53.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:45:48.457Z">
+<meta property="article:author" content="Antares">
+<meta property="article:tag" content="c&#x2F;c++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/img/image-20231109105019428.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第十讲 结构</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lone Trail</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/categories/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&text=第十讲 结构"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&is_video=false&description=第十讲 结构"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十讲 结构&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&name=第十讲 结构&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">第十讲 结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">10.1 结构体类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.</span> <span class="toc-text">结构类型的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E5%A6%82%E4%BD%95%E5%A3%B0%E6%98%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text">结构类型如何声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8F%98%E9%87%8F%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">结构变量如何定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">10.2 结构体变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">结构变量的访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E6%88%90%E5%91%98%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">结构成员的访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.2.</span> <span class="toc-text">访问原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E7%BB%93%E6%9E%84%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">10.3 结构的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E4%BE%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">引例的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8F%98%E9%87%8F%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">结构变量在函数中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84"><span class="toc-number">1.3.3.</span> <span class="toc-text">附</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">1.4.</span> <span class="toc-text">作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%EF%BC%9A%E5%90%84%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E6%89%80%E5%8D%A0%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82"><span class="toc-number">1.4.1.</span> <span class="toc-text">测试：各类型变量所占内存字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">3</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第十讲 结构
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lone Trail</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-02-05T10:42:53.000Z" itemprop="datePublished">2024-02-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c-c/" rel="tag">c/c++</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="第十讲-结构"><a href="#第十讲-结构" class="headerlink" title="第十讲 结构"></a>第十讲 结构</h1><h2 id="10-1-结构体类型"><a href="#10-1-结构体类型" class="headerlink" title="10.1 结构体类型"></a>10.1 结构体类型</h2><p>例：输入5个学生的信息，如何将这些信息按平均分倒序排序并输出？学生信息：学号、姓名、语文、数学、外语三门课成绩。</p>
+<ul>
+<li>如何描述5个学生的信息？</li>
+</ul>
+<ol>
+<li>独立变量：30个；</li>
+<li>通常的数组：定义多个数组，分别存放5人的姓名、学号、成绩</li>
+<li>使用结构类型数组！</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="type">char</span> no[<span class="number">7</span>];</span><br><span class="line">    <span class="type">int</span> Chinese,English,math;</span><br><span class="line">&#125;s[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="结构类型的概念"><a href="#结构类型的概念" class="headerlink" title="结构类型的概念"></a>结构类型的概念</h3><p>按类型和性质将可能不同但有关联的数据组合在一起构成的集合。</p>
+<h3 id="结构类型如何声明"><a href="#结构类型如何声明" class="headerlink" title="结构类型如何声明"></a>结构类型如何声明</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> 结构类型标识符  <span class="comment">//结构类型关键字</span></span><br><span class="line">&#123;</span><br><span class="line">    结构成员<span class="number">1</span>定义;</span><br><span class="line">    结构成员<span class="number">2</span>定义;</span><br><span class="line">    ...;</span><br><span class="line">    结构成员n定义;</span><br><span class="line">&#125;; <span class="comment">//;不能省!!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>结构变量的成员可以像同类型普通变量一样使用；</p>
+</li>
+<li><p>结构成员名可以与结构外的其他变量同名，二者不代表同一个对象；</p>
+</li>
+</ul>
+<p><strong>结构类型可以嵌套定义</strong>，即一个结构类型的变量可以作为<strong>另一</strong>结构类型的成员。（但不能作为自身的）</p>
+<p>例：先声明结构类型date，再声明结构类型person</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">date</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> month;</span><br><span class="line">    <span class="type">int</span> day;</span><br><span class="line">    <span class="type">int</span> year;                </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name=[];</span><br><span class="line">    <span class="type">char</span> sex;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">date</span> birthday;<span class="comment">//也可以直接date birthday</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20231109105019428.png" alt="image-20231109105019428"></p>
+<p>结构成员 <code>birthday</code> 是内嵌在 <code>struct person</code> 类型中的另一个结构类型的变量。</p>
+<h3 id="结构变量如何定义"><a href="#结构变量如何定义" class="headerlink" title="结构变量如何定义"></a>结构变量如何定义</h3><p>结构类型不是程序操作的对象，不占用内存空间，只有在定义结构变量后，系统才会为之分配内存单元。定义方式：</p>
+<ul>
+<li>先声明结构类型再定义结构变量</li>
+<li>在声明结构类型的同时定义结构变量</li>
+<li>省略结构标识符直接定义结构变量</li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">15</span>];</span><br><span class="line">    <span class="type">char</span> sex;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">date</span> birthday;</span><br><span class="line">&#125;p1,p2;<span class="comment">//声明类型的同时定义变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">15</span>];</span><br><span class="line">    <span class="type">char</span> sex;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">date</span> birthday;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span> p1,p2; <span class="comment">//先声明类型再定义变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">15</span>];</span><br><span class="line">    <span class="type">char</span> sex;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">date</span> birthday;</span><br><span class="line">&#125;p1,p2;<span class="comment">//无类型名变量，也只能有这里定义的两个变量了</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="type">char</span> name[<span class="number">30</span>];</span><br><span class="line"><span class="type">char</span> num[<span class="number">10</span>];</span><br><span class="line"><span class="type">double</span> score;</span><br><span class="line">&#125;s= &#123;<span class="string">&quot;FangMin&quot;</span>, <span class="string">&quot;1300010&quot;</span>, <span class="number">87</span>&#125;;</span><br><span class="line"><span class="comment">/*结构变量的初始化:</span></span><br><span class="line"><span class="comment">该初始化语句为结构变量 s 的 name 成员赋初值&quot;FangMin&quot;、为 num 成员赋初值&quot;1300010&quot;、为 score 成员赋初值 87。*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-2-结构体变量"><a href="#10-2-结构体变量" class="headerlink" title="10.2 结构体变量"></a>10.2 结构体变量</h2><h3 id="结构变量的访问"><a href="#结构变量的访问" class="headerlink" title="结构变量的访问"></a>结构变量的访问</h3><h4 id="结构成员的访问"><a href="#结构成员的访问" class="headerlink" title="结构成员的访问"></a>结构成员的访问</h4><p>结构变量多数情况下需访问到成员，而不能整体访问。</p>
+<ul>
+<li><p>通过结构变量访问成员：</p>
+<p><code>结构变量名.成员名</code></p>
+</li>
+<li><p>通过指向结构的指针访问成员：</p>
+<p><code>(*指向结构的指针).成员名</code></p>
+<p>注：括号不能省略，否则优先<code>.</code>运算</p>
+<ul>
+<li>指针访问成员的专门运算符：</li>
+</ul>
+<p><code>p-&gt;name</code></p>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">date</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> month;</span><br><span class="line">    <span class="type">int</span> day;</span><br><span class="line">    <span class="type">int</span> year;                </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">15</span>];</span><br><span class="line">    <span class="type">char</span> sex;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    date birthday;</span><br><span class="line">&#125;p1,*p=&amp;p1;</span><br></pre></td></tr></table></figure>
+
+<p>可如下访问：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">p<span class="number">1.</span>age=<span class="number">21</span>;</span><br><span class="line"><span class="built_in">strcpy</span>(p-&gt;name,<span class="string">&quot;Fang Min&quot;</span>); <span class="comment">//p-&gt;name是字符数组，赋值要用strcpy函数</span></span><br><span class="line">p-&gt;birthday.month=<span class="number">8</span>;<span class="comment">//p-&gt;birthday已经是date类型变量，和month的关系是.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//对p1赋值（普通）：</span></span><br><span class="line"><span class="built_in">strcpy</span> (p<span class="number">1.</span>name, <span class="string">&quot;Fang Min&quot;</span>);</span><br><span class="line">p<span class="number">1.</span>sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">p<span class="number">1.</span>age = <span class="number">24</span>;</span><br><span class="line">p<span class="number">1.</span>birthday.month = <span class="number">8</span>;</span><br><span class="line">p<span class="number">1.</span>birthday.day = <span class="number">10</span>;</span><br><span class="line">p<span class="number">1.</span>birthday.year = <span class="number">1989</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助结构指针对p1赋值：</span></span><br><span class="line"><span class="built_in">strcpy</span>(p-&gt;name, <span class="string">&quot;Fang Min&quot;</span>);</span><br><span class="line">p-&gt;sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">p-&gt;age = <span class="number">24</span>;</span><br><span class="line">p-&gt;birthday.month = <span class="number">8</span>;</span><br><span class="line">p-&gt;birthday.day = <span class="number">10</span>;</span><br><span class="line">p-&gt;birthday.year = <span class="number">1988</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中，</p>
+<p><code>name</code> 成员为<strong>字符数组</strong>，对字符数组赋值必须通过调用 <code>strcpy</code> 函数实现，而不能直接用赋值语句；</p>
+<p>而 <code>birthday</code> 成员本身又是一个内嵌的结构类型变量，所以也要按<strong>结构成员访问方式</strong>访问到它的具体成员 year、 month、 day。</p>
+<blockquote>
+<p>总结：小心字符数组char s[N]和内嵌型结构变量。</p>
+</blockquote>
+<h3 id="访问原则"><a href="#访问原则" class="headerlink" title="访问原则"></a>访问原则</h3><ul>
+<li>不允许<strong>整体输入输出</strong>结构变量，必须逐成员输入输出；</li>
+<li>允许<strong>整体赋值</strong>和<strong>做函数参数</strong>；</li>
+<li>引用成员时若成员本身又属复杂类型，则需逐级找到最低一级成员；</li>
+<li>成员需遵循同类型普通变量的使用规则及其各种运算。</li>
+</ul>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li><p>结构变量初始化</p>
+<p>各成员的初值按顺序组织在<code>&#123;&#125;</code>中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">15</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">date</span> birthday;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">person</span> p=&#123;<span class="string">&quot;Tom&quot;</span>,<span class="string">&#x27;F&#x27;</span>,<span class="number">18</span>,&#123;<span class="number">12</span>,<span class="number">21</span>,<span class="number">2015</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构数组初始化</p>
+<p>每个数组元素都是一个结构变量，组织在内层<code>&#123;&#125;</code>中；所有数组元素组织在外层<code>&#123;&#125;</code>中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">15</span>];</span><br><span class="line">  <span class="type">char</span> num[<span class="number">7</span>];</span><br><span class="line">  <span class="type">int</span> score;</span><br><span class="line">&#125;p[<span class="number">10</span>]=&#123;&#123;<span class="string">&quot;Fang Min&quot;</span>,<span class="string">&quot;1403235&quot;</span>,<span class="number">84</span>&#125;,&#123;<span class="string">&quot;Fang Hua&quot;</span>,<span class="string">&quot;1403256&quot;</span>,<span class="number">75</span>&#125;&#125;;<span class="comment">//p[0]和p[1]初始化了，p[2]~p[9]的成员值默认为空串或0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gets</span>(p<span class="number">1.</span>name);</span><br><span class="line"><span class="built_in">gets</span>(name);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="10-3-结构的应用"><a href="#10-3-结构的应用" class="headerlink" title="10.3 结构的应用"></a>10.3 结构的应用</h2><h3 id="引例的实现"><a href="#引例的实现" class="headerlink" title="引例的实现"></a>引例的实现</h3><p>输入5个学生的信息，如何将这些信息按平均分倒序排序并输出？学生信息：学号、姓名、语文、数学、外语三门课成绩。</p>
+<p><strong>分析：</strong></p>
+<ul>
+<li>数据结构的选取：应将平均分也定义在“学生”结构类型中；</li>
+<li>正确理清层次关系；</li>
+<li>明确输入、输出、赋值等操作数据的访问要求。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 5</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="type">char</span> no[<span class="number">7</span>];</span><br><span class="line">    <span class="type">double</span> Chinese,Engilsh,math,avg;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    student s[N],t;<span class="comment">//s[N]:student类数组，输入如下：</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;s[i].name&gt;&gt;s[i].Chinese&gt;&gt;s[i].English&gt;&gt;s[i].math;<span class="comment">//逐元素逐成分输入</span></span><br><span class="line">        s[i].avg=(s[i].Chinese+s[i].English+s[i].math)/<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//冒泡法排序</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;N<span class="number">-1</span>-i;j++)</span><br><span class="line">            <span class="keyword">if</span>(s[j].avg&gt;s[j<span class="number">+1</span>].avg) <span class="comment">//结构变量允许整体赋值</span></span><br><span class="line">            &#123;</span><br><span class="line">                t=s[j];</span><br><span class="line">                s[j]=s[j<span class="number">+1</span>];</span><br><span class="line">                s[j<span class="number">+1</span>]=t;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;s[i].name&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;s[i].no&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;s[i].Chinese&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout&lt;&lt;s[i].English&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;s[i].math&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;s[i].avg&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&#x27;pause&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>附：如果对学号（字符串）排序，则需要使用strcmp()：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">strcmp</span>(s[i].no,s[i<span class="number">+1</span>].no)&gt;<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结构变量在函数中的应用"><a href="#结构变量在函数中的应用" class="headerlink" title="结构变量在函数中的应用"></a>结构变量在函数中的应用</h3><p>例：定义包含小时、分钟、秒三个成员的时间结构类型，写一转换函数 ，将24小时制的时间转换成12小时制。</p>
+<p><strong>分析：</strong></p>
+<ul>
+<li>函数参数：接受时间，参数为结构类型变量</li>
+<li>函数返回值：同为结构类型。</li>
+<li>为方便输出，将是否转换的判断放在主函数。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 5</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">time</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> hour;</span><br><span class="line">    <span class="type">int</span> minute;</span><br><span class="line">    <span class="type">int</span> second;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">time</span> <span class="built_in">change</span>(<span class="keyword">struct</span> time t)  <span class="comment">//允许结构变量整体做参数//注意此函数的特征</span></span><br><span class="line">&#123;</span><br><span class="line">    t.hour=t.hour%<span class="number">12</span>;</span><br><span class="line">    <span class="keyword">return</span> t;<span class="comment">//返回结构类型</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">time</span> t;</span><br><span class="line">    cin&gt;&gt;t.hour&gt;&gt;t.minute&gt;&gt;t.second;</span><br><span class="line">    <span class="keyword">if</span>(t.hour&gt;<span class="number">12</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        t=<span class="built_in">change</span>(t);</span><br><span class="line">        cout&lt;&lt;t.hour&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;t.minute&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;t.second&lt;&lt;<span class="string">&quot;pm&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout&lt;&lt;t.hour&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;t.minute&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;t.second&lt;&lt;<span class="string">&quot;am&quot;</span>;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&#x27;pause&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>结构数组是元素为结构类型变量的数组，对该数组操作时需遵循数组的使用原则，对每个元素操作时要符合结构变量的引用原则；</li>
+<li>结构变量在输入输出时必须引用到最低级成员；</li>
+<li>结构变量做函数参数及赋值运算时可整体引用。</li>
+</ul>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p>指针：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span>* name;</span><br><span class="line">    <span class="type">int</span> grade;</span><br><span class="line">&#125;p[<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> s;</span><br><span class="line">    <span class="built_in">gets</span>(s);</span><br><span class="line">    <span class="type">char</span>* p=s;</span><br><span class="line">    <span class="comment">//或者</span></span><br><span class="line">    p=<span class="keyword">new</span> <span class="type">char</span>[<span class="number">20</span>];</span><br><span class="line">    s[i].name=<span class="keyword">new</span> <span class="type">char</span>[<span class="number">10</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><h3 id="测试：各类型变量所占内存字节"><a href="#测试：各类型变量所占内存字节" class="headerlink" title="测试：各类型变量所占内存字节"></a>测试：各类型变量所占内存字节</h3><p>sizeof(char) &#x3D; 1;</p>
+<p>sizeof(int) &#x3D; 4;</p>
+<p>sizeof(long) &#x3D; 4;</p>
+<p>sizeof(float) &#x3D; 4;</p>
+<p>sizeof(double) &#x3D; 8.</p>
+<p><strong>指针类型的sizeof</strong></p>
+<p>指针用于存放地址，它等于计算机内部地址总线的宽度，所以32位计算机中，一个[指针变量]的返回值是4字节(与指针变量的类型无关)。可以预计，在64位系统中指针变量的sizeof等于8。</p>
+<p>sizeof(p) &#x3D; 4;</p>
+<p><strong>数组的sizeof</strong></p>
+<p>数组的sizeof值等于数组所占用的内存字节数，如：</p>
+<p>char a1[] &#x3D; “abc”;</p>
+<p>int a2[3];</p>
+<p>sizeof( a1 ); &#x2F;&#x2F; 结果为4，字符串末尾还存在一个NULL终止符</p>
+<p>sizeof( a2 ); &#x2F;&#x2F; 结果为3_4&#x3D;12（3_sizeof(int)）</p>
+<p>数组元素个数的求法：</p>
+<p>sizeof(a1)&#x2F;sizeof(*a1);</p>
+<h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><p>有一组关于学生成绩的信息，编写函数max，该函数返回值为分数最高的学生的信息（包括学号和分数）。再编写主函数对其进行调用并输出最高分者的信息。假设结构类型定义为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> *num;</span><br><span class="line">    <span class="type">int</span>  score;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>提示：num定义为指针类型，注意向其复制内容之前要先为其申请空间。</p>
+<p>‏</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 256</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span>* num;</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span> <span class="built_in">max</span>(<span class="keyword">struct</span> student s[N],<span class="type">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">student</span> t = &#123;<span class="number">0</span>,s[<span class="number">0</span>].score &#125;;</span><br><span class="line">    t.num = (<span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">char</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i].score &gt; t.score)</span><br><span class="line">        &#123;</span><br><span class="line">            t.score = s[i].score;</span><br><span class="line"></span><br><span class="line">            t.num = s[i].num;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">student</span> s[N] = &#123;&#125;, t = &#123;&#125;;</span><br><span class="line">    <span class="type">int</span> n,i;</span><br><span class="line">    t.num = (<span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">char</span>));</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;输入学生数：&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="comment">/*char a[N];</span></span><br><span class="line"><span class="comment">    s-&gt;num = a;*/</span></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;输入各学生序号及成绩：&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s[i].num = (<span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">char</span>));</span><br><span class="line">        cin &gt;&gt; s[i].num &gt;&gt; s[i].score;</span><br><span class="line">    &#125;</span><br><span class="line">    t=<span class="built_in">max</span>(s,n);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;最高分者序号为&quot;</span> &lt;&lt; *t.num &lt;&lt;<span class="string">&quot;，分值为：&quot;</span> &lt;&lt; t.score &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>标答：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 5</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> *num;</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">student <span class="title">max</span><span class="params">(student s[],<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    student t=s[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">if</span>(s[i].score&gt;t.score)</span><br><span class="line">            t=s[i];</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    student s[N],maxs;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s[i].num=<span class="keyword">new</span> <span class="type">char</span>[<span class="number">10</span>];<span class="comment">//假设学号不超过9位</span></span><br><span class="line">        cin&gt;&gt;s[i].num&gt;&gt;s[i].score;</span><br><span class="line">    &#125;</span><br><span class="line">    maxs=<span class="built_in">max</span>(s,N);      </span><br><span class="line">    cout&lt;&lt;maxs.num&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;maxs.score&lt;&lt;endl;</span><br><span class="line"><span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>编写程序，定义一个日期结构变量，计算某日期是本年度的第几天。提示：为简单起见，可定义一个存放12个月中每个月总天数的数组。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 256</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">time</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> month;</span><br><span class="line">    <span class="type">int</span> date;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">change</span><span class="params">(<span class="keyword">struct</span> time t,<span class="type">bool</span> run)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i,num=<span class="number">0</span>, a[<span class="number">12</span>] = &#123; <span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span> &#125;, b[<span class="number">12</span>] = &#123; <span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span> &#125;;</span><br><span class="line">    <span class="keyword">if</span> (run == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; t.month<span class="number">-1</span>; i++)</span><br><span class="line">            num += b[i];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; t.month<span class="number">-1</span>; i++)</span><br><span class="line">            num += a[i];</span><br><span class="line">    num += t.date;</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">time</span> t;</span><br><span class="line">    <span class="type">bool</span> run;</span><br><span class="line">    <span class="type">int</span> num;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;今年是不是闰年？（是：1；否：0）&quot;</span> &lt;&lt; endl;</span><br><span class="line">    cin &gt;&gt; run;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;输入一日期（月/日）&quot;</span> &lt;&lt; endl;</span><br><span class="line">    cin &gt;&gt; t.month &gt;&gt; t.date;</span><br><span class="line">    num = <span class="built_in">change</span>(t, run);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;这是今年的第&quot;</span> &lt;&lt; num &lt;&lt; <span class="string">&quot;天&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3"><a href="#3" class="headerlink" title="3"></a>3</h4><p>‏使用结构数组输入10本书的名称和单价，调用函数按照书名的字母顺序序进行排序，在主函数输出排序结果</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 5</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">book</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> price;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/*int *sort(struct book b[])</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    int i, j, *m[N],a;</span></span><br><span class="line"><span class="comment">    for(i=0;i&lt;N-1;i++)</span></span><br><span class="line"><span class="comment">        for (j = 0; j &lt; N - 1 - i; j++)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            if (b[j].name &gt; b[j + 1].name)</span></span><br><span class="line"><span class="comment">            &#123;</span></span><br><span class="line"><span class="comment">                a = b[j].num;</span></span><br><span class="line"><span class="comment">                b[j].num = b[j + 1].num;</span></span><br><span class="line"><span class="comment">                b[j + 1].num = a;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    for (i = 0; i &lt; N; i++)</span></span><br><span class="line"><span class="comment">        *m[i] = b[i].num;</span></span><br><span class="line"><span class="comment">    return *m;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">book</span> *<span class="built_in">sort</span>(<span class="keyword">struct</span> book b[])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">book</span> a;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; N - <span class="number">1</span> - i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//for(int z=0; b[j].name[z] != &#x27;\0&#x27; &amp;&amp; b[j + 1].name[z] != &#x27;\0&#x27;;z++)</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">strcmp</span>(b[j].name, b[j<span class="number">+1</span>].name) &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                a = b[j];</span><br><span class="line">                b[j] = b[j + <span class="number">1</span>];</span><br><span class="line">                b[j + <span class="number">1</span>] = a;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">book</span>* p = b;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">book</span> b[N],*p;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        cin &gt;&gt; b[i].name &gt;&gt; b[i].price;</span><br><span class="line">    p = <span class="built_in">sort</span>(b);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;排序后结果：&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        cout &lt;&lt; p[i].name &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; p[i].price &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/categories/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">第十讲 结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">10.1 结构体类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.</span> <span class="toc-text">结构类型的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E5%A6%82%E4%BD%95%E5%A3%B0%E6%98%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text">结构类型如何声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8F%98%E9%87%8F%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">结构变量如何定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">10.2 结构体变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">结构变量的访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E6%88%90%E5%91%98%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">结构成员的访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.2.</span> <span class="toc-text">访问原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E7%BB%93%E6%9E%84%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">10.3 结构的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E4%BE%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">引例的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8F%98%E9%87%8F%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">结构变量在函数中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84"><span class="toc-number">1.3.3.</span> <span class="toc-text">附</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">1.4.</span> <span class="toc-text">作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%EF%BC%9A%E5%90%84%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E6%89%80%E5%8D%A0%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82"><span class="toc-number">1.4.1.</span> <span class="toc-text">测试：各类型变量所占内存字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">3</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&text=第十讲 结构"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&is_video=false&description=第十讲 结构"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十讲 结构&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&title=第十讲 结构"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/&name=第十讲 结构&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    footer.copyright &copy;
+    
+    
+    2024
+    Antares
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tag</a></li><!--
+    --><!--
+      --><li><a href="/categories/">category</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">search</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>

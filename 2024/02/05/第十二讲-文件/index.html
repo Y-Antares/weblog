@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="12.1 文件的概述 标准输入输出  受限于数据类型，处理数据数量有限，程序结束不保存计算结果。   文件输入输出  可以处理大批量数据，长久地保存计算结果。    文件概述 文件是存储在外存（如磁盘）上的数据集合。  每个文件通过唯一的文件名来标识。  文件路径：指明文件在外存中位置  主文件名：遵循标识符命名规则  文件后缀（扩展名）：表示文件性质   e.g.D:\\document\\co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十二讲 文件">
+<meta property="og:url" content="https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="12.1 文件的概述 标准输入输出  受限于数据类型，处理数据数量有限，程序结束不保存计算结果。   文件输入输出  可以处理大批量数据，长久地保存计算结果。    文件概述 文件是存储在外存（如磁盘）上的数据集合。  每个文件通过唯一的文件名来标识。  文件路径：指明文件在外存中位置  主文件名：遵循标识符命名规则  文件后缀（扩展名）：表示文件性质   e.g.D:\\document\\co">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yantares.cn/img/image-20231130092504128.png">
+<meta property="article:published_time" content="2024-02-05T10:45:27.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:45:48.464Z">
+<meta property="article:author" content="Antares">
+<meta property="article:tag" content="c&#x2F;c++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/img/image-20231130092504128.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第十二讲 文件</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lone Trail</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/categories/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/02/05/%E6%88%B4%E9%94%A6%E5%8D%8E%EF%BC%9A%E5%8E%86%E5%8F%B2%E4%B8%8E%E4%BA%BA%E6%B0%91%E7%9A%84%E5%9B%9E%E5%BF%86/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&text=第十二讲 文件"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&is_video=false&description=第十二讲 文件"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十二讲 文件&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&name=第十二讲 文件&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E6%96%87%E4%BB%B6%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">12.1 文件的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">文件概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD"><span class="toc-number">2.</span> <span class="toc-text">12.2 文件的打开和关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%EF%BC%9Afopen"><span class="toc-number">2.1.</span> <span class="toc-text">文件的打开：fopen</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#c2022%EF%BC%9Afopen-s"><span class="toc-number">2.1.1.</span> <span class="toc-text">c2022：fopen_s</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%EF%BC%9Amode"><span class="toc-number">2.1.2.</span> <span class="toc-text">文件的打开方式：mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%85%B3%E9%97%AD"><span class="toc-number">2.2.</span> <span class="toc-text">文件的关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-number">3.</span> <span class="toc-text">12.3 文件的读写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%86%99"><span class="toc-number">3.1.</span> <span class="toc-text">顺序读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6%EF%BC%9Afgetc"><span class="toc-number">3.1.1.</span> <span class="toc-text">从文件读取字符：fgetc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9D%9F%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0%EF%BC%9Afeof"><span class="toc-number">3.1.2.</span> <span class="toc-text">文件结束测试函数：feof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%EF%BC%9Afputc"><span class="toc-number">3.1.3.</span> <span class="toc-text">向文件写入字符：fputc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9Afputs"><span class="toc-number">3.1.4.</span> <span class="toc-text">向文件写入字符串：fputs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9Afgets"><span class="toc-number">3.1.5.</span> <span class="toc-text">从文件读取字符串：fgets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%9D%97%EF%BC%9Afread"><span class="toc-number">3.1.6.</span> <span class="toc-text">从文件读取数据块：fread</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%9D%97%EF%BC%9Afwrite"><span class="toc-number">3.1.7.</span> <span class="toc-text">向文件写入数据块：fwrite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%97%E8%AF%BB%E5%86%99%E5%BA%94%E7%94%A8"><span class="toc-number">3.1.8.</span> <span class="toc-text">块读写应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B3"><span class="toc-number">3.1.8.1.</span> <span class="toc-text">例3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%9Afprintf"><span class="toc-number">3.1.9.</span> <span class="toc-text">向文件格式化写入数据：fprintf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE-%EF%BC%9Afscanf"><span class="toc-number">3.1.10.</span> <span class="toc-text">从文件格式化读取数据 ：fscanf</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fscanf-s"><span class="toc-number">3.1.10.1.</span> <span class="toc-text">fscanf_s</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B4"><span class="toc-number">3.1.10.2.</span> <span class="toc-text">例4</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99"><span class="toc-number">3.2.</span> <span class="toc-text">随机读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rewind%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">rewind函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fseek%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.2.</span> <span class="toc-text">fseek函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第十二讲 文件
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lone Trail</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-02-05T10:45:27.000Z" itemprop="datePublished">2024-02-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c-c/" rel="tag">c/c++</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="12-1-文件的概述"><a href="#12-1-文件的概述" class="headerlink" title="12.1 文件的概述"></a>12.1 文件的概述</h2><ul>
+<li><p>标准输入输出</p>
+<ul>
+<li>受限于数据类型，处理数据数量有限，程序结束不保存计算结果。</li>
+</ul>
+</li>
+<li><p>文件输入输出</p>
+<ul>
+<li>可以处理大批量数据，长久地保存计算结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件概述"><a href="#文件概述" class="headerlink" title="文件概述"></a>文件概述</h3><ul>
+<li><p>文件是存储在<strong>外存</strong>（如磁盘）上的数据集合。</p>
+</li>
+<li><p>每个文件通过<strong>唯一的文件名</strong>来标识。</p>
+<ul>
+<li><p>文件路径：指明文件在外存中位置</p>
+</li>
+<li><p>主文件名：遵循标识符命名规则</p>
+</li>
+<li><p>文件后缀（扩展名）：表示文件性质</p>
+</li>
+</ul>
+<p>e.g.<code>D:\\document\\codes.txt</code></p>
+</li>
+<li><p>计算机按文件名对文件进行读写等操作。</p>
+</li>
+<li><p>文件按<strong>数据存储形式</strong>分类</p>
+<ul>
+<li><p>文本文件（ASCII文件）</p>
+</li>
+<li><p>把内存中数据转换为ASCII码，每个字符用一个ASCII码存储。</p>
+</li>
+<li><p>二进制文件</p>
+</li>
+<li><p>把内存中数据按其内存中存储形式不进行格式转换直接存放在文件上。</p>
+</li>
+</ul>
+<p>例：整数123在内存占4个字节，其二进制文件也占4个字节，文本文件占3个字节。</p>
+<p>​ 二进制文件因为与字符没有直接的对应关系，所以不能直接编辑和显示。</p>
+<p>​ 故一般字符型数据以文本文件形式存储。而数值型数据视情况而定，二进制形式比较方便。</p>
+</li>
+<li><p>文件存取方式</p>
+<ul>
+<li>顺序存取</li>
+<li>每当打开文件进行读、写操作时，总是从 文件的开头开始，从头到尾顺序地读写。</li>
+<li>随机存取</li>
+<li>可以通过调用C语言的库函数去指定开始读写的字节号，然后直接对此位置上的数据进行读写操作。</li>
+</ul>
+</li>
+<li><p>C语言文件操作步骤</p>
+<ul>
+<li>定义文件类型指针</li>
+<li><code>FILE *文件指针变量</code></li>
+<li>打开文件</li>
+<li>调用<code>fopen</code>函数</li>
+<li>文件读写</li>
+<li>调用读写函数：<ul>
+<li><code>fgetc, fputc</code></li>
+<li><code>fgets, fputs</code></li>
+<li><code>fread, fwrite</code></li>
+<li><code>fscanf, fprintf</code></li>
+</ul>
+</li>
+<li>关闭文件</li>
+<li>调用<code>fclose</code>函数</li>
+</ul>
+</li>
+<li><p>对文件的处理通过调用标准的输入输出库函数实现。</p>
+</li>
+<li><p>文件操作一般采用：缓冲文件系统“的方式。</p>
+<p><img src="/img/image-20231130092504128.png" alt="image-20231130092504128"></p>
+</li>
+<li><p>C语言文件处理的关键是定义一个<strong>文件指针</strong>，通过该指针对文件进行打开、读写、关闭等操作。</p>
+<ul>
+<li>定义：<code>FILE *文件指针标识符;</code></li>
+</ul>
+<p>如：<code>FILE *fp1,fp2;</code></p>
+<ul>
+<li>FILE是结构体变量，存放每一个被打开文件的有关信息（如缓冲区的状态、大小，文件当前位置等）。使用FILE类型，需包含<code>stdio.h</code>文件。</li>
+</ul>
+</li>
+</ul>
+<h2 id="12-2-文件的打开和关闭"><a href="#12-2-文件的打开和关闭" class="headerlink" title="12.2 文件的打开和关闭"></a>12.2 文件的打开和关闭</h2><p>实质：建立&#x2F;撤销文件信息区和文件缓冲区</p>
+<h3 id="文件的打开：fopen"><a href="#文件的打开：fopen" class="headerlink" title="文件的打开：fopen"></a>文件的打开：fopen</h3><ul>
+<li>函数原型：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FILE *fopen(char *fname,char *mode)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>功能：<ul>
+<li>按照mode规定的方式，打开由fname指定的文件。</li>
+</ul>
+</li>
+<li>参数：<ul>
+<li><strong>fname</strong>：字符指针，指向要打开或建立的文件名字符串；</li>
+<li><strong>mode</strong>：字符指针，指向文件处理方式字符串。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常返回：被打开的文件的 文件指针；</li>
+<li>异常返回：NULL，表示打开操作不成功。</li>
+</ul>
+</li>
+</ul>
+<h4 id="c2022：fopen-s"><a href="#c2022：fopen-s" class="headerlink" title="c2022：fopen_s"></a>c2022：fopen_s</h4><p>使用方法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打开文件</span></span><br><span class="line">FILE *fp;</span><br><span class="line"><span class="type">errno_t</span> err = <span class="built_in">fopen_s</span>( &amp;fp, <span class="string">&quot;D:\\users.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件的打开方式：mode"><a href="#文件的打开方式：mode" class="headerlink" title="文件的打开方式：mode"></a>文件的打开方式：mode</h4><blockquote>
+<p>有”r”, “w”, “a”, “+”, “b”, “t”六种模式选择符号。</p>
+<p>r—-read</p>
+<p>w—-write</p>
+<p>a—-append</p>
+<p>t—-text（默认）</p>
+<p>b—-binary</p>
+<p>+—-read+write</p>
+</blockquote>
+<p>mode</p>
+<p>r</p>
+<p>以<strong>只读</strong>方式打开文件，该文件必须存在。</p>
+<p>w</p>
+<p>打开<strong>只写</strong>文件，若文件存在则清除内容，若不存在则创建该文件。</p>
+<p>a</p>
+<p>以<strong>追加</strong>方式打开<strong>只写</strong>文件。若文件不存在，则会建立该文件；若文件存在，写入的数据会被追加到文件尾后。</p>
+<p>r+</p>
+<p>以<strong>读&#x2F;写</strong>方式打开文件，该文件必须存在。</p>
+<p>w+</p>
+<p>打开<strong>可读&#x2F;写</strong>文件，若文件存在则清除内容，若文件不存在则建立该文件。</p>
+<p>a+</p>
+<p>以<strong>追加</strong>方式打开<strong>可读&#x2F;写</strong>文件，若文件不存在，则会建立该文件；若文件存在，写入的数据会被追加到文件尾后。</p>
+<p>rb</p>
+<p>以<strong>只读</strong>方式打开一个<strong>二进制文件</strong>，只允许读数据。</p>
+<p>wb</p>
+<p>以<strong>只写</strong>方式打开或新建一个<strong>二进制文件</strong>，只允许写数据。</p>
+<p>ab</p>
+<p><strong>追加</strong>打开一个<strong>二进制文件</strong>，并在文件末尾写数据。</p>
+<p>rb+</p>
+<p>以<strong>读&#x2F;写</strong>方式打开<strong>二进制文件</strong>，该文件必须存在。</p>
+<p>wb+</p>
+<p>以<strong>读&#x2F;写</strong>方式打开或建立一个<strong>二进制文件</strong>，允许读和写。</p>
+<p>ab+</p>
+<p>以<strong>读&#x2F;写</strong>方式打开一个二进制文件，允许读或在文件末追加数据。</p>
+<p>说明：<strong>t</strong>表示打开<strong>文本文件</strong>，如果不加<strong>b（二进制文件）</strong>，表示默认加了t。</p>
+<ul>
+<li><p>为了程序的通用性，文件名可在程序运行时输入，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp;</span><br><span class="line"><span class="type">char</span> fname[<span class="number">15</span>];</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;Input filename:\n&quot;</span>;</span><br><span class="line">cin&gt;&gt;fname;</span><br><span class="line">fp=<span class="built_in">fopen</span>(fname,<span class="string">&quot;r&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>在fopen函数中，若文件名直接给出，路径中的<code>\</code>应写成<code>\\</code>;</p>
+<p><code>fp=fopen(&quot;D:\\Doc\\codes.txt&quot;,&quot;a&quot;);</code></p>
+<p>若文件名在程序运行时输入（如上例），则路径中的分隔符直接输入字符<code>\</code>。</p>
+<p>(input) <code>D:\Doc\codes.txt</code></p>
+</li>
+<li><p>为保证程序正常运行，需对fopen函数的返回值进行检验，以判断文件是否成功打开，形式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((fp=<span class="built_in">fopen</span>(fname,mode))==<span class="literal">NULL</span>)</span><br><span class="line">&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;can&#x27;t open file\n&quot;</span>;</span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（该段程序需要头文件stdlib.h）</p>
+</li>
+</ul>
+<h3 id="文件的关闭"><a href="#文件的关闭" class="headerlink" title="文件的关闭"></a>文件的关闭</h3><ul>
+<li>函数原型：<ul>
+<li><code>int fclose(FILE *fp)</code></li>
+</ul>
+</li>
+<li>功能：<ul>
+<li>关闭fp所指的文件，释放fp所指的文件类型结构体变量。</li>
+</ul>
+</li>
+<li>参数：<ul>
+<li>fp：一个已打开文件的文件指针。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常返回：0；</li>
+<li>异常返回：<code>EOF(-1)</code>，表示文件在关闭时发生错误。</li>
+</ul>
+</li>
+</ul>
+<p>应养成及时关闭文件的习惯，防止误操作或其他原因丢失数据。</p>
+<p>判断</p>
+<h2 id="12-3-文件的读写"><a href="#12-3-文件的读写" class="headerlink" title="12.3 文件的读写"></a>12.3 文件的读写</h2><blockquote>
+<p>顺序读写：按照数据在文件中的存储顺序读写文件，容易但效率不高；</p>
+<p>随机读写：反之，对任意位置的数据读写、访问。</p>
+</blockquote>
+<h3 id="顺序读写"><a href="#顺序读写" class="headerlink" title="顺序读写"></a>顺序读写</h3><ul>
+<li><p>C语言提供四种顺序读写函数：</p>
+<p>字符读写、字符串读写、格式读写和数据块读写。</p>
+</li>
+</ul>
+<p>函数</p>
+<p>功能</p>
+<p>函数</p>
+<p>功能</p>
+<p>fputc</p>
+<p>向文件<strong>写入字符</strong></p>
+<p>fputs</p>
+<p>向文件<strong>写入字符串</strong></p>
+<p>gfetc</p>
+<p>从文件<strong>读取字符</strong></p>
+<p>fgets</p>
+<p>从文件<strong>读取字符串</strong></p>
+<p>fwritec</p>
+<p>向文件<strong>写入数据块</strong></p>
+<p>fprintf</p>
+<p>向文件<strong>格式化写入数据块</strong></p>
+<p>fread</p>
+<p>从文件<strong>读取数据块</strong></p>
+<p>fscanf</p>
+<p>从文件<strong>格式化读取数据块</strong></p>
+<h4 id="从文件读取字符：fgetc"><a href="#从文件读取字符：fgetc" class="headerlink" title="从文件读取字符：fgetc"></a>从文件读取字符：fgetc</h4><ul>
+<li><p>函数原型</p>
+<ul>
+<li><code>int fgetc(FILE *fp)</code></li>
+</ul>
+</li>
+<li><p>功能：</p>
+<ul>
+<li>从fp所指文件中读取一个字符，并使文件指针后移一个字符位置。</li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li>fp：文件指针，指向要从中读取字符的文件。</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>正常返回：读取的字符；</li>
+<li>异常返回：EOF(-1)。</li>
+</ul>
+</li>
+<li><p>返回类型的说明：用于区分有效数据和输入的结束（EOF）</p>
+<ul>
+<li>若返回类型为char：内存中都是一个字节（无法区分）</li>
+<li>EOF：0xFF</li>
+<li>数据：0xFF</li>
+<li>若返回类型为int：四个字节（正确区分）</li>
+<li>EOF: 0xFFFFFFFF</li>
+<li>数据:0x000000XX</li>
+<li>所以将fgetc函数的返回定义为int类型。</li>
+</ul>
+</li>
+</ul>
+<h4 id="文件结束测试函数：feof"><a href="#文件结束测试函数：feof" class="headerlink" title="文件结束测试函数：feof"></a>文件结束测试函数：feof</h4><ul>
+<li>函数原型：<code>int feof(FILE *fp)</code></li>
+<li>功能：判断文件是否结束；</li>
+<li>参数：fp:文件指针；</li>
+<li>返回值：<ul>
+<li>0：假植，表示文件未结束。</li>
+<li>1：真值，表示文件结束。</li>
+</ul>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!<span class="built_in">feof</span>(fp))</span><br><span class="line">&#123;</span><br><span class="line">    ch=<span class="built_in">fgetc</span>(fp);</span><br><span class="line">    <span class="built_in">putchar</span>(ch);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不想输出-1的话：</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    ch=<span class="built_in">fgetc</span>(fp);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">feof</span>(fp)==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in">putchar</span>(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="向文件写入字符：fputc"><a href="#向文件写入字符：fputc" class="headerlink" title="向文件写入字符：fputc"></a>向文件写入字符：fputc</h4><ul>
+<li>函数原型：<code>int fputc(int ch,FILE *fp)</code></li>
+<li>功能：把ch中的字符写入fp所指的文件当前位置处，并使文件指针后移一个字符位置。</li>
+<li>参数：<ul>
+<li>ch：整型变量，内存要写到文件中的字符。</li>
+<li>fp：文件指针，指向要在其中写入字符的文件。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常：写入的字符。</li>
+<li>异常：EOF(-1)。</li>
+</ul>
+</li>
+</ul>
+<p><strong>例1</strong></p>
+<p>编程将文件file1.txt的内容显示在屏幕上，同时将该文件中的数字字符复制到文件file2.txt中。</p>
+<p><strong>分析：</strong></p>
+<p>实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fp1,fp2;</span><br><span class="line">    <span class="type">char</span> ch;</span><br><span class="line">    fp1=<span class="built_in">fopen</span>(<span class="string">&quot;c:\\file1.txt&quot;</span>,<span class="string">&quot;r&quot;</span>);<span class="comment">//只读方式打开file1</span></span><br><span class="line">    <span class="keyword">if</span>(fp1==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;fail to open file1.txt&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((fp2=<span class="built_in">fopen</span>(<span class="string">&quot;c:\\file2.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;fail to open file2.txt&quot;</span>;</span><br><span class="line">        <span class="built_in">fclose</span>(fp1);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">feof</span>(fp1))</span><br><span class="line">    &#123;</span><br><span class="line">        ch=<span class="built_in">fgetc</span>(fp1);</span><br><span class="line">        <span class="built_in">putchar</span>(ch);<span class="comment">//文件内容读到内存后显示在屏幕上</span></span><br><span class="line">        <span class="keyword">if</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">            <span class="built_in">fputc</span>(ch,fp2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp1);<span class="built_in">fclose</span>(fp2); </span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="向文件写入字符串：fputs"><a href="#向文件写入字符串：fputs" class="headerlink" title="向文件写入字符串：fputs"></a>向文件写入字符串：fputs</h4><ul>
+<li><p>函数原型：<code>int fputs(char *str,FILE *fp)</code></p>
+</li>
+<li><p>功能：将str指向的字符串的内容输入到fp所指文件的当前位置，同时将fp自动向前移动strlen(str)个字符位置。</p>
+</li>
+<li><p>参数：</p>
+<ul>
+<li>str: 字符串常量&#x2F;字符串指针&#x2F;字符数组名等。</li>
+<li>fp: 文件指针，指向要被写入的文件。</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>正常：非负整数。</li>
+<li>异常：EOF(-1)。</li>
+</ul>
+<p>说明：</p>
+<ol>
+<li>字符串结束符<code>\0</code>不输入到文件；</li>
+<li>不自动在字符串末尾加换行符。</li>
+<li><code>fputs</code>自带换行。</li>
+</ol>
+</li>
+</ul>
+<h4 id="从文件读取字符串：fgets"><a href="#从文件读取字符串：fgets" class="headerlink" title="从文件读取字符串：fgets"></a>从文件读取字符串：fgets</h4><ul>
+<li><p>函数原型：<code>int fgets(char *str,int n,FILE *fp)</code></p>
+</li>
+<li><p>功能：从由fp指出的文件中读取<strong>n-1个</strong>字符，并把它们存放到由str指出的字符数组中，最后自动加上<code>\0</code>。</p>
+</li>
+<li><p>参数：</p>
+<ul>
+<li>str: 接受字符串的内存地址，可以是数组名或指针。</li>
+<li>n：要读取字符的个数</li>
+<li>fp: 文件指针，指向要被读取字符的文件。</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>正常：字符串的内存首地址（str的值）。</li>
+<li>异常：NULL。</li>
+</ul>
+<p>说明：</p>
+<ol>
+<li>读入n-1个字符到文件时，遇到换行符或文件结束符则提前结束；</li>
+<li>读入结束后，系统自动加<code>\0</code></li>
+</ol>
+</li>
+</ul>
+<p><strong>例2</strong> 字符串读写函数示例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="type">char</span> s[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">if</span>((fp=<span class="built_in">fopen</span>(<span class="string">&quot;file1.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;can&#x27;t open file1!\n&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">&quot;I am a teacher.&quot;</span>,fp);</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">&quot;I love my homeland!&quot;</span>,fp);</span><br><span class="line">    <span class="built_in">fclose</span>(fp);<span class="comment">//必须先关闭，再以只读的方式打开。</span></span><br><span class="line">    <span class="keyword">if</span>((fp=<span class="built_in">fopen</span>(<span class="string">&quot;file1.txt&quot;</span>,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;can&#x27;t open file1!\n&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">feof</span>(fp))<span class="comment">//指针指到的地方没结束的话</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fgets</span>(s,<span class="number">16</span>,fp);<span class="comment">//每次读取15个字符</span></span><br><span class="line">        <span class="built_in">puts</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);<span class="comment">//关闭指针</span></span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="从文件读取数据块：fread"><a href="#从文件读取数据块：fread" class="headerlink" title="从文件读取数据块：fread"></a>从文件读取数据块：fread</h4><ul>
+<li>函数原型：<code>int fread(void *buffer, int size, int count, FILE *fp)</code></li>
+<li>功能：<ul>
+<li>从文件指针fp所指的文件的当前位置读取字节数为size大小的数据块共count个，存到buffer所指的内存存储区中。</li>
+</ul>
+</li>
+<li>参数：<ul>
+<li>buffer：指向存放读入数据存储区的首地址的指针。</li>
+<li>size：数据块的字节数，即一个数据块的大小。</li>
+<li>count：一次读入数据块的数量。</li>
+<li>fp：文件指针，指向要从中读出数据的文件。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常返回：实际读取数据块的个数，即count。</li>
+<li>异常返回：0。</li>
+</ul>
+</li>
+</ul>
+<h4 id="向文件写入数据块：fwrite"><a href="#向文件写入数据块：fwrite" class="headerlink" title="向文件写入数据块：fwrite"></a>向文件写入数据块：fwrite</h4><ul>
+<li>函数原型：<code>int fwrite(void *buffer, int size, int count, FILE *fp)</code></li>
+<li>功能：<ul>
+<li>将以buffer为起始地址的长度为size的count个数据块输出到文件指针fp所指的位置去。</li>
+</ul>
+</li>
+<li>参数：<ul>
+<li>buffer：指向存放输出数据存储区的首地址的指针。</li>
+<li>size：数据块的字节数，即一个数据块的大小。</li>
+<li>count：一次输出数据块的数量。</li>
+<li>fp：文件指针，指向要从中写入数据的文件。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常返回：实际输出数据块的个数，即count。</li>
+<li>异常返回：0。</li>
+</ul>
+</li>
+</ul>
+<h4 id="块读写应用"><a href="#块读写应用" class="headerlink" title="块读写应用"></a>块读写应用</h4><p><strong><code>fread</code>和<code>fwrite</code>常用于读写二进制文件。</strong></p>
+<p><strong>例：</strong></p>
+<p>假设fp指向以二进制形式打开的可读写文件，并有如下说明：</p>
+<p><code>float f; double d[10];</code></p>
+<p><strong>常见的块读写应用示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fwrite</span>(&amp;f,<span class="built_in">sizeof</span>(<span class="type">float</span>),<span class="number">1</span>,fp); <span class="comment">//把浮点数f写入文件</span></span><br><span class="line"><span class="built_in">fwrite</span>(d,<span class="built_in">sizeof</span>(<span class="type">double</span>),<span class="number">10</span>,fp);  <span class="comment">//把数组d中所有数写入文件</span></span><br><span class="line"><span class="built_in">fread</span>(&amp;f,<span class="built_in">sizeof</span>(<span class="type">float</span>),<span class="number">1</span>,fp);  <span class="comment">//从文件中以块形式读一浮点数到变量f中</span></span><br><span class="line"><span class="built_in">fread</span>(d,<span class="built_in">sizeof</span>(d),<span class="number">1</span>,fp);  <span class="comment">//从文件中一次性读一个数组d大小的数据块到数组d中</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="例3"><a href="#例3" class="headerlink" title="例3"></a><strong>例3</strong></h5><p>从键盘上读入5个学生的成绩信息，将它们以文件的形式保存在磁盘上。然后再将从文件中读取学生信息，并在屏幕上显示出来。假设学生成绩信息包括学生姓名、学号、总分。</p>
+<p><strong>分析：</strong></p>
+<p>程序处理的数据为<strong>结构数组</strong>，应选择<strong>块读写</strong>的方式进行文件操作，具体步骤如下：</p>
+<ul>
+<li>声明学生成绩结构类型</li>
+<li>定义学生成绩结构数组</li>
+<li>以块读写的方式对学生信息进行文件读写</li>
+</ul>
+<p>程序实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="type">char</span> num[<span class="number">8</span>];</span><br><span class="line">    <span class="type">double</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">student</span> s[N],t[N];</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="keyword">if</span> ((fp=<span class="built_in">fopen</span>(<span class="string">&quot;student.dat&quot;</span>,<span class="string">&quot;wb&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;can&#x27;t openstudent.dat&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;<span class="comment">//判定是否成功打开</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123; cin&gt;&gt;s[i].name&gt;&gt;s[i].num&gt;&gt;s[i].score;</span><br><span class="line">        <span class="built_in">fwrite</span>(&amp;s[i],<span class="built_in">sizeof</span>(student),<span class="number">1</span>,fp); <span class="comment">//对于第i个学生，逐元素向文件写数据</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);<span class="comment">//写文件结束先关闭，再以读的方式打开</span></span><br><span class="line">    <span class="keyword">if</span> ((fp=<span class="built_in">fopen</span>(<span class="string">&quot;student.dat&quot;</span>,<span class="string">&quot;rb&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;can&#x27;t openstudent.dat&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fread</span>(t,<span class="built_in">sizeof</span>(t),<span class="number">1</span>,fp); <span class="comment">//一次性从文件读出整个数组</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">        cout&lt;&lt;s[i].name&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;s[i].num&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;s[i].score&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="向文件格式化写入数据：fprintf"><a href="#向文件格式化写入数据：fprintf" class="headerlink" title="向文件格式化写入数据：fprintf"></a>向文件格式化写入数据：fprintf</h4><ul>
+<li>函数原型：<code>int fprintf(FILE *fp,const char *format,arg_list)</code></li>
+<li>功能说明：将变量表列<code>(arg_list)</code>中的数据，按照<code>format</code>指出的格式，写入由<code>fp</code>指定的文件。</li>
+<li>参数说明：<ul>
+<li><code>fp</code>：文件指针，指向将数据写入的文件。</li>
+<li><code>format</code>：指向写出数据格式字符串的指针.</li>
+<li><code>arg_list</code>：要写入文件的变量表列，各变量之间用逗号分隔。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常返回：输出的字节数。</li>
+<li>异常返回：负值。</li>
+</ul>
+</li>
+<li>示例：<code>fprintf(fp,&quot;%d%s&quot;,4,&quot;China&quot;);</code><ul>
+<li>表示将整数4和字符串”China”按整数和字符串的形式写入fp所指的文件中。</li>
+</ul>
+</li>
+</ul>
+<h4 id="从文件格式化读取数据-：fscanf"><a href="#从文件格式化读取数据-：fscanf" class="headerlink" title="从文件格式化读取数据 ：fscanf"></a>从文件格式化读取数据 ：fscanf</h4><ul>
+<li><p>函数原型：<code>int fscanf(FILE *fp,const char *format,add_list)</code></p>
+</li>
+<li><p>功能说明：按照<code>format</code>指出的格式，从<code>fp</code>指定的文件中读取数据存 放至地址表列<code>(add_list)</code>的变量中。</p>
+</li>
+<li><p>参数说明：</p>
+<ul>
+<li><code>fp</code>：文件指针，指向要从中读取数据的文件。</li>
+<li><code>format</code>：指向读取数据格式字符串的指针。</li>
+<li><code>add_list</code>：存放读取数据的变量的地址表列。</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li>正常返回：成功读取的参数的个数。</li>
+<li>异常返回：EOF（-1）。</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<p><code>fscanf(fp,&quot;%d%d&quot; ,&amp;x,&amp;y);</code></p>
+<p>表示从fp所指的文件中顺序读取两个整数给变量x和y。</p>
+<p>地址符号<code>&amp;</code>不能省略。</p>
+</li>
+</ul>
+<h5 id="fscanf-s"><a href="#fscanf-s" class="headerlink" title="fscanf_s"></a>fscanf_s</h5><blockquote>
+<p>vs2022那令人恼火的安全函数</p>
+</blockquote>
+<p>和fscanf区别就是fscanf_s比fscanf多了个域宽检查，会多一个参数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fscanf</span>(fp,<span class="string">&quot;%s&quot;</span>,str);</span><br><span class="line"><span class="built_in">fscanf_s</span>(fp,<span class="string">&quot;%s&quot;</span>,str,<span class="number">20</span>);<span class="comment">//fsanf_s会比fscanf多一个说明要读出数据内存大小的数字。</span></span><br></pre></td></tr></table></figure>
+
+<p>读取多个数据：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fscanf_s</span>(fp, <span class="string">&quot;%s %s %s&quot;</span>, s1,<span class="number">20</span>, s2,<span class="number">20</span>, s3,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<p>读取多个数字的字符串：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fscanf_s</span>(fp, <span class="string">&quot;%s %s %s %d %d&quot;</span>, s1, <span class="number">20</span>, s2, <span class="number">20</span>, s3, <span class="number">20</span>,&amp;a,&amp;b);</span><br></pre></td></tr></table></figure>
+
+<h5 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h5><p>用格式化读写文件方式实现例三相同的功能</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>],num[<span class="number">8</span>];</span><br><span class="line">    <span class="type">double</span> score;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="keyword">if</span> ((fp=<span class="built_in">fopen</span>(<span class="string">&quot;student.dat&quot;</span>,<span class="string">&quot;wb&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;can&#x27;t openstudent.dat&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;<span class="comment">//判定是否成功打开</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123; cin&gt;&gt;name&gt;&gt;num&gt;&gt;score;</span><br><span class="line">        <span class="built_in">fprintf</span>(fp,<span class="string">&quot;%s %s %lf&quot;</span>,name,num,score); <span class="comment">//对于第i个学生，逐元素向文件写数据</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);<span class="comment">//写文件结束先关闭，再以读的方式打开</span></span><br><span class="line">    <span class="keyword">if</span> ((fp=<span class="built_in">fopen</span>(<span class="string">&quot;student.dat&quot;</span>,<span class="string">&quot;rb&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;can&#x27;t openstudent.dat&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fscanf</span>(fp,<span class="string">&quot;%s%s%lf&quot;</span>,name,num,&amp;score);<span class="comment">//name和num无需地址符号，因为它们是数组名</span></span><br><span class="line">        cout&lt;&lt;name&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;num&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;score&lt;&lt;endl;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="随机读写"><a href="#随机读写" class="headerlink" title="随机读写"></a>随机读写</h3><ul>
+<li>顺序读写文件只能从头开始，顺序读写各个数据。</li>
+<li>随机读写可按需要只读写文件中某些<strong>指定</strong>的部分。</li>
+<li>随机读写的关键是要<strong>按要求移动位置指针</strong>，即进行文件的<strong>定位</strong>。</li>
+<li>实现文件定位、移动文件内部位置指针的函数主要有<code>rewind</code>函数 和<code>fseek</code>函数。</li>
+</ul>
+<h4 id="rewind函数"><a href="#rewind函数" class="headerlink" title="rewind函数"></a>rewind函数</h4><ul>
+<li>函数原型：<code>void rewind(FILE *fp)</code></li>
+<li>功能说明：使指示文件位置的<strong>指针重新返回到文件开始</strong>。</li>
+</ul>
+<h4 id="fseek函数"><a href="#fseek函数" class="headerlink" title="fseek函数"></a>fseek函数</h4><ul>
+<li>函数原型：<code>int fseek(FILE *fp, long offset, int whence)</code></li>
+<li>功能说明：使文件指针fp移到基于whence的相对位置offset处。</li>
+<li>参数说明：<ul>
+<li>offset是相对whence的字节位移量，用长整型表示。</li>
+<li>whence是移动的基准，常用符号常量表示。</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>正常返回：0。</li>
+<li>异常返回：-1，表示定位操作出错。</li>
+</ul>
+</li>
+</ul>
+<p><strong>whence：</strong></p>
+<p>符号常量</p>
+<p>值</p>
+<p>基准位置</p>
+<p>SEEK_SET</p>
+<p>0</p>
+<p>文件开头</p>
+<p>SEEK_CUR</p>
+<p>1</p>
+<p>当前读写的位置</p>
+<p>SEEK_END</p>
+<p>2</p>
+<p>文件尾部</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fseek</span>(fp,<span class="number">1234L</span>,SEEK_CUR);</span><br><span class="line"><span class="comment">//把读写位置从当前位置向后移动1234字节（L后缀表示长整数）</span></span><br><span class="line"><span class="built_in">fseek</span>(fp,<span class="number">0L</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//把读写位置移动到文件末尾</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p><strong>1</strong></p>
+<p>编写程序，从键盘输入一串字符，要求将该串字符的倒序串先写入到文件f1.txt中，然后再将原字符串的内容接到该文件的末尾。例如，假设从键盘输入的字符串为“How do you do?”，则文件f1.txt的内容为：</p>
+<p>?od uoy od woHHow do you do?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 256</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE* fp;</span><br><span class="line">    <span class="type">char</span> s[N],t[N];</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">errno_t</span> err = <span class="built_in">fopen_s</span>(&amp;fp,<span class="string">&quot;C:\\Users\\pc\\Desktop\\ctest.txt&quot;</span>, <span class="string">&quot;w&quot;</span>);<span class="comment">//只写方式打开file1</span></span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;fail to open ctest.txt&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;输入字符串：&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">gets_s</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; s[i] != <span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">        t[i] = s[<span class="built_in">strlen</span>(s) - i - <span class="number">1</span>];</span><br><span class="line">    t[i] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    <span class="built_in">fputs</span>(t, fp);</span><br><span class="line">    <span class="built_in">fseek</span>(fp, <span class="number">0L</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">fputs</span>(s, fp);</span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    <span class="type">errno_t</span> err1 = <span class="built_in">fopen_s</span>(&amp;fp,<span class="string">&quot;C:\\Users\\pc\\Desktop\\ctest.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;can&#x27;t open ctest.txt&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">feof</span>(fp))<span class="comment">//指针指到的地方没结束的话</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fgets</span>(s, <span class="number">31</span>, fp);<span class="comment">//每次读取31个字符</span></span><br><span class="line">        <span class="built_in">puts</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2</strong></p>
+<p>用记事本建立一个文本文件f2.txt，在该文件中任意存放一组整数。编写程序统计该文件中正整数、负整数和零的个数。（提示：用fscanf函数读取文件中的数据）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 256</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE* fp;</span><br><span class="line">    <span class="type">int</span> num=<span class="number">0</span>,pos=<span class="number">0</span>,neg=<span class="number">0</span>,zero=<span class="number">0</span>;</span><br><span class="line">    <span class="type">errno_t</span> err = <span class="built_in">fopen_s</span>(&amp;fp,<span class="string">&quot;C:\\Users\\pc\\Desktop\\f2.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;fail to open ctest.txt&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">feof</span>(fp))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fscanf_s</span>(fp, <span class="string">&quot;%d&quot;</span>, &amp;num);</span><br><span class="line">        <span class="keyword">if</span> (num &gt; <span class="number">0</span>)</span><br><span class="line">            pos++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (num &lt; <span class="number">0</span>)</span><br><span class="line">            neg++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (num == <span class="number">0</span>)</span><br><span class="line">            zero++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;正整数有&quot;</span> &lt;&lt; pos &lt;&lt; <span class="string">&quot;个，负整数有&quot;</span> &lt;&lt; neg &lt;&lt; <span class="string">&quot;个，零有&quot;</span> &lt;&lt; zero &lt;&lt; <span class="string">&quot;个。&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>负整数好像多了一个？</p>
+<p><strong>3</strong></p>
+<p>‎将从键盘输入的N个学生的学号和成绩存入到文件student.dat中。再从文件中读取学生的信息，求出最高分、最低分和总分。N可通过符号常量自行定义大小。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 5 <span class="comment">//N个学生</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> num[<span class="number">8</span>];</span><br><span class="line">    <span class="type">double</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE* fp,* fp1;</span><br><span class="line">    student s[N], t[N];</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">errno_t</span> err = <span class="built_in">fopen_s</span>(&amp;fp,<span class="string">&quot;student.dat&quot;</span>, <span class="string">&quot;wb&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;fail to open student.dat&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;输入第&quot;</span> &lt;&lt; i<span class="number">+1</span> &lt;&lt; <span class="string">&quot;位学生的学号和成绩：&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cin &gt;&gt; s[i].num &gt;&gt; s[i].score;</span><br><span class="line">        <span class="built_in">fwrite</span>(&amp;s[i], <span class="built_in">sizeof</span>(student), <span class="number">1</span>, fp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    <span class="type">errno_t</span> err1 = <span class="built_in">fopen_s</span>(&amp;fp1, <span class="string">&quot;student.dat&quot;</span>, <span class="string">&quot;rb&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp1 == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;fail to open student.dat&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> max = <span class="number">0</span>, min = <span class="number">999</span>, sum = <span class="number">0</span>,score;</span><br><span class="line">    <span class="type">char</span> num[N];</span><br><span class="line">    <span class="built_in">fread</span>(t, <span class="built_in">sizeof</span>(t), <span class="number">1</span>, fp);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += t[i].score;</span><br><span class="line">        <span class="keyword">if</span> (t[i].score &gt; max)</span><br><span class="line">            max = t[i].score;</span><br><span class="line">        <span class="keyword">if</span> (t[i].score &lt; min)</span><br><span class="line">            min = t[i].score;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(fp1);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;最高分：&quot;</span> &lt;&lt; max &lt;&lt; <span class="string">&quot;最低分：&quot;</span> &lt;&lt; min&lt;&lt; <span class="string">&quot;总分：&quot;</span> &lt;&lt; sum&lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4</strong></p>
+<p>编写程序，将一存放一行字符串的文本文件中的每一个字符及其所对应的ASCII码输出到屏幕上。例如文件的内容是“I love China”，则输出：</p>
+<p>I(73) (32)l(108)o(111)v(118)e(101) (32)C(67)h(104)i(105)n(110)a(97)</p>
+<p>注意：空格也是有效字符。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE* fp;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">char</span> s[N];</span><br><span class="line">    <span class="type">errno_t</span> err = <span class="built_in">fopen_s</span>(&amp;fp,<span class="string">&quot;C:\\Users\\pc\\Desktop\\ctest.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);<span class="comment">//ctest.txt是一个桌面文本文件</span></span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;fail to open ctest.txt&quot;</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; !<span class="built_in">feof</span>(fp); i++)</span><br><span class="line">        s[i]=<span class="built_in">fgetc</span>(fp);</span><br><span class="line">    s[i] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    <span class="built_in">fclose</span>(fp);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; s[i] != <span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; s[i] &lt;&lt; <span class="string">&quot;(&quot;</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, s[i]);</span><br><span class="line">        cout&lt;&lt; <span class="string">&quot;)&quot;</span> &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/categories/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E6%96%87%E4%BB%B6%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">12.1 文件的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">文件概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD"><span class="toc-number">2.</span> <span class="toc-text">12.2 文件的打开和关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%EF%BC%9Afopen"><span class="toc-number">2.1.</span> <span class="toc-text">文件的打开：fopen</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#c2022%EF%BC%9Afopen-s"><span class="toc-number">2.1.1.</span> <span class="toc-text">c2022：fopen_s</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%EF%BC%9Amode"><span class="toc-number">2.1.2.</span> <span class="toc-text">文件的打开方式：mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%85%B3%E9%97%AD"><span class="toc-number">2.2.</span> <span class="toc-text">文件的关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-number">3.</span> <span class="toc-text">12.3 文件的读写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%86%99"><span class="toc-number">3.1.</span> <span class="toc-text">顺序读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6%EF%BC%9Afgetc"><span class="toc-number">3.1.1.</span> <span class="toc-text">从文件读取字符：fgetc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9D%9F%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0%EF%BC%9Afeof"><span class="toc-number">3.1.2.</span> <span class="toc-text">文件结束测试函数：feof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%EF%BC%9Afputc"><span class="toc-number">3.1.3.</span> <span class="toc-text">向文件写入字符：fputc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9Afputs"><span class="toc-number">3.1.4.</span> <span class="toc-text">向文件写入字符串：fputs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9Afgets"><span class="toc-number">3.1.5.</span> <span class="toc-text">从文件读取字符串：fgets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%9D%97%EF%BC%9Afread"><span class="toc-number">3.1.6.</span> <span class="toc-text">从文件读取数据块：fread</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%9D%97%EF%BC%9Afwrite"><span class="toc-number">3.1.7.</span> <span class="toc-text">向文件写入数据块：fwrite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%97%E8%AF%BB%E5%86%99%E5%BA%94%E7%94%A8"><span class="toc-number">3.1.8.</span> <span class="toc-text">块读写应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B3"><span class="toc-number">3.1.8.1.</span> <span class="toc-text">例3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%9Afprintf"><span class="toc-number">3.1.9.</span> <span class="toc-text">向文件格式化写入数据：fprintf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE-%EF%BC%9Afscanf"><span class="toc-number">3.1.10.</span> <span class="toc-text">从文件格式化读取数据 ：fscanf</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fscanf-s"><span class="toc-number">3.1.10.1.</span> <span class="toc-text">fscanf_s</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B4"><span class="toc-number">3.1.10.2.</span> <span class="toc-text">例4</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99"><span class="toc-number">3.2.</span> <span class="toc-text">随机读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rewind%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">rewind函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fseek%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.2.</span> <span class="toc-text">fseek函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&text=第十二讲 文件"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&is_video=false&description=第十二讲 文件"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十二讲 文件&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=第十二讲 文件"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&name=第十二讲 文件&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    footer.copyright &copy;
+    
+    
+    2024
+    Antares
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tag</a></li><!--
+    --><!--
+      --><li><a href="/categories/">category</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">search</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
