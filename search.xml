@@ -785,9 +785,9 @@
       
       <categories>
           
-          <category> 随笔 </category>
-          
           <category> 读罢有感 </category>
+          
+          <category> 随笔 </category>
           
       </categories>
       
@@ -2248,11 +2248,11 @@
     
     
     <entry>
-      <title>页眉</title>
-      <link href="/2024/02/04/header/"/>
-      <url>/2024/02/04/header/</url>
+      <title>页眉（深色，小号）</title>
+      <link href="/2024/02/04/header-small-dark/"/>
+      <url>/2024/02/04/header-small-dark/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p><img src="http://yantares.cn/wp-content/themes/twentytwentytwo/assets/images/flight-path-on-transparent-d.png" alt="飞翔的鸟插图。"></p>]]></content>
       
       
       <categories>
@@ -2286,11 +2286,11 @@
     
     
     <entry>
-      <title>页眉（深色，小号）</title>
-      <link href="/2024/02/04/header-small-dark/"/>
-      <url>/2024/02/04/header-small-dark/</url>
+      <title>页眉</title>
+      <link href="/2024/02/04/header/"/>
+      <url>/2024/02/04/header/</url>
       
-        <content type="html"><![CDATA[<p><img src="http://yantares.cn/wp-content/themes/twentytwentytwo/assets/images/flight-path-on-transparent-d.png" alt="飞翔的鸟插图。"></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
