@@ -57,9 +57,19 @@
     
 	<!-- mathjax -->
 	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
+<body>
     <div class="banner">
 <div id="blogtitel" class="blogtitel">Lone Trail</div>
 <ul id="wrapper" class="wrapper">
@@ -158,7 +168,7 @@
 </div>
 
       
-      <div class="content index py4 ">
+      <div class="content index width mx-auto px2 my4">
           
           <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
@@ -254,7 +264,7 @@
 
       </div>
       
-        <div id="footer-post-container">
+       <div id="footer-post-container">
   <div id="footer-post">
 
     <div id="nav-footer" style="display: none">
@@ -344,13 +354,6 @@
     </nav>
   </div>
 </footer>
-
-      <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
 
       <!-- jquery -->
 
