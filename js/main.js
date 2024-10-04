@@ -11,7 +11,6 @@ if (!!$.prototype.justifiedGallery) {
 }
 
 $(window).on('load', function(){
-    
   $("#wrapper").fadeTo("slow",1);
   $("#blogtitel").fadeOut(2000);
 });
