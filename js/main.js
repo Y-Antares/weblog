@@ -92,23 +92,22 @@ $(document).ready(function() {
     /**
      * Add a scroll listener to the menu to hide/show the navigation links.
      */
-    if (menu.length) {
-      $(window).on("scroll", function() {
-        var topDistance = menu.offset().top;
+    if ($("#menu").length) {
+      $(window).on('scroll', function() {
+        var topDistance = $(window).scrollTop();
 
-        // hide only the navigation links on desktop
-        if (!nav.is(":visible") && topDistance < 50) {
-          nav.show();
-        } else if (nav.is(":visible") && topDistance > 100) {
-          nav.hide();
+        if ($('#menu').css('visibility') != 'hidden' && topDistance < 10) {
+          $("#menu > #nav").show();
+        } else if ($('#menu').css('visibility') != 'hidden' && topDistance > 10) {
+          $("#menu > #nav").hide();
         }
 
-        // on tablet, hide the navigation icon as well and show a "scroll to top
-        // icon" instead
-        if ( ! $( "#menu-icon" ).is(":visible") && topDistance < 50 ) {
+        if (!$("#menu-icon").is(":visible") && topDistance < 10) {
+
           $("#menu-icon-tablet").show();
           $("#top-icon-tablet").hide();
-        } else if (! $( "#menu-icon" ).is(":visible") && topDistance > 100) {
+        } else if (!$("#menu-icon").is(":visible") && topDistance > 10) {
+
           $("#menu-icon-tablet").hide();
           $("#top-icon-tablet").show();
         }
@@ -119,27 +118,24 @@ $(document).ready(function() {
      * Show mobile navigation menu after scrolling upwards,
      * hide it again after scrolling downwards.
      */
-    if ($( "#footer-post").length) {
+    if ($("#footer-post").length) {
       var lastScrollTop = 0;
-      $(window).on("scroll", function() {
+      $(window).on('scroll', function() {
         var topDistance = $(window).scrollTop();
 
-        if (topDistance > lastScrollTop){
-          // downscroll -> show menu
+        if (topDistance > lastScrollTop) {
+          // downscroll code
           $("#footer-post").hide();
         } else {
-          // upscroll -> hide menu
+          // upscroll code
           $("#footer-post").show();
         }
         lastScrollTop = topDistance;
 
-        // close all submenu"s on scroll
         $("#nav-footer").hide();
         $("#toc-footer").hide();
         $("#share-footer").hide();
 
-        // show a "navigation" icon when close to the top of the page, 
-        // otherwise show a "scroll to the top" icon
         if (topDistance < 50) {
           $("#actions-footer > ul > #top").hide();
           $("#actions-footer > ul > #menu").show();
