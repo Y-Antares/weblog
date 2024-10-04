@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="9.1 返回指针值的函数 函数的返回值可为变量地址、数组名或指针变量。  在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。 例： 12float *fun(float x[],float y);char *strcat1(char *strDest,const char *strSource)  例：编一函数，将这字符串中ASCII码最大的字符的地址返回，主程序中输出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第九讲 函数（续）">
+<meta property="og:url" content="https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/index.html">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="9.1 返回指针值的函数 函数的返回值可为变量地址、数组名或指针变量。  在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。 例： 12float *fun(float x[],float y);char *strcat1(char *strDest,const char *strSource)  例：编一函数，将这字符串中ASCII码最大的字符的地址返回，主程序中输出">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yantares.cn/img/image-20231102103809883.png">
+<meta property="og:image" content="https://yantares.cn/img/image-20231102104244452.png">
+<meta property="article:published_time" content="2024-02-05T10:38:30.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:45:48.446Z">
+<meta property="article:author" content="Antares">
+<meta property="article:tag" content="c&#x2F;c++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/img/image-20231102103809883.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第九讲 函数（续）</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lone Trail</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/category/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2024/02/05/%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%87%BD%E6%95%B0/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&text=第九讲 函数（续）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&is_video=false&description=第九讲 函数（续）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第九讲 函数（续）&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&name=第九讲 函数（续）&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">9.1 返回指针值的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">9.2 作用域与存储类别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E7%94%9F%E5%AD%98%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">作用域与生存期的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">自动局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">静态局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">2.4.1.</span> <span class="toc-text">扩展全局变量的作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0-%EF%BC%88%E8%80%83%E8%AF%95%E5%8F%AA%E8%80%83%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8D%E8%80%83%E7%BC%96%E7%A8%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">9.3 递归函数 （考试只考概念，不考编程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">递归的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">递归函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.3.</span> <span class="toc-text">递归与迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%BD%BF%E7%94%A8"><span class="toc-number">3.4.</span> <span class="toc-text">递归使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="toc-number">3.4.1.</span> <span class="toc-text">例：二分法查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text">例：进制转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">4.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">4.2.</span> <span class="toc-text">2</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第九讲 函数（续）
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lone Trail</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-02-05T10:38:30.000Z" itemprop="datePublished">2024-02-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c-c/" rel="tag">c/c++</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="9-1-返回指针值的函数"><a href="#9-1-返回指针值的函数" class="headerlink" title="9.1 返回指针值的函数"></a>9.1 返回指针值的函数</h2><ul>
+<li><p>函数的返回值可为变量地址、数组名或指针变量。</p>
+</li>
+<li><p>在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。</p>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">float</span> *<span class="title">fun</span><span class="params">(<span class="type">float</span> x[],<span class="type">float</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="type">char</span> *<span class="title">strcat1</span><span class="params">(<span class="type">char</span> *strDest,<span class="type">const</span> <span class="type">char</span> *strSource)</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>例：编一函数，将这字符串中ASCII码最大的字符的地址返回，主程序中输出最大数之后的所有数。</p>
+<p>分析：</p>
+<ol>
+<li>如何定义函数的类型？</li>
+</ol>
+<p>“将这字符串中ASCII码最大的字符的地址返回”，函数应为指针类型。</p>
+<p><code>char *getmax(char s[])</code></p>
+<ol start="2">
+<li>如何表示字符串中ASCII码最大的字符的地址？</li>
+</ol>
+<p>用该数组元素地址 <code>&amp;s[imax]</code>或<code>s+imax</code>表示，imax：该字符在数组中的位置。</p>
+<p>e.g:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">char</span> *<span class="title">getmax</span><span class="params">(<span class="type">char</span> s[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>,imax=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(s[i]!=<span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;s[imax])</span><br><span class="line">            imax=i;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s+imax; <span class="comment">//return &amp;s[imax];</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *max; <span class="comment">//赋给指针类型的变量。</span></span><br><span class="line">max=<span class="built_in">getmax</span>(s);</span><br><span class="line"><span class="built_in">puts</span>(max); <span class="comment">//puts()里面是地址，所以可以”puts(i+imax)“</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回值为指针的函数，要注意返回值的指向。</li>
+</ul>
+<h2 id="9-2-作用域与存储类别"><a href="#9-2-作用域与存储类别" class="headerlink" title="9.2 作用域与存储类别"></a>9.2 作用域与存储类别</h2><h3 id="作用域与生存期的概念"><a href="#作用域与生存期的概念" class="headerlink" title="作用域与生存期的概念"></a>作用域与生存期的概念</h3><ul>
+<li>作用域（可见性）：在何范围内可被访问；</li>
+<li>生存期：在什么 时间内存在。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">digit</span><span class="params">(<span class="type">long</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x!=<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> k;  <span class="comment">//digit函数中x的作用域</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> x;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">digit</span>(x)&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//main函数中x的作用域</span></span><br><span class="line">&#125;<span class="comment">//整个程序：x的生存期</span></span><br></pre></td></tr></table></figure>
+
+<p>根据作用域和生存期，变量可分为：</p>
+<ul>
+<li>全局变量（外部变量）：<ul>
+<li>在函数外部定义的变量</li>
+</ul>
+</li>
+<li>周期变量（内部变量）：<ul>
+<li>在函数内部定义的变量，包括形式参数</li>
+</ul>
+</li>
+</ul>
+<p>存储类型：</p>
+<ul>
+<li><p>auto</p>
+<ul>
+<li>局部，生存期：定义它的分程序内</li>
+</ul>
+</li>
+<li><p>static</p>
+<ul>
+<li>局部，生存期</li>
+</ul>
+</li>
+<li><p>外部变量</p>
+</li>
+</ul>
+<h3 id="自动局部变量"><a href="#自动局部变量" class="headerlink" title="自动局部变量"></a>自动局部变量</h3><ul>
+<li>存储类型auto，可缺省</li>
+<li>作用域：定义点开始到所在的分程序结束。</li>
+<li>生存期：<strong>所在分程序执行期间。</strong></li>
+<li>开始执行分程序就生成，执行结束就消亡。</li>
+<li>初始化：<strong>缺省值为随机值。</strong></li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x!=<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> k;  <span class="comment">//digit函数中x的作用域</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> x;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">digit</span>(x)&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//main函数中x的作用域</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>自动局部变量示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    x++;</span><br><span class="line">    <span class="type">int</span> k=<span class="number">5</span>;  <span class="comment">//auto int k=5;</span></span><br><span class="line">    k++;</span><br><span class="line">    <span class="keyword">return</span> x+k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> k=<span class="number">2</span>; <span class="comment">//auto int k=2;</span></span><br><span class="line">    cout&lt;&lt;<span class="built_in">f</span>(k)&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">f</span>(k)&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>问题：</p>
+<ul>
+<li>f函数中的k和main函数中的k会冲突吗？</li>
+</ul>
+<p>答：不会冲突。不同的函数内可使用相同名称的自动局部变量，它们<strong>占用不同的存储单元</strong>，只能在各自的函数内被使用，<strong>彼此互不干扰。</strong></p>
+<ul>
+<li>main函数中两次调用f函数，第二次调用时，f函数中的x,k和第一次调用时使用相同的内存单元吗？</li>
+</ul>
+<p>答：若一个函数被多次调用，每一次函数调用时，系统都会为自动局部变量重新分配存储单元，并重新初始化。函数调用结束后，释放为自动局部变量分配的存储单元，<strong>函数中自动局部变量的值不会带到下一次调用中</strong>。</p>
+<h3 id="静态局部变量"><a href="#静态局部变量" class="headerlink" title="静态局部变量"></a>静态局部变量</h3><ul>
+<li>存储类别static</li>
+<li>作用域：定义点开始到所在的分程序结束。</li>
+<li>生存期：<strong>程序的整个执行周期。</strong></li>
+<li>初始化：可初始化，<strong>缺省值为0或’\0’</strong></li>
+</ul>
+<p><strong>静态局部变量VS自动局部变量</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> j=<span class="number">0</span>;</span><br><span class="line">    i++;j++;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;i=&quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot;j=&quot;</span>&lt;&lt;j&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</span><br><span class="line">        <span class="built_in">test</span>();</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自动局部变量i，每次调用函数都重新为他分配存储单元并初始化。</li>
+<li>静态局部变量j，只在第一次调用函数时分配存储单元并初始化。</li>
+</ul>
+<p>静态局部变量特点：</p>
+<ul>
+<li>只在第一次调用函数时为静态局部变量分配存储空间，函数调用结束不会释放为静态局部变量分配新的存储空间。</li>
+<li>静态局部变量只初始化一次</li>
+<li>若一个函数被调用多次，对静态局部变量而言，前一次调用的结果会带到下一次去。</li>
+</ul>
+<p>问：</p>
+<p>第一次调用test结束，返回main函数后，j的存储空间没有释放，在main函数能访问j吗？</p>
+<p>答：在一个分程序中定义的静态局部变量，在其他分程序中，<strong>是生存期，不是作用域，不可访问。</strong></p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><ul>
+<li>作用域：定义点开始到所在的文件结束。</li>
+<li>生存期：<strong>程序的整个执行周期。</strong></li>
+<li>初始化：可初始化，<strong>缺省值为0或’\0’</strong></li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> m=<span class="number">10</span>;<span class="comment">//全局变量m</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f1</span><span class="params">(<span class="type">int</span> n)</span>  <span class="comment">//形参n（局部变量），传值参数，在f1中的变化并不改变真正的n</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="number">2</span>*n;m=m/<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n;  <span class="comment">//全局变量n</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;n=<span class="number">5</span>;m++;++;&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">2</span>;   <span class="comment">//局部变量n</span></span><br><span class="line">    <span class="built_in">f1</span>(n);<span class="built_in">f2</span>();</span><br><span class="line">    cout&lt;&lt;m&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20231102103809883.png" alt="image-20231102103809883"></p>
+<p>注意：</p>
+<ul>
+<li>当全局变量与局部变量同名且作用域有重叠时，<strong>在局部变量的作用域内， 起作用的是局部变量</strong>，而全局变量被“屏蔽”掉。</li>
+</ul>
+<p><img src="/img/image-20231102104244452.png" alt="image-20231102104244452"></p>
+<p>全局变量可在多个函数内使用，前一次的计算结果会带到下一次使用中。</p>
+<h4 id="扩展全局变量的作用域"><a href="#扩展全局变量的作用域" class="headerlink" title="扩展全局变量的作用域"></a>扩展全局变量的作用域</h4><ul>
+<li>全局变量的作用域：定义点开始到所在的文件结束。</li>
+<li>可用<strong>extern关键字</strong>扩展全局变量作用域。</li>
+</ul>
+<p><strong>扩展到定义点以前</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//extern int i</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//extern int i</span></span><br><span class="line">    cout&lt;&lt;i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="type">int</span> j=<span class="number">20</span>;</span><br><span class="line">    cout&lt;&lt;j;</span><br><span class="line">    <span class="built_in">fun</span>();</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用域横向扩展</strong></p>
+<ul>
+<li>1个C&#x2F;C++项目可包含多个源文件</li>
+<li>在一个源文件中要引用另一个源文件中定义的全局变量，使用前须用<strong>extern声明符</strong>对其进行扩展</li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file1.cpp</span></span><br><span class="line"><span class="type">int</span> max1,min1;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">maxmin</span><span class="params">(<span class="type">int</span> x[],<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    max1=x[<span class="number">0</span>];min1=x[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x[i]&gt;max1)max1=x[i];</span><br><span class="line">        <span class="keyword">if</span>(x[i]&lt;min1)min1=x[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//file2.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> ……</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> max1,min1;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">10</span>]=&#123;<span class="number">11</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">-4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">20</span>&#125;;</span><br><span class="line">    <span class="built_in">maxmin</span>(a,<span class="number">10</span>);</span><br><span class="line">    cout&lt;&lt;max1&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;min1&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-3-递归函数-（考试只考概念，不考编程）"><a href="#9-3-递归函数-（考试只考概念，不考编程）" class="headerlink" title="9.3 递归函数 （考试只考概念，不考编程）"></a>9.3 递归函数 （考试只考概念，不考编程）</h2><h3 id="递归的概念"><a href="#递归的概念" class="headerlink" title="递归的概念"></a>递归的概念</h3><p>用自身的结构描述自身</p>
+<p>例：递归的阶乘定义</p>
+<p><code>n!=n*(n-1)!1</code> (n&gt;0)</p>
+<p>递归反映问题分解的思维。</p>
+<h3 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h3><p>函数在函数体内直接或间接地调用自身，称递归函数。</p>
+<ul>
+<li>直接递归</li>
+<li>间接递归：函数通过其他函数间接调用自身</li>
+</ul>
+<p><strong>例1：求<code>n!</code></strong></p>
+<p>思路：达到终结条件，直接求解；未达终结条件，递归调用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">long</span> <span class="title">fac</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> (n*<span class="built_in">fac</span>(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">fac</span>(<span class="number">3</span>)&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例2：计算斐波那契数列</strong></p>
+<p>f(n)&#x3D;f(n-1)+f(n-2)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>n==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">return</span> (<span class="built_in">fib</span>(n<span class="number">-1</span>)+<span class="built_in">fib</span>(n<span class="number">-2</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意递归函数一定要有<strong>终结条件</strong></p>
+<h3 id="递归与迭代"><a href="#递归与迭代" class="headerlink" title="递归与迭代"></a>递归与迭代</h3><p>任何用递归解决的问题都可以用迭代非递归解决。</p>
+<p><strong>例1：求<code>n!</code></strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    s=s*i;</span><br></pre></td></tr></table></figure>
+
+<p>迭代算法效率高。</p>
+<p>根据问题特征决定用迭代还是递归</p>
+<h3 id="递归使用"><a href="#递归使用" class="headerlink" title="递归使用"></a>递归使用</h3><h4 id="例：二分法查找"><a href="#例：二分法查找" class="headerlink" title="例：二分法查找"></a>例：二分法查找</h4><p>终结条件：</p>
+<ul>
+<li>key&#x3D;&#x3D;a[mid]</li>
+<li>low&gt;high</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Binary_Search</span><span class="params">(<span class="type">int</span> low,<span class="type">int</span> high,<span class="type">int</span> key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&gt;high)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(key==a[mid])</span><br><span class="line">        <span class="keyword">return</span> mid;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(key&lt;a[mid])</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Binary_Search</span>(low,mid<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">Binary_Search</span>(mid<span class="number">+1</span>,high); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="例：进制转换"><a href="#例：进制转换" class="headerlink" title="例：进制转换"></a>例：进制转换</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">convert</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> b[<span class="number">17</span>]=<span class="string">&quot;0123456789ABCDEF&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(m!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">convert</span>(m/r,r);</span><br><span class="line">        cout&lt;&lt;b[m%r];  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>编写递归函数int sum(int a[],int n)，其功能是求长度为n的数组的累加和，在主函数中随机产生10个两位数，调用sum函数，求这10个数的和。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 256</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//sum1:迭代</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum1</span><span class="params">(<span class="type">int</span> a[], <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> sos=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        sos += a[i];</span><br><span class="line">    <span class="keyword">return</span> sos;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//sum2:递归</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum2</span><span class="params">(<span class="type">int</span> a[], <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">sos</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">0</span>)</span><br><span class="line">        sos = a[n - <span class="number">1</span>] + <span class="built_in">sum2</span>(a, n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> sos;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,i,s[N],sos1,sos2;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;   </span><br><span class="line">        s[i] = <span class="number">10</span> + <span class="built_in">rand</span>() % <span class="number">89</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; s[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    sos1 = <span class="built_in">sum1</span>(s, <span class="number">10</span>);</span><br><span class="line">    sos2 = <span class="built_in">sum2</span>(s, <span class="number">10</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;10个数迭代求得之和为：&quot;</span> &lt;&lt; sos1 &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;10个数递归求得之和为：&quot;</span> &lt;&lt; sos2 &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>编写函数get_max，其功能是将字符串s中最大字符的地址返回，再编写一个主函数，调用该函数，将字符串s中从最大字符开始的子串中小写字母转换成大写字母，然后输出新字符串s。例如，假设s的内容为“qwertyou”，则从最大字符’y’开始的子串为“you”，处理后的s为“qwertYOU”。</p>
+<p>函数形式为：char *get_max(char s[])</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 256</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">char</span>* <span class="title">get_max</span><span class="params">(<span class="type">char</span> s[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> imax=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;s[i]!=<span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &gt; s[imax])</span><br><span class="line">            imax = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &amp;s[imax];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,i;</span><br><span class="line">    <span class="type">char</span>* imax;</span><br><span class="line">    <span class="type">char</span> a[N];</span><br><span class="line">    <span class="built_in">gets_s</span>(a);</span><br><span class="line">    imax = <span class="built_in">get_max</span>(a);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>;*(imax+i)!=<span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">        *(imax + i) -= <span class="number">32</span>;</span><br><span class="line">    <span class="built_in">puts</span>(imax);</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似的课上例：</p>
+<p><strong>【例5.9】search函数的功能是在一字符串中查找某一指定的字符,若找到，则返回字符串中这个字符的地址，否则返回NULL，主函数调用search函数，并输出查找到的那个字符后的子串。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">char</span> *<span class="title">search</span><span class="params">(<span class="type">char</span> s[],<span class="type">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">while</span>(                        )</span><br><span class="line">       <span class="keyword">if</span>(s[i]!=ch) </span><br><span class="line">            i++;</span><br><span class="line">       <span class="keyword">else</span>              </span><br><span class="line">                                   ;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="type">char</span> s[<span class="number">100</span>],ch,*p;</span><br><span class="line">     <span class="built_in">gets</span>(s);</span><br><span class="line">     cin&gt;&gt;ch;</span><br><span class="line">                                  ;</span><br><span class="line">     <span class="keyword">if</span>(p!=<span class="literal">NULL</span>) </span><br><span class="line">          cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">     <span class="keyword">else</span>  </span><br><span class="line">          cout&lt;&lt;<span class="string">&quot;not found\n&quot;</span>;</span><br><span class="line">     <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+<script src="https://utteranc.es/client.js"
+        repo="Y-Antares/weblog"
+        issue-term="pathname"
+        label="Comment"
+        theme="icy-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/category/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">9.1 返回指针值的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">9.2 作用域与存储类别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E7%94%9F%E5%AD%98%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">作用域与生存期的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">自动局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">静态局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">2.4.1.</span> <span class="toc-text">扩展全局变量的作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0-%EF%BC%88%E8%80%83%E8%AF%95%E5%8F%AA%E8%80%83%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8D%E8%80%83%E7%BC%96%E7%A8%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">9.3 递归函数 （考试只考概念，不考编程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">递归的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">递归函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.3.</span> <span class="toc-text">递归与迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%BD%BF%E7%94%A8"><span class="toc-number">3.4.</span> <span class="toc-text">递归使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE"><span class="toc-number">3.4.1.</span> <span class="toc-text">例：二分法查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text">例：进制转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">4.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">4.2.</span> <span class="toc-text">2</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&text=第九讲 函数（续）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&is_video=false&description=第九讲 函数（续）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第九讲 函数（续）&body=Check out this article: https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&title=第九讲 函数（续）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/&name=第九讲 函数（续）&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    footer.copyright &copy;
+    
+    
+    2024
+    Antares
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Archive</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tag</a></li><!--
+    --><!--
+      --><li><a href="/category/">category</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">search</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
