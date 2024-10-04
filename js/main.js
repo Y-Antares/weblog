@@ -11,8 +11,9 @@ if (!!$.prototype.justifiedGallery) {
 }
 
 $(window).on('load', function(){
-  $("#wrapper").fadeTo("slow",1);
-  $("#blogtitel").fadeOut(2000);
+
+    $("#wrapper").fadeTo("slow",1);
+    $("#blogtitel").fadeOut(2000);
 });
 
 $(document).ready(function() {
@@ -20,10 +21,10 @@ $(document).ready(function() {
   $(window).on('scroll', function() {
 
     var z = $(".banner")[0].getBoundingClientRect().bottom / (
-        $(".banner")[0].getBoundingClientRect().bottom - $(".banner")[0].getBoundingClientRect().top)
+      $(".banner")[0].getBoundingClientRect().bottom - $(".banner")[0].getBoundingClientRect().top)
 
     if (z < 0) {
-        z = 0.01
+      z = 0.01
     }
 
     $(".wrapper")[0].style.zoom = z
@@ -33,18 +34,18 @@ $(document).ready(function() {
 
   $("#menu-icon, #menu-icon-tablet").click(function() {
     if ($('#menu').css('visibility') == 'hidden') {
-        $('#menu').css('visibility', 'visible');
-        $('#menu-icon, #menu-icon-tablet').addClass('active');
+      $('#menu').css('visibility', 'visible');
+      $('#menu-icon, #menu-icon-tablet').addClass('active');
 
-        var topDistance = $("#menu > #nav").offset().top;
+      var topDistance = $("#menu > #nav").offset().top;
 
-        $("#menu > #nav").show();
-        return false;
+      $("#menu > #nav").show();
+      return false;
     } else {
-        $('#menu').css('visibility', 'hidden');
-        $('#menu-icon, #menu-icon-tablet').removeClass('active');
+      $('#menu').css('visibility', 'hidden');
+      $('#menu-icon, #menu-icon-tablet').removeClass('active');
 
-        return false;
+      return false;
     }
   });
 
@@ -95,19 +96,19 @@ $(document).ready(function() {
         var topDistance = $(window).scrollTop();
 
         if ($('#menu').css('visibility') != 'hidden' && topDistance < 10) {
-            $("#menu > #nav").show();
+          $("#menu > #nav").show();
         } else if ($('#menu').css('visibility') != 'hidden' && topDistance > 10) {
-            $("#menu > #nav").hide();
+          $("#menu > #nav").hide();
         }
 
         if (!$("#menu-icon").is(":visible") && topDistance < 10) {
 
-            $("#menu-icon-tablet").show();
-            $("#top-icon-tablet").hide();
+          $("#menu-icon-tablet").show();
+          $("#top-icon-tablet").hide();
         } else if (!$("#menu-icon").is(":visible") && topDistance > 10) {
 
-            $("#menu-icon-tablet").hide();
-            $("#top-icon-tablet").show();
+          $("#menu-icon-tablet").hide();
+          $("#top-icon-tablet").show();
         }
       });
     }
