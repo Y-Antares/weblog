@@ -477,9 +477,7 @@ html {
 }
 body {
   margin: 0;
-  padding: 0;
-  width: 100%;
-  height: auto;
+  height: 100%;
   background-color: #1d1f21;
   color: #c9cacc;
   font-weight: 400;
@@ -487,9 +485,6 @@ body {
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 1.725;
   text-rendering: geometricPrecision;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -717,8 +712,6 @@ body {
   display: inline-block;
   float: right;
   z-index: 100;
-  padding: 2%;
-  text-align: right;
 }
 #header-post a {
   background: none;
@@ -780,11 +773,6 @@ body {
 #header-post #menu {
   display: none;
   margin-right: 2rem;
-}
-@media screen and (max-height: 650px) {
-  #header-post #menu {
-    visibility: hidden;
-  }
 }
 #header-post #nav {
   color: #2bbc8a;
@@ -849,15 +837,12 @@ body {
   max-width: 20em;
   max-height: calc(95vh - 7rem);
   text-align: right;
-  padding-top: 1rem;
-  width: 17rem;
 }
 #header-post #toc a:hover {
   color: #d480aa;
 }
 #header-post #toc .toc-level-1 > .toc-link {
   display: none;
-  color: #c9cacc;
 }
 #header-post #toc .toc-level-2 {
   color: #c9cacc;
@@ -1560,7 +1545,7 @@ article .content .caption {
   background-size: cover;
   border-radius: 250px;
   margin: 0 auto;
-  animation: spinsun 28s infinite linear;
+  animation: spinsun 40s infinite linear;
 }
 .planet {
   background-size: cover;
@@ -1583,88 +1568,88 @@ article .content .caption {
   position: absolute;
   width: 300px;
   z-index: 2;
-  animation: orbitmercury 8.399999999999999s infinite linear;
+  animation: orbitmercury 12s infinite linear;
   top: -7.5px; /*half of planets height to keep orbits in line*/
 }
 .mercury .planet {
   width: 25px;
   height: 25px;
   background-image: url("../images/mercury.png");
-  animation: anti-spin 8.399999999999999s infinite linear;
+  animation: anti-spin 12s infinite linear;
 }
 .mercury .shadow {
-  animation: shadow 8.399999999999999s infinite linear;
+  animation: shadow 12s infinite linear;
 }
 .venus {
   position: absolute;
   width: 506px;
   z-index: 3;
-  animation: orbitvenus 10.5s infinite linear;
+  animation: orbitvenus 15s infinite linear;
   top: -19px;
 }
 .venus .planet {
   width: 48px;
   height: 48px;
   background-image: url("../images/venus.png");
-  animation: anti-spin 10.5s infinite linear;
+  animation: anti-spin 15s infinite linear;
 }
 .venus .shadow {
-  animation: shadow 10.5s infinite linear;
+  animation: shadow 15s infinite linear;
 }
 .earth {
   position: absolute;
   width: 610px;
   z-index: 4;
-  animation: orbitearth 14s infinite linear;
+  animation: orbitearth 20s infinite linear;
   top: -20px;
 }
 .earth .planet {
   width: 50px;
   height: 50px;
   background-image: url("../images/earth.png");
-  animation: anti-spin 14s infinite linear;
+  animation: anti-spin 20s infinite linear;
 }
 .earth .shadow {
-  animation: shadow 14s infinite linear;
+  animation: shadow 20s infinite linear;
 }
 .mars {
   position: absolute;
   width: 706px;
   z-index: 5;
-  animation: orbitmars 21s infinite linear;
+  animation: orbitmars 30s infinite linear;
   top: -11px;
 }
 .mars .planet {
   width: 32px;
   height: 32px;
   background-image: url("../images/mars.png");
-  animation: anti-spin 21s infinite linear;
+  animation: anti-spin 30s infinite linear;
 }
 .mars .shadow {
-  animation: shadow 21s infinite linear;
+  animation: shadow 30s infinite linear;
 }
 .jupiter {
   position: absolute;
   width: 1100px;
   z-index: 6;
-  animation: orbitjupiter 35s infinite linear;
+  animation: orbitjupiter 50s infinite linear;
   top: -64px;
 }
 .jupiter .planet {
   width: 110px;
   height: 110px;
   background-image: url("../images/jupiter.png");
-  animation: anti-spin 35s infinite linear;
+  animation: anti-spin 50s infinite linear;
 }
 .jupiter .shadow {
-  animation: shadow 35s infinite linear;
+  animation: shadow 50s infinite linear;
 }
 .banner {
   height: 30vh;
   width: 100%;
   margin: 0;
   padding-top: 1%;
-  color: #dedede;
+  color: $color-lightest;
   text-align: center;
   background: #1d1f21;
 }
@@ -1674,7 +1659,7 @@ article .content .caption {
   width: 100%;
   margin: 0;
   padding: 2%;
-  color: #dedede;
+  color: $color-lightest;
   text-align: center;
   font-size: 40px;
   font-family: "Menlo", "Meslo LG", monospace;
@@ -2495,15 +2480,4 @@ code {
 }
 #header-post #actions {
   direction: ltr !important;
-}
-.background {
-  width: 100%;
-  z-index: 20;
-}
-.small {
-  max-width: 130px;
-  margin: 20px auto;
-  border-width: 2px;
-  border-color: #fff;
-  font-weight: 100;
 }
