@@ -57,11 +57,9 @@ $(document).ready(function() {
         $(window).on('scroll', function() {
             var topDistance = $(window).scrollTop();
 
-            if ($('#menu').css('visibility') != 'hidden' && topDistance < 10) {
+            if ($('#menu').css('visibility') != 'hidden' && 1>0) {
                 $("#menu > #nav").show();
-            } else if ($('#menu').css('visibility') != 'hidden' && topDistance > 10) {
-                $("#menu > #nav").hide();
-            }
+            } 
 
             if (!$("#menu-icon").is(":visible") && topDistance < 10) {
 

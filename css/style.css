@@ -442,7 +442,7 @@ html {
 body {
   color: #b9babc;
   background-color: #181818;
-  font-size: 15px;
+  font-size: medium;
   font-family: "Menlo", monospace;
   font-weight: 400;
   line-height: 1.725;
@@ -474,14 +474,14 @@ body {
   hyphens: manual;
 }
 .content a {
-  text-decoration: none;
   color: #b9babc;
+  text-decoration: none;
+}
+.content a:hover {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 5px, #b9babc 5px, #b9babc);
-}
-.content a:hover {
+  background-image: linear-gradient(transparent, transparent 5px, #d41c46 5px, #d41c46);
   background-image: linear-gradient(transparent, transparent 4px, #d41c46 4px, #d41c46);
 }
 .content a.icon {
