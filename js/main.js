@@ -17,17 +17,15 @@ $(document).ready(function() {
 
 
   $(window).on('scroll', function() {
-
-    var z = $(".banner")[0].getBoundingClientRect().bottom / (
-      $(".banner")[0].getBoundingClientRect().bottom - $(".banner")[0].getBoundingClientRect().top)
-
-    if (z < 0) {
-      z = 0.01
-    }
-
-    $(".wrapper")[0].style.zoom = z
-    $(".wrapper")[0].style.MozTransform = "scale(" + z + ")"
-
+    var banner = $(".banner")[0];
+    var rect = banner.getBoundingClientRect();
+    var ratio = rect.bottom / (rect.bottom - rect.top);
+  
+    // 调整缩放比例，增加一个缓动效果
+    var z = Math.max(0.01, Math.min(1, ratio * 0.5 + 0.5)); // 调整这里的系数以改变速度
+  
+    $(".wrapper")[0].style.zoom = z;
+    $(".wrapper")[0].style.MozTransform = "scale(" + z + ")";
   });
 
   $("#menu-icon, #menu-icon-tablet").click(function() {
