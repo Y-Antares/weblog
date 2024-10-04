@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang=en>
 <head>
     <!-- so meta -->
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://yantares.cn/2024/02/05/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/index.html">
 <meta property="og:site_name" content="Lone Trail">
 <meta property="og:description" content="9.1 返回指针值的函数 函数的返回值可为变量地址、数组名或指针变量。  在说明&#x2F;定义返回值为指针值的函数时，只需在函数前加一指针类型说明符。 例： 12float *fun(float x[],float y);char *strcat1(char *strDest,const char *strSource)  例：编一函数，将这字符串中ASCII码最大的字符的地址返回，主程序中输出">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yantares.cn/img/image-20231102103809883.png">
 <meta property="og:image" content="https://yantares.cn/img/image-20231102104244452.png">
 <meta property="article:published_time" content="2024-02-05T10:38:30.000Z">
@@ -92,9 +92,9 @@
     
     
       <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -105,13 +105,13 @@
      --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
-       --><li><a href="/tags/">标签</a></li><!--
+       --><li><a href="/tags/">Tag</a></li><!--
      --><!--
-       --><li><a href="/categories/">分类</a></li><!--
+       --><li><a href="/categories/">Category</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
      --><!--
-       --><li><a href="/search/">搜索</a></li><!--
+       --><li><a href="/search/">Search</a></li><!--
      -->
       </ul>
     </span>
@@ -119,18 +119,18 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/2024/02/05/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/2024/02/05/%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%87%BD%E6%95%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/2024/02/05/%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%87%BD%E6%95%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
     <br/>
     <div id="share" style="display: none">
@@ -385,7 +385,7 @@
 
     <div class="blog-post-comments">
         <div id="utterances_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+            <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
 
@@ -403,13 +403,13 @@
         
           <li><a href="/archives/">Writing</a></li>
         
-          <li><a href="/tags/">标签</a></li>
+          <li><a href="/tags/">Tag</a></li>
         
-          <li><a href="/categories/">分类</a></li>
+          <li><a href="/categories/">Category</a></li>
         
           <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
         
-          <li><a href="/search/">搜索</a></li>
+          <li><a href="/search/">Search</a></li>
         
       </ul>
     </div>
@@ -439,12 +439,12 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
         
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -469,13 +469,13 @@
      --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
-       --><li><a href="/tags/">标签</a></li><!--
+       --><li><a href="/tags/">Tag</a></li><!--
      --><!--
-       --><li><a href="/categories/">分类</a></li><!--
+       --><li><a href="/categories/">Category</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
      --><!--
-       --><li><a href="/search/">搜索</a></li><!--
+       --><li><a href="/search/">Search</a></li><!--
      -->
       </ul>
     </nav>
@@ -505,7 +505,7 @@
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
     btn += '<i class="fa-regular fa-clone"></i>';
     btn += '</span>';
     // mount it!
@@ -516,7 +516,7 @@
       }
     });
     clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.trigger.setAttribute('aria-label', "Copied!");
       e.clearSelection();
     })
   })
