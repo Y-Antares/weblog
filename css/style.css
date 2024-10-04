@@ -316,8 +316,8 @@
   padding-right: 4rem;
   padding-left: 4rem;
 }
-body h1,
-body .h1 {
+.content h1,
+.content .h1 {
   display: block;
   margin-top: 3rem;
   margin-bottom: 1rem;
@@ -329,8 +329,8 @@ body .h1 {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
-body h2,
-body .h2 {
+.content h2,
+.content .h2 {
   position: relative;
   display: block;
   margin-top: 2rem;
@@ -341,81 +341,81 @@ body .h2 {
   font-weight: bold;
   font-size: 1rem;
 }
-body h3 {
+.content h3 {
   color: #eee;
   text-decoration: underline;
   font-weight: bold;
   font-size: 0.9rem;
 }
-body h4,
-body h5,
-body h6 {
+.content h4,
+.content h5,
+.content h6 {
   display: inline;
   text-decoration: none;
   color: #ccc;
   font-weight: bold;
   font-size: 0.9rem;
 }
-body h3,
-body h4,
-body h5,
-body h6 {
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
   margin-top: 0.9rem;
   margin-bottom: 0.5rem;
 }
-body hr {
+.content hr {
   border: 0.5px dashed #ccc;
   opacity: 0.5;
   margin: 0;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-body strong {
+.content strong {
   font-weight: bold;
 }
-body em,
-body cite {
+.content em,
+.content cite {
   font-style: italic;
 }
-body sup,
-body sub {
+.content sup,
+.content sub {
   position: relative;
   vertical-align: baseline;
   font-size: 0.75em;
   line-height: 0;
 }
-body sup {
+.content sup {
   top: -0.5em;
 }
-body sub {
+.content sub {
   bottom: -0.2em;
 }
-body small {
+.content small {
   font-size: 0.85em;
 }
-body acronym,
-body abbr {
+.content acronym,
+.content abbr {
   border-bottom: 1px dotted;
 }
-body ul,
-body ol,
-body dl {
+.content ul,
+.content ol,
+.content dl {
   line-height: 1.725;
 }
-body ul ul,
-body ol ul,
-body ul ol,
-body ol ol {
+.content ul ul,
+.content ol ul,
+.content ul ol,
+.content ol ol {
   margin-top: 0;
   margin-bottom: 0;
 }
-body ol {
+.content ol {
   list-style: decimal;
 }
-body dt {
+.content dt {
   font-weight: bold;
 }
-body table {
+.content table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
@@ -423,14 +423,14 @@ body table {
   overflow: auto;
   display: block;
 }
-body th {
+.content th {
   padding: 8px;
   border-bottom: 1px dashed #908d8d;
   color: #eee;
   font-weight: bold;
   font-size: 13px;
 }
-body td {
+.content td {
   padding: 0 8px;
   border-bottom: none;
 }
@@ -485,14 +485,15 @@ body {
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 1.725;
   text-rendering: geometricPrecision;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 .content {
+  flex: 1;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
   overflow-wrap: break-word;
 }
 .content p {
@@ -501,6 +502,7 @@ body {
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
 }
+.content pre,
 .content code {
   hyphens: manual;
   -moz-hyphens: manual;
@@ -571,8 +573,9 @@ body {
     flex: 1 0 65%;
   }
 }
-.max-width {
-  max-width: 48rem;
+.width {
+  width: 100%;
+  max-width: 50rem;
 }
 @media (max-width: 480px) {
   .px3 {
@@ -1545,7 +1548,7 @@ article .content .caption {
   background-size: cover;
   border-radius: 250px;
   margin: 0 auto;
-  animation: spinsun 40s infinite linear;
+  animation: spinsun 56s infinite linear;
 }
 .planet {
   background-size: cover;
@@ -1568,81 +1571,81 @@ article .content .caption {
   position: absolute;
   width: 300px;
   z-index: 2;
-  animation: orbitmercury 12s infinite linear;
+  animation: orbitmercury 16.799999999999997s infinite linear;
   top: -7.5px; /*half of planets height to keep orbits in line*/
 }
 .mercury .planet {
   width: 25px;
   height: 25px;
   background-image: url("../images/mercury.png");
-  animation: anti-spin 12s infinite linear;
+  animation: anti-spin 16.799999999999997s infinite linear;
 }
 .mercury .shadow {
-  animation: shadow 12s infinite linear;
+  animation: shadow 16.799999999999997s infinite linear;
 }
 .venus {
   position: absolute;
   width: 506px;
   z-index: 3;
-  animation: orbitvenus 15s infinite linear;
+  animation: orbitvenus 21s infinite linear;
   top: -19px;
 }
 .venus .planet {
   width: 48px;
   height: 48px;
   background-image: url("../images/venus.png");
-  animation: anti-spin 15s infinite linear;
+  animation: anti-spin 21s infinite linear;
 }
 .venus .shadow {
-  animation: shadow 15s infinite linear;
+  animation: shadow 21s infinite linear;
 }
 .earth {
   position: absolute;
   width: 610px;
   z-index: 4;
-  animation: orbitearth 20s infinite linear;
+  animation: orbitearth 28s infinite linear;
   top: -20px;
 }
 .earth .planet {
   width: 50px;
   height: 50px;
   background-image: url("../images/earth.png");
-  animation: anti-spin 20s infinite linear;
+  animation: anti-spin 28s infinite linear;
 }
 .earth .shadow {
-  animation: shadow 20s infinite linear;
+  animation: shadow 28s infinite linear;
 }
 .mars {
   position: absolute;
   width: 706px;
   z-index: 5;
-  animation: orbitmars 30s infinite linear;
+  animation: orbitmars 42s infinite linear;
   top: -11px;
 }
 .mars .planet {
   width: 32px;
   height: 32px;
   background-image: url("../images/mars.png");
-  animation: anti-spin 30s infinite linear;
+  animation: anti-spin 42s infinite linear;
 }
 .mars .shadow {
-  animation: shadow 30s infinite linear;
+  animation: shadow 42s infinite linear;
 }
 .jupiter {
   position: absolute;
   width: 1100px;
   z-index: 6;
-  animation: orbitjupiter 50s infinite linear;
+  animation: orbitjupiter 70s infinite linear;
   top: -64px;
 }
 .jupiter .planet {
   width: 110px;
   height: 110px;
   background-image: url("../images/jupiter.png");
-  animation: anti-spin 50s infinite linear;
+  animation: anti-spin 70s infinite linear;
 }
 .jupiter .shadow {
-  animation: shadow 50s infinite linear;
+  animation: shadow 70s infinite linear;
 }
 .banner {
   height: 30vh;
@@ -2393,37 +2396,38 @@ article .content .caption {
   font-style: italic;
 }
 pre {
-  overflow-x: auto;
+  font-family: "Menlo", "Meslo LG", monospace;
+  font-size: 13px;
   padding: 10px 15px;
   padding-bottom: 0;
-  border: 1px dotted #908d8d;
-  border-radius: 4px;
-  font-size: 13px;
-  font-family: "Menlo", "Meslo LG", monospace;
   line-height: 22px;
   -webkit-border-radius: 4px;
-}
-pre code {
-  display: block;
-  padding: 0;
-  border: none;
+  border-radius: 4px;
+  border: 1px dotted #908d8d;
+  overflow-x: auto;
 }
 code {
-  padding: 0 5px;
-  border: 1px dotted #908d8d;
-  border-radius: 2px;
   -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px dotted #908d8d;
+  padding: 0 5px;
+}
+pre code {
+  border: none;
+  display: block;
+  padding: 0;
 }
 .highlight {
-  overflow-x: auto;
-  margin: 1rem 0;
-  padding: 10px 15px;
-  border-radius: 4px;
-  background: #212326;
   font-family: "Menlo", "Meslo LG", monospace;
+  background: #3c4145;
   -webkit-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px 15px;
+  overflow-x: auto;
+  margin: 1rem 0 1rem 0;
 }
 .highlight figcaption {
+  zoom: 1;
   margin: -5px 0 5px;
   color: #908d8d;
   font-size: 0.9em;
@@ -2480,4 +2484,15 @@ code {
 }
 #header-post #actions {
   direction: ltr !important;
+}
+.background {
+  width: 100%;
+  z-index: 20;
+}
+.small {
+  max-width: 130px;
+  margin: 20px auto;
+  border-width: 2px;
+  border-color: #fff;
+  font-weight: 100;
 }

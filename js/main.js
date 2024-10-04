@@ -10,7 +10,44 @@ if (!!$.prototype.justifiedGallery) {
   $(".article-gallery").justifiedGallery(options);
 }
 
+$(window).load(function() {
+    
+  $("#wrapper").fadeTo("slow",1);
+  $("#blogtitel").fadeOut(2000);
+});
+
 $(document).ready(function() {
+
+  $(window).on('scroll', function() {
+
+    var z = $(".banner")[0].getBoundingClientRect().bottom / (
+        $(".banner")[0].getBoundingClientRect().bottom - $(".banner")[0].getBoundingClientRect().top)
+
+    if (z < 0) {
+        z = 0.01
+    }
+
+    $(".wrapper")[0].style.zoom = z
+    $(".wrapper")[0].style.MozTransform = "scale(" + z + ")"
+
+  });
+
+  $("#menu-icon, #menu-icon-tablet").click(function() {
+    if ($('#menu').css('visibility') == 'hidden') {
+        $('#menu').css('visibility', 'visible');
+        $('#menu-icon, #menu-icon-tablet').addClass('active');
+
+        var topDistance = $("#menu > #nav").offset().top;
+
+        $("#menu > #nav").show();
+        return false;
+    } else {
+        $('#menu').css('visibility', 'hidden');
+        $('#menu-icon, #menu-icon-tablet').removeClass('active');
+
+        return false;
+    }
+  });
 
   /**
    * Shows the responsive navigation menu on mobile.
@@ -54,25 +91,24 @@ $(document).ready(function() {
     /**
      * Add a scroll listener to the menu to hide/show the navigation links.
      */
-    if (menu.length) {
-      $(window).on("scroll", function() {
-        var topDistance = menu.offset().top;
+    if ($("#menu").length) {
+      $(window).on('scroll', function() {
+        var topDistance = $(window).scrollTop();
 
-        // hide only the navigation links on desktop
-        if (!nav.is(":visible") && topDistance < 50) {
-          nav.show();
-        } else if (nav.is(":visible") && topDistance > 100) {
-          nav.hide();
+        if ($('#menu').css('visibility') != 'hidden' && topDistance < 10) {
+            $("#menu > #nav").show();
+        } else if ($('#menu').css('visibility') != 'hidden' && topDistance > 10) {
+            $("#menu > #nav").hide();
         }
 
-        // on tablet, hide the navigation icon as well and show a "scroll to top
-        // icon" instead
-        if ( ! $( "#menu-icon" ).is(":visible") && topDistance < 50 ) {
-          $("#menu-icon-tablet").show();
-          $("#top-icon-tablet").hide();
-        } else if (! $( "#menu-icon" ).is(":visible") && topDistance > 100) {
-          $("#menu-icon-tablet").hide();
-          $("#top-icon-tablet").show();
+        if (!$("#menu-icon").is(":visible") && topDistance < 10) {
+
+            $("#menu-icon-tablet").show();
+            $("#top-icon-tablet").hide();
+        } else if (!$("#menu-icon").is(":visible") && topDistance > 10) {
+
+            $("#menu-icon-tablet").hide();
+            $("#top-icon-tablet").show();
         }
       });
     }
@@ -103,9 +139,11 @@ $(document).ready(function() {
         // show a "navigation" icon when close to the top of the page, 
         // otherwise show a "scroll to the top" icon
         if (topDistance < 50) {
-          $("#actions-footer > #top").hide();
+          $("#actions-footer > ul > #top").hide();
+          $("#actions-footer > ul > #menu").show();
         } else if (topDistance > 100) {
-          $("#actions-footer > #top").show();
+          $("#actions-footer > ul > #menu").hide();
+          $("#actions-footer > ul > #top").show();
         }
       });
     }
