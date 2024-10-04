@@ -10,7 +10,44 @@ if (!!$.prototype.justifiedGallery) {
   $(".article-gallery").justifiedGallery(options);
 }
 
+$(window).load(function() {
+    
+  $("#wrapper").fadeTo("slow",1);
+  $("#blogtitel").fadeOut(2000);
+});
+
 $(document).ready(function() {
+
+  $(window).on('scroll', function() {
+
+    var z = $(".banner")[0].getBoundingClientRect().bottom / (
+        $(".banner")[0].getBoundingClientRect().bottom - $(".banner")[0].getBoundingClientRect().top)
+
+    if (z < 0) {
+        z = 0.01
+    }
+
+    $(".wrapper")[0].style.zoom = z
+    $(".wrapper")[0].style.MozTransform = "scale(" + z + ")"
+
+  });
+
+  $("#menu-icon, #menu-icon-tablet").click(function() {
+      if ($('#menu').css('visibility') == 'hidden') {
+          $('#menu').css('visibility', 'visible');
+          $('#menu-icon, #menu-icon-tablet').addClass('active');
+
+          var topDistance = $("#menu > #nav").offset().top;
+
+          $("#menu > #nav").show();
+          return false;
+      } else {
+          $('#menu').css('visibility', 'hidden');
+          $('#menu-icon, #menu-icon-tablet').removeClass('active');
+
+          return false;
+      }
+  });
 
   /**
    * Shows the responsive navigation menu on mobile.
