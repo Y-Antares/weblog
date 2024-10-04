@@ -62,7 +62,7 @@ $(document).ready(function() {
             } else if ($('#menu').css('visibility') != 'hidden' && topDistance > 10) {
                 $("#menu > #nav").hide();
             }
-            
+
             if (!$("#menu-icon").is(":visible") && topDistance < 10) {
 
                 $("#menu-icon-tablet").show();
