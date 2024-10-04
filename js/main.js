@@ -10,7 +10,7 @@ if (!!$.prototype.justifiedGallery) {
   $(".article-gallery").justifiedGallery(options);
 }
 
-$(window).load(function() {
+$(window).on('load', function(){
     
     $("#wrapper").fadeTo("slow",1);
     $("#blogtitel").fadeOut(2000);
