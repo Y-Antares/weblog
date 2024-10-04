@@ -1,6 +1,3 @@
-/**
- * Sets up Justified Gallery.
- */
 if (!!$.prototype.justifiedGallery) {
   var options = {
     rowHeight: 140,
@@ -50,34 +47,24 @@ $(document).ready(function() {
     }
   });
 
-  /**
-   * Shows the responsive navigation menu on mobile.
-   */
+  /* Shows the responsive navigation menu on mobile. */
   $("#header > #nav > ul > .icon").click(function() {
     $("#header > #nav > ul").toggleClass("responsive");
   });
 
-
-  /**
-   * Controls the different versions of  the menu in blog post articles 
-   * for Desktop, tablet and mobile.
-   */
+  /* Controls the different versions of  the menu in blog post articles. for Desktop, tablet and mobile. */
   if ($(".post").length) {
     var menu = $("#menu");
     var nav = $("#menu > #nav");
     var menuIcon = $("#menu-icon, #menu-icon-tablet");
 
-    /**
-     * Display the menu on hi-res laptops and desktops.
-     */
+    /*Display the menu on hi-res laptops and desktops.*/
     if ($(document).width() >= 1440) {
       menu.show();
       menuIcon.addClass("active");
     }
 
-    /**
-     * Display the menu if the menu icon is clicked.
-     */
+    /*Display the menu if the menu icon is clicked.*/
     menuIcon.click(function() {
       if (menu.is(":hidden")) {
         menu.show();
@@ -89,9 +76,7 @@ $(document).ready(function() {
       return false;
     });
 
-    /**
-     * Add a scroll listener to the menu to hide/show the navigation links.
-     */
+    /* Add a scroll listener to the menu to hide/show the navigation links. */
     if ($("#menu").length) {
       $(window).on('scroll', function() {
         var topDistance = $(window).scrollTop();
@@ -114,10 +99,7 @@ $(document).ready(function() {
       });
     }
 
-    /**
-     * Show mobile navigation menu after scrolling upwards,
-     * hide it again after scrolling downwards.
-     */
+    /* Show mobile navigation menu after scrolling upwards, hide it again after scrolling downwards. */
     if ($("#footer-post").length) {
       var lastScrollTop = 0;
       $(window).on('scroll', function() {
