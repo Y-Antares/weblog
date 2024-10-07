@@ -2488,6 +2488,9 @@ pre code {
 .background {
   width: 100%;
   z-index: 20;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 .small {
   max-width: 130px;
