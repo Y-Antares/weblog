@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="3B1B 的视频看了会上瘾！做得太棒了 But what is a Neural Network?website: https:&#x2F;&#x2F;www.3blue1brown.com&#x2F;lessons&#x2F;neural-networks video: https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;aircAruvnKk  Plain vanilla——multilayer perception多层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3B1B&#39;s neural network videos">
+<meta property="og:url" content="https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/index.html">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="3B1B 的视频看了会上瘾！做得太棒了 But what is a Neural Network?website: https:&#x2F;&#x2F;www.3blue1brown.com&#x2F;lessons&#x2F;neural-networks video: https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;aircAruvnKk  Plain vanilla——multilayer perception多层">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://prod-files-secure.s3.us-west-2.amazonaws.com/9f3e7e70-2222-46b8-9bb7-397ec648e50b/f176e223-bd27-469b-ae33-620f45b5cb53/Untitled.png">
+<meta property="article:published_time" content="2024-04-21T15:14:14.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:45:48.808Z">
+<meta property="article:author" content="Antares">
+<meta property="article:tag" content="3B1B">
+<meta property="article:tag" content="NN">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://prod-files-secure.s3.us-west-2.amazonaws.com/9f3e7e70-2222-46b8-9bb7-397ec648e50b/f176e223-bd27-469b-ae33-620f45b5cb53/Untitled.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>3B1B&#39;s neural network videos</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lone Trail</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/category/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/04/26/%E5%B0%8F%E5%B0%8F%E7%9A%84%E4%B8%80%E7%89%87%E5%A4%A9%E7%A9%BA/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2024/04/21/%E5%A4%A9%E5%A4%A7%E7%89%A9%E5%8C%96-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%83%AD%E5%8A%9B%E5%AD%A6%E7%AC%AC%E4%BA%8C%E3%80%81%E4%B8%89%E5%AE%9A%E5%BE%8B/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&text=3B1B&#39;s neural network videos"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&is_video=false&description=3B1B&#39;s neural network videos"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=3B1B&#39;s neural network videos&body=Check out this article: https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&name=3B1B&#39;s neural network videos&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#But-what-is-a-Neural-Network"><span class="toc-number">1.</span> <span class="toc-text">But what is a Neural Network?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deep-learning"><span class="toc-number">2.</span> <span class="toc-text">deep learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gradient-descent"><span class="toc-number">2.1.</span> <span class="toc-text">gradient descent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#analyze-this-network"><span class="toc-number">2.2.</span> <span class="toc-text">analyze this network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#learn-more"><span class="toc-number">2.3.</span> <span class="toc-text">learn more</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-corner"><span class="toc-number">2.4.</span> <span class="toc-text">research corner</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#backpropagation"><span class="toc-number">3.</span> <span class="toc-text">backpropagation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intuitive-walkthrough"><span class="toc-number">3.1.</span> <span class="toc-text">intuitive walkthrough</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#derivatives-in-computational-graphs"><span class="toc-number">3.2.</span> <span class="toc-text">derivatives in computational graphs</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        3B1B&#39;s neural network videos
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lone Trail</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-04-21T15:14:14.000Z" itemprop="datePublished">2024-04-21</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/3B1B/" rel="tag">3B1B</a>, <a class="tag-link-link" href="/tags/NN/" rel="tag">NN</a>, <a class="tag-link-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>3B1B 的视频看了会上瘾！做得太棒了</p>
+<h1 id="But-what-is-a-Neural-Network"><a href="#But-what-is-a-Neural-Network" class="headerlink" title="But what is a Neural Network?"></a>But what is a Neural Network?</h1><p>website: <a target="_blank" rel="noopener" href="https://www.3blue1brown.com/lessons/neural-networks">https://www.3blue1brown.com/lessons/neural-networks</a></p>
+<p>video: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=aircAruvnKk">https://www.youtube.com/watch?v=aircAruvnKk</a></p>
+<ul>
+<li><p>Plain vanilla——multilayer perception多层感知器</p>
+</li>
+<li><p>classic example: recognize handwritten digits</p>
+</li>
+<li><p><strong>neurons:</strong> thing that holds a number(activation)</p>
+</li>
+<li><p><strong>layers:</strong></p>
+<ul>
+<li>input layer; output layer</li>
+<li>hidden layers</li>
+<li>why 2 hidden layers and with 16 neurons?</li>
+</ul>
+</li>
+<li><p><strong>core:</strong> how activation of the former layer influence the activation of the latter layer?</p>
+<ul>
+<li>e.g. recognize the loop on the top: 8,9<ul>
+<li>how to recognize these edges, loops, and patterns? break them down into little pieces?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>edge detection example</p>
+<ul>
+<li><p>what parameters?</p>
+<ul>
+<li><strong>weights</strong></li>
+<li>calculate the <strong>weighted sum</strong> of the activation from the input layer<ul>
+<li>e.g. 为边的位置赋正值，周围位置赋负值，其余位置赋0值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>requirement: all activations $\in [0,1]$</p>
+<ul>
+<li>functions:<ul>
+<li>sigmoid 用$\sigma()$表示</li>
+<li>但现在几乎不用sigmoid了，用ReLU之类比较多（deep NN）<ul>
+<li>ReLU(a)&#x3D;max(0,a) (inactive below 0)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>biase偏置值，不希望太容易被激活 用b表示<ul>
+<li>$\sigma(\omega_1a_1+\omega_2a_2+…+\omega_na_n+b)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>too many weights and biases!</p>
+<ul>
+<li>learning: finding the right weights and biases</li>
+</ul>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/9f3e7e70-2222-46b8-9bb7-397ec648e50b/f176e223-bd27-469b-ae33-620f45b5cb53/Untitled.png" alt="Untitled"></p>
+<p>第一层简化为：$a^{(1)}&#x3D;\sigma(Wa^{(0)}+b)$</p>
+</li>
+</ul>
+</li>
+<li><p>re-understand the <strong>neurons</strong> as <strong>functions</strong> that outputs the result of the former layer.</p>
+</li>
+</ul>
+<h1 id="deep-learning"><a href="#deep-learning" class="headerlink" title="deep learning"></a>deep learning</h1><h2 id="gradient-descent"><a href="#gradient-descent" class="headerlink" title="gradient descent"></a>gradient descent</h2><ul>
+<li>cost function—&gt;average cost<ul>
+<li>input: weights&amp;biases</li>
+<li>output : 1 number (the cost)</li>
+<li>parameters: training examples</li>
+</ul>
+</li>
+<li>$C(\omega)$ : single input. how to find its <strong>minimum</strong>?<ul>
+<li>slope detection&amp;flowing: <strong>local minimum</strong> (depended on the random start)<ul>
+<li>local vs global，老生常谈</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$C(x,y)$ : two inputs<ul>
+<li>$\nabla C(x,y)$ , gradient, the direction of the steepest increase</li>
+<li>backpropagation</li>
+</ul>
+</li>
+<li>network learning&#x3D;minimizing the cost function<ul>
+<li>smooth output (continuous ranging activation)</li>
+</ul>
+</li>
+<li>how <strong>gradient of the cost function$(\nabla C)$</strong> of 13000 dims impact? 另一种思考方式：<ul>
+<li>大小：说明哪些维度重要</li>
+<li>正负：说明该维度上应移动的方向</li>
+<li>（每个维度上包含权重和偏差）</li>
+</ul>
+</li>
+</ul>
+<h2 id="analyze-this-network"><a href="#analyze-this-network" class="headerlink" title="analyze this network"></a>analyze this network</h2><p>loose patterns——not intelligence…</p>
+<p>not picking edges and loops</p>
+<h2 id="learn-more"><a href="#learn-more" class="headerlink" title="learn more"></a>learn more</h2><p>要了解更多信息，我强烈推荐迈克尔·尼尔森的书</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa2pZcXZMVFJJbjBwbkNaaENjeVEyUnNURG8xUXxBQ3Jtc0ttSGgxOV9sSWpPaGdsbzBKZElZRzJmSE5oM0Q2cDRCRUt5RXVSU0s1UHVCWlFkT0xFSEVfNEV4MC1JbEVCRlFQbjVXRXlWZlI3VHNUMGlIRFU3aTlTalo3ZThTNXpRWGR3d2tzVTNiakZndnU2Z2hSdw&q=http://neuralnetworksanddeeplearning.com/&v=IHZwWFHWa-w">http://neuralnetworksanddeeplearning....</a></p>
+<p>本书逐步介绍了这些视频中示例背后的代码，您可以在此处找到：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbExlLTJ3elh1SlRjZzdpQ2szd1l0SkxQRnA0d3xBQ3Jtc0ttU0tGUEtnRGI5aGNpbkgwa2xOWlZPS3R2MHpGLVdjMThnMDVGZzdVVjlNSHlrUGNOelMtUHkwM2dMdDdVTENnQmRINTM0SUtMODdlWGlHY05vR08zaG1nOG9zRkoySUxBVjM1cDhIV3RvVF9BVXpWbw&q=https://github.com/mnielsen/neural-networks-and-deep-learning&v=IHZwWFHWa-w">https://github.com/mnielsen/neural-ne...</a></p>
+<p>MNIST 数据库：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbE1xeHFmZU54RHhadmVSTkw2OFRmZEg1b3lxd3xBQ3Jtc0tscDJaNXdfM2I5emJWbFVZdGZOTmFxZ3pqOHpXSHk2WXhFNjQ1c29TdnZkNUNENGh0NFFWcUs4Ukw3dmJXaEtVWC12ckxIQkg3dnBuanZaLWJWVEVILXBfdnRkdmVaTGd6ai1vVlRRRnRwT1QxemVmMA&q=http://yann.lecun.com/exdb/mnist/&v=IHZwWFHWa-w">http://yann.lecun.com/exdb/mnist/</a></p>
+<p>另请查看 Chris Olah 的博客：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbWkyTWFaRFAxR2l4clZGZ1hhTmltaVkwSGFnQXxBQ3Jtc0trVnNTYkhDNzhzbVlhb1RaazZTT2RUZ3Y1TFIxRWpRUi11N3F2MG1vY01Talc0bW9oSEVSUmpmRGQ0RUFNeXFVOUI4OTJKNVA3THVnOXM2SVlscUQ4QmZFODh1eVVUR3NKTGNYbllBeHozbzc3ZG5VWQ&q=http://colah.github.io/&v=IHZwWFHWa-w">http://colah.github.io/</a></p>
+<p>他关于神经网络和拓扑的文章特别漂亮，但说实话，那里的所有内容都很棒。 如果您喜欢，您一定会_喜欢_ distill 的出版物：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbkU1alB2NFJTY0JCRjItWC1JeHdqZUZ3WkJiZ3xBQ3Jtc0ttSkJSVFdNS21DbDBvUEZacklKYS1Da1ExazB3aG8zVXJ2S2w0V3ZSTGxhV21aUWtGeHhnY1g0RUFqMVoteWlLbEctMlBVUFkwdTFIRFN3X19fTFc1a2pqNWlIZl9rb1ZRcUtfOExyS2FIM3o3UmlRWQ&q=https://distill.pub/&v=IHZwWFHWa-w">https://distill.pub/</a></p>
+<h2 id="research-corner"><a href="#research-corner" class="headerlink" title="research corner"></a>research corner</h2><p>两篇论文：</p>
+<p>a closer look at memorization in deep Networks</p>
+<p>the loss surfaces of multilayer networks</p>
+<h1 id="backpropagation"><a href="#backpropagation" class="headerlink" title="backpropagation"></a>backpropagation</h1><h2 id="intuitive-walkthrough"><a href="#intuitive-walkthrough" class="headerlink" title="intuitive walkthrough"></a>intuitive walkthrough</h2><p>without notations!</p>
+<ul>
+<li>bad network, silly outcome</li>
+<li>only adjust <strong>weights &amp; biases</strong></li>
+</ul>
+<p>for example, the graph”2”.</p>
+<ol>
+<li><p>you want to increase the value of 2 from 0.2 to 1, as the value$&#x3D;\sigma(\omega_1a_1+\omega_2a_2+…+\omega_na_n+b)$</p>
+<p>there are 3 ways:</p>
+<ul>
+<li><strong>increase b</strong></li>
+<li><strong>increase</strong> $\omega_i$<ul>
+<li>in proportion to $a_i$ （增加对应更大的$a_i$的$\omega_i$，性价比更高）</li>
+<li>“Neurons that fire together wire together”</li>
+</ul>
+</li>
+<li><strong>change</strong> $a_i$<ul>
+<li>in proportion to $\omega_i$ （正权重增大，负权重减小）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>and also decrease the value of other numbers.</p>
+</li>
+</ol>
+<p>So we add up all the last-layer neurons’ desire effects, and get the wanted <strong>nudges</strong> for the second last layer.</p>
+<p>THAT’S THE FIRST <strong>PROPAGATION!</strong></p>
+<p>每一层的nudges加和，每个样本的总nudges加和求平均，得到相量$\nabla C$的倍数。（非精确量化）</p>
+<p>如何偷懒？</p>
+<p>把样本分成mini-batchs，每个mini-batch算$\nabla C$，再综合。</p>
+<p>称为随机梯度下降(Stochastic gradient descent)</p>
+<h2 id="derivatives-in-computational-graphs"><a href="#derivatives-in-computational-graphs" class="headerlink" title="derivatives in computational graphs"></a>derivatives in computational graphs</h2><p>dive a little bit into the calculus!</p>
+<p>由浅入深！</p>
+<ul>
+<li>每层一个神经元<ul>
+<li>$C(\omega_1, b_1,\omega_2,b_2,\omega_3,b_3)$</li>
+<li>神经元index：<ul>
+<li>上标表示层数，如$a^{(L)}$表示最后一层（个）神经元</li>
+</ul>
+</li>
+<li>desired output最终层激活值：记作y（0 or 1）</li>
+<li>Cost $C_0&#x3D;(a^{(L)}-y)^2$</li>
+<li>$a^{(L)}&#x3D;\sigma(\omega^{(L)}a^{(L-1)}+b^{(L)})$<ul>
+<li>令$z^{(L)}&#x3D;\omega^{(L)}a^{(L-1)}+b^{(L)}$</li>
+<li>则$a^{(L)}&#x3D;\sigma(z^{(L)})$</li>
+</ul>
+</li>
+<li>$C_0$对$\omega^{(L)}$的微小变化有多敏感？<ul>
+<li>$\frac{\partial C_0}{\partial \omega^{(L)}}&#x3D;\frac{\partial z^{(L)}}{\partial \omega^{(L)}}\frac{\partial a^{(L)}}{\partial z^{(L)}}\frac{\partial C_0}{\partial a^{(L)}}$<ul>
+<li>$C_0&#x3D;(a^{(L)}-y)^2$</li>
+<li>$a^{(L)}&#x3D;\sigma(z^{(L)})$<ul>
+<li>$\frac{\partial a^{(L)}}{\partial z^{(L)}}&#x3D;\sigma’(z^{(L)})$</li>
+</ul>
+</li>
+<li>$z^{(L)}&#x3D;\omega^{(L)}a^{(L-1)}+b^{(L)}$<ul>
+<li>$\frac{\partial z^{(L)}}{\partial \omega^{(L)}}&#x3D;a^{(L-1)}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$b^{(L)}$同理；每层的多个$\omega^{(L)}$同理；各层的$\omega^{(i)}，b^{(i)}$同理。</li>
+<li>每层不止一个神经元：加下标<ul>
+<li>$a^{(L-1)}_k$ &amp; $a^{(L)}<em>j$：$\omega^{(L)}</em>{jk}$</li>
+<li>$C_0&#x3D;\sum_{j&#x3D;0}^{n_L-1}(a_j^{(L)}-y_j)^2$<ul>
+<li>$\frac{\partial C_0}{\partial a^{(L)}}$需要加和</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <script src="https://utteranc.es/client.js"
+        repo="Y-Antares/weblog"
+        issue-term="pathname"
+        label="Comment"
+        theme="icy-dark"
+        crossorigin="anonymous"
+        async>
+  </script>
+</article>
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="/tags/">tag</a></li>
+         
+          <li><a href="/category/">category</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#But-what-is-a-Neural-Network"><span class="toc-number">1.</span> <span class="toc-text">But what is a Neural Network?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deep-learning"><span class="toc-number">2.</span> <span class="toc-text">deep learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gradient-descent"><span class="toc-number">2.1.</span> <span class="toc-text">gradient descent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#analyze-this-network"><span class="toc-number">2.2.</span> <span class="toc-text">analyze this network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#learn-more"><span class="toc-number">2.3.</span> <span class="toc-text">learn more</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-corner"><span class="toc-number">2.4.</span> <span class="toc-text">research corner</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#backpropagation"><span class="toc-number">3.</span> <span class="toc-text">backpropagation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intuitive-walkthrough"><span class="toc-number">3.1.</span> <span class="toc-text">intuitive walkthrough</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#derivatives-in-computational-graphs"><span class="toc-number">3.2.</span> <span class="toc-text">derivatives in computational graphs</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&text=3B1B&#39;s neural network videos"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&is_video=false&description=3B1B&#39;s neural network videos"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=3B1B&#39;s neural network videos&body=Check out this article: https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&title=3B1B&#39;s neural network videos"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2024/04/21/3b1bs-neural-network-videos/&name=3B1B&#39;s neural network videos&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    footer.copyright &copy;
+    
+    
+    2024
+    Antares
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Archive</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tag</a></li><!--
+    --><!--
+      --><li><a href="/category/">category</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">search</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
