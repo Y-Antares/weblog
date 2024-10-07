@@ -2430,14 +2430,14 @@ pre code {
   zoom: 1;
   margin: -5px 0 5px;
   color: #908d8d;
-  font-size: 0.9em;
+  font-size: 16pt;
   transform: scale(1);
 }
 .highlight figcaption a {
   float: right;
   color: #908d8d;
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 14pt;
   background-image: linear-gradient(transparent, transparent 10px, #d41c46 10px, #d41c46);
   background-position: bottom;
   background-size: 100% 6px;
@@ -2457,7 +2457,7 @@ pre code {
   opacity: 1;
 }
 .highlight .btn-copy {
-  font-size: 1.2rem;
+  font-size: 14pt;
   position: absolute;
   right: 20px;
   opacity: 0;
