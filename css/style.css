@@ -1647,16 +1647,6 @@ article .content .caption {
 .jupiter .shadow {
   animation: shadow 50s infinite linear;
 }
-.comet {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #fff 0%, #00bfff 70%);
-  border-radius: 50%;
-  opacity: 0;
-  animation: cometFall 5s infinite;
-  animation-timing-function: ease-in-out;
-}
 .banner {
   height: 30vh;
   width: 100%;
@@ -2340,58 +2330,6 @@ article .content .caption {
   }
   100% {
     opacity: 1;
-  }
-}
-@-moz-keyframes cometFall {
-  0% {
-    transform: translate(-50vw, -50vh) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100vw, 100vh) rotate(45deg);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes cometFall {
-  0% {
-    transform: translate(-50vw, -50vh) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100vw, 100vh) rotate(45deg);
-    opacity: 0;
-  }
-}
-@-o-keyframes cometFall {
-  0% {
-    transform: translate(-50vw, -50vh) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100vw, 100vh) rotate(45deg);
-    opacity: 0;
-  }
-}
-@keyframes cometFall {
-  0% {
-    transform: translate(-50vw, -50vh) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100vw, 100vh) rotate(45deg);
-    opacity: 0;
   }
 }
 .highlight {
