@@ -1698,7 +1698,7 @@ article .content .caption {
   background: #fff;
   border-radius: 50%;
   box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 0 0 0 8px rgba(255,255,255,0.1), 0 0 20px #fff;
-  animation: animate 5s linear infinite;
+  animation: animate 50s linear infinite;
 }
 .span::before {
   content: "";
