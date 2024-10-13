@@ -1536,6 +1536,25 @@ article .content .caption {
   transform-style: preserve-3d;
   height: 0px;
 }
+.wrapper > section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  background-position-x: center;
+  background-size: cover;
+  animation: animateBg 50s linear infinite;
+}
+.wall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 确保在其他内容后面 */
+}
 .sun {
   width: 250px;
   position: absolute;
@@ -1669,25 +1688,6 @@ article .content .caption {
   font-size: 40px;
   font-family: "Menlo", "Meslo LG", monospace;
   font-weight: 700;
-}
-.section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #000;
-  background-position-x: center;
-  background-size: cover;
-  animation: animateBg 50s linear infinite;
-}
-.wall {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 确保在其他内容后面 */
 }
 .span {
   position: absolute;
