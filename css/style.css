@@ -1652,7 +1652,10 @@ article .content .caption {
   padding: 0;
   box-sizing: border-box;
 }
-.section {
+body {
+  overflow: hidden;
+}
+section {
   position: absolute;
   top: 0;
   left: 0;
