@@ -1655,7 +1655,7 @@ article .content .caption {
 body {
   overflow: hidden;
 }
-section {
+.section {
   position: absolute;
   top: 0;
   left: 0;
@@ -1687,7 +1687,7 @@ section {
   font-family: "Menlo", "Meslo LG", monospace;
   font-weight: 700;
 }
-span {
+.span {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1698,7 +1698,7 @@ span {
   box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 0 0 0 8px rgba(255,255,255,0.1), 0 0 20px #fff;
   animation: animate 5s linear infinite;
 }
-span::before {
+.span::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -1707,61 +1707,61 @@ span::before {
   height: 1px;
   background: linear-gradient(90deg, #fff, transparent);
 }
-span:nth-child(1) {
+.span:nth-child(1) {
   top: 0;
   right: 0;
   animation-delay: 0s;
   animation-duration: 2s;
 }
-span:nth-child(2) {
+.span:nth-child(2) {
   top: 0;
   right: 80px;
   animation-delay: 0.2s;
   animation-duration: 6s;
 }
-span:nth-child(3) {
+.span:nth-child(3) {
   top: 80px;
   right: 0px;
   animation-delay: 0.4s;
   animation-duration: 4s;
 }
-span:nth-child(4) {
+.span:nth-child(4) {
   top: 0;
   right: 180px;
   animation-delay: 0.6s;
   animation-duration: 3s;
 }
-span:nth-child(5) {
+.span:nth-child(5) {
   top: 0;
   right: 400px;
   animation-delay: 0.8s;
   animation-duration: 5s;
 }
-span:nth-child(6) {
+.span:nth-child(6) {
   top: 0;
   right: 600px;
   animation-delay: 1s;
   animation-duration: 3s;
 }
-span:nth-child(7) {
+.span:nth-child(7) {
   top: 300px;
   right: 0px;
   animation-delay: 1s;
   animation-duration: 1.75s;
 }
-span:nth-child(8) {
+.span:nth-child(8) {
   top: 0px;
   right: 700px;
   animation-delay: 1.4s;
   animation-duration: 1.25s;
 }
-span:nth-child(9) {
+.span:nth-child(9) {
   top: 0px;
   right: 1000px;
   animation-delay: 0.75s;
   animation-duration: 2.25s;
 }
-span:nth-child(10) {
+.span:nth-child(10) {
   top: 0px;
   right: 1000px;
   animation-delay: 2.75s;
