@@ -1,0 +1,1927 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>行星笔记 - Lone Trail</title>
+
+  
+    <meta name="description" content="行星笔记  2024-2025秋季学期选修课：《行星笔记》，任课教师：SYC，DHS，SR。 说个八卦：据说国家准备多开设些天文专业，就先在合（有）适（钱）的高校搞天文选修试点。于是TJ2023年起新开设一批天文类选修课，《行星笔记》正是其中之一。另外的课包括深空探测等，据说也相当硬核。 系统上给的教材是焦维新的《行星科学》，算是专业基础教材，主要讨论的是太阳系。   Course 1 天文学基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="行星笔记">
+<meta property="og:url" content="https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="行星笔记  2024-2025秋季学期选修课：《行星笔记》，任课教师：SYC，DHS，SR。 说个八卦：据说国家准备多开设些天文专业，就先在合（有）适（钱）的高校搞天文选修试点。于是TJ2023年起新开设一批天文类选修课，《行星笔记》正是其中之一。另外的课包括深空探测等，据说也相当硬核。 系统上给的教材是焦维新的《行星科学》，算是专业基础教材，主要讨论的是太阳系。   Course 1 天文学基">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yantares.cn/images/miuhead.png">
+<meta property="article:published_time" content="2024-10-26T07:21:59.000Z">
+<meta property="article:modified_time" content="2025-11-01T05:43:40.115Z">
+<meta property="article:author" content="Yantares">
+<meta property="article:tag" content="天文">
+<meta property="article:tag" content="星星">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/images/miuhead.png">
+  
+  
+  
+  <meta name="keywords" content="天文,星星">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Lone Trail" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yantares","sameAs":[],"image":"/images/miuhead.png"},"dateCreated":"2024-10-26T15:21:59+08:00","dateModified":"2025-11-01T13:43:40+08:00","datePublished":"2024-10-26T15:21:59+08:00","description":"","headline":"行星笔记","mainEntityOfPage":{"@type":"WebPage","@id":"https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/"},"publisher":{"@type":"Organization","name":"Yantares","sameAs":[],"image":"/images/miuhead.png","logo":{"@type":"ImageObject","url":"/images/miuhead.png"}},"url":"https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/","keywords":"天文, 星星","image":[]}</script>
+  
+  
+  <!-- MathJax配置 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js"></script>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+  </script>
+</head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+<div class="l_body content" id="start" layout="post" type="tech" text-indent><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/miuhead.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Lone Trail</div><div class="sub cap">Yantares's Blog</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客文章" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="说说" href="/memos/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="游戏库" href="/games/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a><a class="nav-item" title="图书馆" href="/library/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper markdown"><div class="widget-header dis-select"><span class="name">🎉 抓到你啦~</span></div><div class="widget-body fs14"><p><span id="welcome-info"></span></p>
+
+<div class="linklist center" style="grid-template-columns:repeat(1,1fr);">
+<a class="link" title="随机文章" href="javascript:toRandomPost()"><div class="flex"><img src="https://api.iconify.design/ion:dice-outline.svg"/><span>随机文章</span></div></a></div></div></widget>
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/02/23/%E6%82%A6%E4%B9%90/%E9%93%81%E8%8A%B1%E9%A3%9E/"><span class="title">铁花飞</span></a><a class="item title" href="/2026/02/27/%E9%9A%8F%E7%AC%94/%E5%8E%A6%E9%97%A8%E6%B8%B8%E8%AE%B0/"><span class="title">厦门游记</span></a><a class="item title" href="/2026/02/10/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/%E5%BC%B9%E4%B8%B8%E8%AE%BA%E7%A0%B4%201/"><span class="title">弹丸论破 1</span></a><a class="item title" href="/2026/01/30/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/%E9%80%86%E8%BD%AC%E8%A3%81%E5%88%A4%201~3/"><span class="title">逆转裁判 1~3</span></a><a class="item title" href="/2024/03/10/%E9%9A%8F%E7%AC%94/%E6%B3%95%E5%8D%8E/"><span class="title">法华</span></a><a class="item title" href="/2025/03/23/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/%E8%AE%A4%E8%AF%86%E5%BB%BA%E7%AD%91%EF%BC%9A%E4%B8%B0%E5%AD%90%E6%81%BA%E5%BB%BA%E7%AD%91%E5%85%AD%E8%AE%B2/"><span class="title">认识建筑：丰子恺建筑六讲</span></a><a class="item title" href="/2025/11/10/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/%E9%93%B6%E6%B2%B3%E7%B3%BB%E6%90%AD%E8%BD%A6%E5%AE%A2%E6%8C%87%E5%8D%97/"><span class="title">银河系搭车客指南</span></a><a class="item title" href="/2025/11/07/%E9%9A%8F%E7%AC%94/%E5%8D%97%E4%BA%AC%E6%B8%B8%E8%AE%B0/"><span class="title">南京游记</span></a><a class="item title" href="/2025/08/15/%E9%9A%8F%E7%AC%94/%E5%85%AD%E7%9B%98%E6%B0%B4%E6%B8%B8%E8%AE%B0/"><span class="title">六盘水游记</span></a><a class="item title" href="/2025/12/01/series/%E8%B0%88%E5%BE%80%E5%BD%95/%E8%B0%88%E5%BE%80%E5%BD%95%EF%BC%886%EF%BC%89/"><span class="title">谈往录（6）：迷惘</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/Y-Antares" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="/images/github_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="https://music.163.com/#/user/home?id=515374354" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="/images/cloudmusic_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="/images/weixin.jpg" rel="noopener noreferrer"><img no-lazy src="/images/wx_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="/images/qq.jpg" rel="noopener noreferrer"><img no-lazy src="/images/qq_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/notebook/">notebook</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/notebook/%E9%80%89%E4%BF%AE/">选修</a></div><div id="tag"> <span>&nbsp标签：</span><a class="cap breadcrumb-link" href="/tags/%E5%A4%A9%E6%96%87/">天文</a>&nbsp; <a class="cap breadcrumb-link" href="/tags/%E6%98%9F%E6%98%9F/">星星</a>&nbsp</div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-10-26T07:21:59.000Z">2024-10-26</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-11-01T05:43:40.115Z">2025-11-01</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>行星笔记</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="行星笔记"><a class="markdownIt-Anchor" href="#行星笔记"></a> 行星笔记</h1>
+<blockquote>
+<p>2024-2025秋季学期选修课：《行星笔记》，任课教师：SYC，DHS，SR。</p>
+<p>说个八卦：据说国家准备多开设些天文专业，就先在合（有）适（钱）的高校搞天文选修试点。于是TJ2023年起新开设一批天文类选修课，《行星笔记》正是其中之一。另外的课包括深空探测等，据说也相当硬核。</p>
+<p>系统上给的教材是焦维新的《行星科学》，算是专业基础教材，主要讨论的是太阳系。</p>
+</blockquote>
+<h1 id="course-1-天文学基础我们的夜空"><a class="markdownIt-Anchor" href="#course-1-天文学基础我们的夜空"></a> Course 1 天文学基础：我们的夜空</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>星星–星座的运行</p>
+<ul class="lvl-2">
+<li class="lvl-4">绕北极星旋转</li>
+<li class="lvl-4">一些最亮的星星</li>
+<li class="lvl-4">黄道星座</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>行星</p>
+<ul class="lvl-2">
+<li class="lvl-4">行星的视退行</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>星星的亮度</p>
+<ul class="lvl-2">
+<li class="lvl-4">视星等和绝对星等</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>星星的颜色</p>
+<ul class="lvl-2">
+<li class="lvl-4">黑体辐射-维恩位移定律得到温度</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>星星的绝对星等</p>
+<ul class="lvl-2">
+<li class="lvl-4">亮度与距离的关系</li>
+<li class="lvl-4">测量星星距离的方法</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>赫罗图</p>
+<ul class="lvl-2">
+<li class="lvl-4">太阳位于主星序上</li>
+</ul>
+</li>
+</ul>
+<h1 id="course-2-3-天文常识古希腊人知道什么从哥白尼到牛顿"><a class="markdownIt-Anchor" href="#course-2-3-天文常识古希腊人知道什么从哥白尼到牛顿"></a> Course 2-3 天文常识：古希腊人知道什么？从哥白尼到牛顿</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>估算与准确计算</p>
+</li>
+<li class="lvl-2">
+<p>古希腊人知道什么</p>
+<ul class="lvl-2">
+<li class="lvl-4">地球是球形的：亚里士多德</li>
+<li class="lvl-4">测量地球大小
+<ul class="lvl-4">
+<li class="lvl-6">埃拉托斯特尼：经纬度系统，测地球周长</li>
+<li class="lvl-6">阿利斯塔克：测量地月距离
+<ul class="lvl-6">
+<li class="lvl-8">角度与角直径</li>
+</ul>
+</li>
+<li class="lvl-6">测量日地距离</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>从哥白尼到牛顿</p>
+<ul class="lvl-2">
+<li class="lvl-4">哥白尼 vs 托勒密</li>
+<li class="lvl-4">第谷：第谷系统</li>
+<li class="lvl-4">开普勒：三大定律</li>
+<li class="lvl-4">伽利略：辩论者；惯性</li>
+<li class="lvl-4">牛顿：三大定律；万有引力定律；棱镜散射
+<ul class="lvl-4">
+<li class="lvl-6">惯性质量 vs 引力质量</li>
+<li class="lvl-6">能量守恒；动量守恒；角动量守恒</li>
+<li class="lvl-6">电磁辐射</li>
+<li class="lvl-6">第一宇宙速度、第二宇宙速度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="course-4-天文学基础非常简略的载人航天发展历史"><a class="markdownIt-Anchor" href="#course-4-天文学基础非常简略的载人航天发展历史"></a> Course 4 天文学基础：（非常简略的）载人航天发展历史</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>冷战-太空竞赛</p>
+<ul class="lvl-2">
+<li class="lvl-4">具体过程见PPT，此处不详述</li>
+<li class="lvl-4"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dx41147hb/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9e7904c84532311f0da86c13f50ba4e2">肯尼迪1962 We choose to go to the moon</a>  煽动性的高峰</li>
+<li class="lvl-4">apollo 11</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>冷战后</p>
+<ul class="lvl-2">
+<li class="lvl-4">航天飞机发射哈勃望远镜（STS31，1990）</li>
+<li class="lvl-4">国际空间站</li>
+<li class="lvl-4">马斯克 SpaceX</li>
+<li class="lvl-4">中国载人航天</li>
+<li class="lvl-4">新一轮登月竞赛？</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>VOYAGER 1 &amp; VOYAGER 2</p>
+<ul class="lvl-2">
+<li class="lvl-4">引力助推实验及解释</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>卡尔萨根《暗淡蓝点》: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16A411b7BT/?vd_source=9e7904c84532311f0da86c13f50ba4e2">Pale Blue Dot</a></p>
+<p>我们成功地（从外太空）拍到这张照⽚，细⼼再看，你会看⻅⼀个毫不出奇的⼩点。再看看那个光点，它就在这⾥。那是我们的家园，我们的⼀切。你所爱的每⼀个⼈，你认识的每⼀个⼈，你听说过的每⼀个⼈，曾经有过的每⼀个⼈，都在它上⾯度过他们的⼀⽣。</p>
+<p>我们的欢乐与痛苦聚集在⼀起，数以千计的⾃以为是的宗教、意识形态和经济学说，所有的猎⼈与强盗、英雄与懦夫、⽂明的缔造者与毁灭者、国王与农夫、年轻的情侣、⺟亲与⽗亲、满怀希望的孩⼦、发明家和探险家、德⾼望重的教师、腐败的政客、超级明星、最⾼领袖、⼈类历史上的每⼀个圣⼈与罪犯，都住在这⾥——⼀粒悬浮在阳光中的微尘。</p>
+<p>有⼈说过，天⽂学令⼈感到谦卑并能培养个性。除了这张从远处拍摄我们这个微⼩世界的照⽚，⼤概没有别的更好办法可以揭示⼈类妄⾃尊⼤是何等愚蠢。对我来说，这强调说明我们有责任更友好地相处，并且要保护和珍惜这个淡蓝⾊的光点——这是我们迄今所知的唯⼀家园。</p>
+</li>
+</ul>
+<h1 id="course-5-空间物理简介"><a class="markdownIt-Anchor" href="#course-5-空间物理简介"></a> Course 5 空间物理简介</h1>
+<p>行星科学：以深空探测为研究手段，是空间科学、地球科学等产生的交叉学科。</p>
+<h2 id="1-空间物理与物理"><a class="markdownIt-Anchor" href="#1-空间物理与物理"></a> 1 空间物理与物理</h2>
+<p>空间：日-地空间→<strong>日球层</strong>空间heliosphere</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>日球层</p>
+<ul class="lvl-2">
+<li class="lvl-4">定义
+<ul class="lvl-4">
+<li class="lvl-6">太阳风与星际介质作用形成的一个区域，以终止激波为界面</li>
+<li class="lvl-6">太阳范围：引力划分&amp;太阳风（约100au，与星际介质平衡）interplanetary, interstellar</li>
+</ul>
+</li>
+<li class="lvl-4">结构
+<ul class="lvl-4">
+<li class="lvl-6">终止激波、日鞘层、日球层顶</li>
+<li class="lvl-6">超声速的太阳风被阻挡，产生激波</li>
+</ul>
+</li>
+<li class="lvl-4">日球层内的高能粒子：
+<ul class="lvl-4">
+<li class="lvl-6">银河宇宙线galactic cosmic ray</li>
+<li class="lvl-6">太阳宇宙线（弱于银河宇宙线）</li>
+<li class="lvl-6">异常宇宙线</li>
+</ul>
+</li>
+<li class="lvl-4">太阳活动越剧烈，太阳宇宙线越强，但日球层对银河宇宙线的防护作用越强。
+<ul class="lvl-4">
+<li class="lvl-6">太阳周期：22年</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>物理：等离子体物理</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>等离子体plasma：物质第四态</p>
+<ul class="lvl-2">
+<li class="lvl-4">等量正负离子组成的体系，电中性</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>性质</p>
+<ul class="lvl-2">
+<li class="lvl-4">带电：组分间库仑力为主导</li>
+<li class="lvl-4">集体行为：挪动电子，引起整体响应
+<ul class="lvl-4">
+<li class="lvl-6">响应的空间尺度（德拜半径）</li>
+<li class="lvl-6">产生震荡（郎缪尔震荡）、场（电磁场）和波</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-空间物理与空间天气"><a class="markdownIt-Anchor" href="#2-空间物理与空间天气"></a> 2 空间物理与空间天气</h2>
+<p>太阳风穿过地磁保护，引发强烈</p>
+<p>极光：《竹书纪年》</p>
+<p>太阳黑子：《淮南子》《汉书·五行志》</p>
+<p>空间物理基本过程与空间天气</p>
+<p>空间天气学：日地空间活动</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对航天器、卫星、人类均有影响</p>
+</li>
+</ul>
+<p>（地面观测）太阳自转周期：27天（1个卡灵顿周）</p>
+<p>1840 高斯 磁力计</p>
+<p>1859 卡灵顿 太阳耀斑 最强磁暴</p>
+<p>2012 躲过？</p>
+<p>空间天气监测：地基（地面）+天基（卫星）</p>
+<h2 id="3-我国研究现状"><a class="markdownIt-Anchor" href="#3-我国研究现状"></a> 3 我国研究现状</h2>
+<p>SMILE卫星</p>
+<h2 id="4-行星科学"><a class="markdownIt-Anchor" href="#4-行星科学"></a> 4 行星科学</h2>
+<h1 id="course-6-太阳系"><a class="markdownIt-Anchor" href="#course-6-太阳系"></a> Course 6 太阳系</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>太阳（99.86%的质量）</p>
+</li>
+<li class="lvl-2">
+<p>类地⾏星</p>
+<ul class="lvl-2">
+<li class="lvl-4">⽔星、⾦星、地球、⽕星</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>巨⾏星</p>
+<ul class="lvl-2">
+<li class="lvl-4">⽊星、⼟星、天王星、海王星</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>其他天体</p>
+<ul class="lvl-2">
+<li class="lvl-4">⾏星的卫星</li>
+<li class="lvl-4">⼩⾏星带</li>
+<li class="lvl-4">柯伊伯带</li>
+<li class="lvl-4">奥尔特云</li>
+<li class="lvl-4">矮⾏星</li>
+<li class="lvl-4">彗星</li>
+</ul>
+</li>
+</ul>
+<h1 id="course-7-太阳"><a class="markdownIt-Anchor" href="#course-7-太阳"></a> Course 7 太阳</h1>
+<h2 id="1-太阳结构"><a class="markdownIt-Anchor" href="#1-太阳结构"></a> 1 太阳结构</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>里三层</p>
+<ul class="lvl-2">
+<li class="lvl-4">日核</li>
+<li class="lvl-4">辐射层</li>
+<li class="lvl-4">对流层：等离子体</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>外三层</p>
+<ul class="lvl-2">
+<li class="lvl-4">光球</li>
+<li class="lvl-4">过渡层</li>
+<li class="lvl-4">色球</li>
+<li class="lvl-4">日冕</li>
+</ul>
+</li>
+</ul>
+<p>温度 - 半径曲线</p>
+<h2 id="2-日冕物质加热"><a class="markdownIt-Anchor" href="#2-日冕物质加热"></a> 2 日冕物质加热</h2>
+<h2 id="3-太阳黑子-太阳周"><a class="markdownIt-Anchor" href="#3-太阳黑子-太阳周"></a> 3 太阳黑子、太阳周</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>太阳黑子：光球层上的黑色斑点，此处耀斑高发</p>
+<ul class="lvl-2">
+<li class="lvl-4">温度较低（4500K），磁场很强</li>
+<li class="lvl-4">形成原因：强磁场抑制对流区对流，对流区能量不易被运送至太阳表面，导致温度低，辐射弱，表现为黑子。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>太阳黑子数与太阳活动11年周期</p>
+<ul class="lvl-2">
+<li class="lvl-4">太阳黑子数越多，黑子所占面积越大，太阳活动性越强</li>
+<li class="lvl-4">由此确定11年的太阳活动周期（太阳周，磁场反转一次）</li>
+<li class="lvl-4">80年大周期</li>
+<li class="lvl-4">1645-1715: 蒙德极小期</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>太阳黑子的纬度变化</p>
+<ul class="lvl-2">
+<li class="lvl-4">每个周期内，从±30度向低纬度发展</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>太阳黑子的形成：太阳自转</p>
+<ul class="lvl-2">
+<li class="lvl-4">辐射层、对流层之间存在差旋层</li>
+<li class="lvl-4">差旋层以下刚性自转，以上较差自转</li>
+<li class="lvl-4">较差自转：赤道周期25d，极区周期35d</li>
+<li class="lvl-4">较差自转可加强磁场，使磁力线扭曲</li>
+<li class="lvl-4">有些磁力线在磁、热作用下穿出太阳表面，形成太阳黑子对</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>太阳耀斑：各频段电磁辐射爆发性增强，发生在太阳黑子对之间（磁力线形状）</p>
+<ul class="lvl-2">
+<li class="lvl-4">大耀斑倾向于发生在大黑子、复杂磁场附近，故也有11年周期</li>
+<li class="lvl-4">磁重联：磁力线在等离子体中重连（相反磁力线转90度重连，伴随能量释放）</li>
+<li class="lvl-4">太阳耀斑模型：吹泡泡</li>
+<li class="lvl-4">耀斑爆发常伴随CME</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>日冕物质抛射CME：大尺度的磁化等离子体从太阳大气向外抛射到行星际空间。引起地球强磁暴的主要原因。</p>
+</li>
+<li class="lvl-2">
+<p>太阳风solar wind</p>
+<ul class="lvl-2">
+<li class="lvl-4">各个角度都有</li>
+<li class="lvl-4">比尔曼：彗星穿行有两尾（dust tail, gas tail）
+<ul class="lvl-4">
+<li class="lvl-6">Dust tail 物质</li>
+<li class="lvl-6">Gas tail 背朝太阳，直线（太阳喷射物质）</li>
+</ul>
+</li>
+<li class="lvl-4">E. N. Parker，发了文就被验证了</li>
+<li class="lvl-4">主编：钱德拉萨卡（钱德拉萨卡极限，白矮星&gt;1.44Msun），1983nobel</li>
+<li class="lvl-4">太阳风
+<ul class="lvl-4">
+<li class="lvl-6">等离子体流动，源自日冕</li>
+<li class="lvl-6">400km/s &gt; 128km/s（日冕质子热速度），通过日冕加热加速而来（具体未解）</li>
+<li class="lvl-6">火星大气被太阳风剥离</li>
+<li class="lvl-6">可吹到日球层heliosphere（约等于120AU）</li>
+</ul>
+</li>
+<li class="lvl-4">太阳风携带的行星际磁场
+<ul class="lvl-4">
+<li class="lvl-6">磁冻结：对于无限导电的流体，磁力线跟随等离子体运动</li>
+<li class="lvl-6">帕克螺线场</li>
+</ul>
+</li>
+<li class="lvl-4">日球层电流片
+<ul class="lvl-4">
+<li class="lvl-6">4片玫瑰，有进有出</li>
+</ul>
+</li>
+<li class="lvl-4">太阳风-行星相互作用（无内禀磁场）
+<ul class="lvl-4">
+<li class="lvl-6">绝缘体（月球）</li>
+<li class="lvl-6">导体</li>
+<li class="lvl-6">感应电离层（火星、水星、彗星），出现导体性质</li>
+</ul>
+</li>
+<li class="lvl-4">太阳风-行星相互作用（无内禀磁场）— 地球
+<ul class="lvl-4">
+<li class="lvl-6">弓激波（太阳风超音速）- 壳层 - 压扁的向阳磁力线 - 拉长的背阳磁力线</li>
+</ul>
+</li>
+<li class="lvl-4">Dungey cycle
+<ul class="lvl-4">
+<li class="lvl-6">向日侧磁重联，磁力线被拉到背日侧，又一次磁重联</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="course-8-地球"><a class="markdownIt-Anchor" href="#course-8-地球"></a> Course 8 地球</h1>
+<h2 id="0-地球在太阳系中的位置"><a class="markdownIt-Anchor" href="#0-地球在太阳系中的位置"></a> 0 地球在太阳系中的位置</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>太阳系</p>
+<ul class="lvl-2">
+<li class="lvl-4">类地行星（rocky）</li>
+<li class="lvl-4">类木行星（gasorous）</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-地球的独特性"><a class="markdownIt-Anchor" href="#1-地球的独特性"></a> 1 地球的独特性</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>古生物地质学</p>
+</li>
+<li class="lvl-2">
+<p>岩石学</p>
+<ul class="lvl-2">
+<li class="lvl-4">地壳（岩石）、地幔（塑性体）、地核（外液态，内固态，均为铁镍合金）</li>
+<li class="lvl-4">地壳中常见岩石
+<ul class="lvl-4">
+<li class="lvl-6">火成岩：花岗岩、辉长岩、玄武岩</li>
+<li class="lvl-6">变质岩</li>
+<li class="lvl-6">沉积岩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>构造地质学</p>
+</li>
+<li class="lvl-2">
+<p>海洋</p>
+<ul class="lvl-2">
+<li class="lvl-4">海洋温度</li>
+<li class="lvl-4">表面洋流</li>
+<li class="lvl-4">海气Why life on earth?</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Earth is the right size</p>
+</li>
+<li class="lvl-2">
+<p>Earth is the right distance from its star 温度</p>
+</li>
+<li class="lvl-2">
+<p>Sun is the right star for earth 生命周期</p>
+</li>
+<li class="lvl-2">
+<p>Earth has liquid water</p>
+</li>
+<li class="lvl-2">
+<p>Earth has an abundance of elements</p>
+</li>
+<li class="lvl-2">
+<p>Earth’s rotation 昼夜</p>
+</li>
+<li class="lvl-2">
+<p>Earth’s tilted axis 四季</p>
+</li>
+<li class="lvl-2">
+<p>Earth has a large moon 潮汐锁定；转轴固定</p>
+</li>
+<li class="lvl-2">
+<p>Earth has the right atmosphere</p>
+<ul class="lvl-2">
+<li class="lvl-4">3000km：对流层10km、平流层、中间层、热层、散逸层</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Earth has a magnetosphere</p>
+<ul class="lvl-2">
+<li class="lvl-4">电离层将高能粒子引向南北极</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Earth has plate tectonics 板块构造</p>
+</li>
+</ul>
+<h2 id="2-地球的年龄"><a class="markdownIt-Anchor" href="#2-地球的年龄"></a> 2 地球的年龄</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Why “地球形成于46亿年前”？</p>
+</li>
+</ul>
+<p>初：测岩石年龄</p>
+<p>后：测陨石年龄</p>
+<p>辐射测年/放射测年法（绝对测年）</p>
+<h2 id="3-地球的地形"><a class="markdownIt-Anchor" href="#3-地球的地形"></a> 3 地球的地形</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>大洋和大陆分布</p>
+<ul class="lvl-2">
+<li class="lvl-4">4～7个大洲</li>
+<li class="lvl-4">Pangaea大陆：约3亿年前；共有10次超级大陆（最早的是vaabara大陆，38-26亿年前）</li>
+<li class="lvl-4">现在在盘古大陆的裂解期（1-6cm/年）</li>
+<li class="lvl-4">5大洋
+<ul class="lvl-4">
+<li class="lvl-6">按等温线划分北冰洋、南冰洋</li>
+<li class="lvl-6">南极科考：2个月，一天补助500（乐</li>
+</ul>
+</li>
+<li class="lvl-4">大陆、海洋分布的对称性：95%的大陆的对指点是海洋</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>地表主要构造单元和特征</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>大陆地台platform和地垒shield（地台：厚的地垒（沉积岩））</p>
+<ul class="lvl-4">
+<li class="lvl-6">
+<p>Geologists analyze the Earth’s crust in detail to determine its composition, age, and tectonic history. One important distinction they have made is between the Precambrian (more than 542 million years old) crystalline igneous and high-grade metamorphic basement making up the continents, called a shield, and an extensive sedimentary layer covering some parts of this area, called a platform. Together, the two layers make up a craton, which is the foundation for a continent.</p>
+<p>地质学家详细分析地壳，以确定其成分、年龄和构造历史。他们做出的一个重要区别是组成大陆的前寒武纪（超过5.42亿年）结晶火成岩和高等级变质基底，称为盾牌，以及覆盖该地区某些部分的广阔沉积层，称为平台。两层共同构成了一个克拉顿，这是一个大陆的基础。（欧亚板块就有一个克拉通）</p>
+</li>
+<li class="lvl-6">
+<p>板块构造：球壳裂开</p>
+</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>大陆山系mountain ranges</p>
+<ul class="lvl-4">
+<li class="lvl-6">板块挤压</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>大陆边缘（大陆架→大陆坡→海底平原）</p>
+</li>
+<li class="lvl-4">
+<p>大洋盆地</p>
+<ul class="lvl-4">
+<li class="lvl-6">海底平原上有海山、火山岛、大洋中脊、大裂谷、海沟</li>
+<li class="lvl-6">大洋中脊喷发岩浆的方向受地磁场影响，低于居里点后凝固</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-地球的内部构造与板块结构"><a class="markdownIt-Anchor" href="#4-地球的内部构造与板块结构"></a> 4 地球的内部构造与板块结构</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>内部分层：按地震波速分（测切变模量也要测波速？剪切波速测量）</p>
+<ul class="lvl-2">
+<li class="lvl-4">地壳crust
+<ul class="lvl-4">
+<li class="lvl-6">陆壳continental crust，30-70km（最多达到10km，打到下面钢变软）密度小一些</li>
+<li class="lvl-6">洋壳ocean crust，&lt;10km，密度大一些</li>
+</ul>
+</li>
+<li class="lvl-4">上地幔upper mantle
+<ul class="lvl-4">
+<li class="lvl-6">Lithosphere岩石圈，Hard solid</li>
+<li class="lvl-6">Asthenosphere软流圈，Soft solid</li>
+</ul>
+</li>
+<li class="lvl-4">下地幔lower mantle：塑性体，hard solid</li>
+<li class="lvl-4">外核outer core</li>
+<li class="lvl-4">内核inner core：6371km，高温高压小半径，仍有起伏？（原因不明）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>地幔柱mantle plume</p>
+<ul class="lvl-2">
+<li class="lvl-4">熔岩在外核聚集，在上地幔顶部喷发，冲到大洋中脊</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>火山活动</p>
+<ul class="lvl-2">
+<li class="lvl-4">火山灰：肥料</li>
+<li class="lvl-4">1835：无夏之年</li>
+<li class="lvl-4">海啸</li>
+<li class="lvl-4">大陆边缘的火山
+<ul class="lvl-4">
+<li class="lvl-6">火山碎屑比熔岩流destructive</li>
+</ul>
+</li>
+<li class="lvl-4">分类
+<ul class="lvl-4">
+<li class="lvl-6">中心式喷发·：火山灰</li>
+<li class="lvl-6">裂隙式喷发：熔岩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>地震活动</p>
+<ul class="lvl-2">
+<li class="lvl-4">相邻震级之间是32倍关系，有负值；最高9.5-9.6级（震级饱和）</li>
+<li class="lvl-4">地震预警（距离震源较远处，可做到地震发生后、地震波到达前几分钟预警）/地震预报（未能解决）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>板块：地壳和上地幔（岩石圈）破碎为数个小块，即为板块plates</p>
+<ul class="lvl-2">
+<li class="lvl-4">板块在地幔（软流圈）上移动</li>
+<li class="lvl-4">实质：地幔对流（地核加热（核反应）缓慢流动的软流圈（塑性）时，地幔的对流移动板块）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>板块构造理论：地球岩石圈在地幔对流的驱动下不断运动的理论。（引起各种地质事件）</p>
+<ul class="lvl-2">
+<li class="lvl-4">板块边界（深入岩石圈）
+<ul class="lvl-4">
+<li class="lvl-6">汇聚边界（共线反向）divergent
+<ul class="lvl-6">
+<li class="lvl-8">板块碰撞，发生俯冲</li>
+<li class="lvl-8">第一类：洋壳和陆壳俯冲，如南美的安第斯山脉</li>
+<li class="lvl-8">第二类：两个洋壳碰撞，密度低的俯冲，形成海沟</li>
+<li class="lvl-8">第三类：两个陆壳碰撞，如喜马拉雅山脉</li>
+</ul>
+</li>
+<li class="lvl-6">发散边界（共线同向）convergent
+<ul class="lvl-6">
+<li class="lvl-8">大陆裂谷
+<ul class="lvl-8">
+<li class="lvl-10">东非大裂谷、红海、南极</li>
+</ul>
+</li>
+<li class="lvl-8">洋底扩张（洋中脊）
+<ul class="lvl-8">
+<li class="lvl-10">靠近洋中脊的岩石更年轻</li>
+<li class="lvl-10">地磁沿洋中脊对称分布</li>
+</ul>
+</li>
+<li class="lvl-8">裂隙火山
+<ul class="lvl-8">
+<li class="lvl-10">夏威夷、冰岛</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-6">转换边界（平行反向）transform
+<ul class="lvl-6">
+<li class="lvl-8">剪切断裂形成断层，如加州圣安德烈斯断层</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-4">板块中的热点hot spot
+<ul class="lvl-4">
+<li class="lvl-6">夏威夷群岛，热点说</li>
+<li class="lvl-6">解释板内火山</li>
+</ul>
+</li>
+<li class="lvl-4">威尔士旋回wilson cycle：大洋的一生
+<ul class="lvl-4">
+<li class="lvl-6">胚胎期（东非大裂谷）</li>
+<li class="lvl-6">幼年期</li>
+<li class="lvl-6">成年期（大西洋）</li>
+<li class="lvl-6">衰退期（地中海）</li>
+<li class="lvl-6">终结期（地中海）</li>
+<li class="lvl-6">遗痕期（喜马拉雅）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-地月系统"><a class="markdownIt-Anchor" href="#5-地月系统"></a> 5 地月系统</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Moon’s rotation 自转 = Moon’s revolution 公转</p>
+<ul class="lvl-2">
+<li class="lvl-4">潮汐锁定（固体潮汐），月球永远以同一面对着地球。</li>
+<li class="lvl-4">月相：Wax and wine</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>潮汐ocean tides——潮起潮落</p>
+<ul class="lvl-2">
+<li class="lvl-4">干潮（低潮）—涨潮flood—满潮（高潮）—退潮ebb—……</li>
+<li class="lvl-4">潮差；周期（25h）</li>
+<li class="lvl-4">大潮spring tide（日月地共线，新月、满月）和小潮neat tide（日地、日月正交，1/4月、3/4月）：大小指振幅（一般几米左右）</li>
+<li class="lvl-4">原因：月或日的万有引力引起
+<ul class="lvl-4">
+<li class="lvl-6">地球：非惯性系统</li>
+<li class="lvl-6">双侧都受完又来了。有潮汐</li>
+</ul>
+</li>
+<li class="lvl-4">潮汐摩擦：地球自转</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-地球的磁层与极光"><a class="markdownIt-Anchor" href="#6-地球的磁层与极光"></a> 6 地球的磁层与极光</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>铁内核的旋转和外核的内流，在地球周围产生磁场</p>
+</li>
+<li class="lvl-2">
+<p>磁极与地球的地理极相近，但不完全相同</p>
+</li>
+<li class="lvl-2">
+<p>发电机理论dynamo theory</p>
+<ul class="lvl-2">
+<li class="lvl-4">天体磁场理论</li>
+<li class="lvl-4">范艾伦带</li>
+<li class="lvl-4">The magnetic field protects us by channeling super-fast, high energy charged particles</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>极光aurora</p>
+</li>
+</ul>
+<h1 id="course-9-类地行星水星-金星和火星"><a class="markdownIt-Anchor" href="#course-9-类地行星水星-金星和火星"></a> Course 9 类地行星：水星、金星和火星</h1>
+<p>地球、水星、火星、金星：<strong>类地行星terrestrial</strong>（对应类木行星jovian）</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>水星</p>
+<ul class="lvl-2">
+<li class="lvl-4">无水、无大气，昼夜温度高达600摄氏度</li>
+<li class="lvl-4">Caloris impact</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>金星</p>
+<ul class="lvl-2">
+<li class="lvl-4">直径和地球差不多</li>
+<li class="lvl-4">黄色表面：硫酸雨，同时覆盖着大气层</li>
+<li class="lvl-4">大气层二氧化碳占95%，必emit</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>火星</p>
+<ul class="lvl-2">
+<li class="lvl-4">半径为地球的1/2</li>
+<li class="lvl-4">大气95%为二氧化碳</li>
+<li class="lvl-4">周期和地球相近</li>
+<li class="lvl-4">无板块构造</li>
+</ul>
+</li>
+</ul>
+<h1 id="course-10-巨行星"><a class="markdownIt-Anchor" href="#course-10-巨行星"></a> Course 10 巨行星</h1>
+<p>巨行星：木星、土星（气态）、天王星、海王星（冰）</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>密度</p>
+<ul class="lvl-2">
+<li class="lvl-4">地球5.5g/cc，木星、天王星、海王星密度&gt;1；土星密度&lt;1。</li>
+<li class="lvl-4">质量越大，引力越大，密度越大。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>化学性质</p>
+<ul class="lvl-2">
+<li class="lvl-4">水冰：过小行星带，&gt;4AU处，水冰得以凝结，作为行星演化的原料和内核。（H最丰富元素，O第三丰富元素）</li>
+<li class="lvl-4">氢氦：在气体太阳星云消散前，木星土星的内核足够大，可吸引足够的氢氦。</li>
+<li class="lvl-4">……</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-木星"><a class="markdownIt-Anchor" href="#1-木星"></a> 1 木星</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Basic</p>
+<ul class="lvl-2">
+<li class="lvl-4">最大的行星</li>
+<li class="lvl-4">条带状结构、大红斑</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>轨道</p>
+<ul class="lvl-2">
+<li class="lvl-4">5.2AU，T=11.9year，偏心率e=0.048（小，近圆）</li>
+<li class="lvl-4">半径大、自转快（10h）</li>
+<li class="lvl-4">卫星：56个；人造：飞跃有卡西尼号（比我大7岁：D）、新视野号等；在轨有伽利略号（已坠入木星大气层）、JUNO
+<ul class="lvl-4">
+<li class="lvl-6">Galileo (1995-2003)：大气探测；木卫一、二、三、四；木星环（尘埃）；磁层</li>
+<li class="lvl-6">JUNO (2011-2013-2016–) 科学目标：
+<ul class="lvl-6">
+<li class="lvl-8">巨行星的形成（反映内部组成）
+<ul class="lvl-8">
+<li class="lvl-10">水（氧）成分</li>
+<li class="lvl-10">高阶重力系数</li>
+<li class="lvl-10">磁场</li>
+</ul>
+</li>
+<li class="lvl-8">热演化和内部结构</li>
+<li class="lvl-8">内部磁场</li>
+<li class="lvl-8">水和重元素丰度</li>
+<li class="lvl-8">大气层动态过程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>大气</p>
+<ul class="lvl-2">
+<li class="lvl-4">成分：氢、氦、水、甲烷、氨、硫化铵</li>
+<li class="lvl-4">颜色：白色（氨，-20km左右）、棕色（氢硫化铵-50km左右）、蓝色（水冰，-70km左右），由外向内温度升高，对应各物质冰点</li>
+<li class="lvl-4">条带：
+<ul class="lvl-4">
+<li class="lvl-6">dark belts &amp; bright zones
+<ul class="lvl-6">
+<li class="lvl-8">亮区：温度低，白色氨冰晶云层覆盖的上升空气区域</li>
+<li class="lvl-8">暗带：温度高，氨云少，空气下降</li>
+</ul>
+</li>
+<li class="lvl-6">流速
+<ul class="lvl-6">
+<li class="lvl-8">赤道：东向急流，300km/h</li>
+<li class="lvl-8">高纬度：交替东西流</li>
+<li class="lvl-8">科里奥利力：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mo>−</mo><mn>2</mn><mi>m</mi><mi>ω</mi><mo>×</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">F=-2m\omega \times v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>，与地球大气动力比较：
+<ul class="lvl-8">
+<li class="lvl-10">大气层更深，无固体下边界；</li>
+<li class="lvl-10">自转速度更大，抑制南北环流，促进东西风流，且科里奥利效应更强；</li>
+<li class="lvl-10">内部热源 vs 太阳热源</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-4">大红斑（气旋风暴）
+<ul class="lvl-4">
+<li class="lvl-6">亮区暗带交界处，强切向风</li>
+<li class="lvl-6">Persistent atmospheric instability ?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>内部结构（除核心外均为流体）</p>
+<ul class="lvl-2">
+<li class="lvl-4">深度增加，气压增加，密度增加
+<ul class="lvl-4">
+<li class="lvl-6">大气</li>
+<li class="lvl-6">气态氢（1000km）</li>
+<li class="lvl-6">液态金属氢（氢原子间距被压缩到半径尺度，电子云重合，电子共享）
+<ul class="lvl-6">
+<li class="lvl-8">金属氢的环流电流产生巨大磁场</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-4">底部：岩石、冰核心（金属、氢化合物）
+<ul class="lvl-4">
+<li class="lvl-6">质量：10-15M</li>
+<li class="lvl-6">半径：1.5R</li>
+</ul>
+</li>
+<li class="lvl-4">木星辐射的能量是其从太阳接受能量的2倍，可能来自缓慢收缩</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>卫星</p>
+<ul class="lvl-2">
+<li class="lvl-4">木卫一、木卫二半径较小，质量较小，密度较大；木卫三、木卫四反之</li>
+<li class="lvl-4">木卫一 IO
+<ul class="lvl-4">
+<li class="lvl-6">表面年轻，环形山少</li>
+<li class="lvl-6">太阳系火山活动最强的天体</li>
+<li class="lvl-6">潮汐（引力差）
+<ul class="lvl-6">
+<li class="lvl-8">潮汐锁定：月球同一面对摺地球</li>
+<li class="lvl-8">潮汐加热：椭圆轨道，近日点引力差极大，形变大。能量无法释放，只能内耗</li>
+</ul>
+</li>
+<li class="lvl-6">轨道共振：周期木卫三：木卫二：木卫一 = 4:2:1</li>
+</ul>
+</li>
+<li class="lvl-4">木卫二
+<ul class="lvl-4">
+<li class="lvl-6">表面亮，光谱水冰；</li>
+<li class="lvl-6">表面覆盖水冰，潮汐应力加热水，保持表面下的液态层。</li>
+<li class="lvl-6">少有陨石坑（说明少地质活动）</li>
+<li class="lvl-6">最有可能找到生命
+<ul class="lvl-6">
+<li class="lvl-8">冰川中抗冰（蛋白质）的微生物，融化出冰川中的小海洋</li>
+<li class="lvl-8">100km冰层下的海洋中更可能有生命</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-4">木卫三
+<ul class="lvl-4">
+<li class="lvl-6">太阳系最大卫星，比水星大，质量仅为水星一半</li>
+<li class="lvl-6">流体金属内核，内禀磁场，存在极光</li>
+</ul>
+</li>
+<li class="lvl-4">木卫四
+<ul class="lvl-4">
+<li class="lvl-6">表面有带脏冰的撞击坑组成（亮处，新陨石坑撞出新冰）</li>
+<li class="lvl-6">太阳系中最古老、撞击坑最多的天体</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>人造卫星</p>
+<ul class="lvl-2">
+<li class="lvl-4">Juice(Jupiter Icy Moons Explorer)，2031才进木星轨道</li>
+</ul>
+</li>
+</ul>
+<p>后日谈：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>冰海生命—索拉里斯</p>
+</li>
+<li class="lvl-2">
+<p>2D → 3D</p>
+</li>
+</ul>
+<h2 id="2-土星"><a class="markdownIt-Anchor" href="#2-土星"></a> 2 土星</h2>
+<p>BASIC</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>轨道</p>
+<ul class="lvl-2">
+<li class="lvl-4">9.5AU</li>
+<li class="lvl-4">T=29.5years</li>
+<li class="lvl-4">E=0.056(close to a cycle)</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>参数</p>
+<ul class="lvl-2">
+<li class="lvl-4">9.45R_earth</li>
+<li class="lvl-4">95.2M_earth</li>
+<li class="lvl-4">自转轴：26.7，与地球相近（季节）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>卫星探测</p>
+<ul class="lvl-2">
+<li class="lvl-4">卡西尼号（1997-2017）</li>
+<li class="lvl-4">惠更斯探测器着陆于土卫六（Titan）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>土星 VS 木星</p>
+<ul class="lvl-2">
+<li class="lvl-4">密度：700<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>g</mi><mi mathvariant="normal">/</mi><msup><mi>m</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">kg/m^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></li>
+<li class="lvl-4">大气：颜色更深、更柔和；更冷</li>
+<li class="lvl-4">暗带颜色更少（成分更少）</li>
+<li class="lvl-4">巨型风暴：与季节有关（土星环的影子）</li>
+<li class="lvl-4">北极六角云：驻波，but why hexagon? Not known yet.</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>内部结构</p>
+<ul class="lvl-2">
+<li class="lvl-4">与木星基本一致，但占比不同（大气层，液态氢，金属氢，岩石）</li>
+<li class="lvl-4">金属氢更少（质量小，压强小）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>土星环</p>
+<ul class="lvl-2">
+<li class="lvl-4">Cassini division卡西尼间隙：与卫星mimas轨道共振，主要由数吨微小冰粒子组成
+<ul class="lvl-4">
+<li class="lvl-6">粒子间互相牵连</li>
+</ul>
+</li>
+<li class="lvl-4">洛希极限
+<ul class="lvl-4">
+<li class="lvl-6">卫星离行星太近，潮汐力过大，卫星被撕碎</li>
+<li class="lvl-6">一颗冰卫星离土星太近，被撕裂；演化为薄环（类似太阳系形成）：万有引力过土星质心，离心力垂直于自转轴，合力不能完全抵消—指向土星赤道。</li>
+</ul>
+</li>
+<li class="lvl-4">间隙形成
+<ul class="lvl-4">
+<li class="lvl-6">土卫一mimas在土星环外面，土卫一转一圈，环状粒子转两圈，引力扰动清除缝隙轨道上粒子（引力+共振）</li>
+<li class="lvl-6">还有可能是“间隙卫星”导致。其与大卫星轨道共振，清理轨道上粒子。</li>
+<li class="lvl-6">其他小间隙：卫星共振引起(Prometheus &amp; Pandora)
+<ul class="lvl-6">
+<li class="lvl-8">卫星排斥环状物质，粒子受卫星引力扰动而进入离心轨道</li>
+<li class="lvl-8">但粒子间碰撞减少离心，最终达到卫星和粒子间的平衡。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>土卫六：泰坦</p>
+<ul class="lvl-2">
+<li class="lvl-4">半径仅次于木卫，离土星比较远</li>
+<li class="lvl-4">太阳系唯一有大气层的卫星（还很浓厚）
+<ul class="lvl-4">
+<li class="lvl-6">80%氮，3%甲烷</li>
+<li class="lvl-6">寒冷密集：84K，气态成分逃逸能力差</li>
+<li class="lvl-6">How it could form?复杂化学反应</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>天王星、海王星</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>内部构造：大气层、气态氢、水甲烷氨、岩石</p>
+</li>
+<li class="lvl-2">
+<p>颜色气态甲烷吸收红光，液态甲烷反射蓝光</p>
+</li>
+</ul>
+<h1 id="course-11-极光"><a class="markdownIt-Anchor" href="#course-11-极光"></a> Course 11 极光</h1>
+<p>位置：地磁南北极</p>
+<p>发光原理：高能粒子沿磁力线打到大气分子上，使其跃迁到激发态；回到基态时放出光。</p>
+<p>命名：伽利略，看到红色，“dawn of the north” in latin —— aurora.</p>
+<p>*Correlation between magnetic, aurora activity and sunspot.</p>
+<p>大气层（不电离）→电离层（部分电离）→磁层（完全电离）</p>
+<p>激光可分为分立极光，弥散极光</p>
+<p>Landau（数学型）一把抓住vlasov（概念型）的理论，顷刻炼化为朗道共振！</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/&title=行星笔记 - Lone Trail&summary= 行星笔记
+
+2024-2025秋季学期选修课：《行星笔记》，任课教师：SYC，DHS，SR。
+说个八卦：据说国家准备多开设些天文专业，就先在合（有）适（钱）的高校搞天文选修试点。于是TJ2023年起新开设一批天文类选修课，《行星笔记..."><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=行星笔记 - Lone Trail&amp;body=https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://yantares.cn/2024/10/26/notebook/%E9%80%89%E4%BF%AE/solar/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/11/22/%E6%9D%82%E6%8A%80/%E8%AF%BE%E5%A0%82%E6%B4%BE%EF%BC%9A%E4%B8%8D%E5%85%81%E8%AE%B8%E4%B8%8B%E8%BD%BD/">我去！我喜欢下载！</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/10/15/%E9%9A%8F%E7%AC%94/childhood/">童梦的终结</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>相关文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\2025\10\29\series\天星拾缀\α Scorpii\" title="天星拾缀（3）：α Scorpii"><span class="title">天星拾缀（3）：α Scorpii</span></a><a class="item" href="\2025\01\17\series\天星拾缀\Antares\" title="天星拾缀（2）：Antares"><span class="title">天星拾缀（2）：Antares</span></a><a class="item" href="\2024\10\08\series\天星拾缀\A3\" title="天星拾缀（1）：彗星--从A3到远古"><span class="title">天星拾缀（1）：彗星--从A3到远古</span></a><a class="item" href="\2024\09\28\notebook\选修\中西艺术比较\" title="中西艺术比较"><span class="title">中西艺术比较</span></a></div></section></div>
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>Comments</p>
+
+      <img src="/images/keyboard.jpg" alt="欢迎讨论~" style="margin-left: 10px; height: 50px;">
+    </section>
+    <section class='body cmt-body waline'>
+      
+
+<div id="waline_container" class="waline_thread"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap" style="column-count:4;"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs15">项目</span><a target="_blank" rel="noopener" href="https://run.yantares.cn">跑步记录</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/">友链</a><a href="/">留言板</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a></div></div><div class="text"><p><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次！</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<p><span id="runtime_span"></span></p>
+<script type="text/javascript">
+function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    X = new Date("2024/02/04 17:00:00"); // 网站开始运行的日期和时间
+    Y = new Date(); // 当前日期和时间
+    T = (Y.getTime() - X.getTime()); // 网站运行的总毫秒数
+    M = 24 * 60 * 60 * 1000; // 一天的毫秒数
+    a = T / M; // 总天数
+    A = Math.floor(a); // 总天数的整数部分
+    b = (a - A) * 24; // 总小时数
+    B = Math.floor(b); // 总小时数的整数部分
+    c = (b - B) * 60; // 总分钟数
+    C = Math.floor((b - B) * 60); // 总分钟数的整数部分
+    D = Math.floor((c - C) * 60); // 总秒数
+    var spanElement = document.getElementById('runtime_span');
+    if (spanElement) {
+      spanElement.innerHTML = "⏱️本站已运行 <span class='runtime'>" + A + "天" + B + "小时" + C + "分" + D + "秒</span>";
+    }
+}
+show_runtime();
+</script>
+<img src="/images/logo.png" style="float: right; width: 60px; margin-left: 20px;">
+<p>本站由 <a href="/">Yantares</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<span class="totalcount">发表了 102 篇文章 · </span><span class="post-count">总计 183.6k 字</span></div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%8C%E6%98%9F%E7%AC%94%E8%AE%B0"><span class="toc-text"> 行星笔记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-1-%E5%A4%A9%E6%96%87%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%88%91%E4%BB%AC%E7%9A%84%E5%A4%9C%E7%A9%BA"><span class="toc-text"> Course 1 天文学基础：我们的夜空</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-2-3-%E5%A4%A9%E6%96%87%E5%B8%B8%E8%AF%86%E5%8F%A4%E5%B8%8C%E8%85%8A%E4%BA%BA%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E4%BB%8E%E5%93%A5%E7%99%BD%E5%B0%BC%E5%88%B0%E7%89%9B%E9%A1%BF"><span class="toc-text"> Course 2-3 天文常识：古希腊人知道什么？从哥白尼到牛顿</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-4-%E5%A4%A9%E6%96%87%E5%AD%A6%E5%9F%BA%E7%A1%80%E9%9D%9E%E5%B8%B8%E7%AE%80%E7%95%A5%E7%9A%84%E8%BD%BD%E4%BA%BA%E8%88%AA%E5%A4%A9%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-text"> Course 4 天文学基础：（非常简略的）载人航天发展历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-5-%E7%A9%BA%E9%97%B4%E7%89%A9%E7%90%86%E7%AE%80%E4%BB%8B"><span class="toc-text"> Course 5 空间物理简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A9%BA%E9%97%B4%E7%89%A9%E7%90%86%E4%B8%8E%E7%89%A9%E7%90%86"><span class="toc-text"> 1 空间物理与物理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%A9%BA%E9%97%B4%E7%89%A9%E7%90%86%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%A9%E6%B0%94"><span class="toc-text"> 2 空间物理与空间天气</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%88%91%E5%9B%BD%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6"><span class="toc-text"> 3 我国研究现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%A1%8C%E6%98%9F%E7%A7%91%E5%AD%A6"><span class="toc-text"> 4 行星科学</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-6-%E5%A4%AA%E9%98%B3%E7%B3%BB"><span class="toc-text"> Course 6 太阳系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-7-%E5%A4%AA%E9%98%B3"><span class="toc-text"> Course 7 太阳</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A4%AA%E9%98%B3%E7%BB%93%E6%9E%84"><span class="toc-text"> 1 太阳结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%97%A5%E5%86%95%E7%89%A9%E8%B4%A8%E5%8A%A0%E7%83%AD"><span class="toc-text"> 2 日冕物质加热</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%AA%E9%98%B3%E9%BB%91%E5%AD%90-%E5%A4%AA%E9%98%B3%E5%91%A8"><span class="toc-text"> 3 太阳黑子、太阳周</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-8-%E5%9C%B0%E7%90%83"><span class="toc-text"> Course 8 地球</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E5%9C%B0%E7%90%83%E5%9C%A8%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text"> 0 地球在太阳系中的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9C%B0%E7%90%83%E7%9A%84%E7%8B%AC%E7%89%B9%E6%80%A7"><span class="toc-text"> 1 地球的独特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9C%B0%E7%90%83%E7%9A%84%E5%B9%B4%E9%BE%84"><span class="toc-text"> 2 地球的年龄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9C%B0%E7%90%83%E7%9A%84%E5%9C%B0%E5%BD%A2"><span class="toc-text"> 3 地球的地形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9C%B0%E7%90%83%E7%9A%84%E5%86%85%E9%83%A8%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9D%BF%E5%9D%97%E7%BB%93%E6%9E%84"><span class="toc-text"> 4 地球的内部构造与板块结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%9C%B0%E6%9C%88%E7%B3%BB%E7%BB%9F"><span class="toc-text"> 5 地月系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%9C%B0%E7%90%83%E7%9A%84%E7%A3%81%E5%B1%82%E4%B8%8E%E6%9E%81%E5%85%89"><span class="toc-text"> 6 地球的磁层与极光</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-9-%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F%E6%B0%B4%E6%98%9F-%E9%87%91%E6%98%9F%E5%92%8C%E7%81%AB%E6%98%9F"><span class="toc-text"> Course 9 类地行星：水星、金星和火星</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-10-%E5%B7%A8%E8%A1%8C%E6%98%9F"><span class="toc-text"> Course 10 巨行星</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%A8%E6%98%9F"><span class="toc-text"> 1 木星</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9C%9F%E6%98%9F"><span class="toc-text"> 2 土星</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#course-11-%E6%9E%81%E5%85%89"><span class="toc-text"> Course 11 极光</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  import { init } from 'https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js';
+
+  const el = document.getElementById('waline_container');
+  util.viewportLazyload(el, load_waline, false);
+
+  function load_waline(){
+    if (!el) return;
+
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css');
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css');
+
+    const path = el.getAttribute('comment_id') ?? decodeURI(window.location.pathname);
+    const waline = init(Object.assign({"js":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js","css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css","meta_css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css","serverURL":"https://waline.yantares.cn","commentCount":true,"pageview":false}, {
+      el: '#waline_container',
+      path: path,
+      
+    }));
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@v9/dist/mermaid.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    var mermaid_config = {
+      startOnLoad: true,
+      theme:
+        "auto" == "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "neutral",
+      logLevel: 3,
+      themeVariables: {
+        darkMode: true
+      },
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
+        curve: "linear"
+      },
+      gantt: {
+        axisFormat: "%Y/%m/%d"
+      },
+      sequence: {
+        actorMargin: 50
+      }
+    }
+    mermaid.initialize(mermaid_config);
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script><link rel="stylesheet" href="/css/callout_blocks.css">
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9/build/styles/atom-one-dark.min.css">
+<script src="/js/services/callout.js"></script>
+<script src="/js/plugins/link-icon.js"></script>
+<script src="/js/random.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script data-pjax src="/js/services/txmap.js"></script>
+<link rel="stylesheet" href="/css/tagcolor-switch.css">
+
+
+
+<!-- inject -->
+
+</div></body></html>
+<script>var posts=["2026/01/29/杂技/Bing搜索屏蔽CSDN/","2024/04/06/杂技/rss传奇/","2024/02/28/杂技/打印资料小寄巧/","2024/03/01/杂技/zotero使用/","2024/03/01/杂技/效率软件/","2024/11/22/杂技/课堂派：不允许下载/","2024/02/27/杂技/此应用包不支持通过应用安装程序安装，因为它/","2024/02/28/旧说说/aircraft-materials/","2024/04/26/旧说说/小小的一片天空/","2024/02/21/旧说说/归乡/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/02/21/旧说说/猫的社会学/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/02/04/旧说说/谈往录/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2024/06/10/旧说说/长歌行/","2024/05/05/悦乐/echoism/","2024/03/21/悦乐/fiction-tang/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2024/02/21/悦乐/情骨/","2026/02/23/悦乐/铁花飞/","2025/10/28/随笔/SCITE（上信考）/","2026/01/30/游戏人生/逆转裁判 1~3/","2026/02/10/游戏人生/弹丸论破 1/","2024/10/15/随笔/childhood/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2025/06/09/随笔/万神殿 Pantheon/","2024/02/04/随笔/乾果/","2025/11/07/随笔/南京游记/","2025/08/15/随笔/六盘水游记/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2026/02/27/随笔/厦门游记/","2024/03/01/随笔/夜风奇谭/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/05/11/随笔/我的颜色/","2024/02/04/随笔/群山之声响彻寰宇/","2024/03/10/随笔/法华/","2024/03/01/随笔/躬身，甘为推磨/","2024/06/21/随笔/问道/","2024/03/17/随笔/阿拉城/","2024/02/21/读罢有感/S.忒修斯之船/","2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/02/21/读罢有感/仙人抚我顶/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/02/21/读罢有感/索拉里斯星/","2024/03/10/读罢有感/董晨宇：互联网观察/","2025/11/27/读罢有感/蔑视大众/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2025/11/10/读罢有感/银河系搭车客指南/","2024/03/08/读罢有感/青铜骑士/","2024/02/05/notebook/C&C++/第七讲-指针和数组/","2024/02/05/notebook/C&C++/第一讲-c-c程序设计入门/","2024/02/05/notebook/C&C++/第三讲-选择结构/","2024/02/05/notebook/C&C++/第九讲-函数（续）/","2024/02/05/notebook/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/C&C++/第五讲-一维数组/","2024/02/05/notebook/C&C++/第八讲-函数/","2024/02/05/notebook/C&C++/第六讲-二维数组、字符数组/","2024/02/05/notebook/C&C++/第十二讲-文件/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2024/02/05/notebook/C&C++/第十讲-结构/","2024/02/05/notebook/C&C++/第四讲-循环结构/","2024/04/04/notebook/课内/电工学：正弦交流电路/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2024/03/01/notebook/自学杂项/google-play/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2024/10/26/notebook/选修/solar/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/09/28/notebook/选修/中西艺术比较/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2024/06/06/notebook/选修/玉石：人与石的故事/","2025/05/15/series/博客搭建/Running page/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/09/25/series/博客搭建/blog迁移/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/03/20/notebook/选修/飞书妙记/","2024/02/04/series/博客搭建/wordpress建站始末/","2024/02/04/series/博客搭建/建站目标及进度/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2024/10/08/series/天星拾缀/A3/","2025/10/29/series/天星拾缀/α Scorpii/","2025/03/21/series/谈往录/谈往录（1）/","2025/04/04/series/谈往录/谈往录（2）/","2025/07/14/series/谈往录/谈往录（4）/","2025/11/04/series/谈往录/谈往录（5）/","2025/12/01/series/谈往录/谈往录（6）/","2025/01/17/series/天星拾缀/Antares/","2025/11/03/series/软件使用小技巧/MultiTTS/","2025/05/13/series/谈往录/谈往录（3）/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2025/11/07/series/软件使用小技巧/Notion/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>
