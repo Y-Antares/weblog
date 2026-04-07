@@ -20,12 +20,12 @@
   <title>影音库 - Lone Trail</title>
 
   
-    <meta name="description" content=".wiki-media .waterfall-items {            column-count: 2; &#x2F;* 强制双栏瀑布流 *&#x2F;           column-gap: 24px;            margin-top: 20px;        }       .wiki-media .waterfall-item {            br">
+    <meta name="description" content=".wiki-media .waterfall-items {            column-width: 360px;            column-gap: 24px;            margin-top: 20px;        }       .wiki-media .waterfall-item {            break-insid">
 <meta property="og:type" content="website">
 <meta property="og:title" content="影音库">
 <meta property="og:url" content="https://yantares.cn/media/">
 <meta property="og:site_name" content="Lone Trail">
-<meta property="og:description" content=".wiki-media .waterfall-items {            column-count: 2; &#x2F;* 强制双栏瀑布流 *&#x2F;           column-gap: 24px;            margin-top: 20px;        }       .wiki-media .waterfall-item {            br">
+<meta property="og:description" content=".wiki-media .waterfall-items {            column-width: 360px;            column-gap: 24px;            margin-top: 20px;        }       .wiki-media .waterfall-item {            break-insid">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yantares.cn/images/miuhead.png">
 <meta property="article:author" content="Yantares">
@@ -95,7 +95,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/media/">影音库</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-04-07T13:35:33.174Z">2026-04-07</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-04-07T13:35:33.174Z">2026-04-07</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-04-07T14:40:49.988Z">2026-04-07</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-04-07T14:40:49.988Z">2026-04-07</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -109,12 +109,14 @@
   </div><article class="md-text content">
     <style>
       .wiki-media .waterfall-items { 
-          column-count: 2; /* 强制双栏瀑布流 */
+          column-width: 360px; 
           column-gap: 24px; 
           margin-top: 20px; 
       }
       .wiki-media .waterfall-item { 
           break-inside: avoid; 
+          page-break-inside: avoid; 
+          -webkit-column-break-inside: avoid; 
           margin-bottom: 24px; 
           display: inline-block; 
           width: 100%; 
@@ -128,34 +130,37 @@
       .wiki-media .waterfall-item:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); }
       .wiki-media .card-link { text-decoration: none !important; color: inherit; display: flex; height: 100%; }
       
-      /* 游戏卡片：上下布局 */
+      /* 游戏卡片：上下布局保持不变 */
       .wiki-media .game-card .card-link { flex-direction: column; }
       .wiki-media .game-card .card-cover { height: 160px; width: 100%; }
-      .wiki-media .game-card .media-meta-row { justify-content: space-between; }
-      .wiki-media .game-card .media-meta-item { flex-direction: row; align-items: center; }
-
-      /* 影视卡片：左右布局 */
+      
+      /* 电影卡片：全新的左右弹性布局 */
       .wiki-media .movie-card .card-link { flex-direction: row; align-items: stretch; }
       .wiki-media .movie-card .card-cover { width: 130px; flex-shrink: 0; min-height: 200px; }
-      .wiki-media .movie-card .card-body { flex: 1; min-width: 0; }
-      .wiki-media .movie-card .media-meta-row { justify-content: space-around; }
-      .wiki-media .movie-card .media-meta-item { flex-direction: column; align-items: center; line-height: 1.2; }
-      .wiki-media .movie-card .meta-icon { font-size: 1.3em; }
+      .wiki-media .movie-card .card-body { flex: 1; min-width: 0; padding: 16px; display: flex; flex-direction: column; }
       
       .wiki-media .card-cover { background-size: cover; background-position: center; position: relative; background-color: #f5f5f5; }
       .wiki-media .media-rank { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.6); color: #fff; padding: 2px 8px; border-radius: 6px; font-weight: bold; font-family: monospace; font-size: 0.9em; backdrop-filter: blur(4px); }
       .wiki-media .media-score-badge { position: absolute; top: 12px; right: 12px; background: #ffca28; color: #333; padding: 2px 8px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+      
       .wiki-media .card-body { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+      .wiki-media .media-titles { margin-bottom: 8px; }
       .wiki-media .title-cn { font-size: 1.2em; font-weight: bold; color: var(--stellar-text-color, #333); line-height: 1.3; margin-bottom: 2px; }
       .wiki-media .title-en { font-size: 0.85em; color: var(--stellar-text-color-secondary, #888); font-family: monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      
       .wiki-media .media-stars { color: #ffca28; font-size: 0.9em; margin-bottom: 12px; letter-spacing: 2px; }
+      
       .wiki-media .media-tags { margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
       .wiki-media .media-tag { background: var(--stellar-color-theme-bg, #f4f4f5); color: var(--stellar-color-theme, #666); font-size: 0.75em; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.05); }
-      .wiki-media .card-desc { font-size: 0.9em; color: var(--stellar-text-color-secondary, #555); line-height: 1.6; margin-bottom: 16px; flex: 1; }
-      .wiki-media .media-meta-row { border-top: 1px dashed var(--stellar-border-color, #eee); padding-top: 12px; }
       
-      @media (max-width: 768px) {
-          .wiki-media .waterfall-items { column-count: 1; }
+      /* 移除文字截断限制，让长文完整舒展 */
+      .wiki-media .card-desc { font-size: 0.9em; color: var(--stellar-text-color-secondary, #555); line-height: 1.6; margin-bottom: 16px; flex: 1; }
+      
+      .wiki-media .media-meta-row { display: flex; justify-content: space-between; font-size: 0.75em; color: #999; border-top: 1px dashed var(--stellar-border-color, #eee); padding-top: 12px; }
+      
+      /* 移动端窄屏适配 */
+      @media (max-width: 480px) {
+          .wiki-media .waterfall-items { column-width: 100%; }
           .wiki-media .movie-card .card-cover { width: 110px; }
       }
     </style>
@@ -175,18 +180,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">"Jump"的核心功能设计得非常好，增添了人物之间的互动性，提升了收集BE的乐趣。可惜游戏确实有些年头了，内容比较怀旧（过时），充斥着日式热血味。最后我要说：御法川神了！</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>19.3h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2026-04-06</span>
-                      </div>
+                      <span title="时长/片长">🕒 19.3h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2026-04-06</span>
                   </div>
                 </div>
               </a>
@@ -207,18 +203,9 @@
                   <div class="media-tags"><span class="media-tag">Logic</span></div>
                   <div class="card-desc">争议虽大，我不认为故事写得不好，或是有毁前作之疑。只是这种“完结”的方式会给v3的人物蒙上一层纱，以及无尽的虚无感：人设是真是假？世界是真是假？“一切皆有可能”，等同于“一切可能都毫无意义”----希望之于绝望，正与虚妄相同。（“绝望之为虚妄，正与希望相同”）</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>32.2h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2026-03-29</span>
-                      </div>
+                      <span title="时长/片长">🕒 32.2h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2026-03-29</span>
                   </div>
                 </div>
               </a>
@@ -239,18 +226,9 @@
                   <div class="media-tags"><span class="media-tag">Logic</span></div>
                   <div class="card-desc">弹丸系列巅峰，立意最有延展性的一作。从二创数量就可见一斑，当然那主要得益于角色人设的丰富性。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>33.2h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2026-02-07</span>
-                      </div>
+                      <span title="时长/片长">🕒 33.2h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2026-02-07</span>
                   </div>
                 </div>
               </a>
@@ -271,18 +249,9 @@
                   <div class="media-tags"><span class="media-tag">Logic</span></div>
                   <div class="card-desc">弹丸系列首作，梦开始的地方，也是玩起来最有新鲜感的一作--因为热度不高，不容易被剧透。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>22.6h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2026-01-22</span>
-                      </div>
+                      <span title="时长/片长">🕒 22.6h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2026-01-22</span>
                   </div>
                 </div>
               </a>
@@ -303,18 +272,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">小而精的艺术品。作为现代打工人果然还是最共情杀鱼哥，“在重复劳动中迷失自我”太真实了，所以甚至推荐给老妈玩了这一小章。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>4.1h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2026-01-06</span>
-                      </div>
+                      <span title="时长/片长">🕒 4.1h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2026-01-06</span>
                   </div>
                 </div>
               </a>
@@ -335,18 +295,9 @@
                   <div class="media-tags"><span class="media-tag">Logic</span></div>
                   <div class="card-desc">搜查、举证，将这种严密的逻辑运用进生活也无不可。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>60.3h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2026-01-06</span>
-                      </div>
+                      <span title="时长/片长">🕒 60.3h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2026-01-06</span>
                   </div>
                 </div>
               </a>
@@ -367,18 +318,9 @@
                   <div class="media-tags"><span class="media-tag">动画</span></div>
                   <div class="card-desc">狗尾续貂。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>108m</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>电影院</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2025-11-01</span>
-                      </div>
+                      <span title="时长/片长">🕒 108m</span>
+                      <span title="平台/媒介">📺 电影院</span>
+                      <span title="完成日期">📅 2025-11-01</span>
                   </div>
                 </div>
               </a>
@@ -399,18 +341,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">作为同人作品很不错了，看得出作者对几个角色的爱。但是嘛，2026.4 Taki的声优干出了毁掉这个角色的举动（参演神风特技队），所以切割。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>6.7h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2025-09-06</span>
-                      </div>
+                      <span title="时长/片长">🕒 6.7h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2025-09-06</span>
                   </div>
                 </div>
               </a>
@@ -431,18 +364,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">游戏形式是“完形填空”，加上汉化不好得玩原版，所以游戏过程比较坎坷（英语还得多练！）。当初因为bug免费玩到了DLC，可惜实习太忙没把最后一个谜解出来，痛失全成就。但推理整个故事的过程*非常*爽。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>17h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2025-07-07</span>
-                      </div>
+                      <span title="时长/片长">🕒 17h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2025-07-07</span>
                   </div>
                 </div>
               </a>
@@ -463,18 +387,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">治愈系种田游戏，画风很合我胃口。过这么久只记得青蛙叔了，毕竟他会吹长笛！</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>45.4h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2025-05-03</span>
-                      </div>
+                      <span title="时长/片长">🕒 45.4h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2025-05-03</span>
                   </div>
                 </div>
               </a>
@@ -495,18 +410,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">更适合中国宝宝的逆转裁判，感谢它抛砖引玉把我带向逆转裁判。从玩法上没有太创新的地方，更像是针对民国时期做了本土化处理。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>14.5h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2025-04-05</span>
-                      </div>
+                      <span title="时长/片长">🕒 14.5h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2025-04-05</span>
                   </div>
                 </div>
               </a>
@@ -527,18 +433,9 @@
                   <div class="media-tags"><span class="media-tag">Logic</span></div>
                   <div class="card-desc">独特的玩法本来可以轻松得10分，黑白像素太晕-1分，“都是船长干的”成就太难做再-1分。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>11.5h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2025-03-30</span>
-                      </div>
+                      <span title="时长/片长">🕒 11.5h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2025-03-30</span>
                   </div>
                 </div>
               </a>
@@ -559,18 +456,9 @@
                   <div class="media-tags"></div>
                   <div class="card-desc">“语言学家”类型在我心目中的高峰。画风、音乐、故事、玩法、主旨相得益彰。</div>
                   <div class="media-meta-row">
-                      <div class="media-meta-item" title="时长/片长">
-                          <span class="meta-icon">🕒</span>
-                          <span>11.8h</span>
-                      </div>
-                      <div class="media-meta-item" title="平台/媒介">
-                          <span class="meta-icon">📺</span>
-                          <span>steam</span>
-                      </div>
-                      <div class="media-meta-item" title="完成日期">
-                          <span class="meta-icon">📅</span>
-                          <span>2024-10-21</span>
-                      </div>
+                      <span title="时长/片长">🕒 11.8h</span>
+                      <span title="平台/媒介">📺 steam</span>
+                      <span title="完成日期">📅 2024-10-21</span>
                   </div>
                 </div>
               </a>
@@ -1394,4 +1282,4 @@ show_runtime();
 <!-- inject -->
 
 </div></body></html>
-<script>var posts=["2024/03/21/悦乐/fiction-tang/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2024/05/05/悦乐/echoism/","2026/02/23/悦乐/铁花飞/","2024/04/26/旧说说/小小的一片天空/","2024/02/28/旧说说/aircraft-materials/","2024/02/21/悦乐/情骨/","2024/02/21/旧说说/归乡/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/02/21/旧说说/猫的社会学/","2024/02/21/读罢有感/S.忒修斯之船/","2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2024/06/10/旧说说/长歌行/","2024/02/21/读罢有感/仙人抚我顶/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/02/21/读罢有感/索拉里斯星/","2024/02/04/旧说说/谈往录/","2024/03/10/读罢有感/董晨宇：互联网观察/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2025/11/10/读罢有感/银河系搭车客指南/","2024/03/08/读罢有感/青铜骑士/","2025/10/28/随笔/SCITE（上信考）/","2024/10/15/随笔/childhood/","2025/11/27/读罢有感/蔑视大众/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2025/06/09/随笔/万神殿 Pantheon/","2024/02/04/随笔/乾果/","2025/11/07/随笔/南京游记/","2025/08/15/随笔/六盘水游记/","2026/03/22/随笔/厦门游记/","2024/03/01/随笔/夜风奇谭/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2024/05/11/随笔/我的颜色/","2024/03/10/随笔/法华/","2024/03/01/随笔/躬身，甘为推磨/","2024/02/04/随笔/群山之声响彻寰宇/","2024/03/17/随笔/阿拉城/","2026/01/29/杂技/Bing搜索屏蔽CSDN/","2024/06/21/随笔/问道/","2024/02/28/杂技/打印资料小寄巧/","2024/03/01/杂技/zotero使用/","2024/03/01/杂技/效率软件/","2024/04/06/杂技/rss传奇/","2024/02/27/杂技/此应用包不支持通过应用安装程序安装，因为它/","2024/11/22/杂技/课堂派：不允许下载/","2024/02/05/notebook/C&C++/第一讲-c-c程序设计入门/","2024/02/05/notebook/C&C++/第三讲-选择结构/","2024/02/05/notebook/C&C++/第九讲-函数（续）/","2024/02/05/notebook/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/C&C++/第七讲-指针和数组/","2024/02/05/notebook/C&C++/第五讲-一维数组/","2024/02/05/notebook/C&C++/第八讲-函数/","2024/02/05/notebook/C&C++/第六讲-二维数组、字符数组/","2024/02/05/notebook/C&C++/第十讲-结构/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2024/02/05/notebook/C&C++/第四讲-循环结构/","2024/02/05/notebook/C&C++/第十二讲-文件/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2024/04/04/notebook/课内/电工学：正弦交流电路/","2024/10/26/notebook/选修/solar/","2024/06/06/notebook/选修/玉石：人与石的故事/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/09/28/notebook/选修/中西艺术比较/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/10/08/series/天星拾缀/A3/","2024/03/20/notebook/选修/飞书妙记/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2025/10/29/series/天星拾缀/α Scorpii/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2025/01/17/series/天星拾缀/Antares/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2025/05/15/series/博客搭建/Running page/","2024/09/25/series/博客搭建/blog迁移/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2024/03/01/notebook/自学杂项/google-play/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/02/04/series/博客搭建/wordpress建站始末/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2024/02/04/series/博客搭建/建站目标及进度/","2025/11/07/series/软件使用小技巧/Notion/","2025/11/03/series/软件使用小技巧/MultiTTS/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2026/04/07/series/软件使用小技巧/Zview/","2025/03/21/series/谈往录/谈往录（1）/","2025/07/14/series/谈往录/谈往录（4）/","2025/05/13/series/谈往录/谈往录（3）/","2025/04/04/series/谈往录/谈往录（2）/","2025/12/01/series/谈往录/谈往录（6）/","2026/01/03/series/谈往录/谈往录（7）/","2025/11/04/series/谈往录/谈往录（5）/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>
+<script>var posts=["2024/05/05/悦乐/echoism/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2024/02/28/旧说说/aircraft-materials/","2024/04/26/旧说说/小小的一片天空/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/02/21/旧说说/归乡/","2024/02/21/悦乐/情骨/","2026/02/23/悦乐/铁花飞/","2024/03/21/悦乐/fiction-tang/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/02/21/旧说说/猫的社会学/","2026/01/29/杂技/Bing搜索屏蔽CSDN/","2024/02/04/旧说说/谈往录/","2024/06/10/旧说说/长歌行/","2024/04/06/杂技/rss传奇/","2024/02/28/杂技/打印资料小寄巧/","2024/03/01/杂技/效率软件/","2024/03/01/杂技/zotero使用/","2024/11/22/杂技/课堂派：不允许下载/","2024/02/27/杂技/此应用包不支持通过应用安装程序安装，因为它/","2024/02/21/读罢有感/S.忒修斯之船/","2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/02/21/读罢有感/仙人抚我顶/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/02/21/读罢有感/索拉里斯星/","2024/03/10/读罢有感/董晨宇：互联网观察/","2025/11/27/读罢有感/蔑视大众/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2025/10/28/随笔/SCITE（上信考）/","2025/11/10/读罢有感/银河系搭车客指南/","2024/10/15/随笔/childhood/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2025/06/09/随笔/万神殿 Pantheon/","2024/03/08/读罢有感/青铜骑士/","2024/02/04/随笔/乾果/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2026/03/22/随笔/厦门游记/","2025/08/15/随笔/六盘水游记/","2024/03/01/随笔/夜风奇谭/","2024/03/10/随笔/法华/","2024/03/01/随笔/躬身，甘为推磨/","2025/11/07/随笔/南京游记/","2024/05/11/随笔/我的颜色/","2024/02/04/随笔/群山之声响彻寰宇/","2024/06/21/随笔/问道/","2024/03/17/随笔/阿拉城/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/02/05/notebook/C&C++/第一讲-c-c程序设计入门/","2024/02/05/notebook/C&C++/第七讲-指针和数组/","2024/02/05/notebook/C&C++/第九讲-函数（续）/","2024/02/05/notebook/C&C++/第三讲-选择结构/","2024/02/05/notebook/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/C&C++/第五讲-一维数组/","2024/02/05/notebook/C&C++/第八讲-函数/","2024/02/05/notebook/C&C++/第六讲-二维数组、字符数组/","2024/02/05/notebook/C&C++/第十讲-结构/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2024/02/05/notebook/C&C++/第十二讲-文件/","2024/02/05/notebook/C&C++/第四讲-循环结构/","2024/03/01/notebook/自学杂项/google-play/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2024/09/25/series/博客搭建/blog迁移/","2025/05/15/series/博客搭建/Running page/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/02/04/series/博客搭建/wordpress建站始末/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2024/10/08/series/天星拾缀/A3/","2024/02/04/series/博客搭建/建站目标及进度/","2025/04/04/series/谈往录/谈往录（2）/","2025/03/21/series/谈往录/谈往录（1）/","2025/01/17/series/天星拾缀/Antares/","2025/05/13/series/谈往录/谈往录（3）/","2025/11/04/series/谈往录/谈往录（5）/","2025/07/14/series/谈往录/谈往录（4）/","2025/12/01/series/谈往录/谈往录（6）/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2025/10/29/series/天星拾缀/α Scorpii/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2026/01/03/series/谈往录/谈往录（7）/","2025/11/03/series/软件使用小技巧/MultiTTS/","2024/09/28/notebook/选修/中西艺术比较/","2025/11/07/series/软件使用小技巧/Notion/","2024/10/26/notebook/选修/solar/","2026/04/07/series/软件使用小技巧/Zview/","2024/06/06/notebook/选修/玉石：人与石的故事/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/03/20/notebook/选修/飞书妙记/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2024/04/04/notebook/课内/电工学：正弦交流电路/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>
