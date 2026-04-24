@@ -11,6 +11,14 @@
         <content type="html"><![CDATA[<blockquote><p>比起开Notion搜Notes，说不定看自己的blog更快。本着这样优化掉Notion的想法把git笔记迁移过来。</p></blockquote><h1 id="基本流程"><a class="markdownIt-Anchor" href="#基本流程"></a> 基本流程</h1><ul class="lvl-0"><li class="lvl-2"><p>git init</p></li><li class="lvl-2"><p>git checkout -b [name]</p></li><li class="lvl-2"><p>git remote add upstream [SSH]    (PULL对象)</p></li><li class="lvl-2"><p>git remote add origin [SSH of fork]   （PUSH对象）</p></li><li class="lvl-2"><p>git clone [SSH of fork]</p></li><li class="lvl-2"><p>git add</p></li><li class="lvl-2"><p>git commit -m [words]</p></li><li class="lvl-2"><p>git push</p></li></ul><h1 id="后续步骤"><a class="markdownIt-Anchor" href="#后续步骤"></a> 后续步骤</h1><ul class="lvl-0"><li class="lvl-2"><p>查看当前远程仓库：<code>git remote -v</code></p></li><li class="lvl-2"><p>如果更新了分支：<code>git push --set-upstream origin [branch_name]</code></p></li><li class="lvl-2"><p>同步远程分支更新到本地：<code>git pull origin main</code></p></li><li class="lvl-2"><p>删除当前origin：<code>git remote remove origin</code></p></li><li class="lvl-2"><p>git fatal error:</p><ul class="lvl-2"><li class="lvl-6"><a href="https://blog.csdn.net/qq_43546721/article/details/139506583">https://blog.csdn.net/qq_43546721/article/details/139506583</a></li><li class="lvl-6">开本机代理解决了。</li></ul></li></ul><h1 id="拉取特定pr"><a class="markdownIt-Anchor" href="#拉取特定pr"></a> 拉取特定PR</h1><blockquote><p>情景：想使用Obsidian某插件的未Merge PR。<br />解决方案：拉取源码后构建，用构建结果替换.obsidian内文件。</p></blockquote><p>步骤：</p><ol><li class="lvl-3"><p>找到当前插件目录  <code>VAULT\.obsidian\plugins\obsidian-auto-link-title</code>，酌情备份</p></li><li class="lvl-3"><p>在别的临时目录拉取PR源码</p></li></ol><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git clone https://github.com/zolrath/obsidian<span class="hljs-literal">-auto-link-title</span>.git <br><span class="hljs-built_in">cd</span> obsidian<span class="hljs-literal">-auto-link-title</span><br>git fetch origin pull/<span class="hljs-number">158</span>/head:pr<span class="hljs-literal">-158</span><br>git checkout pr<span class="hljs-literal">-158</span><br></code></pre></td></tr></table></figure><ol start="3"><li class="lvl-3"><p>安装依赖并构建</p></li></ol><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm install<br>npm run build<br></code></pre></td></tr></table></figure><ol start="4"><li class="lvl-3"><p>把构建后的文件复制到第一步的插件目录 ，通常至少覆盖这几个文件：</p></li></ol><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">main.js<br>manifest.json<br>styles.css<br></code></pre></td></tr></table></figure><ol start="5"><li class="lvl-3"><p>回到 Obsidian 里重载插件</p></li></ol><p>参考：</p><ul class="lvl-0"><li class="lvl-2"><p>PR: <a href="https://github.com/zolrath/obsidian-auto-link-title/pull/158">github.com/zolrath/obsidian-auto-link-title/pull/158</a></p></li><li class="lvl-2"><p>repo: <a href="https://github.com/zolrath/obsidian-auto-link-title">github.com/zolrath/obsidian-auto-link-title</a></p></li><li class="lvl-2"><p>代码结构说明: <a href="https://deepwiki.com/zolrath/obsidian-auto-link-title/4.3-plugin-integration">deepwiki.com/zolrath/obsidian-auto-link-title/4.3-plugin-integration</a></p></li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> series </category>
+          
+          <category> 软件使用小技巧 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -32,6 +40,14 @@
         <content type="html"><![CDATA[<p>greasyfork：<a href="https://greasyfork.org/zh-CN/scripts">用户脚本</a></p><p>别人的油猴脚本整理：<a href="https://github.com/XIU2/UserScript">GitHub - XIU2/UserScript: 🐵 自用的一些乱七八糟 油猴脚本~ · GitHub</a></p><p>自收录的脚本：</p><div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="/imgs/TamperMonkey脚本收录/TamperMonkey脚本.webp" data-src="/imgs/TamperMonkey脚本收录/TamperMonkey脚本.webp" alt="图1 TamperMonkey脚本" data-fancybox="true"onerror="this.src=&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2rem' height='2rem' viewBox='0 0 24 24'%3E%3C!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='%23F44336' d='M22 12.698c-.002 1.47-.013 2.718-.096 3.743c-.097 1.19-.296 2.184-.74 3.009a4.2 4.2 0 0 1-.73.983c-.833.833-1.893 1.21-3.237 1.39C15.884 22 14.2 22 12.053 22h-.106c-2.148 0-3.83 0-5.144-.177c-1.343-.18-2.404-.557-3.236-1.39c-.738-.738-1.12-1.656-1.322-2.795c-.2-1.12-.236-2.512-.243-4.241Q1.999 12.737 2 12v-.054c0-2.148 0-3.83.177-5.144c.18-1.343.557-2.404 1.39-3.236s1.893-1.21 3.236-1.39c1.168-.157 2.67-.175 4.499-.177a.697.697 0 1 1 0 1.396c-1.855.002-3.234.018-4.313.163c-1.189.16-1.906.464-2.436.994S3.72 5.8 3.56 6.99C3.397 8.2 3.395 9.788 3.395 12v.784l.932-.814a2.14 2.14 0 0 1 2.922.097l3.99 3.99a1.86 1.86 0 0 0 2.385.207l.278-.195a2.79 2.79 0 0 1 3.471.209l2.633 2.37c.265-.557.423-1.288.507-2.32c.079-.972.09-2.152.091-3.63a.698.698 0 0 1 1.396 0' opacity='.5'/%3E%3Cpath fill='%23F44336' fill-rule='evenodd' d='M17.5 11c-2.121 0-3.182 0-3.841-.659S13 8.621 13 6.5s0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11m-1.47-7.03a.75.75 0 1 0-1.06 1.06l1.47 1.47l-1.47 1.47a.75.75 0 0 0 1.06 1.06l1.47-1.47l1.47 1.47a.75.75 0 1 0 1.06-1.06L18.56 6.5l1.47-1.47a.75.75 0 0 0-1.06-1.06L17.5 5.44z' clip-rule='evenodd'/%3E%3C/svg%3E&quot;"/><div class="lazy-icon" style="background-image:url(https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd);"></div></div><div class="image-meta"><span class="image-caption center">图1 TamperMonkey脚本</span></div></div>]]></content>
       
       
+      <categories>
+          
+          <category> series </category>
+          
+          <category> 软件使用小技巧 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -42,8 +58,16 @@
       <link href="/2026/04/24/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Obsidian%EF%BC%9A%E6%8F%92%E4%BB%B6%E4%BC%98%E5%8C%96/"/>
       <url>/2026/04/24/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Obsidian%EF%BC%9A%E6%8F%92%E4%BB%B6%E4%BC%98%E5%8C%96/</url>
       
-        <content type="html"><![CDATA[<p>对Obsidian的初次介绍可见于：<a href="https://yantares.cn/2025/03/28/series/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo+github+obsidian/">Blog（5）：hexo+github+obsidian - Lone Trail</a>，本文主要是针对插件二次debug。</p><h1 id="auto-link-title"><a class="markdownIt-Anchor" href="#auto-link-title"></a> Auto link title</h1><p>Q：使用中发现知乎的文章链接粘贴过来总是识别不出：<code>[Title Unavailable \| Site Unreachable]</code>。</p><p>A：</p><ul class="lvl-0"><li class="lvl-2"><p><a href="https://forum-zh.obsidian.md/t/topic/28627">auto link title 解析微信公众号标题失败？ - 疑问解答 - Obsidian 中文论坛</a></p><ul class="lvl-2"><li class="lvl-6">对于网页内部的链接，可使用浏览器插件CopyCat<a href="https://chromewebstore.google.com/detail/copycat/jdjbiojkklnaeoanimopafmnmhldejbg?hl=zh-CN">拷贝猫- Chrome 应用商店Chrome Web Storehttps://chromewebstore.google.com › …</a>解决，但它有2个缺点，所以我不使用：<ul class="lvl-4"><li class="lvl-10">不能应用于当前页面的链接</li><li class="lvl-10">生成的标题很长，效果差</li></ul></li></ul></li><li class="lvl-2"><p><a href="https://github.com/zolrath/obsidian-auto-link-title/issues/122">Fetch Zhihu link title · Issue #122 · zolrath/obsidian-auto-link-title · GitHub</a></p><ul class="lvl-2"><li class="lvl-6">本质是知乎加强了反爬虫政策，所以需要我们自定义域名cookie。使用<a href="https://github.com/zolrath/obsidian-auto-link-title/pull/158">feat: Add support for specifing domain request headers by Mlk1225 · Pull Request #158 · zolrath/obsidian-auto-link-title · GitHub</a>这一PR可以解决。<ul class="lvl-4"><li class="lvl-10">拉取PR并替换插件文件的方法可见于：</li><li class="lvl-10">替换好插件后，在Auto Link Title插件设置中配置。<ul class="lvl-6"><li class="lvl-15"><div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="/imgs/Obsidian：插件优化/配置AutoLinkTitle.webp" data-src="/imgs/Obsidian：插件优化/配置AutoLinkTitle.webp" alt="图1 配置Auto Link Title" data-fancybox="true"onerror="this.src=&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2rem' height='2rem' viewBox='0 0 24 24'%3E%3C!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='%23F44336' d='M22 12.698c-.002 1.47-.013 2.718-.096 3.743c-.097 1.19-.296 2.184-.74 3.009a4.2 4.2 0 0 1-.73.983c-.833.833-1.893 1.21-3.237 1.39C15.884 22 14.2 22 12.053 22h-.106c-2.148 0-3.83 0-5.144-.177c-1.343-.18-2.404-.557-3.236-1.39c-.738-.738-1.12-1.656-1.322-2.795c-.2-1.12-.236-2.512-.243-4.241Q1.999 12.737 2 12v-.054c0-2.148 0-3.83.177-5.144c.18-1.343.557-2.404 1.39-3.236s1.893-1.21 3.236-1.39c1.168-.157 2.67-.175 4.499-.177a.697.697 0 1 1 0 1.396c-1.855.002-3.234.018-4.313.163c-1.189.16-1.906.464-2.436.994S3.72 5.8 3.56 6.99C3.397 8.2 3.395 9.788 3.395 12v.784l.932-.814a2.14 2.14 0 0 1 2.922.097l3.99 3.99a1.86 1.86 0 0 0 2.385.207l.278-.195a2.79 2.79 0 0 1 3.471.209l2.633 2.37c.265-.557.423-1.288.507-2.32c.079-.972.09-2.152.091-3.63a.698.698 0 0 1 1.396 0' opacity='.5'/%3E%3Cpath fill='%23F44336' fill-rule='evenodd' d='M17.5 11c-2.121 0-3.182 0-3.841-.659S13 8.621 13 6.5s0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11m-1.47-7.03a.75.75 0 1 0-1.06 1.06l1.47 1.47l-1.47 1.47a.75.75 0 0 0 1.06 1.06l1.47-1.47l1.47 1.47a.75.75 0 1 0 1.06-1.06L18.56 6.5l1.47-1.47a.75.75 0 0 0-1.06-1.06L17.5 5.44z' clip-rule='evenodd'/%3E%3C/svg%3E&quot;"/><div class="lazy-icon" style="background-image:url(https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd);"></div></div><div class="image-meta"><span class="image-caption center">图1 配置Auto Link Title</span></div></div></li></ul><pre><code><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs JSON">  <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;www.zhihu.com&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;User-Agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Cookie&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;你的知乎登录cookie&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Referer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://www.zhihu.com/&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;zhuanlan.zhihu.com&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;User-Agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Cookie&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;你的知乎登录cookie&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Referer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://zhuanlan.zhihu.com/&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></code></pre><ul class="lvl-6"><li class="lvl-14">Cookie获取方式：打开浏览器登录知乎，F12 打开开发者工具。“网络”中找到一个请求，在 Request Headers 里复制Cookie。</li></ul></li></ul></li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>对Obsidian的初次介绍可见于：<a href="https://yantares.cn/2025/03/28/series/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo+github+obsidian/">Blog（5）：hexo+github+obsidian - Lone Trail</a>，本文主要是针对插件二次debug。</p><h1 id="auto-link-title"><a class="markdownIt-Anchor" href="#auto-link-title"></a> Auto link title</h1><p>Q：使用中发现知乎的文章链接粘贴过来总是识别不出：<code>[Title Unavailable \| Site Unreachable]</code>。</p><p>A：</p><ul class="lvl-0"><li class="lvl-2"><p><a href="https://forum-zh.obsidian.md/t/topic/28627">auto link title 解析微信公众号标题失败？ - 疑问解答 - Obsidian 中文论坛</a></p><ul class="lvl-2"><li class="lvl-6">对于网页内部的链接，可使用浏览器插件CopyCat<a href="https://chromewebstore.google.com/detail/copycat/jdjbiojkklnaeoanimopafmnmhldejbg?hl=zh-CN">拷贝猫- Chrome 应用商店Chrome Web Storehttps://chromewebstore.google.com › …</a>解决，但它有2个缺点，所以我不使用：<ul class="lvl-4"><li class="lvl-10">不能应用于当前页面的链接</li><li class="lvl-10">生成的标题很长，效果差</li></ul></li></ul></li><li class="lvl-2"><p><a href="https://github.com/zolrath/obsidian-auto-link-title/issues/122">Fetch Zhihu link title · Issue #122 · zolrath/obsidian-auto-link-title · GitHub</a></p><ul class="lvl-2"><li class="lvl-6">本质是知乎加强了反爬虫政策，所以需要我们自定义域名cookie。使用<a href="https://github.com/zolrath/obsidian-auto-link-title/pull/158">feat: Add support for specifing domain request headers by Mlk1225 · Pull Request #158 · zolrath/obsidian-auto-link-title · GitHub</a>这一PR可以解决。<ul class="lvl-4"><li class="lvl-10">拉取PR并替换插件文件的方法可见于：</li><li class="lvl-10">替换好插件后，在Auto Link Title插件设置中配置。</li><li class="lvl-10">Cookie获取方式：打开浏览器登录知乎，F12 打开开发者工具。“网络”中找到一个请求，在 Request Headers 里复制Cookie。</li></ul></li></ul></li></ul><div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="/imgs/Obsidian：插件优化/配置AutoLinkTitle.webp" data-src="/imgs/Obsidian：插件优化/配置AutoLinkTitle.webp" alt="图1 配置Auto Link Title" data-fancybox="true"onerror="this.src=&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2rem' height='2rem' viewBox='0 0 24 24'%3E%3C!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='%23F44336' d='M22 12.698c-.002 1.47-.013 2.718-.096 3.743c-.097 1.19-.296 2.184-.74 3.009a4.2 4.2 0 0 1-.73.983c-.833.833-1.893 1.21-3.237 1.39C15.884 22 14.2 22 12.053 22h-.106c-2.148 0-3.83 0-5.144-.177c-1.343-.18-2.404-.557-3.236-1.39c-.738-.738-1.12-1.656-1.322-2.795c-.2-1.12-.236-2.512-.243-4.241Q1.999 12.737 2 12v-.054c0-2.148 0-3.83.177-5.144c.18-1.343.557-2.404 1.39-3.236s1.893-1.21 3.236-1.39c1.168-.157 2.67-.175 4.499-.177a.697.697 0 1 1 0 1.396c-1.855.002-3.234.018-4.313.163c-1.189.16-1.906.464-2.436.994S3.72 5.8 3.56 6.99C3.397 8.2 3.395 9.788 3.395 12v.784l.932-.814a2.14 2.14 0 0 1 2.922.097l3.99 3.99a1.86 1.86 0 0 0 2.385.207l.278-.195a2.79 2.79 0 0 1 3.471.209l2.633 2.37c.265-.557.423-1.288.507-2.32c.079-.972.09-2.152.091-3.63a.698.698 0 0 1 1.396 0' opacity='.5'/%3E%3Cpath fill='%23F44336' fill-rule='evenodd' d='M17.5 11c-2.121 0-3.182 0-3.841-.659S13 8.621 13 6.5s0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11m-1.47-7.03a.75.75 0 1 0-1.06 1.06l1.47 1.47l-1.47 1.47a.75.75 0 0 0 1.06 1.06l1.47-1.47l1.47 1.47a.75.75 0 1 0 1.06-1.06L18.56 6.5l1.47-1.47a.75.75 0 0 0-1.06-1.06L17.5 5.44z' clip-rule='evenodd'/%3E%3C/svg%3E&quot;"/><div class="lazy-icon" style="background-image:url(https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd);"></div></div><div class="image-meta"><span class="image-caption center">图1 配置Auto Link Title</span></div></div><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs JSON">  <span class="hljs-punctuation">&#123;</span><br><span class="hljs-attr">&quot;www.zhihu.com&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-attr">&quot;User-Agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;Cookie&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;你的知乎登录cookie&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;Referer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://www.zhihu.com/&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;zhuanlan.zhihu.com&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-attr">&quot;User-Agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;Cookie&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;你的知乎登录cookie&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;Referer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://zhuanlan.zhihu.com/&quot;</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
       
+      
+      <categories>
+          
+          <category> series </category>
+          
+          <category> 软件使用小技巧 </category>
+          
+      </categories>
       
       
         <tags>
@@ -63,6 +87,14 @@
       
         <content type="html"><![CDATA[<p>正则匹配识别txt章节：</p><p>在处理包含“卷”和“章”两级结构的小说时，Calibre 的目录设置提供了多个层级的 XPath 匹配框。针对“第一卷”这种大标题，你应该在“一级目录”的框中填入<code>//*[re:test(., '^\s*第[一二三四五六七八九十百千万0-9]+卷', 'i')]</code>。而在“二级目录”的框内，则填入常规的章节匹配表达式，例如 <code>//*[re:test(., '^\s*第[一二三四五六七八九十百千万0-9]+[章节回]', 'i')]</code>。这样转换出来的电子书在阅读器中打开时，会呈现出清晰的折叠层级，点击对应的“卷”标题即可展开下属的所有章节。</p><p>对于这种带有等号标识且格式混杂的目录，最稳妥的策略是提取其共同的视觉特征，即前后包裹的等号符号。你可以使用<code> //*[re:test(., '^\s*===[^=]+===', 'i')]</code> 这个表达式。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> series </category>
+          
+          <category> 软件使用小技巧 </category>
+          
+      </categories>
       
       
         <tags>
@@ -148,9 +180,9 @@
       
         <tags>
             
-            <tag> 道 </tag>
-            
             <tag> 经验 </tag>
+            
+            <tag> 道 </tag>
             
         </tags>
       
@@ -165,6 +197,12 @@
       
         <content type="html"><![CDATA[<h1 id="前言表达的载体"><a class="markdownIt-Anchor" href="#前言表达的载体"></a> 前言：表达的载体</h1><h1 id="1-历史的尘埃"><a class="markdownIt-Anchor" href="#1-历史的尘埃"></a> 1 历史的尘埃</h1><h1 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h1>]]></content>
       
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
       
       
         <tags>
@@ -189,9 +227,9 @@
       
       <categories>
           
-          <category> notebook </category>
+          <category> series </category>
           
-          <category> 自学杂项 </category>
+          <category> 软件使用小技巧 </category>
           
       </categories>
       
@@ -396,6 +434,14 @@
       
         <content type="html"><![CDATA[<p>主要记录Chrome使用中的debug，以及极大改善chrome使用体验的插件。</p><h2 id="insecure-download-blocked已阻止不安全的下载"><a class="markdownIt-Anchor" href="#insecure-download-blocked已阻止不安全的下载"></a> “insecure download blocked”【已阻止不安全的下载】</h2><p><a href="https://zhuanlan.zhihu.com/p/1923681547728429681">Chrome 下载文件时总是提示“已阻止不安全的下载”的解决方案 - 知乎</a></p><p>我允许了从QQ空间下载照片：<code>https://user.qzone.qq.com</code>。It works!</p><h1 id="this-extension-may-soon-no-longer-be-supported这些扩展程序可能很快将不再受支持"><a class="markdownIt-Anchor" href="#this-extension-may-soon-no-longer-be-supported这些扩展程序可能很快将不再受支持"></a> &quot; This extension may soon no longer be supported&quot;【这些扩展程序可能很快将不再受支持】</h1><blockquote><p>This extension may soon no longer be supported because it doesn’t follow best practices for Chrome extensions.</p></blockquote><p>该提示出现在我安装的【简悦SimpRead】插件上。其github issue可很好地解决问题：<a href="https://github.com/Kenshin/simpread/discussions/6633">如果你的浏览器提示【这些扩展程序可能很快将不再受支持】的解决方案 · Kenshin/simpread · Discussion #6633 · GitHub</a>。对于windows用户来说，关闭Chrome并CMD运行<code>&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot; --disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled</code>即可。</p><h1 id="infinity-tab-out"><a class="markdownIt-Anchor" href="#infinity-tab-out"></a> Infinity + Tab Out</h1><blockquote><p>Infinity Tab Pro: <a href="https://www.infinitytab.com/">infinity新标签页</a><br />Tab Out: <a href="https://github.com/zarazhangrui/tab-out">GitHub - zarazhangrui/tab-out: Keep tabs on your t…</a></p></blockquote><p>Codex真是太好用了，你们知道吗。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> series </category>
+          
+          <category> 软件使用小技巧 </category>
+          
+      </categories>
       
       
         <tags>
