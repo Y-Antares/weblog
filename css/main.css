@@ -223,6 +223,21 @@
   color: var(--text-p2);
   margin-top: 0.2rem;
 }
+.md-text sup.post-ref {
+  margin-left: 0.1em;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: super;
+}
+.md-text sup.post-ref a {
+  text-decoration: none;
+}
+#references .references-list {
+  padding-left: 1.5em;
+}
+#references li[id^='reference-'] {
+  scroll-margin-top: 6rem;
+}
 :root {
   --hue: 192deg;
   --sat: 98%;
