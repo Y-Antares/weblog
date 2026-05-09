@@ -179,15 +179,66 @@
   margin-top: 0.5rem !important;
   font-size: 1rem !important;
 }
-.widget-wrapper.git-history-widget.post-list .widget-body .item {
-  font-size: 0.875rem;
-  padding: 6px 16px;
-  display: block;
-  border-radius: 8px;
-  color: var(--text-p1);
+.widget-wrapper.git-history-widget .widget-body {
+  padding: 4px 16px 0;
 }
-.widget-wrapper.git-history-widget.post-list .widget-body .item+.item {
-  margin-top: 2px;
+.git-history-rail {
+  position: relative;
+  padding-left: 22px;
+}
+.git-history-rail::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #58a6ff, #3fb950 45%, #d29922 75%, #f85149);
+}
+.git-history-node {
+  position: relative;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  color: var(--text-p1);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.git-history-node:not(:last-child) {
+  margin-bottom: 2px;
+}
+.git-history-dot {
+  position: absolute;
+  left: -22px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--background);
+  border: 2px solid #58a6ff;
+  box-sizing: border-box;
+}
+.git-history-node.node-1 .git-history-dot {
+  border-color: #d29922;
+}
+.git-history-node.node-2 .git-history-dot {
+  border-color: #f778ba;
+}
+.git-history-node.node-3 .git-history-dot {
+  border-color: #3fb950;
+}
+.git-history-node.node-4 .git-history-dot {
+  border-color: #a371f7;
+}
+.git-history-date {
+  display: block;
+}
+.git-history-empty {
+  color: var(--text-p2);
+  font-size: 0.875rem;
+  padding: 6px 0;
 }
 .md-text sup.post-ref {
   margin-left: 0.1em;

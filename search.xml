@@ -197,27 +197,6 @@
     
     
     <entry>
-      <title>TamperMonkey脚本收录</title>
-      <link href="/2026/04/24/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/TamperMonkey%E8%84%9A%E6%9C%AC%E6%94%B6%E5%BD%95/"/>
-      <url>/2026/04/24/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/TamperMonkey%E8%84%9A%E6%9C%AC%E6%94%B6%E5%BD%95/</url>
-      
-        <content type="html"><![CDATA[<p>greasyfork：<a href="https://greasyfork.org/zh-CN/scripts">用户脚本</a> <sup class="post-ref"><a href="#reference-1" id="reference-link-1" aria-label="参考文献 1">[1]</a></sup></p><p>别人的油猴脚本整理：<a href="https://github.com/XIU2/UserScript">GitHub - XIU2/UserScript: 🐵 自用的一些乱七八糟 油猴脚本~ · GitHub</a> <sup class="post-ref"><a href="#reference-2" id="reference-link-2" aria-label="参考文献 2">[2]</a></sup></p><p>自收录的脚本：</p><div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="/imgs/TamperMonkey脚本收录/TamperMonkey脚本.webp" data-src="/imgs/TamperMonkey脚本收录/TamperMonkey脚本.webp" alt="图1 TamperMonkey脚本" data-fancybox="true"onerror="this.src=&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2rem' height='2rem' viewBox='0 0 24 24'%3E%3C!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='%23F44336' d='M22 12.698c-.002 1.47-.013 2.718-.096 3.743c-.097 1.19-.296 2.184-.74 3.009a4.2 4.2 0 0 1-.73.983c-.833.833-1.893 1.21-3.237 1.39C15.884 22 14.2 22 12.053 22h-.106c-2.148 0-3.83 0-5.144-.177c-1.343-.18-2.404-.557-3.236-1.39c-.738-.738-1.12-1.656-1.322-2.795c-.2-1.12-.236-2.512-.243-4.241Q1.999 12.737 2 12v-.054c0-2.148 0-3.83.177-5.144c.18-1.343.557-2.404 1.39-3.236s1.893-1.21 3.236-1.39c1.168-.157 2.67-.175 4.499-.177a.697.697 0 1 1 0 1.396c-1.855.002-3.234.018-4.313.163c-1.189.16-1.906.464-2.436.994S3.72 5.8 3.56 6.99C3.397 8.2 3.395 9.788 3.395 12v.784l.932-.814a2.14 2.14 0 0 1 2.922.097l3.99 3.99a1.86 1.86 0 0 0 2.385.207l.278-.195a2.79 2.79 0 0 1 3.471.209l2.633 2.37c.265-.557.423-1.288.507-2.32c.079-.972.09-2.152.091-3.63a.698.698 0 0 1 1.396 0' opacity='.5'/%3E%3Cpath fill='%23F44336' fill-rule='evenodd' d='M17.5 11c-2.121 0-3.182 0-3.841-.659S13 8.621 13 6.5s0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11m-1.47-7.03a.75.75 0 1 0-1.06 1.06l1.47 1.47l-1.47 1.47a.75.75 0 0 0 1.06 1.06l1.47-1.47l1.47 1.47a.75.75 0 1 0 1.06-1.06L18.56 6.5l1.47-1.47a.75.75 0 0 0-1.06-1.06L17.5 5.44z' clip-rule='evenodd'/%3E%3C/svg%3E&quot;"/><div class="lazy-icon" style="background-image:url(https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd);"></div></div><div class="image-meta"><span class="image-caption center">图1 TamperMonkey脚本</span></div></div><hr /><p>补录：</p><p>豆丁网下载：<a href="https://github.com/systemmin/kill-doc">GitHub - systemmin/kill-doc: 看到经常有小伙伴们需要下载一些免费文档，但…</a> <sup class="post-ref"><a href="#reference-3" id="reference-link-3" aria-label="参考文献 3">[3]</a></sup></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> series </category>
-          
-          <category> 软件使用小技巧 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Obsidian：优化</title>
       <link href="/2026/04/24/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Obsidian%EF%BC%9A%E4%BC%98%E5%8C%96/"/>
       <url>/2026/04/24/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Obsidian%EF%BC%9A%E4%BC%98%E5%8C%96/</url>
@@ -374,33 +353,6 @@
         <tags>
             
             <tag> PS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Prompt收录</title>
-      <link href="/2026/04/21/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Prompt%E6%94%B6%E5%BD%95/"/>
-      <url>/2026/04/21/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Prompt%E6%94%B6%E5%BD%95/</url>
-      
-        <content type="html"><![CDATA[<h1 id="google-scholar"><a class="markdownIt-Anchor" href="#google-scholar"></a> Google scholar</h1><div class="callout" data-callout="note"><div class="callout-title"><div class="callout-title-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg></div><div class="callout-title-inner">参考</div></div><div class="callout-content"><p><a href="https://www.bilibili.com/video/BV1oJXVBhEvM/?spm_id_from=333.1245.0.0">搜索文献最伟大的网站！！博士自用推荐（可反向插入文献）_哔哩哔哩_bilibili</a> <sup class="post-ref"><a href="#reference-1" id="reference-link-1" aria-label="参考文献 1">[1]</a></sup></p></div></div><p>平台：google scholar lab</p><p>1 找领域综述<br />“Provide a list of the most highly-cited review articles and meta-analyses published between 2020 and 2026 regarding [Topic], focusing on consensus and major theoretical shifts.”</p><p>e.g.  Provide a list of the most highly-cited review articles and meta-analyses published between 2020 and 2026 regarding [oxygen evolution reaction (OER) catalyst of C@NiFe SACs ], focusing on consensus and major theoretical shifts.</p><p>2 对比方法论<br />Search for empirical studies on [Topic] that specifically utilize xxx (1) Highlight papers that discuss the limitations of this method in the context of xxx（具体人群）</p><p>3 寻找学术空白<br />Identify recent literature on [Topic A] that intersects with [Topic B]. Focus on finding papers that mention ‘future research directions’ or ‘unexplored areas’.</p><p>4 理论应用搜索<br />Find peer-reviewed articles that apply [Theory] to the study of [Subject]. I am looking for diverse geographical case studies, specifically in [Region]</p><p>5 寻找反向论点<br />“Search for scholarly critiques and counter-arguments to [Author/Theory]. I need to understand the primary academic debates surrounding the validity of this concept.”(搜索针对[作者/理论]的学术批评和反面论点，我需要了解围绕该概念有效性的主要学术辩论。)</p><p>6 追踪经典文献<br />“Find the most significant papers published since 2020 that cite [Seminal Paper Title]. Filter for results that extend the original findings into [Your Field].” (寻找自2020 年以来引用了【经典文献标题】的重要论文，筛选将原始发现延伸至【你所属领域】的结果。)</p><p>7 寻找数据源<br />“Identify recent studies on [Topic] that utilize the [Dataset Name]. I am interested in how they handled [Specific Data Challenge].”</p><p>8 概念演变追踪(Conceptualization)<br />“Show me how the definition of [Term] has evolved in sociological literature from 2000 to the present. Identify the papers that redefined this concept.” (展示 【术语】 在社会学文献中从2000年至今的定义演变，找出重新定义该概念的论文。)</p><p>9 跨学科视角(Interdisciplinary)<br />“Search for literature on [Topic] outside the field of Sociology, specifically in [Field]. I am looking for unique insights into [Mechanism].” (在社会学之外(如心理学、计算机等)搜索关于【话题】的文献，寻找对【机制】 的见解。</p><p>10 特定学校的格式<br />“Find graduation thesis focusing on material for Tongji university’s degree from 2020 to 2026.”</p><ul class="lvl-0"><li class="lvl-2"><p>时间设定： 2020-2026 的时间限制</p></li><li class="lvl-2"><p>AND/OR: 善用AND/OR 搭配 AI 指令</p></li><li class="lvl-2"><p>总结： 搜到结果后，可以进一步要求总结“Summarize the methodology of the top 3 results.”（总结前三篇的方法论）。</p></li></ul><h1 id="番茄简谱制谱"><a class="markdownIt-Anchor" href="#番茄简谱制谱"></a> 番茄简谱制谱</h1><p>在番茄简谱中，</p><ol><li class="lvl-3"><p>简谱主体仅包含词和曲两种内容，每行内容对应简谱中的每一行，行开头以Q:表示曲，C:表示词。</p></li><li class="lvl-3"><p>普通音符使用“1-7”数字表示，对应简谱的“1、2、3、4、5、6、7”这7个音符。增时线使用“-”表示。</p><ol><li class="lvl-7">休止符使用数字“0”表示，而数字“8”则表示隐藏的休止符（在谱面上不可见，但是占据相应的空间）。</li><li class="lvl-7">节奏音符“X”使用数字“9”表示。</li><li class="lvl-7">高音使用“'”表示，低音使用“,”表示。跟在数字后面即可。</li></ol></li><li class="lvl-3"><p>增时线使用“-”表示，减时线（时值线）使用“/”表示，跟在音符数字的后面。所以/代表八分音符，//代表十六分音符。</p></li><li class="lvl-3"><p>自定义节拍切分：“~”符号让前后音符串接在一个节拍中，“^”符号让前后音符强制切开为两个节拍。</p></li><li class="lvl-3"><p>附点音符：只需要在音符数字后面加上“.”号即可。双附点音符加上两个“.”。</p></li><li class="lvl-3"><p>力度、渐强、渐弱：在音符后面加上“&amp;+缩写字母”的方式加上，例如mp写上“&amp;mp”即可。渐强渐弱符号，则使用“&lt;”或“&gt;”表示起点，终点直接使用“!”作为结束记号。</p></li><li class="lvl-3"><p>升音符使用“#”表示；降音符使用“$”表示；还原符使用“=”表示；以上符号均写在音符数字的后方。</p></li><li class="lvl-3"><p>前倚音使用中括号“[]”包含起来即可，跟在音符数字后即可。“[]”括弧中的音符可以包含高低音符号“,”和“'”，同时支持减时线符“/”以及升降音符。后倚音则也使用相同的方法，不同的是要在“[”后面加上一个“h”。倚音里的音符，默认就是8分音符，当加了一条减时线后，将变成16分音符。</p></li><li class="lvl-3"><p>在曲的伴奏部分，一般会使用括弧括起来。在番茄脚本中，左括弧使用“&amp;zkh”表示，右括弧使用“&amp;ykh”表示，写在音符数字的后面。</p></li><li class="lvl-4"><p>小节线：</p><ul class="lvl-2"><li class="lvl-7">普通小节线 -</li><li class="lvl-7">左细右粗，双小节线 ||</li><li class="lvl-7">两边都细双小节线 ||/</li><li class="lvl-7">左反复 |:</li><li class="lvl-7">右反复 |:</li><li class="lvl-7">两边反复 😐:</li></ul></li><li class="lvl-4"><p>小节线上的反复记号：</p><ul class="lvl-2"><li class="lvl-6">fine 曲终 <code>||/&amp;fine</code></li><li class="lvl-6">dc 从头反复<code>||&amp;dc</code></li><li class="lvl-6">ds 大反复<code>||&amp;ds</code></li><li class="lvl-6">大跳跃记号<code>|&amp;ty</code></li><li class="lvl-6">花S记号<code>|&amp;hs</code></li></ul></li><li class="lvl-4"><p>连音线：使用“()”包含起来即可。当相同页面中连音线跨行时，请直接在第二行编写右括弧；若连音线被切分。（如跳房子处的连音线和分页处的连音线），可将跳房字的括弧写在小节线处。多连音需要在“(”后面加上小写字母“y”。</p></li><li class="lvl-4"><p>跳房子只能在小节线上标注，使用“[]”表示。“[”表示起点，“]”表示终点，跳房子线支持跨行。</p></li><li class="lvl-4"><p>在编写单声部简谱的时候，词曲的行开头是使用“Q”和“C”进行定义的。而当编写多声部时，只需要在每个声部的“Q”和“C”后面加上一个声部编号即可。如“Q1:”“C1:”。</p></li><li class="lvl-4"><p>番茄简谱目前只能手动分页，需要分页时，请在新一行的脚本中输入“[fenye]”即可。根据经验，大约每12行就需要翻页。</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> series </category>
-          
-          <category> 软件使用小技巧 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> AI </tag>
             
         </tags>
       
@@ -877,9 +829,9 @@
       
         <tags>
             
-            <tag> 天文 </tag>
-            
             <tag> 星星 </tag>
+            
+            <tag> 天文 </tag>
             
         </tags>
       
@@ -1213,9 +1165,9 @@
       
         <tags>
             
-            <tag> 天文 </tag>
-            
             <tag> 星星 </tag>
+            
+            <tag> 天文 </tag>
             
         </tags>
       
@@ -1269,9 +1221,9 @@
       
         <tags>
             
-            <tag> 天文 </tag>
-            
             <tag> 星星 </tag>
+            
+            <tag> 天文 </tag>
             
         </tags>
       
