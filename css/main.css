@@ -257,6 +257,30 @@
   color: var(--text-p2);
   font-size: 0.8125rem;
 }
+@media screen and (min-width: 1180px) {
+  .l_body .l_right {
+    top: calc(var(--gap-margin) * 2);
+    max-height: calc(100vh - var(--gap-margin) * 4);
+    overflow: hidden;
+  }
+  .l_body .l_right .widgets {
+    height: 100%;
+    max-height: calc(100vh - var(--gap-margin) * 4);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .l_right .widgets .widget-wrapper.toc {
+    position: static;
+    top: auto;
+    padding-bottom: 16px;
+  }
+  .l_right .widgets .widget-wrapper.toc .widget-body .toc {
+    max-height: none;
+  }
+  .l_right .widgets .widget-wrapper.toc+.widget-wrapper {
+    padding-top: 0;
+  }
+}
 .md-text sup.post-ref {
   margin-left: 0.1em;
   font-size: 0.75em;
