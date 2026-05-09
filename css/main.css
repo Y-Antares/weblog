@@ -179,49 +179,83 @@
   margin-top: 0.5rem !important;
   font-size: 1rem !important;
 }
+.git-history-widget .widget-header .git-history-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-p2);
+}
 .git-history-widget .widget-body {
   padding: 1rem;
 }
 .git-timeline {
   position: relative;
-  padding-left: 1.2rem;
+  padding-left: 1rem;
 }
 .git-timeline::before {
   content: '';
   position: absolute;
-  left: 0.35rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
+  left: 0.25rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
   width: 2px;
-  background: #e1e4e8;
+  border-radius: 999px;
+  background: var(--border-line);
 }
-.git-commit {
+.git-history-item {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
-.git-commit:last-child {
+.git-history-item:last-child {
   margin-bottom: 0;
 }
-.commit-dot {
+.git-history-dot {
   position: absolute;
-  left: -1.2rem;
-  top: 0.25rem;
-  width: 12px;
-  height: 12px;
+  left: -1rem;
+  top: 0.3rem;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--card-bg);
-  border: 2px solid #2ea44f;
+  border: 2px solid var(--theme);
   box-sizing: border-box;
 }
-.commit-msg {
+.git-history-card {
+  padding: 0.1rem 0 0.1rem 0.2rem;
+}
+.git-history-label {
+  font-size: 0.8125rem;
   font-weight: 600;
-  font-size: 0.9rem;
   color: var(--text-p0);
 }
-.commit-meta {
+.git-history-date {
+  display: block;
+  margin-top: 0.15rem;
   font-size: 0.75rem;
   color: var(--text-p2);
-  margin-top: 0.2rem;
+}
+.git-history-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  color: var(--text-p1);
+}
+.git-history-meta code {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: var(--block);
+  color: var(--theme);
+  font-size: 0.75rem;
+}
+.git-history-meta span {
+  line-height: 1.5;
+  word-break: break-word;
+}
+.git-history-empty {
+  color: var(--text-p2);
+  font-size: 0.8125rem;
 }
 .md-text sup.post-ref {
   margin-left: 0.1em;
