@@ -201,16 +201,13 @@ const init = {
   },
 
   /**
-   * 动画 Widget 管理器
-   * (原 Antares 函数，现已升级)
+   * 动画 Widget 管理�?   * (�?Antares 函数，现已升�?
    */
   animationWidgets: () => {
     utils.jq(() => {
       const $tocWidget = $("#data-toc");
       const $antaresWidget = $("#antares-widget");
-      const $solarWidget = $("#solar-widget"); // !! 新增
-      
-      // 1. 淡入 Antares
+
       if ($antaresWidget.length > 0) {
         const $antaresContainer = $antaresWidget.find('.antares-container');
         if ($antaresContainer.length > 0) {
@@ -224,60 +221,24 @@ const init = {
           }
         }
       }
-      
-      // 2. 淡入 Solar
-      if ($solarWidget.length > 0) {
-        const $solarContainer = $solarWidget.find('.solar-wrapper');
-        if ($solarContainer.length > 0) {
-          const revealSolar = function() {
-            $solarContainer.fadeTo("slow", 1);
-          };
-          if (document.readyState === 'complete') {
-            revealSolar();
-          } else {
-            $(window).one('load', revealSolar);
-          }
-        }
-      }
 
-      // 3. 粘性定位计算 (仅当 TOC 存在时)
       if ($tocWidget.length > 0) {
-        
         function updateStickyStack() {
           const tocStyle = window.getComputedStyle($tocWidget[0]);
           const tocTopValue = tocStyle.top;
           const tocHeight = $tocWidget[0].offsetHeight;
-          const gap = 32; // 间距
-          
-          let lastTop = tocTopValue;
-          let lastHeight = tocHeight;
+          const gap = 32;
 
-          // 定位 Antares (如果存在)
           if ($antaresWidget.length > 0) {
-            const antaresNewTop = `calc(${lastTop} + ${lastHeight}px + ${gap}px)`;
-            $antaresWidget[0].style.top = antaresNewTop;
-            
-            // 更新 "上一个" 元素
-            lastTop = antaresNewTop;
-            lastHeight = $antaresWidget[0].offsetHeight;
-          }
-          
-          // 定位 Solar (如果存在)
-          if ($solarWidget.length > 0) {
-            const solarNewTop = `calc(${lastTop} + ${lastHeight}px + ${gap}px)`;
-            $solarWidget[0].style.top = solarNewTop;
+            $antaresWidget[0].style.top = `calc(${tocTopValue} + ${tocHeight}px + ${gap}px)`;
           }
         }
 
-        // 立即运行一次
         updateStickyStack();
-        
-        // 在窗口大小改变时重新运行
         $(window).on('resize', updateStickyStack);
       }
     });
   },
-
   canonicalCheck: () => {
     const canonical = window.canonical;
     function showTip(isOfficial = false) {
@@ -299,8 +260,8 @@ const init = {
         notice.innerHTML = `
         <a href="${originalURL}" target="_self" rel="noopener noreferrer">
         <div class="headline icon">☠️</div>
-        本站为非法克隆站，请前往官方源站访问。<br>
-        源站：${originalURL}
+        本站为非法克隆站，请前往官方源站访问�?br>
+        源站�?{originalURL}
         </a>
         `;
       }

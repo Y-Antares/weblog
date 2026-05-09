@@ -7543,7 +7543,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.antares-animation .widget-body.antares-container {
   background: none;
   padding: 0;
-  min-height: 250px;
+  min-height: 290px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -7551,141 +7551,56 @@ details.toc[open] >div.body section .header+.doc_tree {
   align-items: center;
 }
 .antares-background,
-.constellation-field,
-.binary-system {
+.constellation-field {
   position: absolute;
   width: 250px;
   height: 250px;
 }
 .antares-background {
-  background: radial-gradient(ellipse at center, #000020 0%, #000 75%);
   border-radius: 50%;
-/* z-index: 1;  <-- 已移除 */
+  background: radial-gradient(circle at 66% 26%, rgba(255,105,64,0.28), transparent 11%), radial-gradient(circle at 42% 68%, rgba(120,170,255,0.16), transparent 18%), radial-gradient(ellipse at center, #060b22 0%, #02030b 72%, #000 100%);
+  box-shadow: inset 0 0 42px rgba(96,144,255,0.16), 0 0 28px rgba(22,33,70,0.55);
+}
+.constellation-field {
+  animation: scorpio-drift 18s ease-in-out infinite;
+  transform-origin: 50% 52%;
+}
+.scorpio-lines {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.scorpio-lines line {
+  stroke: rgba(151,183,255,0.72);
+  stroke-width: 0.42;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 2px rgba(126,160,255,0.72));
+  animation: scorpio-line-glow 7s ease-in-out infinite;
 }
 .static-star {
   position: absolute;
-  background-size: cover;
   border-radius: 50%;
-/* z-index: 2;  <-- 已移除 (多余) */
+  transform: translate(-50%, -50%);
+  animation: scorpio-twinkle 4.8s ease-in-out infinite;
+  animation-delay: var(--twinkle-delay);
 }
-.star-a {
-  position: absolute;
-  z-index: 10;
-  background: url("/images/solar/antares.png") no-repeat;
-  background-size: cover;
-  border-radius: 100%;
-  transform: translateX(-10px);
-  animation: spinsun 160s infinite linear;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  box-shadow: 0 0 12px 5px rgba(255,220,200,0.9), 0 0 24px 12px rgba(255,100,50,0.3);
-  margin-top: -6px;
-  margin-left: -6px;
-}
-.star-b-orbit {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
-  animation: orbitStarB-2D 20s infinite linear, orbit-z-index 20s infinite step-end;
-}
-.star-b {
-  position: absolute;
-  background: url("/images/solar/star-B.png") no-repeat;
-  background-size: cover;
-  border-radius: 100%;
-  top: 50%;
-  left: 0px;
-  z-index: 15;
-  width: 3px;
-  height: 3px;
-  box-shadow: 0 0 3px 1px rgba(200,220,255,0.7);
-  margin-top: -1.5px;
+.mag-1 {
+  width: 13px;
+  height: 13px;
+  background: radial-gradient(circle, #fff1dc 0%, #ff9a5a 42%, #d2361f 74%, transparent 76%);
+  box-shadow: 0 0 10px 4px rgba(255,182,116,0.9), 0 0 26px 10px rgba(236,72,42,0.42);
 }
 .mag-2 {
-  width: 6px;
-  height: 6px;
-  box-shadow: 0 0 6px 2px rgba(255,255,240,0.7);
-  margin-top: -3px;
-  margin-left: -3px;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle, #fff 0%, #dce7ff 55%, transparent 72%);
+  box-shadow: 0 0 8px 3px rgba(215,229,255,0.72);
 }
 .mag-3 {
   width: 5px;
   height: 5px;
-  box-shadow: 0 0 5px 1px rgba(255,255,240,0.6);
-  margin-top: -2.5px;
-  margin-left: -2.5px;
-}
-.mag-4 {
-  width: 4px;
-  height: 4px;
-  box-shadow: 0 0 4px 1px rgba(255,255,240,0.5);
-  margin-top: -2px;
-  margin-left: -2px;
-}
-.mag-5 {
-  width: 3px;
-  height: 3px;
-  box-shadow: 0 0 3px 1px rgba(255,255,240,0.6);
-  margin-top: -1.5px;
-  margin-left: -1.5px;
-}
-.mag-6 {
-  width: 2px;
-  height: 2px;
-  box-shadow: 0 0 2px 0px rgba(255,255,240,0.5);
-  margin-top: -1px;
-  margin-left: -1px;
-}
-#lesath {
-  background-image: url("/images/solar/lesath.png");
-}
-#shaula {
-  background-image: url("/images/solar/shaula.png");
-}
-#mula {
-  background-image: url("/images/solar/mula.png");
-}
-#girtab {
-  background-image: url("/images/solar/girtab.png");
-}
-#sargas {
-  background-image: url("/images/solar/sargas.png");
-}
-#eta-sco {
-  background-image: url("/images/solar/eta-sco.png");
-}
-#epsilon1-sco {
-  background-image: url("/images/solar/epsilon1-sco.png");
-}
-#xamidimura {
-  background-image: url("/images/solar/xamidimura.png");
-}
-#larawag {
-  background-image: url("/images/solar/larawag.png");
-}
-#paikauhale {
-  background-image: url("/images/solar/paikauhale.png");
-}
-#alniyat {
-  background-image: url("/images/solar/alniyat.png");
-}
-#acrab {
-  background-image: url("/images/solar/acrab.png");
-}
-#dschubba {
-  background-image: url("/images/solar/dschubba.png");
-}
-#fang {
-  background-image: url("/images/solar/fang.png");
-}
-#antares-static {
-  background-image: url("/images/solar/antares-static.png");
+  background: radial-gradient(circle, #fff 0%, #d8e2ff 52%, transparent 74%);
+  box-shadow: 0 0 6px 2px rgba(205,222,255,0.56);
 }
 .l_right .widgets .widget-wrapper.antares-animation {
   margin-top: 0;
@@ -7694,141 +7609,112 @@ details.toc[open] >div.body section .header+.doc_tree {
   padding: 16px 0;
 }
 .antares-loading .antares-background,
-.antares-loading .constellation-field,
-.antares-loading .binary-system {
+.antares-loading .constellation-field {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-@-moz-keyframes spinsun {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spinsun {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes spinsun {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spinsun {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-moz-keyframes orbitStarB-2D {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes orbitStarB-2D {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes orbitStarB-2D {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes orbitStarB-2D {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-moz-keyframes orbit-z-index {
-  0% {
-    z-index: 15;
-  }
-  49% {
-    z-index: 15;
+@-moz-keyframes scorpio-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-0.6deg);
   }
   50% {
-    z-index: 5;
-  }
-  99% {
-    z-index: 5;
-  }
-  100% {
-    z-index: 15;
+    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
   }
 }
-@-webkit-keyframes orbit-z-index {
-  0% {
-    z-index: 15;
-  }
-  49% {
-    z-index: 15;
+@-webkit-keyframes scorpio-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-0.6deg);
   }
   50% {
-    z-index: 5;
-  }
-  99% {
-    z-index: 5;
-  }
-  100% {
-    z-index: 15;
+    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
   }
 }
-@-o-keyframes orbit-z-index {
-  0% {
-    z-index: 15;
-  }
-  49% {
-    z-index: 15;
+@-o-keyframes scorpio-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-0.6deg);
   }
   50% {
-    z-index: 5;
-  }
-  99% {
-    z-index: 5;
-  }
-  100% {
-    z-index: 15;
+    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
   }
 }
-@keyframes orbit-z-index {
-  0% {
-    z-index: 15;
-  }
-  49% {
-    z-index: 15;
+@keyframes scorpio-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-0.6deg);
   }
   50% {
-    z-index: 5;
+    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
   }
-  99% {
-    z-index: 5;
+}
+@-moz-keyframes scorpio-twinkle {
+  0%, 100% {
+    opacity: 0.58;
+    transform: translate(-50%, -50%) scale(0.86);
   }
-  100% {
-    z-index: 15;
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+@-webkit-keyframes scorpio-twinkle {
+  0%, 100% {
+    opacity: 0.58;
+    transform: translate(-50%, -50%) scale(0.86);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+@-o-keyframes scorpio-twinkle {
+  0%, 100% {
+    opacity: 0.58;
+    transform: translate(-50%, -50%) scale(0.86);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+@keyframes scorpio-twinkle {
+  0%, 100% {
+    opacity: 0.58;
+    transform: translate(-50%, -50%) scale(0.86);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+@-moz-keyframes scorpio-line-glow {
+  0%, 100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.48;
+  }
+}
+@-webkit-keyframes scorpio-line-glow {
+  0%, 100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.48;
+  }
+}
+@-o-keyframes scorpio-line-glow {
+  0%, 100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.48;
+  }
+}
+@keyframes scorpio-line-glow {
+  0%, 100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.48;
   }
 }
 .widget-body .linklist {
@@ -8185,712 +8071,6 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .widget-wrapper.post-card .widget-body .item:hover {
   background: var(--bg-a50);
-}
-#rotating-planet-widget {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 160px;
-  padding: 12px 0;
-}
-#rotating-planet-widget img {
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  object-fit: cover;
-  animation: rotating-planet-spin 36s linear infinite;
-  box-shadow: 0 0 18px 6px rgba(255,120,65,0.42), 0 0 42px 12px rgba(255,70,35,0.18);
-}
-@-moz-keyframes rotating-planet-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes rotating-planet-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes rotating-planet-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes rotating-planet-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.widget-wrapper.solar-animation .widget-body {
-  background: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 250px;
-  overflow: hidden;
-}
-.widget-wrapper.solar-animation .widget-body .solar-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 250px;
-  height: 250px;
-  z-index: 1;
-  opacity: 0;
-  perspective: 5000px;
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
-.widget-wrapper.solar-animation .widget-body .solar-wrapper > div {
-  position: relative;
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
-  transform-style: preserve-3d;
-  height: 0px;
-}
-.widget-wrapper.solar-animation .widget-body .solar-sun {
-  width: 250px;
-  position: absolute;
-  top: 0px;
-  z-index: 1;
-  height: 125px !important;
-}
-.widget-wrapper.solar-animation .widget-body .solar-sun .solar-star {
-  width: 40px;
-  height: 40px;
-  background: url("/images/sun.png") no-repeat;
-  background-size: cover;
-  border-radius: 250px;
-  margin: 0 auto;
-  animation: solar-spinsun 40s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-planet {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  animation-iteration-count: infinite;
-  overflow: hidden;
-}
-.widget-wrapper.solar-animation .widget-body .solar-shadow {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  bottom: 0px;
-  background: transparent url("/images/shadow.png") 0% 0% no-repeat;
-  background-size: cover;
-  border-radius: 100%;
-}
-.widget-wrapper.solar-animation .widget-body .solar-mercury {
-  position: absolute;
-  width: 65px;
-  z-index: 2;
-  animation: solar-orbitmercury 12s infinite linear;
-  top: -3px;
-}
-.widget-wrapper.solar-animation .widget-body .solar-mercury .solar-planet {
-  width: 6px;
-  height: 6px;
-  background-image: url("/images/mercury.png");
-  animation: solar-anti-spin 12s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-mercury .solar-shadow {
-  animation: solar-shadow 12s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-venus {
-  position: absolute;
-  width: 110px;
-  z-index: 3;
-  animation: solar-orbitvenus 15s infinite linear;
-  top: -5px;
-}
-.widget-wrapper.solar-animation .widget-body .solar-venus .solar-planet {
-  width: 10px;
-  height: 10px;
-  background-image: url("/images/venus.png");
-  animation: solar-anti-spin 15s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-venus .solar-shadow {
-  animation: solar-shadow 15s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-earth {
-  position: absolute;
-  width: 133px;
-  z-index: 4;
-  animation: solar-orbitearth 20s infinite linear;
-  top: -5.5px;
-}
-.widget-wrapper.solar-animation .widget-body .solar-earth .solar-planet {
-  width: 11px;
-  height: 11px;
-  background-image: url("/images/earth.png");
-  animation: solar-anti-spin 20s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-earth .solar-shadow {
-  animation: solar-shadow 20s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-mars {
-  position: absolute;
-  width: 154px;
-  z-index: 5;
-  animation: solar-orbitmars 30s infinite linear;
-  top: -3.5px;
-}
-.widget-wrapper.solar-animation .widget-body .solar-mars .solar-planet {
-  width: 7px;
-  height: 7px;
-  background-image: url("/images/mars.png");
-  animation: solar-anti-spin 30s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-mars .solar-shadow {
-  animation: solar-shadow 30s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-jupiter {
-  position: absolute;
-  width: 240px;
-  z-index: 6;
-  animation: solar-orbitjupiter 50s infinite linear;
-  top: -12px;
-}
-.widget-wrapper.solar-animation .widget-body .solar-jupiter .solar-planet {
-  width: 24px;
-  height: 24px;
-  background-image: url("/images/jupiter.png");
-  animation: solar-anti-spin 50s infinite linear;
-}
-.widget-wrapper.solar-animation .widget-body .solar-jupiter .solar-shadow {
-  animation: solar-shadow 50s infinite linear;
-}
-.l_right .widgets .widget-wrapper.solar-animation {
-  margin-top: 0;
-  position: sticky;
-  position: -webkit-sticky;
-  padding: 16px 0;
-}
-@-moz-keyframes solar-spinsun {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-@-webkit-keyframes solar-spinsun {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-@-o-keyframes solar-spinsun {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-@keyframes solar-spinsun {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-@-moz-keyframes solar-shadow {
-  0% {
-    background-position: 130% 0%;
-  }
-  33% {
-    background-position: 50% 0%;
-  }
-  55% {
-    background-position: 0% 0%;
-  }
-  80% {
-    background-position: -50% 0%;
-  }
-  100% {
-    background-position: -50% 0%;
-  }
-}
-@-webkit-keyframes solar-shadow {
-  0% {
-    background-position: 130% 0%;
-  }
-  33% {
-    background-position: 50% 0%;
-  }
-  55% {
-    background-position: 0% 0%;
-  }
-  80% {
-    background-position: -50% 0%;
-  }
-  100% {
-    background-position: -50% 0%;
-  }
-}
-@-o-keyframes solar-shadow {
-  0% {
-    background-position: 130% 0%;
-  }
-  33% {
-    background-position: 50% 0%;
-  }
-  55% {
-    background-position: 0% 0%;
-  }
-  80% {
-    background-position: -50% 0%;
-  }
-  100% {
-    background-position: -50% 0%;
-  }
-}
-@keyframes solar-shadow {
-  0% {
-    background-position: 130% 0%;
-  }
-  33% {
-    background-position: 50% 0%;
-  }
-  55% {
-    background-position: 0% 0%;
-  }
-  80% {
-    background-position: -50% 0%;
-  }
-  100% {
-    background-position: -50% 0%;
-  }
-}
-@-moz-keyframes solar-orbitmercury {
-  0% {
-    z-index: 2;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 2;
-  }
-  50% {
-    z-index: -2;
-  }
-  99% {
-    z-index: -2;
-  }
-  100% {
-    z-index: 2;
-    transform: rotateY(360deg);
-  }
-}
-@-webkit-keyframes solar-orbitmercury {
-  0% {
-    z-index: 2;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 2;
-  }
-  50% {
-    z-index: -2;
-  }
-  99% {
-    z-index: -2;
-  }
-  100% {
-    z-index: 2;
-    transform: rotateY(360deg);
-  }
-}
-@-o-keyframes solar-orbitmercury {
-  0% {
-    z-index: 2;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 2;
-  }
-  50% {
-    z-index: -2;
-  }
-  99% {
-    z-index: -2;
-  }
-  100% {
-    z-index: 2;
-    transform: rotateY(360deg);
-  }
-}
-@keyframes solar-orbitmercury {
-  0% {
-    z-index: 2;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 2;
-  }
-  50% {
-    z-index: -2;
-  }
-  99% {
-    z-index: -2;
-  }
-  100% {
-    z-index: 2;
-    transform: rotateY(360deg);
-  }
-}
-@-moz-keyframes solar-orbitvenus {
-  0% {
-    z-index: 3;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 3;
-  }
-  50% {
-    z-index: -3;
-  }
-  99% {
-    z-index: -3;
-  }
-  100% {
-    z-index: 3;
-    transform: rotateY(360deg);
-  }
-}
-@-webkit-keyframes solar-orbitvenus {
-  0% {
-    z-index: 3;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 3;
-  }
-  50% {
-    z-index: -3;
-  }
-  99% {
-    z-index: -3;
-  }
-  100% {
-    z-index: 3;
-    transform: rotateY(360deg);
-  }
-}
-@-o-keyframes solar-orbitvenus {
-  0% {
-    z-index: 3;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 3;
-  }
-  50% {
-    z-index: -3;
-  }
-  99% {
-    z-index: -3;
-  }
-  100% {
-    z-index: 3;
-    transform: rotateY(360deg);
-  }
-}
-@keyframes solar-orbitvenus {
-  0% {
-    z-index: 3;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 3;
-  }
-  50% {
-    z-index: -3;
-  }
-  99% {
-    z-index: -3;
-  }
-  100% {
-    z-index: 3;
-    transform: rotateY(360deg);
-  }
-}
-@-moz-keyframes solar-orbitearth {
-  0% {
-    z-index: 4;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 4;
-  }
-  50% {
-    z-index: -4;
-  }
-  99% {
-    z-index: -4;
-  }
-  100% {
-    z-index: 4;
-    transform: rotateY(360deg);
-  }
-}
-@-webkit-keyframes solar-orbitearth {
-  0% {
-    z-index: 4;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 4;
-  }
-  50% {
-    z-index: -4;
-  }
-  99% {
-    z-index: -4;
-  }
-  100% {
-    z-index: 4;
-    transform: rotateY(360deg);
-  }
-}
-@-o-keyframes solar-orbitearth {
-  0% {
-    z-index: 4;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 4;
-  }
-  50% {
-    z-index: -4;
-  }
-  99% {
-    z-index: -4;
-  }
-  100% {
-    z-index: 4;
-    transform: rotateY(360deg);
-  }
-}
-@keyframes solar-orbitearth {
-  0% {
-    z-index: 4;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 4;
-  }
-  50% {
-    z-index: -4;
-  }
-  99% {
-    z-index: -4;
-  }
-  100% {
-    z-index: 4;
-    transform: rotateY(360deg);
-  }
-}
-@-moz-keyframes solar-orbitmars {
-  0% {
-    z-index: 5;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 5;
-  }
-  50% {
-    z-index: -5;
-  }
-  99% {
-    z-index: -5;
-  }
-  100% {
-    z-index: 5;
-    transform: rotateY(360deg);
-  }
-}
-@-webkit-keyframes solar-orbitmars {
-  0% {
-    z-index: 5;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 5;
-  }
-  50% {
-    z-index: -5;
-  }
-  99% {
-    z-index: -5;
-  }
-  100% {
-    z-index: 5;
-    transform: rotateY(360deg);
-  }
-}
-@-o-keyframes solar-orbitmars {
-  0% {
-    z-index: 5;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 5;
-  }
-  50% {
-    z-index: -5;
-  }
-  99% {
-    z-index: -5;
-  }
-  100% {
-    z-index: 5;
-    transform: rotateY(360deg);
-  }
-}
-@keyframes solar-orbitmars {
-  0% {
-    z-index: 5;
-    transform: rotateY(0);
-  }
-  49% {
-    z-index: 5;
-  }
-  50% {
-    z-index: -5;
-  }
-  99% {
-    z-index: -5;
-  }
-  100% {
-    z-index: 5;
-    transform: rotateY(360deg);
-  }
-}
-@-moz-keyframes solar-orbitjupiter {
-  0% {
-    z-index: 6;
-    transform: rotateY(270);
-  }
-  49% {
-    z-index: 6;
-  }
-  50% {
-    z-index: -6;
-  }
-  99% {
-    z-index: -6;
-  }
-  100% {
-    z-index: 6;
-    transform: rotateY(360deg);
-  }
-}
-@-webkit-keyframes solar-orbitjupiter {
-  0% {
-    z-index: 6;
-    transform: rotateY(270);
-  }
-  49% {
-    z-index: 6;
-  }
-  50% {
-    z-index: -6;
-  }
-  99% {
-    z-index: -6;
-  }
-  100% {
-    z-index: 6;
-    transform: rotateY(360deg);
-  }
-}
-@-o-keyframes solar-orbitjupiter {
-  0% {
-    z-index: 6;
-    transform: rotateY(270);
-  }
-  49% {
-    z-index: 6;
-  }
-  50% {
-    z-index: -6;
-  }
-  99% {
-    z-index: -6;
-  }
-  100% {
-    z-index: 6;
-    transform: rotateY(360deg);
-  }
-}
-@keyframes solar-orbitjupiter {
-  0% {
-    z-index: 6;
-    transform: rotateY(270);
-  }
-  49% {
-    z-index: 6;
-  }
-  50% {
-    z-index: -6;
-  }
-  99% {
-    z-index: -6;
-  }
-  100% {
-    z-index: 6;
-    transform: rotateY(360deg);
-  }
-}
-@-moz-keyframes solar-anti-spin {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-@-webkit-keyframes solar-anti-spin {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-@-o-keyframes solar-anti-spin {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-@keyframes solar-anti-spin {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
 }
 .widget-wrapper.tagcloud .widget-body {
   border-radius: 12px;
