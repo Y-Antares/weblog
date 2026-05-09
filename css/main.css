@@ -7543,7 +7543,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.antares-animation .widget-body.antares-container {
   background: none;
   padding: 0;
-  min-height: 290px;
+  min-height: 250px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -7551,56 +7551,142 @@ details.toc[open] >div.body section .header+.doc_tree {
   align-items: center;
 }
 .antares-background,
-.constellation-field {
+.constellation-field,
+.binary-system {
   position: absolute;
   width: 250px;
   height: 250px;
 }
 .antares-background {
+  background: radial-gradient(ellipse at center, #000020 0%, #000 75%);
   border-radius: 50%;
-  background: radial-gradient(circle at 66% 26%, rgba(255,105,64,0.28), transparent 11%), radial-gradient(circle at 42% 68%, rgba(120,170,255,0.16), transparent 18%), radial-gradient(ellipse at center, #060b22 0%, #02030b 72%, #000 100%);
-  box-shadow: inset 0 0 42px rgba(96,144,255,0.16), 0 0 28px rgba(22,33,70,0.55);
-}
-.constellation-field {
-  animation: scorpio-drift 18s ease-in-out infinite;
-  transform-origin: 50% 52%;
-}
-.scorpio-lines {
-  position: absolute;
-  inset: 0;
-  overflow: visible;
-}
-.scorpio-lines line {
-  stroke: rgba(151,183,255,0.72);
-  stroke-width: 0.42;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 2px rgba(126,160,255,0.72));
-  animation: scorpio-line-glow 7s ease-in-out infinite;
 }
 .static-star {
   position: absolute;
+  background-size: cover;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  transform-origin: center;
   animation: scorpio-twinkle 4.8s ease-in-out infinite;
   animation-delay: var(--twinkle-delay);
 }
-.mag-1 {
-  width: 13px;
-  height: 13px;
-  background: radial-gradient(circle, #fff1dc 0%, #ff9a5a 42%, #d2361f 74%, transparent 76%);
-  box-shadow: 0 0 10px 4px rgba(255,182,116,0.9), 0 0 26px 10px rgba(236,72,42,0.42);
+.star-a {
+  position: absolute;
+  z-index: 10;
+  background: url("/images/solar/antares.png") no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+  transform: translateX(-10px);
+  animation: spinsun 160s infinite linear;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 12px 5px rgba(255,220,200,0.9), 0 0 24px 12px rgba(255,100,50,0.3);
+  margin-top: -6px;
+  margin-left: -6px;
+}
+.star-b-orbit {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  animation: orbitStarB-2D 20s infinite linear, orbit-z-index 20s infinite step-end;
+}
+.star-b {
+  position: absolute;
+  background: url("/images/solar/star-B.png") no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+  top: 50%;
+  left: 0px;
+  z-index: 15;
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 3px 1px rgba(200,220,255,0.7);
+  margin-top: -1.5px;
 }
 .mag-2 {
-  width: 7px;
-  height: 7px;
-  background: radial-gradient(circle, #fff 0%, #dce7ff 55%, transparent 72%);
-  box-shadow: 0 0 8px 3px rgba(215,229,255,0.72);
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 6px 2px rgba(255,255,240,0.7);
+  margin-top: -3px;
+  margin-left: -3px;
 }
 .mag-3 {
   width: 5px;
   height: 5px;
-  background: radial-gradient(circle, #fff 0%, #d8e2ff 52%, transparent 74%);
-  box-shadow: 0 0 6px 2px rgba(205,222,255,0.56);
+  box-shadow: 0 0 5px 1px rgba(255,255,240,0.6);
+  margin-top: -2.5px;
+  margin-left: -2.5px;
+}
+.mag-4 {
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 4px 1px rgba(255,255,240,0.5);
+  margin-top: -2px;
+  margin-left: -2px;
+}
+.mag-5 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 3px 1px rgba(255,255,240,0.6);
+  margin-top: -1.5px;
+  margin-left: -1.5px;
+}
+.mag-6 {
+  width: 2px;
+  height: 2px;
+  box-shadow: 0 0 2px 0px rgba(255,255,240,0.5);
+  margin-top: -1px;
+  margin-left: -1px;
+}
+#lesath {
+  background-image: url("/images/solar/lesath.png");
+}
+#shaula {
+  background-image: url("/images/solar/shaula.png");
+}
+#mula {
+  background-image: url("/images/solar/mula.png");
+}
+#girtab {
+  background-image: url("/images/solar/girtab.png");
+}
+#sargas {
+  background-image: url("/images/solar/sargas.png");
+}
+#eta-sco {
+  background-image: url("/images/solar/eta-sco.png");
+}
+#epsilon1-sco {
+  background-image: url("/images/solar/epsilon1-sco.png");
+}
+#xamidimura {
+  background-image: url("/images/solar/xamidimura.png");
+}
+#larawag {
+  background-image: url("/images/solar/larawag.png");
+}
+#paikauhale {
+  background-image: url("/images/solar/paikauhale.png");
+}
+#alniyat {
+  background-image: url("/images/solar/alniyat.png");
+}
+#acrab {
+  background-image: url("/images/solar/acrab.png");
+}
+#dschubba {
+  background-image: url("/images/solar/dschubba.png");
+}
+#fang {
+  background-image: url("/images/solar/fang.png");
+}
+#antares-static {
+  background-image: url("/images/solar/antares-static.png");
 }
 .l_right .widgets .widget-wrapper.antares-animation {
   margin-top: 0;
@@ -7609,112 +7695,181 @@ details.toc[open] >div.body section .header+.doc_tree {
   padding: 16px 0;
 }
 .antares-loading .antares-background,
-.antares-loading .constellation-field {
+.antares-loading .constellation-field,
+.antares-loading .binary-system {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-@-moz-keyframes scorpio-drift {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(-0.6deg);
+@-moz-keyframes spinsun {
+  0% {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
-  }
-}
-@-webkit-keyframes scorpio-drift {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(-0.6deg);
-  }
-  50% {
-    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
+  100% {
+    transform: rotate(360deg);
   }
 }
-@-o-keyframes scorpio-drift {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(-0.6deg);
+@-webkit-keyframes spinsun {
+  0% {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
+  100% {
+    transform: rotate(360deg);
   }
 }
-@keyframes scorpio-drift {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(-0.6deg);
+@-o-keyframes spinsun {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinsun {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes orbitStarB-2D {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes orbitStarB-2D {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes orbitStarB-2D {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes orbitStarB-2D {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes orbit-z-index {
+  0% {
+    z-index: 15;
+  }
+  49% {
+    z-index: 15;
   }
   50% {
-    transform: translate3d(2px, -3px, 0) rotate(0.8deg);
+    z-index: 5;
+  }
+  99% {
+    z-index: 5;
+  }
+  100% {
+    z-index: 15;
+  }
+}
+@-webkit-keyframes orbit-z-index {
+  0% {
+    z-index: 15;
+  }
+  49% {
+    z-index: 15;
+  }
+  50% {
+    z-index: 5;
+  }
+  99% {
+    z-index: 5;
+  }
+  100% {
+    z-index: 15;
+  }
+}
+@-o-keyframes orbit-z-index {
+  0% {
+    z-index: 15;
+  }
+  49% {
+    z-index: 15;
+  }
+  50% {
+    z-index: 5;
+  }
+  99% {
+    z-index: 5;
+  }
+  100% {
+    z-index: 15;
+  }
+}
+@keyframes orbit-z-index {
+  0% {
+    z-index: 15;
+  }
+  49% {
+    z-index: 15;
+  }
+  50% {
+    z-index: 5;
+  }
+  99% {
+    z-index: 5;
+  }
+  100% {
+    z-index: 15;
   }
 }
 @-moz-keyframes scorpio-twinkle {
   0%, 100% {
     opacity: 0.58;
-    transform: translate(-50%, -50%) scale(0.86);
+    transform: scale(0.86);
   }
   45% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: scale(1.15);
   }
 }
 @-webkit-keyframes scorpio-twinkle {
   0%, 100% {
     opacity: 0.58;
-    transform: translate(-50%, -50%) scale(0.86);
+    transform: scale(0.86);
   }
   45% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: scale(1.15);
   }
 }
 @-o-keyframes scorpio-twinkle {
   0%, 100% {
     opacity: 0.58;
-    transform: translate(-50%, -50%) scale(0.86);
+    transform: scale(0.86);
   }
   45% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: scale(1.15);
   }
 }
 @keyframes scorpio-twinkle {
   0%, 100% {
     opacity: 0.58;
-    transform: translate(-50%, -50%) scale(0.86);
+    transform: scale(0.86);
   }
   45% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-}
-@-moz-keyframes scorpio-line-glow {
-  0%, 100% {
-    opacity: 0.18;
-  }
-  50% {
-    opacity: 0.48;
-  }
-}
-@-webkit-keyframes scorpio-line-glow {
-  0%, 100% {
-    opacity: 0.18;
-  }
-  50% {
-    opacity: 0.48;
-  }
-}
-@-o-keyframes scorpio-line-glow {
-  0%, 100% {
-    opacity: 0.18;
-  }
-  50% {
-    opacity: 0.48;
-  }
-}
-@keyframes scorpio-line-glow {
-  0%, 100% {
-    opacity: 0.18;
-  }
-  50% {
-    opacity: 0.48;
+    transform: scale(1.15);
   }
 }
 .widget-body .linklist {
