@@ -214,9 +214,14 @@ const init = {
       if ($antaresWidget.length > 0) {
         const $antaresContainer = $antaresWidget.find('.antares-container');
         if ($antaresContainer.length > 0) {
-          $(window).on('load', function() {
+          const revealAntares = function() {
             $antaresContainer.removeClass('antares-loading');
-          });
+          };
+          if (document.readyState === 'complete') {
+            revealAntares();
+          } else {
+            $(window).one('load', revealAntares);
+          }
         }
       }
       
@@ -224,9 +229,14 @@ const init = {
       if ($solarWidget.length > 0) {
         const $solarContainer = $solarWidget.find('.solar-wrapper');
         if ($solarContainer.length > 0) {
-          $(window).on('load', function() {
+          const revealSolar = function() {
             $solarContainer.fadeTo("slow", 1);
-          });
+          };
+          if (document.readyState === 'complete') {
+            revealSolar();
+          } else {
+            $(window).one('load', revealSolar);
+          }
         }
       }
 

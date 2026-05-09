@@ -7571,7 +7571,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .star-a {
   position: absolute;
   z-index: 10;
-  background: "url(/images/solar/antares.png)" no-repeat;
+  background: url("/images/solar/antares.png") no-repeat;
   background-size: cover;
   border-radius: 100%;
   transform: translateX(-10px);
@@ -7596,7 +7596,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .star-b {
   position: absolute;
-  background: "url(/images/solar/star-B.png)" no-repeat;
+  background: url("/images/solar/star-B.png") no-repeat;
   background-size: cover;
   border-radius: 100%;
   top: 50%;
@@ -7643,49 +7643,49 @@ details.toc[open] >div.body section .header+.doc_tree {
   margin-left: -1px;
 }
 #lesath {
-  background-image: "url(/images/solar/lesath.png)";
+  background-image: url("/images/solar/lesath.png");
 }
 #shaula {
-  background-image: "url(/images/solar/shaula.png)";
+  background-image: url("/images/solar/shaula.png");
 }
 #mula {
-  background-image: "url(/images/solar/mula.png)";
+  background-image: url("/images/solar/mula.png");
 }
 #girtab {
-  background-image: "url(/images/solar/girtab.png)";
+  background-image: url("/images/solar/girtab.png");
 }
 #sargas {
-  background-image: "url(/images/solar/sargas.png)";
+  background-image: url("/images/solar/sargas.png");
 }
 #eta-sco {
-  background-image: "url(/images/solar/eta-sco.png)";
+  background-image: url("/images/solar/eta-sco.png");
 }
 #epsilon1-sco {
-  background-image: "url(/images/solar/epsilon1-sco.png)";
+  background-image: url("/images/solar/epsilon1-sco.png");
 }
 #xamidimura {
-  background-image: "url(/images/solar/xamidimura.png)";
+  background-image: url("/images/solar/xamidimura.png");
 }
 #larawag {
-  background-image: "url(/images/solar/larawag.png)";
+  background-image: url("/images/solar/larawag.png");
 }
 #paikauhale {
-  background-image: "url(/images/solar/paikauhale.png)";
+  background-image: url("/images/solar/paikauhale.png");
 }
 #alniyat {
-  background-image: "url(/images/solar/alniyat.png)";
+  background-image: url("/images/solar/alniyat.png");
 }
 #acrab {
-  background-image: "url(/images/solar/acrab.png)";
+  background-image: url("/images/solar/acrab.png");
 }
 #dschubba {
-  background-image: "url(/images/solar/dschubba.png)";
+  background-image: url("/images/solar/dschubba.png");
 }
 #fang {
-  background-image: "url(/images/solar/fang.png)";
+  background-image: url("/images/solar/fang.png");
 }
 #antares-static {
-  background-image: "url(/images/solar/antares-static.png)";
+  background-image: url("/images/solar/antares-static.png");
 }
 .l_right .widgets .widget-wrapper.antares-animation {
   margin-top: 0;
@@ -8186,6 +8186,53 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.post-card .widget-body .item:hover {
   background: var(--bg-a50);
 }
+#rotating-planet-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 160px;
+  padding: 12px 0;
+}
+#rotating-planet-widget img {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: rotating-planet-spin 36s linear infinite;
+  box-shadow: 0 0 18px 6px rgba(255,120,65,0.42), 0 0 42px 12px rgba(255,70,35,0.18);
+}
+@-moz-keyframes rotating-planet-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotating-planet-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotating-planet-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating-planet-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .widget-wrapper.solar-animation .widget-body {
   background: none;
   padding: 0;
@@ -8224,7 +8271,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.solar-animation .widget-body .solar-sun .solar-star {
   width: 40px;
   height: 40px;
-  background: "url(/images/solar/sun.png)" no-repeat;
+  background: url("/images/sun.png") no-repeat;
   background-size: cover;
   border-radius: 250px;
   margin: 0 auto;
@@ -8243,7 +8290,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   right: 0px;
   top: 0px;
   bottom: 0px;
-  background: transparent "url(/images/solar/shadow.png)" 0% 0% no-repeat;
+  background: transparent url("/images/shadow.png") 0% 0% no-repeat;
   background-size: cover;
   border-radius: 100%;
 }
@@ -8257,7 +8304,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.solar-animation .widget-body .solar-mercury .solar-planet {
   width: 6px;
   height: 6px;
-  background-image: "url(/images/solar/mercury.png)";
+  background-image: url("/images/mercury.png");
   animation: solar-anti-spin 12s infinite linear;
 }
 .widget-wrapper.solar-animation .widget-body .solar-mercury .solar-shadow {
@@ -8273,7 +8320,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.solar-animation .widget-body .solar-venus .solar-planet {
   width: 10px;
   height: 10px;
-  background-image: "url(/images/solar/venus.png)";
+  background-image: url("/images/venus.png");
   animation: solar-anti-spin 15s infinite linear;
 }
 .widget-wrapper.solar-animation .widget-body .solar-venus .solar-shadow {
@@ -8289,7 +8336,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.solar-animation .widget-body .solar-earth .solar-planet {
   width: 11px;
   height: 11px;
-  background-image: "url(/images/solar/earth.png)";
+  background-image: url("/images/earth.png");
   animation: solar-anti-spin 20s infinite linear;
 }
 .widget-wrapper.solar-animation .widget-body .solar-earth .solar-shadow {
@@ -8305,7 +8352,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.solar-animation .widget-body .solar-mars .solar-planet {
   width: 7px;
   height: 7px;
-  background-image: "url(/images/solar/mars.png)";
+  background-image: url("/images/mars.png");
   animation: solar-anti-spin 30s infinite linear;
 }
 .widget-wrapper.solar-animation .widget-body .solar-mars .solar-shadow {
@@ -8321,7 +8368,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.solar-animation .widget-body .solar-jupiter .solar-planet {
   width: 24px;
   height: 24px;
-  background-image: "url(/images/solar/jupiter.png)";
+  background-image: url("/images/jupiter.png");
   animation: solar-anti-spin 50s infinite linear;
 }
 .widget-wrapper.solar-animation .widget-body .solar-jupiter .solar-shadow {
