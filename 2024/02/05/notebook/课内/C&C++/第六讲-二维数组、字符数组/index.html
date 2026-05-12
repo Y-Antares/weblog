@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>C/C++ 第六讲 二维数组、字符数组 - Lone Trail</title>
+
+  
+    <meta name="description" content="C&#x2F;C++ 第六讲 二维数组、字符数组  6.1 二维数组的定义和初始化  定义 1变量名 数组名[常量表达式1][常量表达式2];   表达式1代表行，表达式2代表列；元素个数为行、列长度的乘积。   行、列下标均由0始。   二维数组按行存放（一行存满再下一行）   序号&#x3D;当前行号*每行列数+当前列号 （二维数组作参数时可用）  存储 1float a[2][3]; 若系统分配的首地址为10">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++ 第六讲 二维数组、字符数组">
+<meta property="og:url" content="https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="C&#x2F;C++ 第六讲 二维数组、字符数组  6.1 二维数组的定义和初始化  定义 1变量名 数组名[常量表达式1][常量表达式2];   表达式1代表行，表达式2代表列；元素个数为行、列长度的乘积。   行、列下标均由0始。   二维数组按行存放（一行存满再下一行）   序号&#x3D;当前行号*每行列数+当前列号 （二维数组作参数时可用）  存储 1float a[2][3]; 若系统分配的首地址为10">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yantares.cn/images/miuhead.png">
+<meta property="article:published_time" content="2024-02-05T08:57:30.000Z">
+<meta property="article:modified_time" content="2026-05-12T08:07:23.344Z">
+<meta property="article:author" content="Yantares">
+<meta property="article:tag" content="Cplusplus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/images/miuhead.png">
+  
+  
+  
+  <meta name="keywords" content="Cplusplus">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Lone Trail" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yantares","sameAs":[],"image":"/images/miuhead.png"},"dateCreated":"2024-02-05T16:57:30+08:00","dateModified":"2026-05-12T16:07:23+08:00","datePublished":"2024-02-05T16:57:30+08:00","description":"","headline":"C/C++ 第六讲 二维数组、字符数组","mainEntityOfPage":{"@type":"WebPage","@id":"https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/"},"publisher":{"@type":"Organization","name":"Yantares","sameAs":[],"image":"/images/miuhead.png","logo":{"@type":"ImageObject","url":"/images/miuhead.png"}},"url":"https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/","keywords":"Cplusplus","image":[]}</script>
+  
+  
+  <!-- MathJax配置 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js"></script>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+  </script>
+</head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+<div class="l_body content" id="start" layout="post" type="tech" text-indent><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/miuhead.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Lone Trail</div><div class="sub cap">Yantares's Blog</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客文章" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="说说" href="/memos/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a><a class="nav-item" title="影音库" href="/media/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="图书馆" href="/library/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper git-history-widget"><div class="widget-header dis-select"><span class="name">更新历史</span></div><div class="widget-body fs14"><div class="git-history-rail"><div class="git-history-node node-0"><span class="git-history-dot"></span><span class="git-history-date">2026-05-12</span></div></div></div></widget>
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/02/27/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/%E6%AD%A4%E5%BA%94%E7%94%A8%E5%8C%85%E4%B8%8D%E6%94%AF%E6%8C%81%E9%80%9A%E8%BF%87%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85%EF%BC%8C%E5%9B%A0%E4%B8%BA%E5%AE%83/"><span class="title">“此应用包不支持通过应用安装程序安装，因为它使用了某些受限制的功能。”</span></a><a class="item title" href="/2024/11/22/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/%E8%AF%BE%E5%A0%82%E6%B4%BE%EF%BC%9A%E4%B8%8D%E5%85%81%E8%AE%B8%E4%B8%8B%E8%BD%BD/"><span class="title">我去！我喜欢下载！</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><span class="title">C/C++ 第九讲 函数（续）</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="title">C/C++ 第二讲 数据类型、运算符和表达式</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/"><span class="title">C/C++ 第六讲 二维数组、字符数组</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"><span class="title">C/C++ 第五讲 一维数组</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%87%BD%E6%95%B0/"><span class="title">C/C++ 第八讲 函数</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><span class="title">C/C++ 第十二讲 文件</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><span class="title">C/C++ 第十讲 结构</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%9B%9B%E8%AE%B2-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C/C++ 第四讲 循环结构</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/Y-Antares" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="/images/github_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="https://music.163.com/#/user/home?id=515374354" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="/images/cloudmusic_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="/images/weixin.jpg" rel="noopener noreferrer"><img no-lazy src="/images/wx_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="/images/qq.jpg" rel="noopener noreferrer"><img no-lazy src="/images/qq_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/notebook/">notebook</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/notebook/%E8%AF%BE%E5%86%85/">课内</a></div><div id="tag"> <span>&nbsp标签：</span><a class="cap breadcrumb-link" href="/tags/Cplusplus/">Cplusplus</a>&nbsp</div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-02-05T08:57:30.000Z">2024-02-05</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-05-12T08:07:23.344Z">2026-05-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C/C++ 第六讲 二维数组、字符数组</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="cc-第六讲-二维数组-字符数组"><a class="markdownIt-Anchor" href="#cc-第六讲-二维数组-字符数组"></a> C/C++ 第六讲 二维数组、字符数组</h1>
+<h2 id="61-二维数组的定义和初始化"><a class="markdownIt-Anchor" href="#61-二维数组的定义和初始化"></a> 6.1 二维数组的定义和初始化</h2>
+<h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">变量名 数组名<span class="hljs-selector-attr">[常量表达式1]</span><span class="hljs-selector-attr">[常量表达式2]</span>;<br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>表达式1代表行，表达式2代表列；元素个数为行、列长度的乘积。</p>
+</li>
+<li class="lvl-4">
+<p>行、列下标均由0始。</p>
+</li>
+<li class="lvl-4">
+<p>二维数组<strong>按行存放</strong>（一行存满再下一行）</p>
+</li>
+</ul>
+<p>序号=当前行号*每行列数+当前列号</p>
+<p>（二维数组作参数时可用）</p>
+<h3 id="存储"><a class="markdownIt-Anchor" href="#存储"></a> 存储</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">float</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];<br></code></pre></td></tr></table></figure>
+<p>若系统分配的首地址为1000，则：</p>
+<p><code>a[0][0]:1000; a[0][1]:1004; a[0][2]:1008</code></p>
+<p><code>a[1][0]:100C; a[1][1]:1010; a[1][2]:1014</code></p>
+<h3 id="初始化"><a class="markdownIt-Anchor" href="#初始化"></a> 初始化</h3>
+<ol>
+<li class="lvl-4">
+<p>按存放顺序对所有元素赋初值。</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;;<br><span class="hljs-type">int</span> a[][<span class="hljs-number">3</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;;<br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>全部元素初始化<strong>能省略且只能省略第一维</strong>长度。（三维、四维etc）</p>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-4">
+<p>按行给元素赋初值，每行元素组织在一对花括号内。</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]=&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-4">
+<p>按行给部分元素赋初值，未赋值元素自动为0.</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>]=&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">2</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>&#125;&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li class="lvl-4">
+<p>按行赋初值也可省略第一维长度：</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a[][<span class="hljs-number">3</span>]=&#123;&#123;<span class="hljs-number">1</span>&#125;,&#123;&#125;,&#123;<span class="hljs-number">3</span>&#125;&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> c[][<span class="hljs-number">3</span>] = &#123; &#123;<span class="hljs-number">1</span>&#125;,&#123;&#125;,&#123;<span class="hljs-number">2</span>&#125; &#125;,i,j;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)<br>            cout &lt;&lt; c[i][j] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>    &#125;<br>    cout &lt;&lt;endl;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//1 0 0 0 0 0 2 0 0</span><br></code></pre></td></tr></table></figure>
+<h3 id="基本操作"><a class="markdownIt-Anchor" href="#基本操作"></a> 基本操作</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>对于数值型数组，程序中只能使用其元素。</p>
+</li>
+</ul>
+<p><code>数组名 [行下标][列下标]</code></p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>输入、输出、批量处理时需使用<strong>双循环</strong>，外循环控制行变化，内循环控制列变化。例如：</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)<br>        cin&gt;&gt;a[i][j];<br></code></pre></td></tr></table></figure>
+<h3 id="例"><a class="markdownIt-Anchor" href="#例"></a> 例</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>求3*3方阵的最大元素集下标</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++">max=a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>imax=jmax=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>s;i++)<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)<br>      <span class="hljs-keyword">if</span>(a[i][j]&gt;max)<br>      &#123;<br>          max=a[i][j];<br>          imax=i;<br>          jmax=j;<br>      &#125;<br></code></pre></td></tr></table></figure>
+<h2 id="62-二维数组应用矩阵转置-杨辉三角"><a class="markdownIt-Anchor" href="#62-二维数组应用矩阵转置-杨辉三角"></a> 6.2 二维数组应用–矩阵转置、杨辉三角</h2>
+<h3 id="矩阵转置"><a class="markdownIt-Anchor" href="#矩阵转置"></a> 矩阵转置</h3>
+<p>注意：</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>方阵转置就是以主对角线对称；</p>
+</li>
+<li class="lvl-4">
+<p>一次对调<code>a[i][j]</code>和<code>a[j][i]</code>两个元素，故只能以下三角/上三角元素做参照，去和上三角/下三角元素对调。</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;i;j++)<br>    &#123;<br>        t=a[i][j];<br>        a[i][j]=a[j][i];<br>        a[j][i]=t;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="杨辉三角"><a class="markdownIt-Anchor" href="#杨辉三角"></a> 杨辉三角</h3>
+<p>输出n(n&lt;10)行的杨辉三角形</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//第一列和主对角线</span><br><span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>    a[i][<span class="hljs-number">0</span>]=a[i][i]=<span class="hljs-number">1</span>;<br><span class="hljs-comment">//其余元素</span><br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">2</span>;i&lt;n;i++)<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;i;j++)<br>        a[i][j]=a[i<span class="hljs-number">-1</span>]a[j<span class="hljs-number">-1</span>]+a[i<span class="hljs-number">-1</span>]a[j];<br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>&#123;<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;=i;j++)<br>        cout&lt;&lt;a[i][j]&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>;<br>    cout&lt;&lt;endl;  <span class="hljs-comment">//一行完毕，换行</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>完整程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> n 10</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> i, j, a[n][n];<br>    <span class="hljs-comment">//第一列和主对角线</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>        a[i][<span class="hljs-number">0</span>] = a[i][i] = <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">//其余元素</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt; n; i++)<br>        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">1</span>; j &lt; i; j++)<br>            a[i][j] = a[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] + a[i - <span class="hljs-number">1</span>][j];<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt;= i; j++)<br>            cout &lt;&lt; a[i][j] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>        cout &lt;&lt; endl; <br>    &#125;<br><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="二维数组应用最短路径"><a class="markdownIt-Anchor" href="#二维数组应用最短路径"></a> 二维数组应用–最短路径</h3>
+<p>A, B, C, D四个城市相互之间有8条单向公路，编程求任意两个城市间的最短距离。</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>数据存储：4行4列二维数组<code>e[4][4]</code></p>
+</li>
+<li class="lvl-4">
+<p>数据表示：</p>
+<ul class="lvl-2">
+<li class="lvl-8">与自己的距离为0，不连通城市间距离为∞；</li>
+<li class="lvl-8">行下标代表起点，列下标代表终点，元素值代表距离。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>数据处理：弗洛伊德算法求</p>
+</li>
+<li class="lvl-4">
+<p>算法核心：对每一对I和j，检查是否存在顶点k，使得i–&gt;k–&gt;j的距离比原有路径短。如存在，则更新原有路径。</p>
+</li>
+</ul>
+<p>以A作中转点为例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;ie[i][<span class="hljs-number">0</span>]+e[<span class="hljs-number">0</span>][j])<br>            e[i][j]=e[i][<span class="hljs-number">0</span>]+e[<span class="hljs-number">0</span>][j]<br></code></pre></td></tr></table></figure>
+<p>Floyd算法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(k=<span class="hljs-number">0</span>;k&lt;N;k++)<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;N;j++)<br>            <span class="hljs-keyword">if</span>(e[i][j]&gt;e[i][k]+e[k][j])<br>                e[i][j]=e[i][k]+e[K][J]<br></code></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 4  <span class="hljs-comment">//顶点数</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> M 8  <span class="hljs-comment">//路径数</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX 1000000 <span class="hljs-comment">//无穷远</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> e[N][N], i, j, k, st, en, d;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)  <span class="hljs-comment">//初始化路径距离</span><br>        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; i &lt; N; j++)<br>            <span class="hljs-keyword">if</span> (i = j)<br>                e[i][j] = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">else</span><br>                e[i][j] = MAX;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt;= M; i++)<span class="hljs-comment">//输入起终点及路径距离</span><br>                &#123;<br>                    cin &gt;&gt; st &gt;&gt; en &gt;&gt; d; <span class="hljs-comment">//依次输入起终点</span><br>                    e[st][en] = d;<br>                &#125;<br>    <span class="hljs-comment">//FLOYD算法</span><br>    <span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; N; k++)<br>        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>            <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>                <span class="hljs-keyword">if</span> (e[i][j] &gt; e[i][k] + e[k][j])<br>                    e[i][j] = e[i][k] + e[k][j];<br>    <span class="hljs-comment">//输出</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>            cout &lt;&lt; (<span class="hljs-type">char</span>)(<span class="hljs-string">&#x27;A&#x27;</span> + i) &lt;&lt; <span class="hljs-string">&quot;-&gt;&quot;</span> &lt;&lt; (<span class="hljs-type">char</span>)(<span class="hljs-string">&#x27;A&#x27;</span> + i) &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; e[i][j];<br>        cout &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输入有问题，暂不知为何</p>
+<h2 id="63-字符数组"><a class="markdownIt-Anchor" href="#63-字符数组"></a> 6.3 字符数组</h2>
+<p>例：如何将任意长度的英文句子中的所有小写字母转换成大写字母？</p>
+<p>实际操作将整个句子以字符串形式处理</p>
+<h3 id="字符串概念"><a class="markdownIt-Anchor" href="#字符串概念"></a> 字符串概念</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>双引号引起的一串字符，如<code>&quot;ab123&quot;</code></p>
+</li>
+<li class="lvl-4">
+<p>若有定义char s[20]，通过特殊的初始化、输入、处理、输出可用来处理可变的字符串。</p>
+</li>
+</ul>
+<p><strong>特点：</strong></p>
+<p>系统自动在有效字符末尾加<code>'\0'</code>（字符串结束符）</p>
+<h3 id="初始化-2"><a class="markdownIt-Anchor" href="#初始化-2"></a> 初始化</h3>
+<ol>
+<li class="lvl-4">
+<p>用字符串为字符数组初始化</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">char</span> s[<span class="hljs-number">10</span>]=&#123;<span class="hljs-string">&quot;I am fine&quot;</span>&#125;;<br><span class="hljs-type">char</span> s[<span class="hljs-number">10</span>]=<span class="hljs-string">&quot;I am fine&quot;</span>;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-4">
+<p>字符串数组初始化</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">char</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">8</span>]=&#123;<span class="hljs-string">&quot;COBOL&quot;</span>,<span class="hljs-string">&quot;FORTRAN&quot;</span>,<span class="hljs-string">&quot;PASCAL&quot;</span>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="输入输出"><a class="markdownIt-Anchor" href="#输入输出"></a> 输入输出</h3>
+<p>char s[100]</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//字符串的整体输入</span><br>cin&gt;&gt;s;<span class="hljs-comment">//不能提取空格符</span><br><span class="hljs-built_in">gets</span>(s);<br><br><span class="hljs-comment">//字符串的整体输入</span><br>cout&lt;&lt;s;<br><span class="hljs-built_in">puts</span>(s);<br><br><span class="hljs-comment">//gets(),puts()在&lt;stdio.h&gt;</span><br></code></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> s[<span class="hljs-number">100</span>];<br>    cin&gt;&gt;s;  <span class="hljs-comment">//直接使用数组名</span><br>    cout&lt;&lt;s&lt;&lt;endl;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>cin()</code>不能提取空格符.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> s[<span class="hljs-number">100</span>];<br>    <span class="hljs-built_in">gets</span>(s); <span class="hljs-comment">//可以</span><br>    <span class="hljs-built_in">puts</span>(s);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>附：</p>
+<p>在VS2015中，stdio.h头文件中已经不存在<code>gets()</code>函数定义，而被更安全的<code>get_s()</code>函数和<code>fgets()</code>函数所替代。故直接用gets()会出现未定义的错误。</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p><code>cin</code>以三大分隔符分隔</p>
+</li>
+<li class="lvl-4">
+<p><code>gets()</code>以回车键为分隔</p>
+</li>
+</ul>
+<h3 id="字符串处理原则"><a class="markdownIt-Anchor" href="#字符串处理原则"></a> 字符串处理原则</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>整体输入、整体输出</p>
+</li>
+<li class="lvl-4">
+<p>不用数组长度控制循环，而是通过当前字符**是否达到<code>'\0'</code>**判断循环结束与否</p>
+</li>
+<li class="lvl-4">
+<p>构造字符串时需保证结尾有<code>'\0'</code></p>
+</li>
+</ul>
+<p><strong>例：如何将任意长度的英文句子中的所有小写字母转换成大写字母？</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 100</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> s[N];<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-built_in">gets</span>(s);<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;s[i]!=<span class="hljs-string">&#x27;\0&#x27;</span>;i++)<br>        <span class="hljs-keyword">if</span>(s[i]&gt;=<span class="hljs-string">&#x27;a&#x27;</span>&amp;&amp;s[i]&lt;=<span class="hljs-string">&#x27;z&#x27;</span>)<br>            s[i]=s[i]-<span class="hljs-string">&#x27;a&#x27;</span>+<span class="hljs-string">&#x27;A&#x27;</span>;<br>    <span class="hljs-built_in">puts</span>(s);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="64-字符数组的应用字符串处理"><a class="markdownIt-Anchor" href="#64-字符数组的应用字符串处理"></a> 6.4 字符数组的应用：字符串处理</h2>
+<h3 id="例1-重要"><a class="markdownIt-Anchor" href="#例1-重要"></a> 例1 **重要</h3>
+<p>例：将字符串s的内容复制到字符串t中</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>数组名是地址常量，不能被复制</p>
+</li>
+<li class="lvl-4">
+<p>逐元素复制</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> i;<br><span class="hljs-type">char</span> s[N],t[N];<br><span class="hljs-built_in">gets</span>(s);<br>i=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(s[i]!=<span class="hljs-string">&#x27;\0&#x27;</span>)<br>&#123;<br>    t[i]=s[i];<br>    i++;<br>&#125;<br>t[i]=<span class="hljs-string">&#x27;\0&#x27;</span>;  <span class="hljs-comment">//在t末尾加\0，成为数组</span><br><span class="hljs-built_in">puts</span>(t);<br></code></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>字符数组需要逐个元素处理</p>
+<h3 id="例2"><a class="markdownIt-Anchor" href="#例2"></a> 例2</h3>
+<p>例：逐个比较两个字符串对应位置的字符大小，输出“两字符完全相等”的提示或第一个不相等字符的ASCII码差。</p>
+<p>关键：</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>找出持续比较的条件：</p>
+<ul class="lvl-2">
+<li class="lvl-8">对应位置的字符相等且串还未结束。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>退出循环后的再判断：如何退出的？</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 100</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> s[N],t[N];<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-built_in">gets</span>(s);<br>    <span class="hljs-built_in">gets</span>(t);<br>    i=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(s[i]!=<span class="hljs-string">&#x27;\0&#x27;</span>&amp;&amp;t[i]!=<span class="hljs-string">&#x27;\0&#x27;</span>)<br>        <span class="hljs-keyword">if</span>(s[i]==t[i])<br>            i++;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;\0&#x27;</span>&amp;&amp;t[i]==<span class="hljs-string">&#x27;\0&#x27;</span>)<br>        cout&lt;&lt;<span class="hljs-string">&quot;两字符串相等&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">else</span><br>        cout&lt;&lt;<span class="hljs-string">&quot;两串相差&quot;</span>&lt;&lt;s[i]-t[i];<br><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="常用字符串处理函数"><a class="markdownIt-Anchor" href="#常用字符串处理函数"></a> 常用字符串处理函数</h3>
+<h4 id="strlenstr"><a class="markdownIt-Anchor" href="#strlenstr"></a> strlen(str)</h4>
+<p>求字符串str的长度，不包含’\0’在内。</p>
+<h4 id="strlwr"><a class="markdownIt-Anchor" href="#strlwr"></a> strlwr</h4>
+<p>将str中的大写字母转换为小写字母。</p>
+<h4 id="struprstr"><a class="markdownIt-Anchor" href="#struprstr"></a> strupr(str)</h4>
+<p>将str中的小写字母转换为大写字母。</p>
+<h4 id="strcpystr1str2"><a class="markdownIt-Anchor" href="#strcpystr1str2"></a> strcpy(str1,str2)</h4>
+<p>将str2所指的字符串复制到str1中。</p>
+<p>str1只能是字符数组名字或字符指针代表的字符串；</p>
+<p>str2可以是字符数组名字、字符指针变量、字符串常量。</p>
+<h4 id="strcatstr1str2strcat_s"><a class="markdownIt-Anchor" href="#strcatstr1str2strcat_s"></a> strcat(str1,str2)–&gt;strcat_s()</h4>
+<p>将字符串str2的内容连接到str1内容的后面。</p>
+<h4 id="strcmpstr1str2"><a class="markdownIt-Anchor" href="#strcmpstr1str2"></a> strcmp(str1,str2)</h4>
+<p>比较字符串str1和str2的大小。</p>
+<p>从左至右逐字符比较ASCII码的大小，直到出现不相同字符或遇到<code>'\0'</code>为止。</p>
+<p>str1 小于 str2 返回-1</p>
+<p>str1 等于 str2 返回0</p>
+<p>str1 大于 str2 返回1</p>
+<p>例：<code>strcmp(&quot;ABCD&quot;, &quot;BD&quot;)</code>:</p>
+<p>B大于A，∴返回-1</p>
+<h4 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>上述函数原型在中</p>
+</li>
+<li class="lvl-4">
+<p>除strcpy和strcat两个函数的第一个参数不能取字符串常量外，其他参数都可以为字符数组、字符指针变量或字符串常量。</p>
+</li>
+</ul>
+<h4 id="例字符串处理函数示例"><a class="markdownIt-Anchor" href="#例字符串处理函数示例"></a> 例：字符串处理函数示例</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sring.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> s[<span class="hljs-number">80</span>];<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-built_in">gets</span>(s);<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(s,<span class="hljs-string">&quot;pass&quot;</span>)) <span class="hljs-comment">//s和&quot;pass&quot;不相等的时候输出非0值，执行</span><br>            <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;Invalid password.\n&quot;</span>);<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;pass\n&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="数组应用-古诗接龙程序分析"><a class="markdownIt-Anchor" href="#数组应用-古诗接龙程序分析"></a> 数组应用-古诗接龙程序分析</h3>
+<p><strong>程序功能及要求</strong></p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>可通过菜单选择五言诗和七言诗并进行连句测试</p>
+</li>
+<li class="lvl-4">
+<p>机器给出诗的上句，要求用户给出下句。正确提示“答对了，你真棒！”，答错提示“很遗憾，继续努力！”</p>
+</li>
+<li class="lvl-4">
+<p>若五言诗或七言诗库中的诗句全都测试完毕，则做出相应提示。</p>
+</li>
+</ul>
+<p><strong>数据结构</strong></p>
+<p>二位字符数组（N：已定义过的符号常量）或字符指针数组。</p>
+<p><code>char s5[N][30]</code> //存放N个五言诗的上下句(实21)</p>
+<p><code>char s7[N][30]</code> //存放N个七言诗的上下句（实29）</p>
+<p><strong>获取数据</strong></p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>可在字符数组初始化时将诗的上下句存放在一个字符数组中</p>
+</li>
+<li class="lvl-4">
+<p>改进：读文件的方式将诗句读入字符数组</p>
+</li>
+</ul>
+<p><strong>程序流程</strong></p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>菜单选择：五言、七言、退出；</p>
+</li>
+<li class="lvl-4">
+<p>随机产生一个五言诗或七言诗库中现有诗句个数内的不重复随机数；</p>
+</li>
+<li class="lvl-4">
+<p>以该随机数为下标取出相应字符串的前半段显示，后半段复制到一个代表答案的字符串中；（上下句在一个字符串里）</p>
+</li>
+<li class="lvl-4">
+<p>从键盘输入用户的接龙字符串并比较，根据结果做相应提示</p>
+</li>
+<li class="lvl-4">
+<p>重复直到退出</p>
+</li>
+</ul>
+<p><strong>代码组织</strong></p>
+<p>目前：所有代码组织在一个主函数中；</p>
+<p>改进：模块化管理，将代码组织在多个自定义函数中</p>
+<p><strong>程序功能完善</strong></p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>下接上</p>
+</li>
+<li class="lvl-4">
+<p>加入分数系统</p>
+</li>
+<li class="lvl-4">
+<p>记录打错诗句，今后重点训练</p>
+</li>
+</ul>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/&title=C/C++ 第六讲 二维数组、字符数组 - Lone Trail&summary= C/C++ 第六讲 二维数组、字符数组
+ 6.1 二维数组的定义和初始化
+ 定义
+1变量名 数组名[常量表达式1][常量表达式2];
+
+
+表达式1代表行，表达式2代表列；元素个数为行、列长度的乘积。
+
+
+行、列下标均由0始。
+
+
+二..."><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=C/C++ 第六讲 二维数组、字符数组 - Lone Trail&amp;body=https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%B8%83%E8%AE%B2-%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84/">C/C++ 第七讲 指针和数组</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/">C/C++ 第五讲 一维数组</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>相关文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\2024\02\05\notebook\课内\C&C++\第一讲-c-c程序设计入门\" title="C/C++ 第一讲 C/C++程序设计入门"><span class="title">C/C++ 第一讲 C/C++程序设计入门</span></a><a class="item" href="\2024\02\05\notebook\课内\C&C++\第七讲-指针和数组\" title="C/C++ 第七讲 指针和数组"><span class="title">C/C++ 第七讲 指针和数组</span></a><a class="item" href="\2024\02\05\notebook\课内\C&C++\第三讲-选择结构\" title="C/C++ 第三讲 选择结构"><span class="title">C/C++ 第三讲 选择结构</span></a><a class="item" href="\2024\02\05\notebook\课内\C&C++\第九讲-函数（续）\" title="C/C++ 第九讲 函数（续）"><span class="title">C/C++ 第九讲 函数（续）</span></a><a class="item" href="\2024\04\21\notebook\课内\天大物化-第三章-热力学第二、三定律\" title="天大物化 第三章 热力学第二、三定律"><span class="title">天大物化 第三章 热力学第二、三定律</span></a></div></section></div>
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>Comments</p>
+
+      <img src="/images/keyboard.jpg" alt="欢迎讨论~" style="margin-left: 10px; height: 50px;">
+    </section>
+    <section class='body cmt-body waline'>
+      
+
+<div id="waline_container" class="waline_thread"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap" style="column-count:4;"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs15">项目</span><a target="_blank" rel="noopener" href="https://run.yantares.cn">跑步记录</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/">友链</a><a href="/">留言板</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a></div></div><div class="text"><p><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次！</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<p><span id="runtime_span"></span></p>
+<script type="text/javascript">
+function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    X = new Date("2024/02/04 17:00:00"); // 网站开始运行的日期和时间
+    Y = new Date(); // 当前日期和时间
+    T = (Y.getTime() - X.getTime()); // 网站运行的总毫秒数
+    M = 24 * 60 * 60 * 1000; // 一天的毫秒数
+    a = T / M; // 总天数
+    A = Math.floor(a); // 总天数的整数部分
+    b = (a - A) * 24; // 总小时数
+    B = Math.floor(b); // 总小时数的整数部分
+    c = (b - B) * 60; // 总分钟数
+    C = Math.floor((b - B) * 60); // 总分钟数的整数部分
+    D = Math.floor((c - C) * 60); // 总秒数
+    var spanElement = document.getElementById('runtime_span');
+    if (spanElement) {
+      spanElement.innerHTML = "⏱️本站已运行 <span class='runtime'>" + A + "天" + B + "小时" + C + "分" + D + "秒</span>";
+    }
+}
+show_runtime();
+</script>
+<img src="/images/logo.png" style="float: right; width: 60px; margin-left: 20px;">
+<p>本站由 <a href="/">Yantares</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<span class="totalcount">发表了 120 篇文章 · </span><span class="post-count">总计 205.3k 字</span></div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#cc-%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-text"> C&#x2F;C++ 第六讲 二维数组、字符数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#61-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text"> 6.1 二维数组的定义和初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text"> 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8"><span class="toc-text"> 存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text"> 初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text"> 基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B"><span class="toc-text"> 例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#62-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE-%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92"><span class="toc-text"> 6.2 二维数组应用–矩阵转置、杨辉三角</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE"><span class="toc-text"> 矩阵转置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92"><span class="toc-text"> 杨辉三角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-text"> 二维数组应用–最短路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#63-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-text"> 6.3 字符数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A6%82%E5%BF%B5"><span class="toc-text"> 字符串概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-2"><span class="toc-text"> 初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text"> 输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99"><span class="toc-text"> 字符串处理原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#64-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="toc-text"> 6.4 字符数组的应用：字符串处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B1-%E9%87%8D%E8%A6%81"><span class="toc-text"> 例1 **重要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B2"><span class="toc-text"> 例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-text"> 常用字符串处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#strlenstr"><span class="toc-text"> strlen(str)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strlwr"><span class="toc-text"> strlwr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struprstr"><span class="toc-text"> strupr(str)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcpystr1str2"><span class="toc-text"> strcpy(str1,str2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcatstr1str2strcat_s"><span class="toc-text"> strcat(str1,str2)–&gt;strcat_s()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcmpstr1str2"><span class="toc-text"> strcmp(str1,str2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-text"> 说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E7%A4%BA%E4%BE%8B"><span class="toc-text"> 例：字符串处理函数示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8-%E5%8F%A4%E8%AF%97%E6%8E%A5%E9%BE%99%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-text"> 数组应用-古诗接龙程序分析</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  import { init } from 'https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js';
+
+  const el = document.getElementById('waline_container');
+  util.viewportLazyload(el, load_waline, false);
+
+  function load_waline(){
+    if (!el) return;
+
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css');
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css');
+
+    const path = el.getAttribute('comment_id') ?? decodeURI(window.location.pathname);
+    const waline = init(Object.assign({"js":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js","css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css","meta_css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css","serverURL":"https://waline.yantares.cn","commentCount":true,"pageview":false}, {
+      el: '#waline_container',
+      path: path,
+      
+    }));
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@v9/dist/mermaid.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    var mermaid_config = {
+      startOnLoad: true,
+      theme:
+        "auto" == "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "neutral",
+      logLevel: 3,
+      themeVariables: {
+        darkMode: true
+      },
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
+        curve: "linear"
+      },
+      gantt: {
+        axisFormat: "%Y/%m/%d"
+      },
+      sequence: {
+        actorMargin: 50
+      }
+    }
+    mermaid.initialize(mermaid_config);
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script><link rel="stylesheet" href="/css/callout_blocks.css">
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9/build/styles/atom-one-dark.min.css">
+<script src="/js/services/callout.js"></script>
+<script src="/js/plugins/link-icon.js"></script>
+<script src="/js/random.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script data-pjax src="/js/services/txmap.js"></script>
+<link rel="stylesheet" href="/css/tagcolor-switch.css">
+
+
+
+<!-- inject -->
+
+</div></body></html>
+<script>var posts=["2024/03/21/悦乐/fiction-tang/","2024/05/05/悦乐/echoism/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2026/02/23/悦乐/铁花飞/","2024/02/21/悦乐/情骨/","2024/02/28/旧说说/aircraft-materials/","2024/04/26/旧说说/小小的一片天空/","2024/02/21/旧说说/归乡/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/02/21/旧说说/猫的社会学/","2024/10/15/随笔/childhood/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/02/04/旧说说/谈往录/","2025/10/28/随笔/SCITE（上信考）/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2024/06/10/旧说说/长歌行/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2026/04/13/随笔/丧失主体性的网民：再读《蔑视大众》/","2025/06/09/随笔/万神殿 Pantheon/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2024/02/04/随笔/乾果/","2025/08/15/随笔/六盘水游记/","2026/03/22/随笔/厦门游记/","2025/11/07/随笔/南京游记/","2026/04/21/随笔/嘉定生存录（1）：实体店测评/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/03/01/随笔/夜风奇谭/","2024/05/11/随笔/我的颜色/","2024/03/10/随笔/法华/","2024/02/04/随笔/群山之声响彻寰宇/","2024/03/01/随笔/躬身，甘为推磨/","2024/02/21/读罢有感/S.忒修斯之船/","2024/06/21/随笔/问道/","2024/02/21/读罢有感/仙人抚我顶/","2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/03/17/随笔/阿拉城/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/02/21/读罢有感/索拉里斯星/","2024/03/10/读罢有感/董晨宇：互联网观察/","2025/11/27/读罢有感/蔑视大众/","2025/11/10/读罢有感/银河系搭车客指南/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2024/03/08/读罢有感/青铜骑士/","2026/04/28/notebook/科研/XPS谱图分析/","2024/10/08/series/天星拾缀/A3/","2025/01/17/series/天星拾缀/Antares/","2026/04/26/notebook/科研/XPS数据处理/","2025/10/29/series/天星拾缀/α Scorpii/","2025/05/15/series/博客搭建/Running page/","2026/04/09/notebook/科研/电化学工作站数据处理/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2024/09/25/series/博客搭建/blog迁移/","2024/02/04/series/博客搭建/wordpress建站始末/","2024/02/04/series/博客搭建/建站目标及进度/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2025/03/21/series/谈往录/谈往录（1）/","2025/05/13/series/谈往录/谈往录（3）/","2025/04/04/series/谈往录/谈往录（2）/","2025/07/14/series/谈往录/谈往录（4）/","2026/04/27/series/软件使用小技巧/Bilibili/","2025/11/04/series/谈往录/谈往录（5）/","2026/01/29/series/软件使用小技巧/Bing搜索屏蔽CSDN/","2025/12/01/series/谈往录/谈往录（6）/","2026/01/03/series/谈往录/谈往录（7）/","2026/04/24/series/软件使用小技巧/Calibre/","2026/04/09/series/谈往录/谈往录（8）/","2026/05/07/series/谈往录/谈往录（9）/","2026/04/26/series/软件使用小技巧/Chrome/","2026/04/24/series/软件使用小技巧/Git Command/","2026/04/26/series/软件使用小技巧/Clash/","2026/04/21/series/软件使用小技巧/Lightroom调色/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2025/11/03/series/软件使用小技巧/MultiTTS/","2026/04/24/series/软件使用小技巧/Obsidian：优化/","2025/11/07/series/软件使用小技巧/Notion/","2026/04/12/series/软件使用小技巧/Origin/","2026/04/07/series/软件使用小技巧/Zview/","2024/04/06/series/软件使用小技巧/rss传奇/","2026/04/22/series/软件使用小技巧/Photoshop/","2024/03/01/series/软件使用小技巧/zotero使用/","2024/02/27/series/软件使用小技巧/此应用包不支持通过应用安装程序安装，因为它/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2024/02/28/series/软件使用小技巧/打印资料小寄巧/","2024/11/22/series/软件使用小技巧/课堂派：不允许下载/","2024/03/01/series/软件使用小技巧/效率软件/","2026/04/22/series/软件使用小技巧/网盘+Alist 实现Win+Ipad同步Zotero/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2026/05/09/notebook/自学杂项/Steve Mould声学科普两则/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2024/03/01/notebook/自学杂项/google-play/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/10/26/notebook/选修/solar/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2024/09/28/notebook/选修/中西艺术比较/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/06/06/notebook/选修/玉石：人与石的故事/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/03/20/notebook/选修/飞书妙记/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2024/04/04/notebook/课内/电工学：正弦交流电路/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2024/02/05/notebook/课内/C&C++/第一讲-c-c程序设计入门/","2024/02/05/notebook/课内/C&C++/第七讲-指针和数组/","2024/02/05/notebook/课内/C&C++/第三讲-选择结构/","2024/02/05/notebook/课内/C&C++/第九讲-函数（续）/","2024/02/05/notebook/课内/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/课内/C&C++/第六讲-二维数组、字符数组/","2024/02/05/notebook/课内/C&C++/第五讲-一维数组/","2024/02/05/notebook/课内/C&C++/第八讲-函数/","2024/02/05/notebook/课内/C&C++/第十二讲-文件/","2024/02/05/notebook/课内/C&C++/第十讲-结构/","2024/02/05/notebook/课内/C&C++/第四讲-循环结构/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>

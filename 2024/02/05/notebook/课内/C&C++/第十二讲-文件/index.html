@@ -1,0 +1,1630 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>C/C++ 第十二讲 文件 - Lone Trail</title>
+
+  
+    <meta name="description" content="C&#x2F;C++ 第十二讲 文件  12.1 文件的概述   标准输入输出  受限于数据类型，处理数据数量有限，程序结束不保存计算结果。    文件输入输出  可以处理大批量数据，长久地保存计算结果。     文件概述   文件是存储在外存（如磁盘）上的数据集合。   每个文件通过唯一的文件名来标识。   文件路径：指明文件在外存中位置   主文件名：遵循标识符命名规则   文件后缀（扩展名）：表示文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++ 第十二讲 文件">
+<meta property="og:url" content="https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="C&#x2F;C++ 第十二讲 文件  12.1 文件的概述   标准输入输出  受限于数据类型，处理数据数量有限，程序结束不保存计算结果。    文件输入输出  可以处理大批量数据，长久地保存计算结果。     文件概述   文件是存储在外存（如磁盘）上的数据集合。   每个文件通过唯一的文件名来标识。   文件路径：指明文件在外存中位置   主文件名：遵循标识符命名规则   文件后缀（扩展名）：表示文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yantares.cn/images/miuhead.png">
+<meta property="article:published_time" content="2024-02-05T10:45:27.000Z">
+<meta property="article:modified_time" content="2026-05-12T08:07:23.344Z">
+<meta property="article:author" content="Yantares">
+<meta property="article:tag" content="Cplusplus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/images/miuhead.png">
+  
+  
+  
+  <meta name="keywords" content="Cplusplus">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Lone Trail" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yantares","sameAs":[],"image":"/images/miuhead.png"},"dateCreated":"2024-02-05T18:45:27+08:00","dateModified":"2026-05-12T16:07:23+08:00","datePublished":"2024-02-05T18:45:27+08:00","description":"","headline":"C/C++ 第十二讲 文件","mainEntityOfPage":{"@type":"WebPage","@id":"https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"},"publisher":{"@type":"Organization","name":"Yantares","sameAs":[],"image":"/images/miuhead.png","logo":{"@type":"ImageObject","url":"/images/miuhead.png"}},"url":"https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/","keywords":"Cplusplus","image":[]}</script>
+  
+  
+  <!-- MathJax配置 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js"></script>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+  </script>
+</head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+<div class="l_body content" id="start" layout="post" type="tech" text-indent><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/miuhead.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Lone Trail</div><div class="sub cap">Yantares's Blog</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客文章" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="说说" href="/memos/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a><a class="nav-item" title="影音库" href="/media/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="图书馆" href="/library/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper git-history-widget"><div class="widget-header dis-select"><span class="name">更新历史</span></div><div class="widget-body fs14"><div class="git-history-rail"><div class="git-history-node node-0"><span class="git-history-dot"></span><span class="git-history-date">2026-05-12</span></div></div></div></widget>
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/02/27/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/%E6%AD%A4%E5%BA%94%E7%94%A8%E5%8C%85%E4%B8%8D%E6%94%AF%E6%8C%81%E9%80%9A%E8%BF%87%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85%EF%BC%8C%E5%9B%A0%E4%B8%BA%E5%AE%83/"><span class="title">“此应用包不支持通过应用安装程序安装，因为它使用了某些受限制的功能。”</span></a><a class="item title" href="/2024/11/22/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/%E8%AF%BE%E5%A0%82%E6%B4%BE%EF%BC%9A%E4%B8%8D%E5%85%81%E8%AE%B8%E4%B8%8B%E8%BD%BD/"><span class="title">我去！我喜欢下载！</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E5%87%BD%E6%95%B0%EF%BC%88%E7%BB%AD%EF%BC%89/"><span class="title">C/C++ 第九讲 函数（续）</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="title">C/C++ 第二讲 数据类型、运算符和表达式</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AD%E8%AE%B2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84/"><span class="title">C/C++ 第六讲 二维数组、字符数组</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"><span class="title">C/C++ 第五讲 一维数组</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%87%BD%E6%95%B0/"><span class="title">C/C++ 第八讲 函数</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><span class="title">C/C++ 第十二讲 文件</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/"><span class="title">C/C++ 第十讲 结构</span></a><a class="item title" href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%9B%9B%E8%AE%B2-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C/C++ 第四讲 循环结构</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/Y-Antares" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="/images/github_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="https://music.163.com/#/user/home?id=515374354" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="/images/cloudmusic_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="/images/weixin.jpg" rel="noopener noreferrer"><img no-lazy src="/images/wx_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="social" href="/images/qq.jpg" rel="noopener noreferrer"><img no-lazy src="/images/qq_icon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/notebook/">notebook</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/notebook/%E8%AF%BE%E5%86%85/">课内</a></div><div id="tag"> <span>&nbsp标签：</span><a class="cap breadcrumb-link" href="/tags/Cplusplus/">Cplusplus</a>&nbsp</div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-02-05T10:45:27.000Z">2024-02-05</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-05-12T08:07:23.344Z">2026-05-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C/C++ 第十二讲 文件</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="cc-第十二讲-文件"><a class="markdownIt-Anchor" href="#cc-第十二讲-文件"></a> C/C++ 第十二讲 文件</h1>
+<h2 id="121-文件的概述"><a class="markdownIt-Anchor" href="#121-文件的概述"></a> 12.1 文件的概述</h2>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>标准输入输出</p>
+<ul class="lvl-2">
+<li class="lvl-8">受限于数据类型，处理数据数量有限，程序结束不保存计算结果。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>文件输入输出</p>
+<ul class="lvl-2">
+<li class="lvl-8">可以处理大批量数据，长久地保存计算结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件概述"><a class="markdownIt-Anchor" href="#文件概述"></a> 文件概述</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>文件是存储在<strong>外存</strong>（如磁盘）上的数据集合。</p>
+</li>
+<li class="lvl-4">
+<p>每个文件通过<strong>唯一的文件名</strong>来标识。</p>
+<ul class="lvl-2">
+<li class="lvl-8">
+<p>文件路径：指明文件在外存中位置</p>
+</li>
+<li class="lvl-8">
+<p>主文件名：遵循标识符命名规则</p>
+</li>
+<li class="lvl-8">
+<p>文件后缀（扩展名）：表示文件性质</p>
+</li>
+</ul>
+<p>e.g.<code>D:\\document\\codes.txt</code></p>
+</li>
+<li class="lvl-4">
+<p>计算机按文件名对文件进行读写等操作。</p>
+</li>
+<li class="lvl-4">
+<p>文件按<strong>数据存储形式</strong>分类</p>
+<ul class="lvl-2">
+<li class="lvl-8">
+<p>文本文件（ASCII文件）</p>
+</li>
+<li class="lvl-8">
+<p>把内存中数据转换为ASCII码，每个字符用一个ASCII码存储。</p>
+</li>
+<li class="lvl-8">
+<p>二进制文件</p>
+</li>
+<li class="lvl-8">
+<p>把内存中数据按其内存中存储形式不进行格式转换直接存放在文件上。</p>
+</li>
+</ul>
+<p>例：整数123在内存占4个字节，其二进制文件也占4个字节，文本文件占3个字节。</p>
+<p>二进制文件因为与字符没有直接的对应关系，所以不能直接编辑和显示。</p>
+<p>故一般字符型数据以文本文件形式存储。而数值型数据视情况而定，二进制形式比较方便。</p>
+</li>
+<li class="lvl-4">
+<p>文件存取方式</p>
+<ul class="lvl-2">
+<li class="lvl-8">顺序存取</li>
+<li class="lvl-8">每当打开文件进行读、写操作时，总是从 文件的开头开始，从头到尾顺序地读写。</li>
+<li class="lvl-8">随机存取</li>
+<li class="lvl-8">可以通过调用C语言的库函数去指定开始读写的字节号，然后直接对此位置上的数据进行读写操作。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>C语言文件操作步骤</p>
+<ul class="lvl-2">
+<li class="lvl-8">定义文件类型指针</li>
+<li class="lvl-8"><code>FILE *文件指针变量</code></li>
+<li class="lvl-8">打开文件</li>
+<li class="lvl-8">调用<code>fopen</code>函数</li>
+<li class="lvl-8">文件读写</li>
+<li class="lvl-8">调用读写函数：
+<ul class="lvl-4">
+<li class="lvl-12"><code>fgetc, fputc</code></li>
+<li class="lvl-12"><code>fgets, fputs</code></li>
+<li class="lvl-12"><code>fread, fwrite</code></li>
+<li class="lvl-12"><code>fscanf, fprintf</code></li>
+</ul>
+</li>
+<li class="lvl-8">关闭文件</li>
+<li class="lvl-8">调用<code>fclose</code>函数</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>对文件的处理通过调用标准的输入输出库函数实现。</p>
+</li>
+<li class="lvl-4">
+<p>文件操作一般采用：缓冲文件系统“的方式。</p>
+</li>
+<li class="lvl-4">
+<p>C语言文件处理的关键是定义一个<strong>文件指针</strong>，通过该指针对文件进行打开、读写、关闭等操作。</p>
+<ul class="lvl-2">
+<li class="lvl-8">定义：<code>FILE *文件指针标识符;</code></li>
+</ul>
+<p>如：<code>FILE *fp1,fp2;</code></p>
+<ul class="lvl-2">
+<li class="lvl-8">
+<p>FILE是结构体变量，存放每一个被打开文件的有关信息（如缓冲区的状态、大小，文件当前位置等）。使用FILE类型，需包含<code>stdio.h</code>文件。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="122-文件的打开和关闭"><a class="markdownIt-Anchor" href="#122-文件的打开和关闭"></a> 12.2 文件的打开和关闭</h2>
+<p>实质：建立/撤销文件信息区和文件缓冲区</p>
+<h3 id="文件的打开fopen"><a class="markdownIt-Anchor" href="#文件的打开fopen"></a> 文件的打开：fopen</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：</p>
+</li>
+</ul>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">FILE *fopen(<span class="hljs-built_in">char</span> *fname,<span class="hljs-built_in">char</span> *<span class="hljs-built_in">mode</span>)<br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>功能：</p>
+<ul class="lvl-2">
+<li class="lvl-8">按照mode规定的方式，打开由fname指定的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8"><strong>fname</strong>：字符指针，指向要打开或建立的文件名字符串；</li>
+<li class="lvl-8"><strong>mode</strong>：字符指针，指向文件处理方式字符串。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：被打开的文件的 文件指针；</li>
+<li class="lvl-8">异常返回：NULL，表示打开操作不成功。</li>
+</ul>
+</li>
+</ul>
+<h4 id="c2022fopen_s"><a class="markdownIt-Anchor" href="#c2022fopen_s"></a> c2022：fopen_s</h4>
+<p>使用方法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//打开文件</span><br>FILE *fp;<br><span class="hljs-type">errno_t</span> err = <span class="hljs-built_in">fopen_s</span>( &amp;fp, <span class="hljs-string">&quot;D:\\users.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="文件的打开方式mode"><a class="markdownIt-Anchor" href="#文件的打开方式mode"></a> 文件的打开方式：mode</h4>
+<blockquote>
+<p>有&quot;r&quot;, “w”, “a”, “+”, “b”, &quot;t&quot;六种模式选择符号。</p>
+<p>r----read</p>
+<p>w----write</p>
+<p>a----append</p>
+<p>t----text（默认）</p>
+<p>b----binary</p>
+<p>±—read+write</p>
+</blockquote>
+<p>mode</p>
+<p>r</p>
+<p>以<strong>只读</strong>方式打开文件，该文件必须存在。</p>
+<p>w</p>
+<p>打开<strong>只写</strong>文件，若文件存在则清除内容，若不存在则创建该文件。</p>
+<p>a</p>
+<p>以<strong>追加</strong>方式打开<strong>只写</strong>文件。若文件不存在，则会建立该文件；若文件存在，写入的数据会被追加到文件尾后。</p>
+<p>r+</p>
+<p>以<strong>读/写</strong>方式打开文件，该文件必须存在。</p>
+<p>w+</p>
+<p>打开<strong>可读/写</strong>文件，若文件存在则清除内容，若文件不存在则建立该文件。</p>
+<p>a+</p>
+<p>以<strong>追加</strong>方式打开<strong>可读/写</strong>文件，若文件不存在，则会建立该文件；若文件存在，写入的数据会被追加到文件尾后。</p>
+<p>rb</p>
+<p>以<strong>只读</strong>方式打开一个<strong>二进制文件</strong>，只允许读数据。</p>
+<p>wb</p>
+<p>以<strong>只写</strong>方式打开或新建一个<strong>二进制文件</strong>，只允许写数据。</p>
+<p>ab</p>
+<p><strong>追加</strong>打开一个<strong>二进制文件</strong>，并在文件末尾写数据。</p>
+<p>rb+</p>
+<p>以<strong>读/写</strong>方式打开<strong>二进制文件</strong>，该文件必须存在。</p>
+<p>wb+</p>
+<p>以<strong>读/写</strong>方式打开或建立一个<strong>二进制文件</strong>，允许读和写。</p>
+<p>ab+</p>
+<p>以<strong>读/写</strong>方式打开一个二进制文件，允许读或在文件末追加数据。</p>
+<p>说明：<strong>t</strong>表示打开<strong>文本文件</strong>，如果不加<strong>b（二进制文件）</strong>，表示默认加了t。</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>为了程序的通用性，文件名可在程序运行时输入，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">FILE *fp;<br><span class="hljs-type">char</span> fname[<span class="hljs-number">15</span>];<br>cout&lt;&lt;<span class="hljs-string">&quot;Input filename:\n&quot;</span>;<br>cin&gt;&gt;fname;<br>fp=<span class="hljs-built_in">fopen</span>(fname,<span class="hljs-string">&quot;r&quot;</span>);<br></code></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>在fopen函数中，若文件名直接给出，路径中的<code>\</code>应写成<code>\\</code>;</p>
+<p><code>fp=fopen(&quot;D:\\Doc\\codes.txt&quot;,&quot;a&quot;);</code></p>
+<p>若文件名在程序运行时输入（如上例），则路径中的分隔符直接输入字符<code>\</code>。</p>
+<p>(input) <code>D:\Doc\codes.txt</code></p>
+</li>
+<li class="lvl-4">
+<p>为保证程序正常运行，需对fopen函数的返回值进行检验，以判断文件是否成功打开，形式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">if</span> ((fp=<span class="hljs-built_in">fopen</span>(fname,mode))==<span class="hljs-literal">NULL</span>)<br>&#123;<br>  cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t open file\n&quot;</span>;<br>  <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>（该段程序需要头文件stdlib.h）</p>
+</li>
+</ul>
+<h3 id="文件的关闭"><a class="markdownIt-Anchor" href="#文件的关闭"></a> 文件的关闭</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：</p>
+<ul class="lvl-2">
+<li class="lvl-8"><code>int fclose(FILE *fp)</code></li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>功能：</p>
+<ul class="lvl-2">
+<li class="lvl-8">关闭fp所指的文件，释放fp所指的文件类型结构体变量。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">fp：一个已打开文件的文件指针。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：0；</li>
+<li class="lvl-8">异常返回：<code>EOF(-1)</code>，表示文件在关闭时发生错误。</li>
+</ul>
+</li>
+</ul>
+<p>应养成及时关闭文件的习惯，防止误操作或其他原因丢失数据。</p>
+<p>判断</p>
+<h2 id="123-文件的读写"><a class="markdownIt-Anchor" href="#123-文件的读写"></a> 12.3 文件的读写</h2>
+<blockquote>
+<p>顺序读写：按照数据在文件中的存储顺序读写文件，容易但效率不高；</p>
+<p>随机读写：反之，对任意位置的数据读写、访问。</p>
+</blockquote>
+<h3 id="顺序读写"><a class="markdownIt-Anchor" href="#顺序读写"></a> 顺序读写</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>C语言提供四种顺序读写函数：</p>
+<p>字符读写、字符串读写、格式读写和数据块读写。</p>
+</li>
+</ul>
+<p>函数</p>
+<p>功能</p>
+<p>函数</p>
+<p>功能</p>
+<p>fputc</p>
+<p>向文件<strong>写入字符</strong></p>
+<p>fputs</p>
+<p>向文件<strong>写入字符串</strong></p>
+<p>gfetc</p>
+<p>从文件<strong>读取字符</strong></p>
+<p>fgets</p>
+<p>从文件<strong>读取字符串</strong></p>
+<p>fwritec</p>
+<p>向文件<strong>写入数据块</strong></p>
+<p>fprintf</p>
+<p>向文件<strong>格式化写入数据块</strong></p>
+<p>fread</p>
+<p>从文件<strong>读取数据块</strong></p>
+<p>fscanf</p>
+<p>从文件<strong>格式化读取数据块</strong></p>
+<h4 id="从文件读取字符fgetc"><a class="markdownIt-Anchor" href="#从文件读取字符fgetc"></a> 从文件读取字符：fgetc</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型</p>
+<ul class="lvl-2">
+<li class="lvl-8"><code>int fgetc(FILE *fp)</code></li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>功能：</p>
+<ul class="lvl-2">
+<li class="lvl-8">从fp所指文件中读取一个字符，并使文件指针后移一个字符位置。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">fp：文件指针，指向要从中读取字符的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：读取的字符；</li>
+<li class="lvl-8">异常返回：EOF(-1)。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回类型的说明：用于区分有效数据和输入的结束（EOF）</p>
+<ul class="lvl-2">
+<li class="lvl-8">若返回类型为char：内存中都是一个字节（无法区分）</li>
+<li class="lvl-8">EOF：0xFF</li>
+<li class="lvl-8">数据：0xFF</li>
+<li class="lvl-8">若返回类型为int：四个字节（正确区分）</li>
+<li class="lvl-8">EOF: 0xFFFFFFFF</li>
+<li class="lvl-8">数据:0x000000XX</li>
+<li class="lvl-8">所以将fgetc函数的返回定义为int类型。</li>
+</ul>
+</li>
+</ul>
+<h4 id="文件结束测试函数feof"><a class="markdownIt-Anchor" href="#文件结束测试函数feof"></a> 文件结束测试函数：feof</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int feof(FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能：判断文件是否结束；</p>
+</li>
+<li class="lvl-4">
+<p>参数：fp:文件指针；</p>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">0：假植，表示文件未结束。</li>
+<li class="lvl-8">1：真值，表示文件结束。</li>
+</ul>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span>(!<span class="hljs-built_in">feof</span>(fp))<br>&#123;<br>    ch=<span class="hljs-built_in">fgetc</span>(fp);<br>    <span class="hljs-built_in">putchar</span>(ch);<br>&#125;<br><span class="hljs-comment">//不想输出-1的话：</span><br><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>&#123;<br>    ch=<span class="hljs-built_in">fgetc</span>(fp);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">feof</span>(fp)==<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-built_in">putchar</span>(ch);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="向文件写入字符fputc"><a class="markdownIt-Anchor" href="#向文件写入字符fputc"></a> 向文件写入字符：fputc</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fputc(int ch,FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能：把ch中的字符写入fp所指的文件当前位置处，并使文件指针后移一个字符位置。</p>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">ch：整型变量，内存要写到文件中的字符。</li>
+<li class="lvl-8">fp：文件指针，指向要在其中写入字符的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常：写入的字符。</li>
+<li class="lvl-8">异常：EOF(-1)。</li>
+</ul>
+</li>
+</ul>
+<p><strong>例1</strong></p>
+<p>编程将文件file1.txt的内容显示在屏幕上，同时将该文件中的数字字符复制到文件file2.txt中。</p>
+<p><strong>分析：</strong></p>
+<p>实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE *fp1,fp2;<br>    <span class="hljs-type">char</span> ch;<br>    fp1=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;c:\\file1.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>);<span class="hljs-comment">//只读方式打开file1</span><br>    <span class="hljs-keyword">if</span>(fp1==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;fail to open file1.txt&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span>((fp2=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;c:\\file2.txt&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;fail to open file2.txt&quot;</span>;<br>        <span class="hljs-built_in">fclose</span>(fp1);<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">feof</span>(fp1))<br>    &#123;<br>        ch=<span class="hljs-built_in">fgetc</span>(fp1);<br>        <span class="hljs-built_in">putchar</span>(ch);<span class="hljs-comment">//文件内容读到内存后显示在屏幕上</span><br>        <span class="hljs-keyword">if</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)<br>            <span class="hljs-built_in">fputc</span>(ch,fp2);<br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp1);<span class="hljs-built_in">fclose</span>(fp2); <br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="向文件写入字符串fputs"><a class="markdownIt-Anchor" href="#向文件写入字符串fputs"></a> 向文件写入字符串：fputs</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fputs(char *str,FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能：将str指向的字符串的内容输入到fp所指文件的当前位置，同时将fp自动向前移动strlen(str)个字符位置。</p>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">str: 字符串常量/字符串指针/字符数组名等。</li>
+<li class="lvl-8">fp: 文件指针，指向要被写入的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常：非负整数。</li>
+<li class="lvl-8">异常：EOF(-1)。</li>
+</ul>
+<p>说明：</p>
+<ol>
+<li class="lvl-8">
+<p>字符串结束符<code>\0</code>不输入到文件；</p>
+</li>
+<li class="lvl-8">
+<p>不自动在字符串末尾加换行符。</p>
+</li>
+<li class="lvl-8">
+<p><code>fputs</code>自带换行。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="从文件读取字符串fgets"><a class="markdownIt-Anchor" href="#从文件读取字符串fgets"></a> 从文件读取字符串：fgets</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fgets(char *str,int n,FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能：从由fp指出的文件中读取<strong>n-1个</strong>字符，并把它们存放到由str指出的字符数组中，最后自动加上<code>\0</code>。</p>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">str: 接受字符串的内存地址，可以是数组名或指针。</li>
+<li class="lvl-8">n：要读取字符的个数</li>
+<li class="lvl-8">fp: 文件指针，指向要被读取字符的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常：字符串的内存首地址（str的值）。</li>
+<li class="lvl-8">异常：NULL。</li>
+</ul>
+<p>说明：</p>
+<ol>
+<li class="lvl-8">
+<p>读入n-1个字符到文件时，遇到换行符或文件结束符则提前结束；</p>
+</li>
+<li class="lvl-8">
+<p>读入结束后，系统自动加<code>\0</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>例2</strong> 字符串读写函数示例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE *fp;<br>    <span class="hljs-type">char</span> s[<span class="hljs-number">100</span>];<br>    <span class="hljs-keyword">if</span>((fp=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;file1.txt&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t open file1!\n&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-built_in">fputs</span>(<span class="hljs-string">&quot;I am a teacher.&quot;</span>,fp);<br>    <span class="hljs-built_in">fputs</span>(<span class="hljs-string">&quot;I love my homeland!&quot;</span>,fp);<br>    <span class="hljs-built_in">fclose</span>(fp);<span class="hljs-comment">//必须先关闭，再以只读的方式打开。</span><br>    <span class="hljs-keyword">if</span>((fp=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;file1.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t open file1!\n&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">feof</span>(fp))<span class="hljs-comment">//指针指到的地方没结束的话</span><br>    &#123;<br>        <span class="hljs-built_in">fgets</span>(s,<span class="hljs-number">16</span>,fp);<span class="hljs-comment">//每次读取15个字符</span><br>        <span class="hljs-built_in">puts</span>(s);<br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp);<span class="hljs-comment">//关闭指针</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="从文件读取数据块fread"><a class="markdownIt-Anchor" href="#从文件读取数据块fread"></a> 从文件读取数据块：fread</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fread(void *buffer, int size, int count, FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能：</p>
+<ul class="lvl-2">
+<li class="lvl-8">从文件指针fp所指的文件的当前位置读取字节数为size大小的数据块共count个，存到buffer所指的内存存储区中。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">buffer：指向存放读入数据存储区的首地址的指针。</li>
+<li class="lvl-8">size：数据块的字节数，即一个数据块的大小。</li>
+<li class="lvl-8">count：一次读入数据块的数量。</li>
+<li class="lvl-8">fp：文件指针，指向要从中读出数据的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：实际读取数据块的个数，即count。</li>
+<li class="lvl-8">异常返回：0。</li>
+</ul>
+</li>
+</ul>
+<h4 id="向文件写入数据块fwrite"><a class="markdownIt-Anchor" href="#向文件写入数据块fwrite"></a> 向文件写入数据块：fwrite</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fwrite(void *buffer, int size, int count, FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能：</p>
+<ul class="lvl-2">
+<li class="lvl-8">将以buffer为起始地址的长度为size的count个数据块输出到文件指针fp所指的位置去。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>参数：</p>
+<ul class="lvl-2">
+<li class="lvl-8">buffer：指向存放输出数据存储区的首地址的指针。</li>
+<li class="lvl-8">size：数据块的字节数，即一个数据块的大小。</li>
+<li class="lvl-8">count：一次输出数据块的数量。</li>
+<li class="lvl-8">fp：文件指针，指向要从中写入数据的文件。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：实际输出数据块的个数，即count。</li>
+<li class="lvl-8">异常返回：0。</li>
+</ul>
+</li>
+</ul>
+<h4 id="块读写应用"><a class="markdownIt-Anchor" href="#块读写应用"></a> 块读写应用</h4>
+<p><strong><code>fread</code>和<code>fwrite</code>常用于读写二进制文件。</strong></p>
+<p><strong>例：</strong></p>
+<p>假设fp指向以二进制形式打开的可读写文件，并有如下说明：</p>
+<p><code>float f; double d[10];</code></p>
+<p><strong>常见的块读写应用示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">fwrite</span>(&amp;f,<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>),<span class="hljs-number">1</span>,fp); <span class="hljs-comment">//把浮点数f写入文件</span><br><span class="hljs-built_in">fwrite</span>(d,<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">double</span>),<span class="hljs-number">10</span>,fp);  <span class="hljs-comment">//把数组d中所有数写入文件</span><br><span class="hljs-built_in">fread</span>(&amp;f,<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>),<span class="hljs-number">1</span>,fp);  <span class="hljs-comment">//从文件中以块形式读一浮点数到变量f中</span><br><span class="hljs-built_in">fread</span>(d,<span class="hljs-built_in">sizeof</span>(d),<span class="hljs-number">1</span>,fp);  <span class="hljs-comment">//从文件中一次性读一个数组d大小的数据块到数组d中</span><br></code></pre></td></tr></table></figure>
+<h5 id="例3"><a class="markdownIt-Anchor" href="#例3"></a> <strong>例3</strong></h5>
+<p>从键盘上读入5个学生的成绩信息，将它们以文件的形式保存在磁盘上。然后再将从文件中读取学生信息，并在屏幕上显示出来。假设学生成绩信息包括学生姓名、学号、总分。</p>
+<p><strong>分析：</strong></p>
+<p>程序处理的数据为<strong>结构数组</strong>，应选择<strong>块读写</strong>的方式进行文件操作，具体步骤如下：</p>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>声明学生成绩结构类型</p>
+</li>
+<li class="lvl-4">
+<p>定义学生成绩结构数组</p>
+</li>
+<li class="lvl-4">
+<p>以块读写的方式对学生信息进行文件读写</p>
+</li>
+</ul>
+<p>程序实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> N 5</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">student</span><br>&#123;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">char</span> num[<span class="hljs-number">8</span>];<br>    <span class="hljs-type">double</span> score;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">student</span> s[N],t[N];<br>    <span class="hljs-type">int</span> i;<br>    FILE *fp;<br>    <span class="hljs-keyword">if</span> ((fp=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;student.dat&quot;</span>,<span class="hljs-string">&quot;wb&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t openstudent.dat&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<span class="hljs-comment">//判定是否成功打开</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)<br>    &#123; cin&gt;&gt;s[i].name&gt;&gt;s[i].num&gt;&gt;s[i].score;<br>        <span class="hljs-built_in">fwrite</span>(&amp;s[i],<span class="hljs-built_in">sizeof</span>(student),<span class="hljs-number">1</span>,fp); <span class="hljs-comment">//对于第i个学生，逐元素向文件写数据</span><br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp);<span class="hljs-comment">//写文件结束先关闭，再以读的方式打开</span><br>    <span class="hljs-keyword">if</span> ((fp=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;student.dat&quot;</span>,<span class="hljs-string">&quot;rb&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t openstudent.dat&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-built_in">fread</span>(t,<span class="hljs-built_in">sizeof</span>(t),<span class="hljs-number">1</span>,fp); <span class="hljs-comment">//一次性从文件读出整个数组</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)<br>        cout&lt;&lt;s[i].name&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>&lt;&lt;s[i].num&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>&lt;&lt;s[i].score&lt;&lt;endl;<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="向文件格式化写入数据fprintf"><a class="markdownIt-Anchor" href="#向文件格式化写入数据fprintf"></a> 向文件格式化写入数据：fprintf</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fprintf(FILE *fp,const char *format,arg_list)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能说明：将变量表列<code>(arg_list)</code>中的数据，按照<code>format</code>指出的格式，写入由<code>fp</code>指定的文件。</p>
+</li>
+<li class="lvl-4">
+<p>参数说明：</p>
+<ul class="lvl-2">
+<li class="lvl-8"><code>fp</code>：文件指针，指向将数据写入的文件。</li>
+<li class="lvl-8"><code>format</code>：指向写出数据格式字符串的指针.</li>
+<li class="lvl-8"><code>arg_list</code>：要写入文件的变量表列，各变量之间用逗号分隔。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：输出的字节数。</li>
+<li class="lvl-8">异常返回：负值。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>示例：<code>fprintf(fp,&quot;%d%s&quot;,4,&quot;China&quot;);</code></p>
+<ul class="lvl-2">
+<li class="lvl-8">表示将整数4和字符串&quot;China&quot;按整数和字符串的形式写入fp所指的文件中。</li>
+</ul>
+</li>
+</ul>
+<h4 id="从文件格式化读取数据-fscanf"><a class="markdownIt-Anchor" href="#从文件格式化读取数据-fscanf"></a> 从文件格式化读取数据 ：fscanf</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fscanf(FILE *fp,const char *format,add_list)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能说明：按照<code>format</code>指出的格式，从<code>fp</code>指定的文件中读取数据存 放至地址表列<code>(add_list)</code>的变量中。</p>
+</li>
+<li class="lvl-4">
+<p>参数说明：</p>
+<ul class="lvl-2">
+<li class="lvl-8"><code>fp</code>：文件指针，指向要从中读取数据的文件。</li>
+<li class="lvl-8"><code>format</code>：指向读取数据格式字符串的指针。</li>
+<li class="lvl-8"><code>add_list</code>：存放读取数据的变量的地址表列。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：成功读取的参数的个数。</li>
+<li class="lvl-8">异常返回：EOF（-1）。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>示例：</p>
+<p><code>fscanf(fp,&quot;%d%d&quot; ,&amp;x,&amp;y);</code></p>
+<p>表示从fp所指的文件中顺序读取两个整数给变量x和y。</p>
+<p>地址符号<code>&amp;</code>不能省略。</p>
+</li>
+</ul>
+<h5 id="fscanf_s"><a class="markdownIt-Anchor" href="#fscanf_s"></a> fscanf_s</h5>
+<blockquote>
+<p>vs2022那令人恼火的安全函数</p>
+</blockquote>
+<p>和fscanf区别就是fscanf_s比fscanf多了个域宽检查，会多一个参数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">fscanf</span>(fp,<span class="hljs-string">&quot;%s&quot;</span>,str);<br><span class="hljs-built_in">fscanf_s</span>(fp,<span class="hljs-string">&quot;%s&quot;</span>,str,<span class="hljs-number">20</span>);<span class="hljs-comment">//fsanf_s会比fscanf多一个说明要读出数据内存大小的数字。</span><br></code></pre></td></tr></table></figure>
+<p>读取多个数据：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">fscanf_s</span>(fp, <span class="hljs-string">&quot;%s %s %s&quot;</span>, s1,<span class="hljs-number">20</span>, s2,<span class="hljs-number">20</span>, s3,<span class="hljs-number">20</span>);<br></code></pre></td></tr></table></figure>
+<p>读取多个数字的字符串：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">fscanf_s</span>(fp, <span class="hljs-string">&quot;%s %s %s %d %d&quot;</span>, s1, <span class="hljs-number">20</span>, s2, <span class="hljs-number">20</span>, s3, <span class="hljs-number">20</span>,&amp;a,&amp;b);<br></code></pre></td></tr></table></figure>
+<h5 id="例4"><a class="markdownIt-Anchor" href="#例4"></a> 例4</h5>
+<p>用格式化读写文件方式实现例三相同的功能</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> N 5</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>],num[<span class="hljs-number">8</span>];<br>    <span class="hljs-type">double</span> score;<br>    <span class="hljs-type">int</span> i;<br>    FILE *fp;<br>    <span class="hljs-keyword">if</span> ((fp=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;student.dat&quot;</span>,<span class="hljs-string">&quot;wb&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t openstudent.dat&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<span class="hljs-comment">//判定是否成功打开</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)<br>    &#123; cin&gt;&gt;name&gt;&gt;num&gt;&gt;score;<br>        <span class="hljs-built_in">fprintf</span>(fp,<span class="hljs-string">&quot;%s %s %lf&quot;</span>,name,num,score); <span class="hljs-comment">//对于第i个学生，逐元素向文件写数据</span><br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp);<span class="hljs-comment">//写文件结束先关闭，再以读的方式打开</span><br>    <span class="hljs-keyword">if</span> ((fp=<span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;student.dat&quot;</span>,<span class="hljs-string">&quot;rb&quot;</span>))==<span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;can&#x27;t openstudent.dat&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)<br>    &#123;<br>        <span class="hljs-built_in">fscanf</span>(fp,<span class="hljs-string">&quot;%s%s%lf&quot;</span>,name,num,&amp;score);<span class="hljs-comment">//name和num无需地址符号，因为它们是数组名</span><br>        cout&lt;&lt;name&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>&lt;&lt;num&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>&lt;&lt;score&lt;&lt;endl;<br>    &#125;  <br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="随机读写"><a class="markdownIt-Anchor" href="#随机读写"></a> 随机读写</h3>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>顺序读写文件只能从头开始，顺序读写各个数据。</p>
+</li>
+<li class="lvl-4">
+<p>随机读写可按需要只读写文件中某些<strong>指定</strong>的部分。</p>
+</li>
+<li class="lvl-4">
+<p>随机读写的关键是要<strong>按要求移动位置指针</strong>，即进行文件的<strong>定位</strong>。</p>
+</li>
+<li class="lvl-4">
+<p>实现文件定位、移动文件内部位置指针的函数主要有<code>rewind</code>函数 和<code>fseek</code>函数。</p>
+</li>
+</ul>
+<h4 id="rewind函数"><a class="markdownIt-Anchor" href="#rewind函数"></a> rewind函数</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>void rewind(FILE *fp)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能说明：使指示文件位置的<strong>指针重新返回到文件开始</strong>。</p>
+</li>
+</ul>
+<h4 id="fseek函数"><a class="markdownIt-Anchor" href="#fseek函数"></a> fseek函数</h4>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>函数原型：<code>int fseek(FILE *fp, long offset, int whence)</code></p>
+</li>
+<li class="lvl-4">
+<p>功能说明：使文件指针fp移到基于whence的相对位置offset处。</p>
+</li>
+<li class="lvl-4">
+<p>参数说明：</p>
+<ul class="lvl-2">
+<li class="lvl-8">offset是相对whence的字节位移量，用长整型表示。</li>
+<li class="lvl-8">whence是移动的基准，常用符号常量表示。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>返回值：</p>
+<ul class="lvl-2">
+<li class="lvl-8">正常返回：0。</li>
+<li class="lvl-8">异常返回：-1，表示定位操作出错。</li>
+</ul>
+</li>
+</ul>
+<p><strong>whence：</strong></p>
+<p>符号常量</p>
+<p>值</p>
+<p>基准位置</p>
+<p>SEEK_SET</p>
+<p>0</p>
+<p>文件开头</p>
+<p>SEEK_CUR</p>
+<p>1</p>
+<p>当前读写的位置</p>
+<p>SEEK_END</p>
+<p>2</p>
+<p>文件尾部</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">fseek</span>(fp,<span class="hljs-number">1234L</span>,SEEK_CUR);<br><span class="hljs-comment">//把读写位置从当前位置向后移动1234字节（L后缀表示长整数）</span><br><span class="hljs-built_in">fseek</span>(fp,<span class="hljs-number">0L</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">//把读写位置移动到文件末尾</span><br></code></pre></td></tr></table></figure>
+<h2 id="作业"><a class="markdownIt-Anchor" href="#作业"></a> 作业</h2>
+<p><strong>1</strong></p>
+<p>编写程序，从键盘输入一串字符，要求将该串字符的倒序串先写入到文件f1.txt中，然后再将原字符串的内容接到该文件的末尾。例如，假设从键盘输入的字符串为“How do you do?”，则文件f1.txt的内容为：</p>
+<p>?od uoy od woHHow do you do?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;iostream&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 256</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE* fp;<br>    <span class="hljs-type">char</span> s[N],t[N];<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-type">errno_t</span> err = <span class="hljs-built_in">fopen_s</span>(&amp;fp,<span class="hljs-string">&quot;C:\\Users\\pc\\Desktop\\ctest.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>);<span class="hljs-comment">//只写方式打开file1</span><br>    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;fail to open ctest.txt&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-string">&quot;输入字符串：&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-built_in">gets_s</span>(s);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; s[i] != <span class="hljs-string">&#x27;\0&#x27;</span>; i++)<br>        t[i] = s[<span class="hljs-built_in">strlen</span>(s) - i - <span class="hljs-number">1</span>];<br>    t[i] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>    <span class="hljs-built_in">fputs</span>(t, fp);<br>    <span class="hljs-built_in">fseek</span>(fp, <span class="hljs-number">0L</span>, <span class="hljs-number">2</span>);<br>    <span class="hljs-built_in">fputs</span>(s, fp);<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-type">errno_t</span> err1 = <span class="hljs-built_in">fopen_s</span>(&amp;fp,<span class="hljs-string">&quot;C:\\Users\\pc\\Desktop\\ctest.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>);<br>    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;can&#x27;t open ctest.txt&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">feof</span>(fp))<span class="hljs-comment">//指针指到的地方没结束的话</span><br>    &#123;<br>        <span class="hljs-built_in">fgets</span>(s, <span class="hljs-number">31</span>, fp);<span class="hljs-comment">//每次读取31个字符</span><br>        <span class="hljs-built_in">puts</span>(s);<br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>2</strong></p>
+<p>用记事本建立一个文本文件f2.txt，在该文件中任意存放一组整数。编写程序统计该文件中正整数、负整数和零的个数。（提示：用fscanf函数读取文件中的数据）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;iostream&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 256</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE* fp;<br>    <span class="hljs-type">int</span> num=<span class="hljs-number">0</span>,pos=<span class="hljs-number">0</span>,neg=<span class="hljs-number">0</span>,zero=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">errno_t</span> err = <span class="hljs-built_in">fopen_s</span>(&amp;fp,<span class="hljs-string">&quot;C:\Users\pc\Desktop\f2.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>);<br>    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;fail to open ctest.txt&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">feof</span>(fp))<br>    &#123;<br>        <span class="hljs-built_in">fscanf_s</span>(fp, <span class="hljs-string">&quot;%d&quot;</span>, &amp;num);<br>        <span class="hljs-keyword">if</span> (num &gt; <span class="hljs-number">0</span>)<br>            pos++;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">0</span>)<br>            neg++;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num == <span class="hljs-number">0</span>)<br>            zero++;<br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    cout &lt;&lt; <span class="hljs-string">&quot;正整数有&quot;</span> &lt;&lt; pos &lt;&lt; <span class="hljs-string">&quot;个，负整数有&quot;</span> &lt;&lt; neg &lt;&lt; <span class="hljs-string">&quot;个，零有&quot;</span> &lt;&lt; zero &lt;&lt; <span class="hljs-string">&quot;个。&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>负整数好像多了一个？</p>
+<p><strong>3</strong></p>
+<p>‎将从键盘输入的N个学生的学号和成绩存入到文件student.dat中。再从文件中读取学生的信息，求出最高分、最低分和总分。N可通过符号常量自行定义大小。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;iostream&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 5 <span class="hljs-comment">//N个学生</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">student</span><br>&#123;<br>    <span class="hljs-type">char</span> num[<span class="hljs-number">8</span>];<br>    <span class="hljs-type">double</span> score;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE* fp,* fp1;<br>    student s[N], t[N];<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-type">errno_t</span> err = <span class="hljs-built_in">fopen_s</span>(&amp;fp,<span class="hljs-string">&quot;student.dat&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;fail to open student.dat&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;输入第&quot;</span> &lt;&lt; i<span class="hljs-number">+1</span> &lt;&lt; <span class="hljs-string">&quot;位学生的学号和成绩：&quot;</span> &lt;&lt; endl;<br>        cin &gt;&gt; s[i].num &gt;&gt; s[i].score;<br>        <span class="hljs-built_in">fwrite</span>(&amp;s[i], <span class="hljs-built_in">sizeof</span>(student), <span class="hljs-number">1</span>, fp);<br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-type">errno_t</span> err1 = <span class="hljs-built_in">fopen_s</span>(&amp;fp1, <span class="hljs-string">&quot;student.dat&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (fp1 == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;fail to open student.dat&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-type">double</span> max = <span class="hljs-number">0</span>, min = <span class="hljs-number">999</span>, sum = <span class="hljs-number">0</span>,score;<br>    <span class="hljs-type">char</span> num[N];<br>    <span class="hljs-built_in">fread</span>(t, <span class="hljs-built_in">sizeof</span>(t), <span class="hljs-number">1</span>, fp);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>    &#123;<br>        sum += t[i].score;<br>        <span class="hljs-keyword">if</span> (t[i].score &gt; max)<br>            max = t[i].score;<br>        <span class="hljs-keyword">if</span> (t[i].score &lt; min)<br>            min = t[i].score;<br>    &#125;<br>    <span class="hljs-built_in">fclose</span>(fp1);<br>    cout &lt;&lt; <span class="hljs-string">&quot;最高分：&quot;</span> &lt;&lt; max &lt;&lt; <span class="hljs-string">&quot;最低分：&quot;</span> &lt;&lt; min&lt;&lt; <span class="hljs-string">&quot;总分：&quot;</span> &lt;&lt; sum&lt;&lt; endl;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>4</strong></p>
+<p>编写程序，将一存放一行字符串的文本文件中的每一个字符及其所对应的ASCII码输出到屏幕上。例如文件的内容是“I love China”，则输出：</p>
+<p>I(73) (32)l(108)o(111)v(118)e(101) (32)C(67)h(104)i(105)n(110)a(97)</p>
+<p>注意：空格也是有效字符。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;iostream&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 100</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE* fp;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-type">char</span> s[N];<br>    <span class="hljs-type">errno_t</span> err = <span class="hljs-built_in">fopen_s</span>(&amp;fp,<span class="hljs-string">&quot;C:\Users\pc\Desktop\ctest.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>);<span class="hljs-comment">//ctest.txt是一个桌面文本文件</span><br>    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;fail to open ctest.txt&quot;</span>;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; !<span class="hljs-built_in">feof</span>(fp); i++)<br>        s[i]=<span class="hljs-built_in">fgetc</span>(fp);<br>    s[i] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; s[i] != <span class="hljs-string">&#x27;\0&#x27;</span>; i++)<br>    &#123;<br>        cout &lt;&lt; s[i] &lt;&lt; <span class="hljs-string">&quot;(&quot;</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, s[i]);<br>        cout&lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>    &#125;<br>    cout &lt;&lt; endl;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/&title=C/C++ 第十二讲 文件 - Lone Trail&summary= C/C++ 第十二讲 文件
+ 12.1 文件的概述
+
+
+标准输入输出
+
+受限于数据类型，处理数据数量有限，程序结束不保存计算结果。
+
+
+
+文件输入输出
+
+可以处理大批量数据，长久地保存计算结果。
+
+
+
+ 文件概述
+
+
+文件是存储在外..."><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=C/C++ 第十二讲 文件 - Lone Trail&amp;body=https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://yantares.cn/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/02/05/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/%E6%88%B4%E9%94%A6%E5%8D%8E%EF%BC%9A%E5%8E%86%E5%8F%B2%E4%B8%8E%E4%BA%BA%E6%B0%91%E7%9A%84%E5%9B%9E%E5%BF%86/">戴锦华：历史与人民的回忆</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/05/notebook/%E8%AF%BE%E5%86%85/C&C++/%E7%AC%AC%E5%8D%81%E8%AE%B2-%E7%BB%93%E6%9E%84/">C/C++ 第十讲 结构</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>相关文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\2024\02\05\notebook\课内\C&C++\第一讲-c-c程序设计入门\" title="C/C++ 第一讲 C/C++程序设计入门"><span class="title">C/C++ 第一讲 C/C++程序设计入门</span></a><a class="item" href="\2024\02\05\notebook\课内\C&C++\第七讲-指针和数组\" title="C/C++ 第七讲 指针和数组"><span class="title">C/C++ 第七讲 指针和数组</span></a><a class="item" href="\2024\02\05\notebook\课内\C&C++\第三讲-选择结构\" title="C/C++ 第三讲 选择结构"><span class="title">C/C++ 第三讲 选择结构</span></a><a class="item" href="\2024\02\05\notebook\课内\C&C++\第九讲-函数（续）\" title="C/C++ 第九讲 函数（续）"><span class="title">C/C++ 第九讲 函数（续）</span></a><a class="item" href="\2024\04\21\notebook\课内\天大物化-第三章-热力学第二、三定律\" title="天大物化 第三章 热力学第二、三定律"><span class="title">天大物化 第三章 热力学第二、三定律</span></a></div></section></div>
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>Comments</p>
+
+      <img src="/images/keyboard.jpg" alt="欢迎讨论~" style="margin-left: 10px; height: 50px;">
+    </section>
+    <section class='body cmt-body waline'>
+      
+
+<div id="waline_container" class="waline_thread"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap" style="column-count:4;"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs15">项目</span><a target="_blank" rel="noopener" href="https://run.yantares.cn">跑步记录</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/">友链</a><a href="/">留言板</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a></div></div><div class="text"><p><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次！</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<p><span id="runtime_span"></span></p>
+<script type="text/javascript">
+function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    X = new Date("2024/02/04 17:00:00"); // 网站开始运行的日期和时间
+    Y = new Date(); // 当前日期和时间
+    T = (Y.getTime() - X.getTime()); // 网站运行的总毫秒数
+    M = 24 * 60 * 60 * 1000; // 一天的毫秒数
+    a = T / M; // 总天数
+    A = Math.floor(a); // 总天数的整数部分
+    b = (a - A) * 24; // 总小时数
+    B = Math.floor(b); // 总小时数的整数部分
+    c = (b - B) * 60; // 总分钟数
+    C = Math.floor((b - B) * 60); // 总分钟数的整数部分
+    D = Math.floor((c - C) * 60); // 总秒数
+    var spanElement = document.getElementById('runtime_span');
+    if (spanElement) {
+      spanElement.innerHTML = "⏱️本站已运行 <span class='runtime'>" + A + "天" + B + "小时" + C + "分" + D + "秒</span>";
+    }
+}
+show_runtime();
+</script>
+<img src="/images/logo.png" style="float: right; width: 60px; margin-left: 20px;">
+<p>本站由 <a href="/">Yantares</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<span class="totalcount">发表了 120 篇文章 · </span><span class="post-count">总计 205.3k 字</span></div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#cc-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2-%E6%96%87%E4%BB%B6"><span class="toc-text"> C&#x2F;C++ 第十二讲 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#121-%E6%96%87%E4%BB%B6%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-text"> 12.1 文件的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="toc-text"> 文件概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#122-%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD"><span class="toc-text"> 12.2 文件的打开和关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80fopen"><span class="toc-text"> 文件的打开：fopen</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#c2022fopen_s"><span class="toc-text"> c2022：fopen_s</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8Fmode"><span class="toc-text"> 文件的打开方式：mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%85%B3%E9%97%AD"><span class="toc-text"> 文件的关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#123-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="toc-text"> 12.3 文件的读写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%86%99"><span class="toc-text"> 顺序读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6fgetc"><span class="toc-text"> 从文件读取字符：fgetc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9D%9F%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0feof"><span class="toc-text"> 文件结束测试函数：feof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6fputc"><span class="toc-text"> 向文件写入字符：fputc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2fputs"><span class="toc-text"> 向文件写入字符串：fputs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2fgets"><span class="toc-text"> 从文件读取字符串：fgets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%9D%97fread"><span class="toc-text"> 从文件读取数据块：fread</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%9D%97fwrite"><span class="toc-text"> 向文件写入数据块：fwrite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%97%E8%AF%BB%E5%86%99%E5%BA%94%E7%94%A8"><span class="toc-text"> 块读写应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B3"><span class="toc-text"> 例3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AEfprintf"><span class="toc-text"> 向文件格式化写入数据：fprintf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE-fscanf"><span class="toc-text"> 从文件格式化读取数据 ：fscanf</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fscanf_s"><span class="toc-text"> fscanf_s</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B4"><span class="toc-text"> 例4</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99"><span class="toc-text"> 随机读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rewind%E5%87%BD%E6%95%B0"><span class="toc-text"> rewind函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fseek%E5%87%BD%E6%95%B0"><span class="toc-text"> fseek函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-text"> 作业</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  import { init } from 'https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js';
+
+  const el = document.getElementById('waline_container');
+  util.viewportLazyload(el, load_waline, false);
+
+  function load_waline(){
+    if (!el) return;
+
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css');
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css');
+
+    const path = el.getAttribute('comment_id') ?? decodeURI(window.location.pathname);
+    const waline = init(Object.assign({"js":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js","css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css","meta_css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css","serverURL":"https://waline.yantares.cn","commentCount":true,"pageview":false}, {
+      el: '#waline_container',
+      path: path,
+      
+    }));
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@v9/dist/mermaid.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    var mermaid_config = {
+      startOnLoad: true,
+      theme:
+        "auto" == "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "neutral",
+      logLevel: 3,
+      themeVariables: {
+        darkMode: true
+      },
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
+        curve: "linear"
+      },
+      gantt: {
+        axisFormat: "%Y/%m/%d"
+      },
+      sequence: {
+        actorMargin: 50
+      }
+    }
+    mermaid.initialize(mermaid_config);
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script><link rel="stylesheet" href="/css/callout_blocks.css">
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9/build/styles/atom-one-dark.min.css">
+<script src="/js/services/callout.js"></script>
+<script src="/js/plugins/link-icon.js"></script>
+<script src="/js/random.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script data-pjax src="/js/services/txmap.js"></script>
+<link rel="stylesheet" href="/css/tagcolor-switch.css">
+
+
+
+<!-- inject -->
+
+</div></body></html>
+<script>var posts=["2024/03/21/悦乐/fiction-tang/","2024/05/05/悦乐/echoism/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2026/02/23/悦乐/铁花飞/","2024/02/21/悦乐/情骨/","2024/02/28/旧说说/aircraft-materials/","2024/04/26/旧说说/小小的一片天空/","2024/02/21/旧说说/归乡/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/02/21/旧说说/猫的社会学/","2024/10/15/随笔/childhood/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/02/04/旧说说/谈往录/","2025/10/28/随笔/SCITE（上信考）/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2024/06/10/旧说说/长歌行/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2026/04/13/随笔/丧失主体性的网民：再读《蔑视大众》/","2025/06/09/随笔/万神殿 Pantheon/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2024/02/04/随笔/乾果/","2025/08/15/随笔/六盘水游记/","2026/03/22/随笔/厦门游记/","2025/11/07/随笔/南京游记/","2026/04/21/随笔/嘉定生存录（1）：实体店测评/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/03/01/随笔/夜风奇谭/","2024/05/11/随笔/我的颜色/","2024/03/10/随笔/法华/","2024/02/04/随笔/群山之声响彻寰宇/","2024/03/01/随笔/躬身，甘为推磨/","2024/02/21/读罢有感/S.忒修斯之船/","2024/06/21/随笔/问道/","2024/02/21/读罢有感/仙人抚我顶/","2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/03/17/随笔/阿拉城/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/02/21/读罢有感/索拉里斯星/","2024/03/10/读罢有感/董晨宇：互联网观察/","2025/11/27/读罢有感/蔑视大众/","2025/11/10/读罢有感/银河系搭车客指南/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2024/03/08/读罢有感/青铜骑士/","2026/04/28/notebook/科研/XPS谱图分析/","2024/10/08/series/天星拾缀/A3/","2025/01/17/series/天星拾缀/Antares/","2026/04/26/notebook/科研/XPS数据处理/","2025/10/29/series/天星拾缀/α Scorpii/","2025/05/15/series/博客搭建/Running page/","2026/04/09/notebook/科研/电化学工作站数据处理/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2024/09/25/series/博客搭建/blog迁移/","2024/02/04/series/博客搭建/wordpress建站始末/","2024/02/04/series/博客搭建/建站目标及进度/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2025/03/21/series/谈往录/谈往录（1）/","2025/05/13/series/谈往录/谈往录（3）/","2025/04/04/series/谈往录/谈往录（2）/","2025/07/14/series/谈往录/谈往录（4）/","2026/04/27/series/软件使用小技巧/Bilibili/","2025/11/04/series/谈往录/谈往录（5）/","2026/01/29/series/软件使用小技巧/Bing搜索屏蔽CSDN/","2025/12/01/series/谈往录/谈往录（6）/","2026/01/03/series/谈往录/谈往录（7）/","2026/04/24/series/软件使用小技巧/Calibre/","2026/04/09/series/谈往录/谈往录（8）/","2026/05/07/series/谈往录/谈往录（9）/","2026/04/26/series/软件使用小技巧/Chrome/","2026/04/24/series/软件使用小技巧/Git Command/","2026/04/26/series/软件使用小技巧/Clash/","2026/04/21/series/软件使用小技巧/Lightroom调色/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2025/11/03/series/软件使用小技巧/MultiTTS/","2026/04/24/series/软件使用小技巧/Obsidian：优化/","2025/11/07/series/软件使用小技巧/Notion/","2026/04/12/series/软件使用小技巧/Origin/","2026/04/07/series/软件使用小技巧/Zview/","2024/04/06/series/软件使用小技巧/rss传奇/","2026/04/22/series/软件使用小技巧/Photoshop/","2024/03/01/series/软件使用小技巧/zotero使用/","2024/02/27/series/软件使用小技巧/此应用包不支持通过应用安装程序安装，因为它/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2024/02/28/series/软件使用小技巧/打印资料小寄巧/","2024/11/22/series/软件使用小技巧/课堂派：不允许下载/","2024/03/01/series/软件使用小技巧/效率软件/","2026/04/22/series/软件使用小技巧/网盘+Alist 实现Win+Ipad同步Zotero/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2026/05/09/notebook/自学杂项/Steve Mould声学科普两则/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2024/03/01/notebook/自学杂项/google-play/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/10/26/notebook/选修/solar/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2024/09/28/notebook/选修/中西艺术比较/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/06/06/notebook/选修/玉石：人与石的故事/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/03/20/notebook/选修/飞书妙记/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2024/04/04/notebook/课内/电工学：正弦交流电路/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2024/02/05/notebook/课内/C&C++/第一讲-c-c程序设计入门/","2024/02/05/notebook/课内/C&C++/第七讲-指针和数组/","2024/02/05/notebook/课内/C&C++/第三讲-选择结构/","2024/02/05/notebook/课内/C&C++/第九讲-函数（续）/","2024/02/05/notebook/课内/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/课内/C&C++/第六讲-二维数组、字符数组/","2024/02/05/notebook/课内/C&C++/第五讲-一维数组/","2024/02/05/notebook/课内/C&C++/第八讲-函数/","2024/02/05/notebook/课内/C&C++/第十二讲-文件/","2024/02/05/notebook/课内/C&C++/第十讲-结构/","2024/02/05/notebook/课内/C&C++/第四讲-循环结构/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>
