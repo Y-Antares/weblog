@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yantares.cn/images/miuhead.png">
 <meta property="article:published_time" content="2026-05-17T10:58:12.000Z">
-<meta property="article:modified_time" content="2026-05-17T11:01:39.306Z">
+<meta property="article:modified_time" content="2026-05-17T11:20:51.882Z">
 <meta property="article:author" content="Yantares">
 <meta property="article:tag" content="健康">
 <meta property="article:tag" content="测试">
@@ -54,7 +54,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yantares","sameAs":[],"image":"/images/miuhead.png"},"dateCreated":"2026-05-17T18:58:12+08:00","dateModified":"2026-05-17T19:01:39+08:00","datePublished":"2026-05-17T18:58:12+08:00","description":"","headline":"身体健康机能互动测试","mainEntityOfPage":{"@type":"WebPage","@id":"https://yantares.cn/2026/05/17/%E9%9A%8F%E7%AC%94/%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7%E6%9C%BA%E8%83%BD%E4%BA%92%E5%8A%A8%E6%B5%8B%E8%AF%95/"},"publisher":{"@type":"Organization","name":"Yantares","sameAs":[],"image":"/images/miuhead.png","logo":{"@type":"ImageObject","url":"/images/miuhead.png"}},"url":"https://yantares.cn/2026/05/17/%E9%9A%8F%E7%AC%94/%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7%E6%9C%BA%E8%83%BD%E4%BA%92%E5%8A%A8%E6%B5%8B%E8%AF%95/","keywords":"健康, 测试","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yantares","sameAs":[],"image":"/images/miuhead.png"},"dateCreated":"2026-05-17T18:58:12+08:00","dateModified":"2026-05-17T19:20:51+08:00","datePublished":"2026-05-17T18:58:12+08:00","description":"","headline":"身体健康机能互动测试","mainEntityOfPage":{"@type":"WebPage","@id":"https://yantares.cn/2026/05/17/%E9%9A%8F%E7%AC%94/%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7%E6%9C%BA%E8%83%BD%E4%BA%92%E5%8A%A8%E6%B5%8B%E8%AF%95/"},"publisher":{"@type":"Organization","name":"Yantares","sameAs":[],"image":"/images/miuhead.png","logo":{"@type":"ImageObject","url":"/images/miuhead.png"}},"url":"https://yantares.cn/2026/05/17/%E9%9A%8F%E7%AC%94/%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7%E6%9C%BA%E8%83%BD%E4%BA%92%E5%8A%A8%E6%B5%8B%E8%AF%95/","keywords":"健康, 测试","image":[]}</script>
   
   
   <!-- MathJax配置 -->
@@ -100,7 +100,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></div><div id="tag"> <span>&nbsp标签：</span><a class="cap breadcrumb-link" href="/tags/%E5%81%A5%E5%BA%B7/">健康</a>&nbsp; <a class="cap breadcrumb-link" href="/tags/%E6%B5%8B%E8%AF%95/">测试</a>&nbsp</div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-05-17T10:58:12.000Z">2026-05-17</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-05-17T11:01:39.306Z">2026-05-17</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-05-17T10:58:12.000Z">2026-05-17</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-05-17T11:20:51.882Z">2026-05-17</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -228,6 +228,30 @@
   font-size: .82rem;
   color: var(--fa-muted);
 }
+.fitness-assess .fa-diagrams {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .6rem;
+  margin: 0 0 1rem;
+}
+.fitness-assess .fa-diagram {
+  margin: 0;
+  border: 1px solid rgba(217, 208, 195, .85);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fffaf2;
+}
+.fitness-assess .fa-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fitness-assess .fa-diagram figcaption {
+  padding: .45rem .6rem .6rem;
+  color: var(--fa-muted);
+  font-size: .82rem;
+  font-weight: 700;
+}
 .fitness-assess .fa-choices {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -344,7 +368,8 @@
 }
 @media (max-width: 880px) {
   .fitness-assess .fa-grid,
-  .fitness-assess .fa-scale {
+  .fitness-assess .fa-scale,
+  .fitness-assess .fa-diagrams {
     grid-template-columns: 1fr;
   }
 }
@@ -412,43 +437,57 @@
       title: "下肢爆发力",
       item: "立定跳远",
       pass: "壮年：自身身高；55 岁以上：一半身高。",
-      advanced: "男：2.5m+；女：2m+。"
+      advanced: "男：2.5m+；女：2m+。",
+      passDiagram: "jump-pass",
+      advancedDiagram: "jump-advanced"
     },
     {
       title: "下肢力量与稳定性",
       item: "单腿力量动作",
       pass: "后跨步弓箭步 reverse lunge：每只手 25% 体重哑铃，每只腿 8 次；左右差异明显则失败。",
-      advanced: "保加利亚蹲 Bulgarian Split Squat：男每只手 50% 体重，女每只手 30% 体重；其它同上。"
+      advanced: "保加利亚蹲 Bulgarian Split Squat：男每只手 50% 体重，女每只手 30% 体重；其它同上。",
+      passDiagram: "reverse-lunge",
+      advancedDiagram: "bulgarian-squat"
     },
     {
       title: "上半身力量",
       item: "反手引体向上 chin up",
       pass: "完成反手引体向上。",
-      advanced: "男：加 40% 自身体重 3 次；女：自重 5 次。"
+      advanced: "男：加 40% 自身体重 3 次；女：自重 5 次。",
+      passDiagram: "chin-up",
+      advancedDiagram: "weighted-chin-up"
     },
     {
       title: "有氧能力",
       item: "1 英里跑 / 1.61 km",
       pass: "壮年：10 分钟内；55 岁以上：12 分钟内。",
-      advanced: "壮年：7 分钟内；55 岁以上：9 分钟内。"
+      advanced: "壮年：7 分钟内；55 岁以上：9 分钟内。",
+      passDiagram: "run-pass",
+      advancedDiagram: "run-advanced"
     },
     {
       title: "上肢灵活性",
       item: "肩部活动度",
       pass: "头背贴墙时，手背可以举起并贴到墙。",
-      advanced: "能完成 wall slide。"
+      advanced: "能完成 wall slide。",
+      passDiagram: "wall-hands",
+      advancedDiagram: "wall-slide"
     },
     {
       title: "核心力量",
       item: "慢速仰卧起坐和躺下 controlled rolldown",
       pass: "完成 25 个。",
-      advanced: "完成 50 个。"
+      advanced: "完成 50 个。",
+      passDiagram: "rolldown-pass",
+      advancedDiagram: "rolldown-advanced"
     },
     {
       title: "下肢灵活性",
       item: "坐下站起",
       pass: "不借助手、膝盖等外力坐下并站起。",
-      advanced: "单腿完成。"
+      advanced: "单腿完成。",
+      passDiagram: "sit-rise",
+      advancedDiagram: "single-leg-rise"
     }
   ];
 
@@ -469,90 +508,182 @@
   const progressEl = root.querySelector("#fa-progress");
   const meterEl = root.querySelector("#fa-meter");
 
-  function renderTests() {
-    testsEl.innerHTML = tests.map((test, index) => `
-      <article class="fa-test-card" data-index="${index}">
-        <div class="fa-test-head">
-          <div>
-            <div class="fa-test-index">项目 ${index + 1}</div>
-            <h2>${test.title}</h2>
-          </div>
-          <div class="fa-points" id="fa-points-${index}">未选</div>
-        </div>
-        <div class="fa-standards">
-          <div class="fa-standard"><strong>测试项目</strong>${test.item}</div>
-          <div class="fa-standard"><strong>过关标准</strong>${test.pass}</div>
-          <div class="fa-standard"><strong>高阶标准</strong>${test.advanced}</div>
-        </div>
-        <div class="fa-choices" role="group" aria-label="${test.title}">
-          <button class="fa-choice fa-bad" type="button" data-value="0" aria-pressed="false">不过关</button>
-          <button class="fa-choice fa-ok" type="button" data-value="1" aria-pressed="false">过关</button>
-          <button class="fa-choice fa-great" type="button" data-value="2" aria-pressed="false">高阶</button>
-        </div>
-      </article>
-    `).join("");
-  }
+  function diagramSvg(type) {
+    const style = `
+      <defs>
+        <style>
+          .skin{fill:#f3c9a5}.ink{stroke:#263230;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+          .thin{stroke:#64706b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+          .accent{stroke:#2f6f5e;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+          .warm{stroke:#b25d36;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+          .blue{stroke:#315d8c;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+          .label{font:700 24px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;fill:#263230}
+          .note{font:600 18px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;fill:#64706b}
+        </style>
+<pre><code>  &lt;/defs&gt;`;
+const frame = body =&gt; `&lt;svg viewBox=&quot;0 0 520 300&quot; role=&quot;img&quot; aria-hidden=&quot;true&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+  &lt;rect width=&quot;520&quot; height=&quot;300&quot; rx=&quot;18&quot; fill=&quot;#fff7ea&quot;/&gt;
+  &lt;path d=&quot;M40 244H480&quot; class=&quot;thin&quot;/&gt;
+  $&#123;style&#125;$&#123;body&#125;
+&lt;/svg&gt;`;
+const head = (x, y) =&gt; `&lt;circle cx=&quot;$&#123;x&#125;&quot; cy=&quot;$&#123;y&#125;&quot; r=&quot;20&quot; class=&quot;skin&quot; stroke=&quot;#263230&quot; stroke-width=&quot;6&quot;/&gt;`;
 
-  function renderScale(activeRating) {
-    scaleEl.innerHTML = ratings.map(item => `
-      <div class="fa-scale-item ${activeRating && activeRating.level === item.level ? "fa-active" : ""}">
-        <strong>${item.min}-${item.max} · ${item.level}</strong>
-        <span>${item.text}</span>
-      </div>
-    `).join("");
-  }
+const diagrams = &#123;
+  &quot;jump-pass&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;立定跳远：跳到身高&lt;/text&gt;
+    &lt;path d=&quot;M76 244H228&quot; class=&quot;accent&quot;/&gt;&lt;path d=&quot;M76 230v28M228 230v28&quot; class=&quot;accent&quot;/&gt;
+    $&#123;head(150, 104)&#125;&lt;path d=&quot;M150 126v62M150 150l-42 18M150 150l42 18M150 188l-44 44M150 188l50 42&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M282 214c46-78 104-104 176-64&quot; class=&quot;warm&quot;/&gt;&lt;path d=&quot;M444 137l30 10-20 25&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;96&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;双脚起跳，落点不短于身高&lt;/text&gt;
+  `),
+  &quot;jump-advanced&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：男 2.5m+ / 女 2m+&lt;/text&gt;
+    &lt;path d=&quot;M54 244H430&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M54 230v28M430 230v28&quot; class=&quot;blue&quot;/&gt;
+    $&#123;head(118, 94)&#125;&lt;path d=&quot;M118 116v58M118 140l-42 20M118 140l50 16M118 174l-38 50M118 174l58 46&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M216 210c62-100 148-126 244-74&quot; class=&quot;warm&quot;/&gt;&lt;path d=&quot;M448 125l34 12-24 28&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;120&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;更远距离，强调爆发力&lt;/text&gt;
+  `),
+  &quot;reverse-lunge&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;后跨步弓箭步&lt;/text&gt;
+    &lt;rect x=&quot;86&quot; y=&quot;122&quot; width=&quot;34&quot; height=&quot;52&quot; rx=&quot;8&quot; fill=&quot;#315d8c&quot;/&gt;&lt;rect x=&quot;330&quot; y=&quot;122&quot; width=&quot;34&quot; height=&quot;52&quot; rx=&quot;8&quot; fill=&quot;#315d8c&quot;/&gt;
+    $&#123;head(226, 86)&#125;&lt;path d=&quot;M226 108v62M226 132l-92 34M226 132l92 34M226 170l-70 66M226 170l126 52&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M142 236h72M336 222h72&quot; class=&quot;accent&quot;/&gt;
+    &lt;text x=&quot;86&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;双手负重，左右腿各 8 次&lt;/text&gt;
+  `),
+  &quot;bulgarian-squat&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：保加利亚蹲&lt;/text&gt;
+    &lt;rect x=&quot;52&quot; y=&quot;182&quot; width=&quot;122&quot; height=&quot;44&quot; rx=&quot;10&quot; fill=&quot;#d9d0c3&quot; stroke=&quot;#64706b&quot; stroke-width=&quot;5&quot;/&gt;
+    &lt;rect x=&quot;238&quot; y=&quot;116&quot; width=&quot;36&quot; height=&quot;62&quot; rx=&quot;8&quot; fill=&quot;#315d8c&quot;/&gt;&lt;rect x=&quot;392&quot; y=&quot;116&quot; width=&quot;36&quot; height=&quot;62&quot; rx=&quot;8&quot; fill=&quot;#315d8c&quot;/&gt;
+    $&#123;head(334, 76)&#125;&lt;path d=&quot;M334 98v68M334 126l-74 32M334 126l74 32M334 166l-152 44M334 166l70 64&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M168 210h82M392 230h66&quot; class=&quot;accent&quot;/&gt;
+    &lt;text x=&quot;74&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;后脚垫高，前腿下蹲起身&lt;/text&gt;
+  `),
+  &quot;chin-up&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;反手引体向上&lt;/text&gt;
+    &lt;path d=&quot;M104 78H416&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M172 80v44M348 80v44&quot; class=&quot;ink&quot;/&gt;
+    $&#123;head(260, 126)&#125;&lt;path d=&quot;M260 148v70M260 164l-88-42M260 164l88-42M260 218l-54 44M260 218l54 44&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M176 122c26-28 142-28 168 0&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;100&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;掌心朝向自己，拉到下巴过杠&lt;/text&gt;
+  `),
+  &quot;weighted-chin-up&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：负重 / 多次引体&lt;/text&gt;
+    &lt;path d=&quot;M104 78H416&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M172 80v42M348 80v42&quot; class=&quot;ink&quot;/&gt;
+    $&#123;head(260, 120)&#125;&lt;path d=&quot;M260 142v68M260 158l-88-40M260 158l88-40M260 210l-54 46M260 210l54 46&quot; class=&quot;ink&quot;/&gt;
+    &lt;rect x=&quot;234&quot; y=&quot;210&quot; width=&quot;52&quot; height=&quot;46&quot; rx=&quot;8&quot; fill=&quot;#b25d36&quot;/&gt;
+    &lt;text x=&quot;118&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;男负重 40% 做 3 次；女自重 5 次&lt;/text&gt;
+  `),
+  &quot;run-pass&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;1 英里跑：过关配速&lt;/text&gt;
+    $&#123;head(170, 96)&#125;&lt;path d=&quot;M170 118l42 58M198 154l72-18M206 176l-64 42M206 176l84 50&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M80 224c80 22 184 22 312 0&quot; class=&quot;accent&quot;/&gt;&lt;path d=&quot;M356 200l50 24-50 24&quot; class=&quot;accent&quot;/&gt;
+    &lt;text x=&quot;92&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;壮年 10 分内；55+ 12 分内&lt;/text&gt;
+  `),
+  &quot;run-advanced&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：更快完成 1 英里&lt;/text&gt;
+    $&#123;head(156, 86)&#125;&lt;path d=&quot;M156 108l54 54M190 142l84-38M214 164l-80 34M214 164l98 44&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M54 224c96 34 232 34 398 0&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M410 196l58 28-58 28&quot; class=&quot;blue&quot;/&gt;
+    &lt;path d=&quot;M78 166h72M56 194h88&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;96&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;壮年 7 分内；55+ 9 分内&lt;/text&gt;
+  `),
+  &quot;wall-hands&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;头背贴墙，手背贴墙&lt;/text&gt;
+    &lt;path d=&quot;M374 58v186&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M380 244H458&quot; class=&quot;blue&quot;/&gt;
+    $&#123;head(260, 96)&#125;&lt;path d=&quot;M260 118v92M260 140l-70-70M260 140l70-70M260 210l-42 42M260 210l42 42&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M190 70h34M296 70h34&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;88&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;背部稳定贴墙，手背能碰墙&lt;/text&gt;
+  `),
+  &quot;wall-slide&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：Wall Slide&lt;/text&gt;
+    &lt;path d=&quot;M374 58v186&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M380 244H458&quot; class=&quot;blue&quot;/&gt;
+    $&#123;head(260, 112)&#125;&lt;path d=&quot;M260 134v86M260 158l-68-28M260 158l68-28M260 220l-42 36M260 220l42 36&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M192 130v-58M328 130v-58&quot; class=&quot;warm&quot;/&gt;&lt;path d=&quot;M182 88h30M318 88h30&quot; class=&quot;warm&quot;/&gt;
+    &lt;path d=&quot;M176 170c16-56 16-82 16-112M344 170c-16-56-16-82-16-112&quot; class=&quot;thin&quot;/&gt;
+    &lt;text x=&quot;86&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;手肘和手背贴墙，上下滑动&lt;/text&gt;
+  `),
+  &quot;rolldown-pass&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;慢速仰卧起坐 / 躺下&lt;/text&gt;
+    &lt;path d=&quot;M100 224H420&quot; class=&quot;thin&quot;/&gt;
+    $&#123;head(210, 112)&#125;&lt;path d=&quot;M226 130c28 28 48 56 58 88M284 218h96M246 168l-76 10M246 168l70-22M284 218l-62 28&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M168 96c-42 42-44 94-12 130&quot; class=&quot;warm&quot;/&gt;&lt;path d=&quot;M148 216l8 36 28-22&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;118&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;控制速度，不借惯性完成 25 个&lt;/text&gt;
+  `),
+  &quot;rolldown-advanced&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：控制完成 50 个&lt;/text&gt;
+    &lt;path d=&quot;M100 224H420&quot; class=&quot;thin&quot;/&gt;
+    $&#123;head(210, 112)&#125;&lt;path d=&quot;M226 130c28 28 48 56 58 88M284 218h96M246 168l-76 10M246 168l70-22M284 218l-62 28&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M148 86c-56 62-58 120-12 168&quot; class=&quot;blue&quot;/&gt;&lt;path d=&quot;M128 244l8 36 30-22&quot; class=&quot;blue&quot;/&gt;
+    &lt;text x=&quot;118&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;同样动作，保持控制到 50 个&lt;/text&gt;
+  `),
+  &quot;sit-rise&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;不借外力坐下站起&lt;/text&gt;
+    $&#123;head(186, 122)&#125;&lt;path d=&quot;M186 144v56M186 164l-56 30M186 164l62 28M186 200l-76 32M186 200l82 28&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M98 244H300&quot; class=&quot;accent&quot;/&gt;
+    &lt;path d=&quot;M348 216l52-52M400 164v50M400 164h-50&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;92&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;不用手和膝盖辅助起身&lt;/text&gt;
+  `),
+  &quot;single-leg-rise&quot;: frame(`
+    &lt;text x=&quot;32&quot; y=&quot;44&quot; class=&quot;label&quot;&gt;高阶：单腿坐下站起&lt;/text&gt;
+    $&#123;head(234, 96)&#125;&lt;path d=&quot;M234 118v78M234 144l-72 26M234 144l68-24M234 196l-72 50M234 196l112-12&quot; class=&quot;ink&quot;/&gt;
+    &lt;path d=&quot;M142 246H238&quot; class=&quot;accent&quot;/&gt;&lt;path d=&quot;M326 184h84&quot; class=&quot;warm&quot;/&gt;
+    &lt;text x=&quot;94&quot; y=&quot;282&quot; class=&quot;note&quot;&gt;一腿支撑，另一腿前伸&lt;/text&gt;
+  `)
+&#125;;
+return diagrams[type] || &quot;&quot;;
+</code></pre>
+<p>}</p>
+<p>function renderTests() {<br />
+testsEl.innerHTML = tests.map((test, index) =&gt; <code>      &lt;article class=&quot;fa-test-card&quot; data-index=&quot;$&#123;index&#125;&quot;&gt;         &lt;div class=&quot;fa-test-head&quot;&gt;           &lt;div&gt;             &lt;div class=&quot;fa-test-index&quot;&gt;项目 $&#123;index + 1&#125;&lt;/div&gt;             &lt;h2&gt;$&#123;test.title&#125;&lt;/h2&gt;           &lt;/div&gt;           &lt;div class=&quot;fa-points&quot; id=&quot;fa-points-$&#123;index&#125;&quot;&gt;未选&lt;/div&gt;         &lt;/div&gt;         &lt;div class=&quot;fa-standards&quot;&gt;           &lt;div class=&quot;fa-standard&quot;&gt;&lt;strong&gt;测试项目&lt;/strong&gt;$&#123;test.item&#125;&lt;/div&gt;           &lt;div class=&quot;fa-standard&quot;&gt;&lt;strong&gt;过关标准&lt;/strong&gt;$&#123;test.pass&#125;&lt;/div&gt;           &lt;div class=&quot;fa-standard&quot;&gt;&lt;strong&gt;高阶标准&lt;/strong&gt;$&#123;test.advanced&#125;&lt;/div&gt;         &lt;/div&gt;         &lt;div class=&quot;fa-diagrams&quot;&gt;           &lt;figure class=&quot;fa-diagram&quot;&gt;             $&#123;diagramSvg(test.passDiagram)&#125;             &lt;figcaption&gt;过关动作示意&lt;/figcaption&gt;           &lt;/figure&gt;           &lt;figure class=&quot;fa-diagram&quot;&gt;             $&#123;diagramSvg(test.advancedDiagram)&#125;             &lt;figcaption&gt;高阶动作示意&lt;/figcaption&gt;           &lt;/figure&gt;         &lt;/div&gt;         &lt;div class=&quot;fa-choices&quot; role=&quot;group&quot; aria-label=&quot;$&#123;test.title&#125;&quot;&gt;           &lt;button class=&quot;fa-choice fa-bad&quot; type=&quot;button&quot; data-value=&quot;0&quot; aria-pressed=&quot;false&quot;&gt;不过关&lt;/button&gt;           &lt;button class=&quot;fa-choice fa-ok&quot; type=&quot;button&quot; data-value=&quot;1&quot; aria-pressed=&quot;false&quot;&gt;过关&lt;/button&gt;           &lt;button class=&quot;fa-choice fa-great&quot; type=&quot;button&quot; data-value=&quot;2&quot; aria-pressed=&quot;false&quot;&gt;高阶&lt;/button&gt;         &lt;/div&gt;       &lt;/article&gt;    </code>).join(“”);<br />
+}</p>
+<p>function renderScale(activeRating) {<br />
+scaleEl.innerHTML = ratings.map(item =&gt; <code>      &lt;div class=&quot;fa-scale-item $&#123;activeRating &amp;&amp; activeRating.level === item.level ? &quot;fa-active&quot; : &quot;&quot;&#125;&quot;&gt;         &lt;strong&gt;$&#123;item.min&#125;-$&#123;item.max&#125; · $&#123;item.level&#125;&lt;/strong&gt;         &lt;span&gt;$&#123;item.text&#125;&lt;/span&gt;       &lt;/div&gt;    </code>).join(“”);<br />
+}</p>
+<p>function getRating(score) {<br />
+return ratings.find(item =&gt; score &gt;= item.min &amp;&amp; score &lt;= item.max);<br />
+}</p>
+<p>function update() {<br />
+const completed = state.filter(value =&gt; value !== null).length;<br />
+const score = state.reduce((sum, value) =&gt; sum + (value || 0), 0);<br />
+const rating = getRating(score);</p>
+<pre><code>scoreEl.textContent = score;
+meterEl.style.width = `$&#123;Math.round(score / 14 * 100)&#125;%`;
+progressEl.textContent = `已选择 $&#123;completed&#125; / $&#123;tests.length&#125; 项`;
 
-  function getRating(score) {
-    return ratings.find(item => score >= item.min && score <= item.max);
-  }
-
-  function update() {
-    const completed = state.filter(value => value !== null).length;
-    const score = state.reduce((sum, value) => sum + (value || 0), 0);
-    const rating = getRating(score);
-
-    scoreEl.textContent = score;
-    meterEl.style.width = `${Math.round(score / 14 * 100)}%`;
-    progressEl.textContent = `已选择 ${completed} / ${tests.length} 项`;
-
-    if (completed < tests.length) {
-      levelEl.textContent = "待完成";
-      verdictEl.textContent = `还差 ${tests.length - completed} 项。当前临时分数 ${score} 分，完成后显示最终评价。`;
-      renderScale(null);
-    } else {
-      levelEl.textContent = rating.level;
-      verdictEl.textContent = `${score} 分，${rating.level}：${rating.text}`;
-      renderScale(rating);
-    }
-
-    state.forEach((value, index) => {
-      const card = testsEl.querySelector(`[data-index="${index}"]`);
-      const points = root.querySelector(`#fa-points-${index}`);
-      points.textContent = value === null ? "未选" : `${value} 分`;
-      card.querySelectorAll(".fa-choice").forEach(button => {
-        button.setAttribute("aria-pressed", Number(button.dataset.value) === value ? "true" : "false");
-      });
-    });
-  }
-
-  renderTests();
+if (completed &lt; tests.length) &#123;
+  levelEl.textContent = &quot;待完成&quot;;
+  verdictEl.textContent = `还差 $&#123;tests.length - completed&#125; 项。当前临时分数 $&#123;score&#125; 分，完成后显示最终评价。`;
   renderScale(null);
-  update();
+&#125; else &#123;
+  levelEl.textContent = rating.level;
+  verdictEl.textContent = `$&#123;score&#125; 分，$&#123;rating.level&#125;：$&#123;rating.text&#125;`;
+  renderScale(rating);
+&#125;
 
-  testsEl.addEventListener("click", event => {
-    const button = event.target.closest(".fa-choice");
-    if (!button) return;
-    const card = button.closest(".fa-test-card");
-    state[Number(card.dataset.index)] = Number(button.dataset.value);
-    update();
-  });
-
-  root.querySelector("#fa-reset").addEventListener("click", () => {
-    state.fill(null);
-    update();
-  });
-})();
-</script>
+state.forEach((value, index) =&gt; &#123;
+  const card = testsEl.querySelector(`[data-index=&quot;$&#123;index&#125;&quot;]`);
+  const points = root.querySelector(`#fa-points-$&#123;index&#125;`);
+  points.textContent = value === null ? &quot;未选&quot; : `$&#123;value&#125; 分`;
+  card.querySelectorAll(&quot;.fa-choice&quot;).forEach(button =&gt; &#123;
+    button.setAttribute(&quot;aria-pressed&quot;, Number(button.dataset.value) === value ? &quot;true&quot; : &quot;false&quot;);
+  &#125;);
+&#125;);
+</code></pre>
+<p>}</p>
+<p>renderTests();<br />
+renderScale(null);<br />
+update();</p>
+<p>testsEl.addEventListener(“click”, event =&gt; {<br />
+const button = event.target.closest(“.fa-choice”);<br />
+if (!button) return;<br />
+const card = button.closest(“.fa-test-card”);<br />
+state[Number(card.dataset.index)] = Number(button.dataset.value);<br />
+update();<br />
+});</p>
+<p>root.querySelector(“#fa-reset”).addEventListener(“click”, () =&gt; {<br />
+state.fill(null);<br />
+update();<br />
+});<br />
+})();<br />
+</script></p>
 </article>
 <div class="article-footer">
     <section id="references">
@@ -645,7 +776,7 @@ show_runtime();
 <img src="/images/logo.png" style="float: right; width: 60px; margin-left: 20px;">
 <p>本站由 <a href="/">Yantares</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
 本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
-<span class="totalcount">发表了 122 篇文章 · </span><span class="post-count">总计 205.9k 字</span></div></footer>
+<span class="totalcount">发表了 122 篇文章 · </span><span class="post-count">总计 208.6k 字</span></div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 
