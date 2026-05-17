@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="How (and why) to take a logarithm of an image https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;ldxFjLJ3rVY 【官方双语】如何（以及为什么）对一幅画取对数？_哔哩哔哩_bilibili [1] 想彻底理解还是直接看视频的好，如果看过视频想快速复习可以直接看这张省流图：  我们来总结得到Escher画的条件：   拥有一副自相似">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Escher的对数画">
+<meta property="og:url" content="https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/index.html">
+<meta property="og:site_name" content="Lone Trail">
+<meta property="og:description" content="How (and why) to take a logarithm of an image https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;ldxFjLJ3rVY 【官方双语】如何（以及为什么）对一幅画取对数？_哔哩哔哩_bilibili [1] 想彻底理解还是直接看视频的好，如果看过视频想快速复习可以直接看这张省流图：  我们来总结得到Escher画的条件：   拥有一副自相似">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yantares.cn/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/%E7%9C%81%E6%B5%81.webp">
+<meta property="og:image" content="https://yantares.cn/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/EcherCat.webp">
+<meta property="og:image" content="https://yantares.cn/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/04-escher.webp">
+<meta property="article:published_time" content="2026-05-13T04:33:50.000Z">
+<meta property="article:modified_time" content="2026-05-13T08:22:47.218Z">
+<meta property="article:author" content="Yantares">
+<meta property="article:tag" content="3B1B">
+<meta property="article:tag" content="科普">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantares.cn/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/%E7%9C%81%E6%B5%81.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Escher的对数画</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="Lone Trail" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    <div class="banner">
+  <div id="blogtitel" class="blogtitel">Lone Trail</div>
+  <ul id="wrapper" class="wrapper">
+    <div class="sun">
+      <div class="star"></div>
+    </div>
+    <div class="mercury">
+      <div class="planet">
+        <div class="shadow"></div>
+      </div>
+    </div>
+    <div class="venus">
+      <div class="planet">
+        <div class="shadow"></div>
+      </div>
+    </div>
+    <div class="earth">
+      <div class="planet"><div class="shadow"></div></div>
+    </div>
+    <div class="mars">
+      <div class="planet"><div class="shadow"></div></div>
+    </div>
+    <div class="jupiter">
+      <div class="planet"><div class="shadow"></div></div>
+    </div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+    <div class="span"></div>
+  </ul>
+</div>
+  
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/05/09/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Steve%20Mould%E5%A3%B0%E5%AD%A6%E7%A7%91%E6%99%AE%E4%B8%A4%E5%88%99/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&text=Escher的对数画"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&is_video=false&description=Escher的对数画"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Escher的对数画&body=Check out this article: https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&name=Escher的对数画&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&t=Escher的对数画"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#how-and-why-to-take-a-logarithm-of-an-image"><span class="toc-number">1.</span> <span class="toc-text"> How (and why) to take a logarithm of an image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text"> 代码</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+      
+      <div class="content index py4 ">
+          
+          <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Escher的对数画
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Yantares</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-05-13T04:33:50.000Z" class="dt-published" itemprop="datePublished">2026-05-13</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/notebook/">notebook</a> › <a class="category-link" href="/categories/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/">自学杂项</a>
+    </div>
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/3B1B/" rel="tag">3B1B</a>, <a class="p-category" href="/tags/%E7%A7%91%E6%99%AE/" rel="tag">科普</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="how-and-why-to-take-a-logarithm-of-an-image"><a class="markdownIt-Anchor" href="#how-and-why-to-take-a-logarithm-of-an-image"></a> How (and why) to take a logarithm of an image</h2>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ldxFjLJ3rVY">https://www.youtube.com/watch?v=ldxFjLJ3rVY</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UDRFBSEE1/">【官方双语】如何（以及为什么）对一幅画取对数？_哔哩哔哩_bilibili</a> <sup class="post-ref"><a href="#reference-1" id="reference-link-1" aria-label="参考文献 1">[1]</a></sup></p>
+<p>想彻底理解还是直接看视频的好，如果看过视频想快速复习可以直接看这张省流图：</p>
+<img src="/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/%E7%9C%81%E6%B5%81.webp" class="" title="图1 省流">
+<p>我们来总结得到Escher画的条件：</p>
+<ol>
+<li class="lvl-3">
+<p>拥有一副自相似且倍率是2的幂次方的画</p>
+</li>
+<li class="lvl-3">
+<p>对它进行log 变换、log 平面复数仿射变换、exp 反变换</p>
+</li>
+</ol>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<p>再次细分原图 -&gt; 埃舍尔画的步骤：</p>
+<ol>
+<li class="lvl-3">
+<p>boundless：给原图做周边信息的填充</p>
+</li>
+<li class="lvl-3">
+<p>self-similar：把原图中心替换成16倍缩小的原图</p>
+</li>
+<li class="lvl-3">
+<p>ln：对图片每个像素点取对数，变换到复平面上</p>
+</li>
+<li class="lvl-3">
+<p>c：对复平面进行旋转、平移</p>
+</li>
+<li class="lvl-3">
+<p>e：对复平面取指数，得到埃舍尔图</p>
+</li>
+</ol>
+<p>代码复现（非常简陋）：<a target="_blank" rel="noopener" href="https://github.com/Y-Antares/Escher">GitHub - Y-Antares/Escher · GitHub</a> <sup class="post-ref"><a href="#reference-2" id="reference-link-2" aria-label="参考文献 2">[2]</a></sup></p>
+<p>效果：</p>
+<img src="/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/EcherCat.webp" class="" title="图2 原图">
+<img src="/imgs/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/04-escher.webp" class="" title="图3 变换结果">
+<p>真是不忍直视。但我也懒得继续研究了。</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+
+
+          
+            <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Archives</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#how-and-why-to-take-a-logarithm-of-an-image"><span class="toc-number">1.</span> <span class="toc-text"> How (and why) to take a logarithm of an image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text"> 代码</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&text=Escher的对数画"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&is_video=false&description=Escher的对数画"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Escher的对数画&body=Check out this article: https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&title=Escher的对数画"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&name=Escher的对数画&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yantares.cn/2026/05/13/notebook/%E8%87%AA%E5%AD%A6%E6%9D%82%E9%A1%B9/Escher%E7%9A%84%E5%AF%B9%E6%95%B0%E7%94%BB/&t=Escher的对数画"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+          
+          <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2026
+    Yantares
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Archives</a></li><!--
+    --><!--
+      --><li><a href="/tags/">标签</a></li><!--
+    --><!--
+      --><li><a href="/categories/">分类</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Y-Antares/hexo-theme-Antares">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">搜索</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+      </div>
+      <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+      <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'Y-Antares/weblog';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'icy-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+
+    </div>
+</body>
+</html>
