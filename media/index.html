@@ -20,12 +20,12 @@
   <title>影音库 - Lone Trail</title>
 
   
-    <meta name="description" content="&#x2F;*    * 仅修改影音库所在的页面外壳。    * 保留左栏，主内容占据原主栏和右栏的空间。    * PJAX 离开本页后，选择器自动失效。    *&#x2F;   .l_body:has(#media-library) {     --media-sidebar-width: calc(       var(--gap-margin, 16px) * 2       + var(--ga">
+    <meta name="description" content="&#x2F;*    * 仅调整影音库页面。    * 保留左栏，释放右栏空间。    * PJAX 离开本页后，相关选择器自动失效。    *&#x2F;   .l_body:has(#media-library) {     --media-sidebar-width: calc(       var(--gap-margin, 16px) * 2       + var(--gap-padding,">
 <meta property="og:type" content="website">
 <meta property="og:title" content="影音库">
 <meta property="og:url" content="https://yantares.cn/media/">
 <meta property="og:site_name" content="Lone Trail">
-<meta property="og:description" content="&#x2F;*    * 仅修改影音库所在的页面外壳。    * 保留左栏，主内容占据原主栏和右栏的空间。    * PJAX 离开本页后，选择器自动失效。    *&#x2F;   .l_body:has(#media-library) {     --media-sidebar-width: calc(       var(--gap-margin, 16px) * 2       + var(--ga">
+<meta property="og:description" content="&#x2F;*    * 仅调整影音库页面。    * 保留左栏，释放右栏空间。    * PJAX 离开本页后，相关选择器自动失效。    *&#x2F;   .l_body:has(#media-library) {     --media-sidebar-width: calc(       var(--gap-margin, 16px) * 2       + var(--gap-padding,">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yantares.cn/images/miuhead.png">
 <meta property="article:author" content="Yantares">
@@ -95,7 +95,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/media/">影音库</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-10-24T07:41:23.940Z">2026-10-24</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-10-24T07:41:23.941Z">2026-10-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-10-24T08:20:28.085Z">2026-10-24</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-10-24T08:20:28.086Z">2026-10-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -110,9 +110,9 @@
 
 <style>
   /*
-   * 仅修改影音库所在的页面外壳。
-   * 保留左栏，主内容占据原主栏和右栏的空间。
-   * PJAX 离开本页后，选择器自动失效。
+   * 仅调整影音库页面。
+   * 保留左栏，释放右栏空间。
+   * PJAX 离开本页后，相关选择器自动失效。
    */
   .l_body:has(#media-library) {
     --media-sidebar-width: calc(
@@ -159,9 +159,8 @@
       rgba(128, 128, 128, .18)
     );
 
-    /* 可以在这里统一调整海报高度和卡片总高度 */
+    /* 只统一海报高度，不固定卡片总高度 */
     --media-poster-height: 172px;
-    --media-card-height: 550px;
 
     width: 100%;
     min-width: 0;
@@ -229,16 +228,19 @@
     color: var(--text-p3, #888);
   }
 
+  /* 每个分类独立纵向排列，卡片高度互不影响 */
   #media-library .media-card-list {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 
   #media-library .media-card {
     display: flex;
     flex-direction: column;
+    flex: 0 0 auto;
     width: 100%;
-    height: var(--media-card-height);
+    height: auto;
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -306,7 +308,7 @@
     border: 0;
     border-radius: 0;
 
-    /* 等比例铺满，多余部分裁切，不拉伸图片 */
+    /* 等比例填充，裁切超出部分 */
     object-fit: cover;
     object-position: var(--media-cover-focus, 50% 35%);
   }
@@ -342,22 +344,13 @@
     border-radius: 8px;
   }
 
+  /* 点评完整展开，卡片内部不设置滚动区域 */
   #media-library .media-card-content {
-    flex: 1 1 0;
-    min-height: 0;
+    flex: 0 0 auto;
     min-width: 0;
     padding: 18px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--media-border) transparent;
-    overscroll-behavior: auto;
+    overflow: visible;
     overflow-wrap: anywhere;
-  }
-
-  #media-library .media-card-content:focus-visible {
-    outline: 2px solid var(--column-accent);
-    outline-offset: -3px;
   }
 
   #media-library .media-title-cn {
@@ -407,7 +400,36 @@
     font-size: .86rem;
     line-height: 1.75;
     color: var(--text-p2, #666);
-    white-space: pre-wrap;
+    white-space: normal;
+  }
+
+  /* 处理 Markdown 渲染后的段落 */
+  #media-library .media-comment p {
+    margin: 0 0 .7em;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  #media-library .media-comment > :first-child {
+    margin-top: 0;
+  }
+
+  #media-library .media-comment > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* 点评中的 Markdown 链接 */
+  #media-library .media-comment a {
+    display: inline;
+    padding: 0;
+    background: transparent;
+    color: var(--theme, #5574db);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  #media-library .media-comment a:hover {
+    color: var(--accent, #fa6400);
   }
 
   #media-library .media-tags {
@@ -440,8 +462,8 @@
     line-height: 1.6;
     color: var(--text-p3, #888);
     background: var(--card, var(--background, #fff));
-    max-height: 120px;
-    overflow-y: auto;
+    max-height: none;
+    overflow: visible;
   }
 
   #media-library .media-meta-item {
@@ -512,12 +534,11 @@
 <div class="wiki-media" id="media-library">
   <div class="media-toolbar">
     <span class="media-toolbar-summary">
-      共 43 项记录
+      共 44 项记录
     </span>
-    <span>
-      各栏按记录日期从新到旧排列 · 长内容可在卡片内滚动查看
-    </span>
+    <span>各栏按记录日期从新到旧排列</span>
   </div>
+
   <div class="media-columns">
       <section
         class="media-column"
@@ -555,7 +576,8 @@
               class="media-cover-image"
               src="/game%20record/封面数据/Ace_attorney_investigation.jpg"
               alt="逆转检事1海报"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -571,19 +593,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="逆转检事1的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             逆转检事1
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Ace Attorney Investigations Collection</span>
             </div>
           
@@ -597,7 +616,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">1-5实在太粘稠了，虽然知道每个证据背后的指向，也知道哪里该出示什么，但犯人太能蠕动了。我简直像面对酒神的小鬼一样无力</div>
+          <div class="media-comment"><p>1-5实在太粘稠了，虽然知道每个证据背后的指向，也知道哪里该出示什么，但犯人太能蠕动了。我简直像面对酒神的小鬼一样无力</p>
+</div>
 
           
         </div>
@@ -615,7 +635,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -644,6 +666,7 @@
               src="/game%20record/封面数据/%E6%8D%89%E5%88%80.jpg"
               alt="捉刀 demo海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -659,19 +682,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="捉刀 demo的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             捉刀 demo
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Long Knives demo</span>
             </div>
           
@@ -685,7 +705,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">相当高质量的文字推理游戏，由于是作者单人制作所以分数很高。期待完整剧情！</div>
+          <div class="media-comment"><p>相当高质量的文字推理游戏，由于是作者单人制作所以分数很高。期待完整剧情！</p>
+</div>
 
           
         </div>
@@ -703,7 +724,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -732,6 +755,7 @@
               src="/game%20record/封面数据/Guild_Explorers.jpg"
               alt="欢迎来到公会探求团！海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -747,19 +771,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="欢迎来到公会探求团！的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             欢迎来到公会探求团！
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>ギルド探求団へようこそ！</span>
             </div>
           
@@ -773,7 +794,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">类 type help &amp; obradinn，好玩，助手非常可爱！对帕金拉萌生了别样的情感.jpg</div>
+          <div class="media-comment"><p>类 type help &amp; obradinn，好玩，助手非常可爱！对帕金拉萌生了别样的情感.jpg</p>
+</div>
 
           
         </div>
@@ -791,7 +813,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -820,6 +844,7 @@
               src="/game%20record/封面数据/FRAUD.jpg"
               alt="诈欺谜案海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -835,19 +860,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="诈欺谜案的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             诈欺谜案
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>A Case of Fraud</span>
             </div>
           
@@ -861,7 +883,8 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">类鲁特里，更适合职场宝宝</div>
+          <div class="media-comment"><p>类鲁特里，更适合职场宝宝</p>
+</div>
 
           
         </div>
@@ -879,7 +902,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -908,6 +933,7 @@
               src="/game%20record/封面数据/%E5%A9%86%E7%BD%97%E6%B4%B2%E7%9A%84%E7%BA%A2%E7%8F%8D%E7%8F%A0.jpg"
               alt="婆罗洲的红珍珠海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -923,19 +949,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="婆罗洲的红珍珠的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             婆罗洲的红珍珠
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Red Pearls Of Borneo</span>
             </div>
           
@@ -949,7 +972,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">不错的类type help解谜游戏，自带信息记录这一点很好，但也使得穷举更加可行。</div>
+          <div class="media-comment"><p>不错的类type help解谜游戏，自带信息记录这一点很好，但也使得穷举更加可行。</p>
+</div>
 
           
         </div>
@@ -967,7 +991,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -996,6 +1022,7 @@
               src="/game%20record/封面数据/steinsgate0.jpg"
               alt="命运石之门0海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1011,19 +1038,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="命运石之门0的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             命运石之门0
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Steins Gate 0</span>
             </div>
           
@@ -1037,7 +1061,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">作为通往命运石之门必须的前置条件，0的压抑程度名副其实。即便做了心理准备，我全程都为篝处红温；和真帆倒是有一点点“萨列里”的共鸣，但不多（毕竟次等天才也有别于平庸者）；依旧仰慕着铃羽。结局几个的“互文”很好，虽然我刚打通助手线时没反应过来其他线怎么进。接下来准备补0的动画，听说评分比0游戏还高。</div>
+          <div class="media-comment"><p>作为通往命运石之门必须的前置条件，0的压抑程度名副其实。即便做了心理准备，我全程都为篝处红温；和真帆倒是有一点点“萨列里”的共鸣，但不多（毕竟次等天才也有别于平庸者）；依旧仰慕着铃羽。结局几个的“互文”很好，虽然我刚打通助手线时没反应过来其他线怎么进。接下来准备补0的动画，听说评分比0游戏还高。</p>
+</div>
 
           
         </div>
@@ -1055,7 +1080,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1090,12 +1117,7 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="大学生登山失踪事件的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             大学生登山失踪事件
           </div>
@@ -1111,7 +1133,8 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">抱着玩“类type help网页推理游戏”的心思去玩，但发现流程短、解谜卡、剧情稀烂……有待进一步打磨。剧透：在花生糕和文件夹2处卡关过，均因需要外部信息、但不知道究竟需要哪个信息而卡住。个人认为这种设计不利于游戏的流畅度，不如都改成游戏内网页。</div>
+          <div class="media-comment"><p>抱着玩“类type help网页推理游戏”的心思去玩，但发现流程短、解谜卡、剧情稀烂……有待进一步打磨。剧透：在花生糕和文件夹2处卡关过，均因需要外部信息、但不知道究竟需要哪个信息而卡住。个人认为这种设计不利于游戏的流畅度，不如都改成游戏内网页。</p>
+</div>
 
           
         </div>
@@ -1129,7 +1152,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1158,6 +1183,7 @@
               src="/game%20record/封面数据/steinsgate.jpg"
               alt="命运石之门海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1173,19 +1199,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="命运石之门的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             命运石之门
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Steins Gate</span>
             </div>
           
@@ -1199,7 +1222,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">“一切都是命运石之门的选择”“跨越千万条世界线”，SG的名句在游玩前就扎根在我脑中了，但看了剧情才完全理解其指代对象。“手机”的设计有利有弊，利在于增加沉浸感，弊在于收集成就时比较麻烦。TIPS的内容更是令我汗流浃背地去复习宇宙弦、相对论、量子论。角色方面，喜欢铃羽和克里斯蒂娜，不太喜欢男娘和手机狂魔；原因一方面是人设，一方面是章节内容和叙事节奏。</div>
+          <div class="media-comment"><p>“一切都是命运石之门的选择”“跨越千万条世界线”，SG的名句在游玩前就扎根在我脑中了，但看了剧情才完全理解其指代对象。“手机”的设计有利有弊，利在于增加沉浸感，弊在于收集成就时比较麻烦。TIPS的内容更是令我汗流浃背地去复习宇宙弦、相对论、量子论。角色方面，喜欢铃羽和克里斯蒂娜，不太喜欢男娘和手机狂魔；原因一方面是人设，一方面是章节内容和叙事节奏。</p>
+</div>
 
           
         </div>
@@ -1217,7 +1241,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1246,6 +1272,7 @@
               src="/game%20record/封面数据/428ShibuyaScramble.webp"
               alt="428：被封锁的涩谷海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1261,19 +1288,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="428：被封锁的涩谷的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             428：被封锁的涩谷
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>428 Shibuya Scramble</span>
             </div>
           
@@ -1287,7 +1311,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">&quot;Jump&quot;的核心功能设计得非常好，增添了人物之间的互动性，提升了收集BE的乐趣。可惜游戏确实有些年头了，内容比较怀旧（过时），充斥着日式热血味。最后我要说：御法川神了！</div>
+          <div class="media-comment"><p>&quot;Jump&quot;的核心功能设计得非常好，增添了人物之间的互动性，提升了收集BE的乐趣。可惜游戏确实有些年头了，内容比较怀旧（过时），充斥着日式热血味。最后我要说：御法川神了！</p>
+</div>
 
           
         </div>
@@ -1305,7 +1330,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1334,6 +1361,7 @@
               src="/game%20record/封面数据/danganronpav3_header.webp"
               alt="弹丸论破 v3海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1349,19 +1377,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="弹丸论破 v3的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             弹丸论破 v3
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Danganronpa v3</span>
             </div>
           
@@ -1375,7 +1400,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">争议虽大，我不认为故事写得不好，或是有毁前作之疑。只是这种“完结”的方式会给v3的人物蒙上一层纱，以及无尽的虚无感：人设是真是假？世界是真是假？“一切皆有可能”，等同于“一切可能都毫无意义”----希望之于绝望，正与虚妄相同。（“绝望之为虚妄，正与希望相同”）</div>
+          <div class="media-comment"><p>争议虽大，我不认为故事写得不好，或是有毁前作之疑。只是这种“完结”的方式会给v3的人物蒙上一层纱，以及无尽的虚无感：人设是真是假？世界是真是假？“一切皆有可能”，等同于“一切可能都毫无意义”----希望之于绝望，正与虚妄相同。（“绝望之为虚妄，正与希望相同”）</p>
+</div>
 
           
             <div class="media-tags">
@@ -1399,7 +1425,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1428,6 +1456,7 @@
               src="/game%20record/封面数据/danganronpa2_header.webp"
               alt="弹丸论破 2海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1443,19 +1472,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="弹丸论破 2的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             弹丸论破 2
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Danganronpa 2</span>
             </div>
           
@@ -1469,7 +1495,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">弹丸系列巅峰，立意最有延展性的一作。从二创数量就可见一斑，当然那主要得益于角色人设的丰富性。</div>
+          <div class="media-comment"><p>弹丸系列巅峰，立意最有延展性的一作。从二创数量就可见一斑，当然那主要得益于角色人设的丰富性。</p>
+</div>
 
           
             <div class="media-tags">
@@ -1493,7 +1520,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1522,6 +1551,7 @@
               src="/game%20record/封面数据/TypeHelp.png"
               alt="Type Help海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1537,19 +1567,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="Type Help的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             Type Help
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Type Help</span>
             </div>
           
@@ -1563,7 +1590,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">我的网页类解密入门作，非常好玩。用html承载纯文字剧情解谜，真的非常轻便。</div>
+          <div class="media-comment"><p>我的网页类解密入门作，非常好玩。用html承载纯文字剧情解谜，真的非常轻便。</p>
+</div>
 
           
         </div>
@@ -1581,7 +1609,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>html</span>
+            <span>
+              html
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1610,6 +1640,7 @@
               src="/game%20record/封面数据/danganronpa_header.webp"
               alt="弹丸论破 1海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1625,19 +1656,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="弹丸论破 1的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             弹丸论破 1
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Danganronpa 1</span>
             </div>
           
@@ -1651,7 +1679,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">弹丸系列首作，梦开始的地方，也是玩起来最有新鲜感的一作--因为热度不高，不容易被剧透。</div>
+          <div class="media-comment"><p>弹丸系列首作，梦开始的地方，也是玩起来最有新鲜感的一作–因为热度不高，不容易被剧透。</p>
+</div>
 
           
             <div class="media-tags">
@@ -1675,7 +1704,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1704,6 +1735,7 @@
               src="/game%20record/封面数据/Edith_Finch_header.webp"
               alt="艾迪·芬奇的回忆海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1719,19 +1751,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="艾迪·芬奇的回忆的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             艾迪·芬奇的回忆
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>What Remains of Edith Finch</span>
             </div>
           
@@ -1745,7 +1774,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">小而精的艺术品。作为现代打工人果然还是最共情杀鱼哥，“在重复劳动中迷失自我”太真实了，所以甚至推荐给老妈玩了这一小章。</div>
+          <div class="media-comment"><p>小而精的艺术品。作为现代打工人果然还是最共情杀鱼哥，“在重复劳动中迷失自我”太真实了，所以甚至推荐给老妈玩了这一小章。</p>
+</div>
 
           
         </div>
@@ -1763,7 +1793,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1792,6 +1824,7 @@
               src="/game%20record/封面数据/ace_attorney_header.webp"
               alt="逆转裁判 1~3海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1807,19 +1840,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="逆转裁判 1~3的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             逆转裁判 1~3
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Ace attorney</span>
             </div>
           
@@ -1833,7 +1863,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">搜查、举证，将这种严密的逻辑运用进生活也无不可。</div>
+          <div class="media-comment"><p>搜查、举证，将这种严密的逻辑运用进生活也无不可。</p>
+</div>
 
           
             <div class="media-tags">
@@ -1857,7 +1888,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1886,6 +1919,7 @@
               src="/game%20record/封面数据/%E9%BC%93%E6%89%8B%E4%BD%99%E5%91%BD%E5%8D%81%E6%97%A5%E8%B0%AD_header.webp"
               alt="鼓手余命十日谭海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1901,19 +1935,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="鼓手余命十日谭的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             鼓手余命十日谭
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Shiina Taki&#39;s Decameron</span>
             </div>
           
@@ -1927,7 +1958,8 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">作为同人作品很不错了，看得出作者对几个角色的爱。但是嘛，2026.4 Taki的声优干出了毁掉这个角色的举动（参演神风特技队），所以切割。</div>
+          <div class="media-comment"><p>作为同人作品很不错了，看得出作者对几个角色的爱。但是嘛，2026.4 Taki的声优干出了毁掉这个角色的举动（参演神风特技队），所以切割。</p>
+</div>
 
           
         </div>
@@ -1945,7 +1977,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -1974,6 +2008,7 @@
               src="/game%20record/封面数据/golden_idol_header.webp"
               alt="金偶像谜题海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -1989,19 +2024,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="金偶像谜题的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             金偶像谜题
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Case of the Golden Idol</span>
             </div>
           
@@ -2015,7 +2047,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">游戏形式是“完形填空”，加上汉化不好得玩原版，所以游戏过程比较坎坷（英语还得多练！）。当初因为bug免费玩到了DLC，可惜实习太忙没把最后一个谜解出来，痛失全成就。但推理整个故事的过程*非常*爽。</div>
+          <div class="media-comment"><p>游戏形式是“完形填空”，加上汉化不好得玩原版，所以游戏过程比较坎坷（英语还得多练！）。当初因为bug免费玩到了DLC，可惜实习太忙没把最后一个谜解出来，痛失全成就。但推理整个故事的过程<em>非常</em>爽。</p>
+</div>
 
           
         </div>
@@ -2033,7 +2066,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -2062,6 +2097,7 @@
               src="/game%20record/封面数据/spiritfarer_header.webp"
               alt="灵魂摆渡人海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2077,19 +2113,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="灵魂摆渡人的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             灵魂摆渡人
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>SpiritFarer</span>
             </div>
           
@@ -2103,7 +2136,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">治愈系种田游戏，画风很合我胃口。过这么久只记得青蛙叔了，毕竟他会吹长笛！</div>
+          <div class="media-comment"><p>治愈系种田游戏，画风很合我胃口。过这么久只记得青蛙叔了，毕竟他会吹长笛！</p>
+</div>
 
           
         </div>
@@ -2121,7 +2155,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -2150,6 +2186,7 @@
               src="/game%20record/封面数据/%E5%B1%B1%E6%B2%B3%E6%97%85%E6%8E%A2_header.webp"
               alt="山河旅探海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2165,19 +2202,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="山河旅探的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             山河旅探
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Murders on the Yangtze River</span>
             </div>
           
@@ -2191,7 +2225,8 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">更适合中国宝宝的逆转裁判，感谢它抛砖引玉把我带向逆转裁判。从玩法上没有太创新的地方，更像是针对民国时期做了本土化处理。</div>
+          <div class="media-comment"><p>更适合中国宝宝的逆转裁判，感谢它抛砖引玉把我带向逆转裁判。从玩法上没有太创新的地方，更像是针对民国时期做了本土化处理。</p>
+</div>
 
           
         </div>
@@ -2209,7 +2244,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -2238,6 +2275,7 @@
               src="/game%20record/封面数据/return_of_the_obra_dinn_header.webp"
               alt="奥伯拉丁的回归海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2253,19 +2291,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="奥伯拉丁的回归的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             奥伯拉丁的回归
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Return of the Obra Dinn</span>
             </div>
           
@@ -2279,7 +2314,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">独特的玩法本来可以轻松得10分，黑白像素太晕-1分，“都是船长干的”成就太难做再-1分。</div>
+          <div class="media-comment"><p>独特的玩法本来可以轻松得10分，黑白像素太晕-1分，“都是船长干的”成就太难做再-1分。</p>
+</div>
 
           
             <div class="media-tags">
@@ -2303,7 +2339,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -2332,6 +2370,7 @@
               src="/game%20record/封面数据/chants_of_sennaar_header.webp"
               alt="巴别塔圣歌海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2347,19 +2386,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="巴别塔圣歌的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             巴别塔圣歌
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Chants of Sennar</span>
             </div>
           
@@ -2373,7 +2409,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">“语言学家”类型在我心目中的高峰。画风、音乐、故事、玩法、主旨相得益彰。</div>
+          <div class="media-comment"><p>“语言学家”类型在我心目中的高峰。画风、音乐、故事、玩法、主旨相得益彰。</p>
+</div>
 
           
         </div>
@@ -2391,7 +2428,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -2420,6 +2459,7 @@
               src="/game%20record/封面数据/P5R.jpg"
               alt="女神异闻录5豪华版海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2435,19 +2475,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="女神异闻录5豪华版的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             女神异闻录5豪华版
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Persona5Royal</span>
             </div>
           
@@ -2461,7 +2498,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">暂无评价</div>
+          <div class="media-comment"><p>暂无评价</p>
+</div>
 
           
         </div>
@@ -2479,7 +2517,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>steam</span>
+            <span>
+              steam
+            </span>
           </div>
 
           <div class="media-meta-item" title="通关日期">
@@ -2528,7 +2568,8 @@
               class="media-cover-image"
               src="/game%20record/封面数据/%E7%89%9B%E6%9D%A5.webp"
               alt="牛来海报"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2544,19 +2585,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="牛来的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             牛来
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>NiuLai</span>
             </div>
           
@@ -2575,7 +2613,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">雨后清风有香。</div>
+          <div class="media-comment"><p>雨后清风有香。</p>
+</div>
 
           
         </div>
@@ -2585,7 +2624,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>电影院</span>
+            <span>
+              电影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -2614,6 +2655,7 @@
               src="/game%20record/封面数据/Obsession.webp"
               alt="痴迷海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2629,19 +2671,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="痴迷的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             痴迷
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Obsession</span>
             </div>
           
@@ -2660,7 +2699,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">絶対的愛情 君という obsession</div>
+          <div class="media-comment"><p>絶対的愛情 君という obsession</p>
+</div>
 
           
         </div>
@@ -2670,7 +2710,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili&amp;电影院</span>
+            <span>
+              Bilibili&amp;电影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -2699,6 +2741,7 @@
               src="/game%20record/封面数据/Backrooms.webp"
               alt="后室海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2714,19 +2757,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="后室的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             后室
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Backroom</span>
             </div>
           
@@ -2745,7 +2785,8 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">恐怖片大引进时代的开端？</div>
+          <div class="media-comment"><p>恐怖片大引进时代的开端？</p>
+</div>
 
           
         </div>
@@ -2755,7 +2796,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>电影院</span>
+            <span>
+              电影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -2784,6 +2827,7 @@
               src="/game%20record/封面数据/%E7%96%AF%E7%8B%82%E5%8A%A8%E7%89%A9%E5%9F%8E2.webp"
               alt="疯狂动物城 2海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2799,19 +2843,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="疯狂动物城 2的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             疯狂动物城 2
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Zootopia 2</span>
             </div>
           
@@ -2830,7 +2871,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">狗尾续貂。</div>
+          <div class="media-comment"><p>狗尾续貂。</p>
+</div>
 
           
             <div class="media-tags">
@@ -2846,7 +2888,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>电影院</span>
+            <span>
+              电影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -2875,6 +2919,7 @@
               src="/game%20record/封面数据/%E9%99%8D%E4%B8%B4.webp"
               alt="降临海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2890,19 +2935,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="降临的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             降临
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Arrival</span>
             </div>
           
@@ -2921,7 +2963,11 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">Language is the foundation of civilization.语言是文明的基石。you approach language like mathematicians.语言方式影响思维方式。一瞥间五十年诸般纷纭并发眼底，我的余生尽在其中，还有，你一生的故事。</div>
+          <div class="media-comment"><p>Language is the foundation of civilization.</p>
+<p>语言是文明的基石。</p>
+<p>you approach language like mathematicians.</p>
+<p>语言方式影响思维方式。一瞥间五十年诸般纷纭并发眼底，我的余生尽在其中，还有，你一生的故事。</p>
+</div>
 
           
             <div class="media-tags">
@@ -2939,7 +2985,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -2968,6 +3016,7 @@
               src="/game%20record/封面数据/%E8%BF%B7%E5%A4%B1%E4%B8%9C%E4%BA%AC.webp"
               alt="迷失东京海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -2983,19 +3032,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="迷失东京的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             迷失东京
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Lost in Translation</span>
             </div>
           
@@ -3014,7 +3060,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">[博文](https://yantares.cn/2024/05/28/%E9%9A%8F%E7%AC%94/lost-in-raining-sh-%E8%BF%B7%E5%A4%B1%E4%B8%8A%E6%B5%B7%E9%9B%A8%E5%A4%9C/)</div>
+          <div class="media-comment"><p><a href="https://yantares.cn/2024/05/28/%E9%9A%8F%E7%AC%94/lost-in-raining-sh-%E8%BF%B7%E5%A4%B1%E4%B8%8A%E6%B5%B7%E9%9B%A8%E5%A4%9C/">博文</a></p>
+</div>
 
           
             <div class="media-tags">
@@ -3030,7 +3077,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3059,6 +3108,7 @@
               src="/game%20record/封面数据/%E5%91%A8%E5%A4%84%E9%99%A4%E4%B8%89%E5%AE%B3.webp"
               alt="周处除三害海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3074,12 +3124,7 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="周处除三害的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             周处除三害
           </div>
@@ -3100,7 +3145,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">虽然是因为传播度过高的梗去看的，但可谓不虚此行。</div>
+          <div class="media-comment"><p>虽然是因为传播度过高的梗去看的，但可谓不虚此行。</p>
+</div>
 
           
         </div>
@@ -3110,7 +3156,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3139,6 +3187,7 @@
               src="/game%20record/封面数据/%E9%93%81%E9%9D%A2%E4%BA%BA.webp"
               alt="铁面人海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3154,19 +3203,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="铁面人的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             铁面人
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Man in the Iron Mask</span>
             </div>
           
@@ -3185,11 +3231,12 @@
             ★★☆☆☆
           </div>
 
-          <div class="media-comment">看 《铁面人》的原因是alexie augudin 01~02 FP 用了铁面人的音乐，磅礴大气的。同时，有评论认为他在与plushenko的竞争中用这首音乐并成功登基一事十分耐人寻味且drama，还戏称颁奖时的plushenko是真·铁面人。
-既如此，便去看了小李子主演的电影《铁面人》。观感一言难尽。
-只能说确实体现了“兄弟相争”的主题吧。
-啥时候看了《达达尼昂三部曲》，我对它的接受度估计能高点。
-或者是1977的那部老版应当也好些。</div>
+          <div class="media-comment"><p>看 《铁面人》的原因是alexie augudin 01~02 FP 用了铁面人的音乐，磅礴大气的。同时，有评论认为他在与plushenko的竞争中用这首音乐并成功登基一事十分耐人寻味且drama，还戏称颁奖时的plushenko是真·铁面人。<br />
+既如此，便去看了小李子主演的电影《铁面人》。观感一言难尽。<br />
+只能说确实体现了“兄弟相争”的主题吧。<br />
+啥时候看了《达达尼昂三部曲》，我对它的接受度估计能高点。<br />
+或者是1977的那部老版应当也好些。</p>
+</div>
 
           
             <div class="media-tags">
@@ -3205,7 +3252,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3234,6 +3283,7 @@
               src="/game%20record/封面数据/%E7%88%B1%E4%B9%90%E4%B9%8B%E5%9F%8E.webp"
               alt="爱乐之城海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3249,19 +3299,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="爱乐之城的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             爱乐之城
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>La la land</span>
             </div>
           
@@ -3280,7 +3327,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">自己看了一遍，又和爸妈一起看了一次重映（好大一个电灯泡！）</div>
+          <div class="media-comment"><p>自己看了一遍，又和爸妈一起看了一次重映（好大一个电灯泡！）</p>
+</div>
 
           
             <div class="media-tags">
@@ -3296,7 +3344,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili&amp;电影院</span>
+            <span>
+              Bilibili&amp;电影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3325,6 +3375,7 @@
               src="/game%20record/封面数据/%E5%A5%A5%E5%BE%B7%E8%B5%9B.webp"
               alt="奥德赛海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3340,19 +3391,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="奥德赛的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             奥德赛
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Odyssey</span>
             </div>
           
@@ -3371,7 +3419,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">是这个版本吗？我也没印象了。反正我之前早看过《文学回忆录》《EPIC》《刺客信条奥德赛》了，电影无所谓。</div>
+          <div class="media-comment"><p>是这个版本吗？我也没印象了。反正我之前早看过《文学回忆录》《EPIC》《刺客信条奥德赛》了，电影无所谓。</p>
+</div>
 
           
             <div class="media-tags">
@@ -3387,7 +3436,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>艺传学院小影院</span>
+            <span>
+              艺传学院小影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3416,6 +3467,7 @@
               src="/game%20record/封面数据/%E8%88%9E%E5%8F%B0%E5%A7%90%E5%A6%B9.webp"
               alt="舞台姐妹海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3431,12 +3483,7 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="舞台姐妹的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             舞台姐妹
           </div>
@@ -3457,7 +3504,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">老师那会正关注谢晋百年生辰，所以让我们看，还给我们讲他发的谢晋赏析文章。</div>
+          <div class="media-comment"><p>老师那会正关注谢晋百年生辰，所以让我们看，还给我们讲他发的谢晋赏析文章。</p>
+</div>
 
           
         </div>
@@ -3467,7 +3515,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>艺传学院小影院</span>
+            <span>
+              艺传学院小影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3496,6 +3546,7 @@
               src="/game%20record/封面数据/%E9%98%BF%E8%82%B2%E7%8E%8B.webp"
               alt="阿育王海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3511,19 +3562,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="阿育王的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             阿育王
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Asoka</span>
             </div>
           
@@ -3542,7 +3590,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">真是一对苦命鸳鸯。男女主对唱的BGM很魔性，可惜难以从我1500首喜欢的音乐里翻找出来。</div>
+          <div class="media-comment"><p>真是一对苦命鸳鸯。男女主对唱的BGM很魔性，可惜难以从我1500首喜欢的音乐里翻找出来。</p>
+</div>
 
           
             <div class="media-tags">
@@ -3558,7 +3607,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>艺传学院小影院</span>
+            <span>
+              艺传学院小影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3587,6 +3638,7 @@
               src="/game%20record/封面数据/%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD.webp"
               alt="黑客帝国海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3602,19 +3654,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="黑客帝国的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             黑客帝国
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Matrix</span>
             </div>
           
@@ -3633,7 +3682,8 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">影评：纸面英雄跳三步舞曲，结合《千面英雄》讲了讲。现在读来太中二了。</div>
+          <div class="media-comment"><p>影评：纸面英雄跳三步舞曲，结合《千面英雄》讲了讲。现在读来太中二了。</p>
+</div>
 
           
             <div class="media-tags">
@@ -3649,7 +3699,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>电影院</span>
+            <span>
+              电影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3678,6 +3730,7 @@
               src="/game%20record/封面数据/%E6%A2%A6%E9%87%8C%E4%B9%BE%E5%9D%A4.webp"
               alt="梦里乾坤海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3693,19 +3746,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="梦里乾坤的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             梦里乾坤
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Secret Life of Walter Mitty</span>
             </div>
           
@@ -3724,7 +3774,8 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">老电影，当初影视鉴赏课我影评标题是“美式黄粱梦”。</div>
+          <div class="media-comment"><p>老电影，当初影视鉴赏课我影评标题是“美式黄粱梦”。</p>
+</div>
 
           
         </div>
@@ -3734,7 +3785,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3763,6 +3816,7 @@
               src="/game%20record/封面数据/%E6%BA%90%E4%BB%A3%E7%A0%81.webp"
               alt="源代码海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3778,19 +3832,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="源代码的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             源代码
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Source Code</span>
             </div>
           
@@ -3809,8 +3860,9 @@
             ★★★★☆
           </div>
 
-          <div class="media-comment">以前似乎看过解说，有些印象。
-现实意义上的“借用古人的智慧”？让古人AI帮助自己在数据库里找答案，with这位古人熟悉的方式。</div>
+          <div class="media-comment"><p>以前似乎看过解说，有些印象。<br />
+现实意义上的“借用古人的智慧”？让古人AI帮助自己在数据库里找答案，with这位古人熟悉的方式。</p>
+</div>
 
           
             <div class="media-tags">
@@ -3826,7 +3878,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3855,6 +3909,7 @@
               src="/game%20record/封面数据/%E5%9B%9E%E5%88%B0%E6%9C%AA%E6%9D%A5.webp"
               alt="回到未来海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3870,19 +3925,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="回到未来的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             回到未来
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Back to the Future</span>
             </div>
           
@@ -3901,7 +3953,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">时空穿越之鼻祖，一辆88迈的雪铁龙</div>
+          <div class="media-comment"><p>时空穿越之鼻祖，一辆88迈的雪铁龙</p>
+</div>
 
           
             <div class="media-tags">
@@ -3917,7 +3970,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -3946,6 +4001,7 @@
               src="/game%20record/封面数据/%E6%8C%87%E7%8E%AF%E7%8E%8B.webp"
               alt="指环王海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -3961,19 +4017,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="指环王的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             指环王
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Lord of the Rings</span>
             </div>
           
@@ -3992,12 +4045,13 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">影史经典三部曲：《指环王》
-2和3在2023秋影视鉴赏课的小影院看的，都是加长版，氛围非常好。
-1是自己补的 —— 顺带一提，许多年前，应是初中，我看过1的开头，却一半觉得“没啥意思”，一半要做作业等事，便将它错过了。……这可是魔法世界的鼻祖啊。
-它的世界观如此庞大，让如今许多作品，包括我曾经爱得要命的，好像都自惭形秽。
-最爱的是Rohan纵马风光的那段音乐，自由豪迈。
-可敬的是写作出如此作品的人啊……</div>
+          <div class="media-comment"><p>影史经典三部曲：《指环王》<br />
+2和3在2023秋影视鉴赏课的小影院看的，都是加长版，氛围非常好。<br />
+1是自己补的 —— 顺带一提，许多年前，应是初中，我看过1的开头，却一半觉得“没啥意思”，一半要做作业等事，便将它错过了。……这可是魔法世界的鼻祖啊。<br />
+它的世界观如此庞大，让如今许多作品，包括我曾经爱得要命的，好像都自惭形秽。<br />
+最爱的是Rohan纵马风光的那段音乐，自由豪迈。<br />
+可敬的是写作出如此作品的人啊……</p>
+</div>
 
           
             <div class="media-tags">
@@ -4013,7 +4067,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>艺传学院小影院</span>
+            <span>
+              艺传学院小影院
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -4042,6 +4098,7 @@
               src="/game%20record/封面数据/%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E.webp"
               alt="让子弹飞海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -4057,19 +4114,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="让子弹飞的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             让子弹飞
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>Let The Bullets Fly</span>
             </div>
           
@@ -4088,9 +4142,10 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">经典之所以为经典。
-从周一晚上10点多看到凌晨，放在繁忙的大学生活并不多见。
-理由恐怕有二。一是刚听完（电子）管风琴鉴听会，正盘算着练练长笛，心中的艺术氛围比较浓厚；二是我近几年沉浸在低质量的作品中，仔细想来接受的思想反不如小学时深沉了，再一见这样信息密度正常的作品，难免沉迷其中。</div>
+          <div class="media-comment"><p>经典之所以为经典。<br />
+从周一晚上10点多看到凌晨，放在繁忙的大学生活并不多见。<br />
+理由恐怕有二。一是刚听完（电子）管风琴鉴听会，正盘算着练练长笛，心中的艺术氛围比较浓厚；二是我近几年沉浸在低质量的作品中，仔细想来接受的思想反不如小学时深沉了，再一见这样信息密度正常的作品，难免沉迷其中。</p>
+</div>
 
           
         </div>
@@ -4100,7 +4155,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -4129,6 +4186,7 @@
               src="/game%20record/封面数据/TheGreatDictator.webp"
               alt="大独裁者海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
@@ -4144,19 +4202,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="大独裁者的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             大独裁者
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">英文名</span>
+              <span class="media-field-label">
+                英文名
+              </span>
               <span>The Great Dictator</span>
             </div>
           
@@ -4175,7 +4230,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">Let us all— unite！</div>
+          <div class="media-comment"><p>Let us all— unite！</p>
+</div>
 
           
             <div class="media-tags">
@@ -4191,7 +4247,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>Bilibili</span>
+            <span>
+              Bilibili
+            </span>
           </div>
 
           <div class="media-meta-item" title="观影日期">
@@ -4217,11 +4275,100 @@
             动画记录
           </h2>
 
-          <span class="media-column-count">2</span>
+          <span class="media-column-count">3</span>
         </div>
 
         <div class="media-card-list">
           
+      <article
+        class="media-card"
+        data-type="anime"
+        aria-label="梦限大"
+      >
+        <div
+          class="media-card-cover"
+          style="--media-cover-focus: 50% 35%"
+        >
+          <span class="media-cover-placeholder" aria-hidden="true">
+            动画记录
+          </span>
+
+          
+            <img
+              class="media-cover-image"
+              src="/game%20record/封面数据/%E6%A2%A6%E9%99%90%E5%A4%A7.webp"
+              alt="梦限大海报"
+              loading="eager"
+              fetchpriority="auto"
+              decoding="async"
+              onerror="this.hidden=true"
+            >
+          
+
+          <span class="media-rank">#1</span>
+
+          <span
+            class="media-score-badge"
+            aria-label="评分 1"
+          >
+            1
+          </span>
+        </div>
+
+        <div class="media-card-content">
+          <div class="media-title-cn">
+            梦限大
+          </div>
+
+          
+            <div class="media-alt-name">
+              <span class="media-field-label">
+                日文名
+              </span>
+              <span>BanG Dream! ゆめ∞みた</span>
+            </div>
+          
+
+          
+
+          <div
+            class="media-stars"
+            aria-label="1分，满分10分"
+          >
+            ★☆☆☆☆
+          </div>
+
+          <div class="media-comment"><p>我承认在追番的过程中我对野乃花产生了好感，但在篝火舞会之后那消失了。到13集才发现Viola的雨中曲那49秒是全片我最喜欢的段落。这49s值得1分。</p>
+</div>
+
+          
+        </div>
+
+        <div class="media-meta-row">
+          
+      <div
+        class="media-meta-item"
+        title="观看时长"
+      >
+        <span aria-hidden="true">🕒</span>
+        <span>-</span>
+      </div>
+    
+
+          <div class="media-meta-item" title="平台/媒介">
+            <span aria-hidden="true">📺</span>
+            <span>
+              Bilibili
+            </span>
+          </div>
+
+          <div class="media-meta-item" title="观看日期">
+            <span aria-hidden="true">📅</span>
+            <span>2026-07-02</span>
+          </div>
+        </div>
+      </article>
+    
       <article
         class="media-card"
         data-type="anime"
@@ -4241,12 +4388,13 @@
               src="/game%20record/封面数据/%E5%86%B0%E8%8F%93.webp"
               alt="冰菓海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
           
 
-          <span class="media-rank">#1</span>
+          <span class="media-rank">#2</span>
 
           <span
             class="media-score-badge"
@@ -4256,19 +4404,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="冰菓的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             冰菓
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">日文名</span>
+              <span class="media-field-label">
+                日文名
+              </span>
               <span>氷菓</span>
             </div>
           
@@ -4287,7 +4432,8 @@
             ★★★★★
           </div>
 
-          <div class="media-comment">所谓的“入宅作”。</div>
+          <div class="media-comment"><p>所谓的“入宅作”。</p>
+</div>
 
           
         </div>
@@ -4305,7 +4451,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>TV/流媒体</span>
+            <span>
+              TV/流媒体
+            </span>
           </div>
 
           <div class="media-meta-item" title="观看日期">
@@ -4334,12 +4482,13 @@
               src="/game%20record/封面数据/%E4%BD%9B%E9%99%80.webp"
               alt="悉达多 BUDDA海报"
               loading="lazy"
+              fetchpriority="auto"
               decoding="async"
               onerror="this.hidden=true"
             >
           
 
-          <span class="media-rank">#2</span>
+          <span class="media-rank">#3</span>
 
           <span
             class="media-score-badge"
@@ -4349,19 +4498,16 @@
           </span>
         </div>
 
-        <div
-          class="media-card-content"
-          tabindex="0"
-          role="region"
-          aria-label="悉达多 BUDDA的详细记录，可滚动查看"
-        >
+        <div class="media-card-content">
           <div class="media-title-cn">
             悉达多 BUDDA
           </div>
 
           
             <div class="media-alt-name">
-              <span class="media-field-label">日文名</span>
+              <span class="media-field-label">
+                日文名
+              </span>
               <span>手塚治虫のブッダ 赤い砂漠よ！美しく；手塚治虫のブッダ 終わりなき旅</span>
             </div>
           
@@ -4380,9 +4526,10 @@
             ★★★☆☆
           </div>
 
-          <div class="media-comment">查普拉找到自己的目标（摆脱奴隶身份）时，悉达多刚出生；
-悉达多找到自己的目标（去发修行）时，查普拉已然死亡。
-二者在战场上的交会，仿佛是教义（除去社会阶层隔膜）的传递。</div>
+          <div class="media-comment"><p>查普拉找到自己的目标（摆脱奴隶身份）时，悉达多刚出生；<br />
+悉达多找到自己的目标（去发修行）时，查普拉已然死亡。<br />
+二者在战场上的交会，仿佛是教义（除去社会阶层隔膜）的传递。</p>
+</div>
 
           
         </div>
@@ -4400,7 +4547,9 @@
 
           <div class="media-meta-item" title="平台/媒介">
             <span aria-hidden="true">📺</span>
-            <span>TV/流媒体</span>
+            <span>
+              TV/流媒体
+            </span>
           </div>
 
           <div class="media-meta-item" title="观看日期">
@@ -5238,4 +5387,4 @@ show_runtime();
 <!-- inject -->
 
 </div></body></html>
-<script>var posts=["2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/02/21/读罢有感/S.忒修斯之船/","2024/02/21/读罢有感/仙人抚我顶/","2026/10/09/读罢有感/故事形态学/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2026/10/19/读罢有感/献给阿尔吉侬的花束/","2024/03/10/读罢有感/董晨宇：互联网观察/","2024/02/21/读罢有感/索拉里斯星/","2026/09/18/读罢有感/银河铁道之夜/","2025/11/27/读罢有感/蔑视大众/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2024/03/08/读罢有感/青铜骑士/","2025/11/10/读罢有感/银河系搭车客指南/","2025/10/28/随笔/SCITE（上信考）/","2024/10/15/随笔/childhood/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2025/06/09/随笔/万神殿 Pantheon/","2026/04/13/随笔/丧失主体性的网民：再读《蔑视大众》/","2024/02/04/随笔/乾果/","2025/08/15/随笔/六盘水游记/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2025/11/07/随笔/南京游记/","2026/04/21/随笔/嘉定生存录（1）：实体店测评/","2024/03/01/随笔/夜风奇谭/","2026/06/09/随笔/威海游记/","2026/03/22/随笔/厦门游记/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/05/11/随笔/我的颜色/","2026/06/06/随笔/成绩册/","2024/03/10/随笔/法华/","2026/08/15/随笔/茂县游记/","2024/02/04/随笔/群山之声响彻寰宇/","2026/05/17/随笔/身体健康机能互动测试/","2024/05/05/悦乐/echoism/","2024/03/01/随笔/躬身，甘为推磨/","2024/06/21/随笔/问道/","2024/03/17/随笔/阿拉城/","2024/02/28/旧说说/aircraft-materials/","2024/03/21/悦乐/fiction-tang/","2026/02/23/悦乐/铁花飞/","2024/02/21/悦乐/情骨/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2024/04/26/旧说说/小小的一片天空/","2024/02/21/旧说说/归乡/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/06/10/旧说说/长歌行/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2026/04/28/notebook/科研/XPS谱图分析/","2024/02/04/旧说说/谈往录/","2024/02/21/旧说说/猫的社会学/","2026/04/09/notebook/科研/电化学工作站数据处理/","2025/05/15/series/博客搭建/Running page/","2024/09/25/series/博客搭建/blog迁移/","2026/04/26/notebook/科研/XPS数据处理/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2024/02/04/series/博客搭建/wordpress建站始末/","2024/02/04/series/博客搭建/建站目标及进度/","2026/05/13/notebook/自学杂项/Escher的对数画/","2026/05/09/notebook/自学杂项/Steve Mould声学科普两则/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2024/03/01/notebook/自学杂项/google-play/","2024/10/08/series/天星拾缀/A3/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2025/01/17/series/天星拾缀/Antares/","2026/06/07/series/谈往录/谈往录（10）/","2025/03/21/series/谈往录/谈往录（1）/","2026/10/20/series/谈往录/谈往录（11）/","2025/05/13/series/谈往录/谈往录（3）/","2025/04/04/series/谈往录/谈往录（2）/","2025/07/14/series/谈往录/谈往录（4）/","2025/11/04/series/谈往录/谈往录（5）/","2025/10/29/series/天星拾缀/α Scorpii/","2025/12/01/series/谈往录/谈往录（6）/","2026/04/27/series/软件使用小技巧/Bilibili/","2026/01/29/series/软件使用小技巧/Bing搜索屏蔽CSDN/","2026/04/24/series/软件使用小技巧/Calibre/","2026/01/03/series/谈往录/谈往录（7）/","2026/05/07/series/谈往录/谈往录（9）/","2026/04/26/series/软件使用小技巧/Chrome/","2026/04/09/series/谈往录/谈往录（8）/","2026/04/26/series/软件使用小技巧/Clash/","2026/04/24/series/软件使用小技巧/Git Command/","2026/10/20/series/软件使用小技巧/MAA/","2026/04/21/series/软件使用小技巧/Lightroom调色/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2025/11/03/series/软件使用小技巧/MultiTTS/","2025/11/07/series/软件使用小技巧/Notion/","2026/04/12/series/软件使用小技巧/Origin/","2026/04/22/series/软件使用小技巧/Photoshop/","2026/04/24/series/软件使用小技巧/Obsidian：优化/","2026/07/27/series/软件使用小技巧/Vercel/","2026/04/07/series/软件使用小技巧/Zview/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2024/04/06/series/软件使用小技巧/rss传奇/","2024/02/28/series/软件使用小技巧/打印资料小寄巧/","2024/03/01/series/软件使用小技巧/效率软件/","2024/03/01/series/软件使用小技巧/zotero使用/","2024/02/27/series/软件使用小技巧/此应用包不支持通过应用安装程序安装，因为它/","2026/04/22/series/软件使用小技巧/网盘+Alist 实现Win+Ipad同步Zotero/","2024/10/26/notebook/选修/solar/","2024/11/22/series/软件使用小技巧/课堂派：不允许下载/","2024/09/28/notebook/选修/中西艺术比较/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/06/06/notebook/选修/玉石：人与石的故事/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/03/20/notebook/选修/飞书妙记/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2026/10/24/notebook/课内/数值分析&Casio FX991/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2024/04/04/notebook/课内/电工学：正弦交流电路/","2024/02/05/notebook/课内/C&C++/第一讲-c-c程序设计入门/","2024/02/05/notebook/课内/C&C++/第七讲-指针和数组/","2024/02/05/notebook/课内/C&C++/第三讲-选择结构/","2024/02/05/notebook/课内/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/课内/C&C++/第五讲-一维数组/","2024/02/05/notebook/课内/C&C++/第八讲-函数/","2024/02/05/notebook/课内/C&C++/第九讲-函数（续）/","2024/02/05/notebook/课内/C&C++/第十二讲-文件/","2024/02/05/notebook/课内/C&C++/第四讲-循环结构/","2024/02/05/notebook/课内/C&C++/第十讲-结构/","2026/09/27/notebook/课内/材料研究方法/EBSD/","2024/02/05/notebook/课内/C&C++/第六讲-二维数组、字符数组/","2026/09/30/notebook/课内/材料研究方法/FIB-TEM/","2026/10/10/notebook/课内/材料研究方法/TEM-NOBEL/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>
+<script>var posts=["2024/04/26/旧说说/小小的一片天空/","2024/02/28/旧说说/aircraft-materials/","2024/08/29/旧说说/执笔如执镜，观星亦观心/","2024/02/21/旧说说/归乡/","2024/02/21/旧说说/猫的社会学/","2024/02/25/旧说说/柔枝百绕绵绵意，玉蕊千回淡淡香/","2024/03/02/旧说说/行无咎，思无邪，道无进/","2024/03/31/旧说说/那时我对此嗤之以鼻。/","2024/02/04/旧说说/谈往录/","2024/06/10/旧说说/长歌行/","2024/03/21/悦乐/fiction-tang/","2024/02/29/读罢有感/la-la-land（爱乐之城）/","2024/02/21/读罢有感/S.忒修斯之船/","2024/05/05/悦乐/echoism/","2026/02/23/悦乐/铁花飞/","2024/02/21/读罢有感/仙人抚我顶/","2024/02/21/悦乐/情骨/","2024/02/26/悦乐/the-planets-op-324-jupiter-the-bringer-of-jollity/","2024/02/24/读罢有感/时间会抹杀所有，但我的村庄会留下来/","2026/10/09/读罢有感/故事形态学/","2026/10/19/读罢有感/献给阿尔吉侬的花束/","2024/04/28/读罢有感/王德峰：东西方文化差异的渊源/","2024/02/21/读罢有感/白色绵羊中的黑色绵羊/","2024/03/10/读罢有感/董晨宇：互联网观察/","2024/02/21/读罢有感/索拉里斯星/","2025/11/10/读罢有感/银河系搭车客指南/","2025/03/23/读罢有感/认识建筑：丰子恺建筑六讲/","2025/11/27/读罢有感/蔑视大众/","2026/09/18/读罢有感/银河铁道之夜/","2025/10/28/随笔/SCITE（上信考）/","2024/03/08/读罢有感/青铜骑士/","2024/05/28/随笔/lost-in-raining-sh-迷失上海雨夜/","2025/06/09/随笔/万神殿 Pantheon/","2024/10/15/随笔/childhood/","2026/04/13/随笔/丧失主体性的网民：再读《蔑视大众》/","2024/02/04/随笔/乾果/","2024/03/06/随笔/俄罗斯病人-假如给我一日的飞驰与翅翼/","2025/08/15/随笔/六盘水游记/","2026/03/22/随笔/厦门游记/","2025/11/07/随笔/南京游记/","2024/03/01/随笔/夜风奇谭/","2026/04/21/随笔/嘉定生存录（1）：实体店测评/","2026/06/09/随笔/威海游记/","2024/02/21/随笔/如梦幻泡影，如露亦如电/","2024/03/10/随笔/法华/","2024/05/11/随笔/我的颜色/","2026/06/06/随笔/成绩册/","2024/02/04/随笔/群山之声响彻寰宇/","2026/08/15/随笔/茂县游记/","2026/05/17/随笔/身体健康机能互动测试/","2024/03/01/随笔/躬身，甘为推磨/","2024/03/17/随笔/阿拉城/","2024/06/21/随笔/问道/","2024/09/25/series/博客搭建/blog迁移/","2025/05/15/series/博客搭建/Running page/","2025/11/04/series/博客搭建/hexo博客升级之旅/","2024/02/05/读罢有感/戴锦华：历史与人民的回忆/","2024/04/04/series/博客搭建/一篇cool的blog是怎样炼成的/","2025/03/28/series/博客搭建/hexo+github+obsidian/","2026/04/27/series/软件使用小技巧/Bilibili/","2024/02/04/series/博客搭建/wordpress建站始末/","2024/02/04/series/博客搭建/建站目标及进度/","2026/04/26/series/软件使用小技巧/Chrome/","2026/04/24/series/软件使用小技巧/Calibre/","2026/01/29/series/软件使用小技巧/Bing搜索屏蔽CSDN/","2026/04/26/series/软件使用小技巧/Clash/","2026/04/24/series/软件使用小技巧/Git Command/","2026/04/21/series/软件使用小技巧/Lightroom调色/","2026/10/20/series/软件使用小技巧/MAA/","2025/12/22/series/软件使用小技巧/Material Studio安装及基础使用教程/","2025/11/03/series/软件使用小技巧/MultiTTS/","2025/11/07/series/软件使用小技巧/Notion/","2026/04/12/series/软件使用小技巧/Origin/","2026/04/22/series/软件使用小技巧/Photoshop/","2026/07/27/series/软件使用小技巧/Vercel/","2026/04/07/series/软件使用小技巧/Zview/","2026/04/24/series/软件使用小技巧/Obsidian：优化/","2024/04/06/series/软件使用小技巧/rss传奇/","2024/02/28/series/软件使用小技巧/打印资料小寄巧/","2024/03/01/series/软件使用小技巧/zotero使用/","2024/02/27/series/软件使用小技巧/此应用包不支持通过应用安装程序安装，因为它/","2024/03/01/series/软件使用小技巧/效率软件/","2026/04/22/series/软件使用小技巧/网盘+Alist 实现Win+Ipad同步Zotero/","2024/11/22/series/软件使用小技巧/课堂派：不允许下载/","2026/06/07/series/谈往录/谈往录（10）/","2026/10/20/series/谈往录/谈往录（11）/","2025/06/03/series/软件使用小技巧/Zotero教程：基础，以及插件/","2025/03/21/series/谈往录/谈往录（1）/","2025/04/04/series/谈往录/谈往录（2）/","2025/05/13/series/谈往录/谈往录（3）/","2025/07/14/series/谈往录/谈往录（4）/","2025/12/01/series/谈往录/谈往录（6）/","2024/10/08/series/天星拾缀/A3/","2025/11/04/series/谈往录/谈往录（5）/","2026/04/09/series/谈往录/谈往录（8）/","2026/01/03/series/谈往录/谈往录（7）/","2026/05/07/series/谈往录/谈往录（9）/","2025/01/17/series/天星拾缀/Antares/","2025/10/29/series/天星拾缀/α Scorpii/","2026/04/26/notebook/科研/XPS数据处理/","2024/04/21/notebook/自学杂项/3b1bs-neural-network-videos/","2026/04/28/notebook/科研/XPS谱图分析/","2026/04/09/notebook/科研/电化学工作站数据处理/","2026/05/13/notebook/自学杂项/Escher的对数画/","2024/03/01/notebook/自学杂项/adobe-creative-cloud卸载/","2024/02/27/notebook/自学杂项/github-ssh-key-配置/","2026/05/09/notebook/自学杂项/Steve Mould声学科普两则/","2024/02/05/notebook/自学杂项/matlab的interp3函数转为python代码/","2024/03/01/notebook/自学杂项/google-play/","2024/06/01/notebook/自学杂项/城建星材杯：土木工程材料速成/","2024/04/21/notebook/课内/天大物化-第三章-热力学第二、三定律/","2024/03/26/notebook/自学杂项/random-walks-in-2d-and-3d-are-fundamentally-different-markov-chains-approach/","2024/10/26/notebook/选修/solar/","2024/04/16/notebook/课内/oxford-solid-state-physics/","2026/10/24/notebook/课内/数值分析&Casio FX991/","2024/04/04/notebook/课内/电工学：正弦交流电路/","2024/06/06/notebook/选修/玉石：人与石的故事/","2024/09/28/notebook/选修/中西艺术比较/","2024/03/20/notebook/选修/珠宝鉴赏/","2024/04/28/notebook/选修/旅游地质学：趣味求实（合辑）/","2024/06/09/notebook/选修/送给母亲的足金红玛瑙手链/","2024/02/05/notebook/课内/C&C++/第一讲-c-c程序设计入门/","2024/03/20/notebook/选修/飞书妙记/","2024/02/05/notebook/课内/C&C++/第七讲-指针和数组/","2024/02/05/notebook/课内/C&C++/第三讲-选择结构/","2024/02/05/notebook/课内/C&C++/第九讲-函数（续）/","2024/02/05/notebook/课内/C&C++/第二讲-数据类型、运算符和表达式/","2024/02/05/notebook/课内/C&C++/第五讲-一维数组/","2024/02/05/notebook/课内/C&C++/第八讲-函数/","2026/09/27/notebook/课内/材料研究方法/EBSD/","2024/02/05/notebook/课内/C&C++/第六讲-二维数组、字符数组/","2024/02/05/notebook/课内/C&C++/第十讲-结构/","2026/09/30/notebook/课内/材料研究方法/FIB-TEM/","2024/02/05/notebook/课内/C&C++/第十二讲-文件/","2024/02/05/notebook/课内/C&C++/第四讲-循环结构/","2026/10/10/notebook/课内/材料研究方法/TEM-NOBEL/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };</script>
