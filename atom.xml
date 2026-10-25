@@ -6,7 +6,7 @@
   <link href="https://yantares.cn/atom.xml" rel="self"/>
   
   <link href="https://yantares.cn/"/>
-  <updated>2026-10-24T08:20:10.934Z</updated>
+  <updated>2026-10-25T15:30:11.368Z</updated>
   <id>https://yantares.cn/</id>
   
   <author>
@@ -17,13 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>挽救计划</title>
+    <link href="https://yantares.cn/2026/10/25/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/%E6%8C%BD%E6%95%91%E8%AE%A1%E5%88%92/"/>
+    <id>https://yantares.cn/2026/10/25/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/%E6%8C%BD%E6%95%91%E8%AE%A1%E5%88%92/</id>
+    <published>2026-10-25T15:24:51.000Z</published>
+    <updated>2026-10-25T15:30:11.368Z</updated>
+    
+    <content type="html"><![CDATA[<p>书评待补。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;书评待补。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="读罢有感" scheme="https://yantares.cn/categories/%E8%AF%BB%E7%BD%A2%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="读书" scheme="https://yantares.cn/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数值分析&amp;Casio FX991</title>
     <link href="https://yantares.cn/2026/10/24/notebook/%E8%AF%BE%E5%86%85/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90&amp;Casio%20FX991/"/>
     <id>https://yantares.cn/2026/10/24/notebook/%E8%AF%BE%E5%86%85/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90&amp;Casio%20FX991/</id>
     <published>2026-10-24T05:24:04.000Z</published>
-    <updated>2026-10-24T08:20:10.934Z</updated>
+    <updated>2026-10-25T08:34:55.559Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="数值分析"><a class="markdownIt-Anchor" href="#数值分析"></a> 数值分析</h1><p>参考书：<em>Numerical Analysis Second Edition</em>  Timothy Sauer</p><p>掌握三个部分：数学原理、matlab和FX991计算方法。</p><h1 id="线代复习"><a class="markdownIt-Anchor" href="#线代复习"></a> 线代复习</h1><p>矩阵求逆：</p><h1 id="线性方程组的直接解法"><a class="markdownIt-Anchor" href="#线性方程组的直接解法"></a> 线性方程组的直接解法</h1><h2 id="高斯消去法"><a class="markdownIt-Anchor" href="#高斯消去法"></a> 高斯消去法</h2><p>对于n个未知数n个方程的朴素的高斯消去法，消去为上三角形式需操作次数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\frac{2}{3}n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>（复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>），回代操作次数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>（复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>）。据此可估计计算时间。</p><h2 id="矩阵的lu分解"><a class="markdownIt-Anchor" href="#矩阵的lu分解"></a> 矩阵的LU分解</h2><p>LU分解是高斯消去法的矩阵形式（Ax=b）。</p><p>U是消去法中要得到的上三角矩阵，L代表对A所做的消去动作。具体来说，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">L_{ij}=c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span></span></span></span>代表从第i行减去c倍的第j行。</p><h2 id="qr分解和奇异值分解"><a class="markdownIt-Anchor" href="#qr分解和奇异值分解"></a> QR分解和奇异值分解</h2><h1 id="线性方程组的迭代解法"><a class="markdownIt-Anchor" href="#线性方程组的迭代解法"></a> 线性方程组的迭代解法</h1><p>相关计算器操作可参考<a href="https://www.bilibili.com/video/BV1oL411z7jb">【数值分析】雅可比迭代&amp;高斯-赛德尔迭代的计算器操作（例题）_哔哩哔哩_bilibili</a> <sup class="post-ref"><a href="#reference-1" id="reference-link-1" aria-label="参考文献 1">[1]</a></sup></p><h2 id="jacobi"><a class="markdownIt-Anchor" href="#jacobi"></a> Jacobi</h2><h1 id="插值"><a class="markdownIt-Anchor" href="#插值"></a> 插值</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="数值分析"><a class="markdownIt-Anchor" href="#数值分析"></a> 数值分析</h1><p>参考书：<em>Numerical Analysis Second Edition</em>  Timothy Sauer<br />习题解答：<a href="https://timothysauer.github.io/sol.html">Sauer: Numerical Analysis, 3e</a> <sup class="post-ref"><a href="#reference-1" id="reference-link-1" aria-label="参考文献 1">[1]</a></sup></p><p>掌握三个部分：数学原理、matlab和FX991计算方法。</p><h1 id="线代复习"><a class="markdownIt-Anchor" href="#线代复习"></a> 线代复习</h1><p>矩阵求逆：</p><h1 id="线性方程组的直接解法"><a class="markdownIt-Anchor" href="#线性方程组的直接解法"></a> 线性方程组的直接解法</h1><h2 id="高斯消去法"><a class="markdownIt-Anchor" href="#高斯消去法"></a> 高斯消去法</h2><p>对于n个未知数n个方程的朴素的高斯消去法，消去为上三角形式需操作次数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\frac{2}{3}n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>（复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>），回代操作次数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>（复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>）。据此可估计计算时间。</p><h2 id="矩阵的lu分解"><a class="markdownIt-Anchor" href="#矩阵的lu分解"></a> 矩阵的LU分解</h2><p>LU分解是高斯消去法的矩阵形式（Ax=b）。</p><p>U是消去法中要得到的上三角矩阵，L代表对A所做的消去动作。具体来说，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">L_{ij}=c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span></span></span></span>代表从第i行减去c倍的第j行。</p><h2 id="qr分解和奇异值分解"><a class="markdownIt-Anchor" href="#qr分解和奇异值分解"></a> QR分解和奇异值分解</h2><h1 id="线性方程组的迭代解法"><a class="markdownIt-Anchor" href="#线性方程组的迭代解法"></a> 线性方程组的迭代解法</h1><p>相关计算器操作可参考<a href="https://www.bilibili.com/video/BV1oL411z7jb">【数值分析】雅可比迭代&amp;高斯-赛德尔迭代的计算器操作（例题）_哔哩哔哩_bilibili</a> <sup class="post-ref"><a href="#reference-2" id="reference-link-2" aria-label="参考文献 2">[2]</a></sup></p><h2 id="jacobi"><a class="markdownIt-Anchor" href="#jacobi"></a> Jacobi</h2><h1 id="插值"><a class="markdownIt-Anchor" href="#插值"></a> 插值</h1>]]></content>
     
     
       
@@ -31,7 +59,7 @@
         
         
     <summary type="html">&lt;h1 id=&quot;数值分析&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#数值分析&quot;&gt;&lt;/a&gt; 数值分析&lt;/h1&gt;
-&lt;p&gt;参考书：&lt;em&gt;Numerical Analysis Second Edition&lt;/em&gt;  Timothy</summary>
+&lt;p&gt;参考书：&lt;em&gt;Numerical Analysis Second Edition&lt;/em&gt;  Timothy Sauer&lt;br</summary>
         
       
     
@@ -583,39 +611,6 @@
     
     
     <category term="XPS" scheme="https://yantares.cn/tags/XPS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bilibili</title>
-    <link href="https://yantares.cn/2026/04/27/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Bilibili/"/>
-    <id>https://yantares.cn/2026/04/27/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/Bilibili/</id>
-    <published>2026-04-27T04:37:07.000Z</published>
-    <updated>2026-04-28T12:53:39.907Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习观影好助手！</p><h1 id="网页端"><a class="markdownIt-Anchor" href="#网页端"></a> 网页端</h1><h2 id="观看体验优化"><a class="markdownIt-Anchor" href="#观看体验优化"></a> 观看体验优化</h2><p>插件：<a href="https://github.com/keleus/BewlyCat">GitHub - keleus/BewlyCat: BewlyCat——基于BewlyBewly开发…</a> <sup class="post-ref"><a href="#reference-1" id="reference-link-1" aria-label="参考文献 1">[1]</a></sup></p><h2 id="下载视频音频"><a class="markdownIt-Anchor" href="#下载视频音频"></a> 下载视频/音频</h2><p>【推荐】插件：<a href="https://chromewebstore.google.com/detail/bilibili%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B/bfcbfobhcjbkilcbehlnlchiinokiijp?pli=1">bilibili哔哩哔哩下载助手 - Chrome 应用商店</a> <sup class="post-ref"><a href="#reference-2" id="reference-link-2" aria-label="参考文献 2">[2]</a></sup></p><p>软件：<a href="https://leiurayer.github.io/downkyi/">哔哩下载姬 | downkyi</a> <sup class="post-ref"><a href="#reference-3" id="reference-link-3" aria-label="参考文献 3">[3]</a></sup></p><h1 id="安卓端"><a class="markdownIt-Anchor" href="#安卓端"></a> 安卓端</h1><h2 id="第三方"><a class="markdownIt-Anchor" href="#第三方"></a> 第三方</h2><p>【推荐】APK：<a href="https://github.com/bggRGjQaUbCoE/PiliPlus">GitHub - bggRGjQaUbCoE/PiliPlus: PiliPlus · GitHub</a> <sup class="post-ref"><a href="#reference-4" id="reference-link-4" aria-label="参考文献 4">[4]</a></sup></p><h2 id="国际版"><a class="markdownIt-Anchor" href="#国际版"></a> 国际版</h2><blockquote><p>优点：页面简洁、无广告、耗电少。</p><p>缺点：不能投稿、不支持25年以后的B站新功能。</p><p>总结：可以作为第二个播放器使用。</p></blockquote><p>教程：<a href="https://www.bilibili.com/video/BV1DbYkzuEd6/">bilibili国际版下载安装_哔哩哔哩_bilibili</a> <sup class="post-ref"><a href="#reference-5" id="reference-link-5" aria-label="参考文献 5">[5]</a></sup></p><p>链接：<a href="https://pan.baidu.com/s/1RM1eYnH3cGRcoqF9a_5yHA?pwd=gxyy">百度网盘 请输入提取码</a> <sup class="post-ref"><a href="#reference-6" id="reference-link-6" aria-label="参考文献 6">[6]</a></sup></p><p>步骤：</p><ol><li class="lvl-3"><p>下载百度网盘中的所有文件。</p></li><li class="lvl-3"><p>安装SAI的base.apk，打开后选择底部的“安装APK” -&gt; 内置文件选择器（SAI内置）。</p></li><li class="lvl-3"><p>进入到<code>/storage/emulated/0</code>目录后，找到<code>Download/BaiduNetdisk</code>中“B站国际版”文件夹，勾选剩下的4个APK，进行安装，得到白色的B站国际版。</p></li></ol>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;学习观影好助手！&lt;/p&gt;
-&lt;h1 id=&quot;网页端&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#网页端&quot;&gt;&lt;/a&gt; 网页端&lt;/h1&gt;
-&lt;h2 id=&quot;观看体验优化&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="series" scheme="https://yantares.cn/categories/series/"/>
-    
-    <category term="软件使用小技巧" scheme="https://yantares.cn/categories/series/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    
-    
-    <category term="经验" scheme="https://yantares.cn/tags/%E7%BB%8F%E9%AA%8C/"/>
-    
-    <category term="软件" scheme="https://yantares.cn/tags/%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
