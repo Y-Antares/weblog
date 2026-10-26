@@ -6,7 +6,7 @@
   <link href="https://yantares.cn/atom.xml" rel="self"/>
   
   <link href="https://yantares.cn/"/>
-  <updated>2026-10-26T04:52:03.539Z</updated>
+  <updated>2026-10-26T06:35:47.036Z</updated>
   <id>https://yantares.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://yantares.cn/2026/10/26/notebook/%E7%A7%91%E7%A0%94/ICP-OES/"/>
     <id>https://yantares.cn/2026/10/26/notebook/%E7%A7%91%E7%A0%94/ICP-OES/</id>
     <published>2026-10-26T01:47:12.000Z</published>
-    <updated>2026-10-26T04:52:03.539Z</updated>
+    <updated>2026-10-26T06:35:47.036Z</updated>
     
     <content type="html"><![CDATA[<h1 id="工作原理"><a class="markdownIt-Anchor" href="#工作原理"></a> 工作原理</h1><p>测量元素在高温等离子体中发出的特征光，确定样品中有哪些元素，以及各元素的含量。</p><h1 id="操作流程"><a class="markdownIt-Anchor" href="#操作流程"></a> 操作流程</h1>]]></content>
     
@@ -37,6 +37,10 @@
       
     
     
+    
+    <category term="notebook" scheme="https://yantares.cn/categories/notebook/"/>
+    
+    <category term="科研" scheme="https://yantares.cn/categories/notebook/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
